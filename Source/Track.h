@@ -11,8 +11,8 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/Recorder+Sampler/Source/SynthAudioSource.h"
-#include "/Users/giovanni/Recorder+Sampler/Source/AudioRecorder.h"
+#include "/Users/giovanni/BandLoop/Source/SynthAudioSource.h"
+#include "/Users/giovanni/BandLoop/Source/AudioRecorder.h"
 
 class Track : public AudioSource,
               public ValueTree::Listener

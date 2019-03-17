@@ -20,7 +20,8 @@ MainComponent::MainComponent()
 {
     addAndMakeVisible (audioSetupComp);
     deviceManager.addChangeListener (this);
-
+    
+  
     
     createBandLoopFolder();
     createTempFolder();
@@ -54,13 +55,17 @@ MainComponent::MainComponent()
 
     addAndMakeVisible (audioSetupComp);
     
+    BPM* newComp = new BPM (mainTree, undoManager);
+    addAndMakeVisible (newComp);
+    BPMS.add (newComp);
+    
+ 
+    
+    DBG(BPMS.size());
         setAudioChannels (2, 2);
 
     deviceManager.addAudioCallback (&audioSourcePlayer);
     audioSourcePlayer.setSource(&fTracks[0]);
-    
-    transportSetup();
-
     
 }
 
@@ -91,31 +96,16 @@ void MainComponent::releaseResources()
 
 void MainComponent::paint (Graphics& g)
 {
-  
+    
+    BPMS[0]->setBounds(getLocalBounds());
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
     
-    Rectangle<int> timeUIBounds = getLocalBounds();
-    g.fillAll(Colours::black);
-    g.setFont(15.0f);
-    g.setColour(Colours::white);
-    BarToText = static_cast<String>(Bar);
-    BeatToText = static_cast<String>(Beat);
-    g.drawText(BarToText, timeUIBounds.removeFromTop (36) , Justification::topRight );
-    g.drawText(BeatToText, timeUIBounds, Justification::topRight);
+   
 }
 
 void MainComponent::resized()
 {
     
-//Transport
-    Rectangle<int> bounds {400, 10, 200, 200};
-    
-    FlexBox flexbox { FlexBox::Direction::row, FlexBox::Wrap::noWrap, FlexBox::AlignContent::center, FlexBox::AlignItems::center, FlexBox::JustifyContent::center };
-    
-    flexbox.items.add(FlexItem(100, 100, playButton));
-    flexbox.items.add(FlexItem(100, 100, labelBPM));
-    flexbox.items.add(FlexItem(100, 100, textBPM));
-    flexbox.performLayout(bounds);
  
 // the Rest
     auto area = getLocalBounds();
@@ -177,6 +167,7 @@ void MainComponent::createSavedFolder() {
 //  CREATE TRACK ()
 //=========================================================================================
 void MainComponent::createNewTrack() {
+    
     
     Identifier inputs ("Inputs");
     mainTree.setProperty(inputs, "0", nullptr);
@@ -259,105 +250,105 @@ void MainComponent::createInputSelections(Array<int> toStereo) {
 /* ------------------------------------------------------------------------------------
     Transport  -  BPM  -  Transport  -  BPM  -  Transport  -  BPM  -  Transport  -  BPM
 ---------------------------------------------------------------------------------------- */
-
-void MainComponent::transportSetup() {
-    
-    playButton.setToggleState(false, NotificationType::dontSendNotification);
-    playButton.setColour(TextButton::ColourIds::buttonColourId, Colours::red);
-    playButton.setColour(TextButton::ColourIds::buttonOnColourId, Colours::limegreen);
-    playButton.onClick = [this]() { playTransport(); };
-    playButton.addListener(this);
-    addAndMakeVisible(playButton);
-    
-    
-    labelBPM.setText ("BPM", dontSendNotification);
-    labelBPM.attachToComponent (&textBPM, true);
-    labelBPM.setColour (Label::textColourId, Colours::orange);
-    labelBPM.setJustificationType (Justification::right);
-    addAndMakeVisible (labelBPM);
-    
-    
-    textBPM.setEditable (true);
-    textBPM.setColour (Label::backgroundColourId, Colours::darkblue);
-    addAndMakeVisible (textBPM);
-    
-    textBPM.onTextChange = [this] { BPMs = static_cast <int>(textBPM.getText().getFloatValue());};
-    
-    
-    Timer::startTimer(100);
-    
-
-}
-
-void MainComponent::playTransport()
-{
-    if (playState == PlayState::Stop)
-    {
-        playState = PlayState::Play;
-        playButton.setToggleState(true, NotificationType::dontSendNotification);
-        playButton.setButtonText("Playing");
-        //        edit.getTransport().play(false);
-        HighResolutionTimer::startTimer(1);
-        
-        
-    }
-}
-
-void MainComponent::stopTransport()
-{
-    if (playState == PlayState::Play)
-    {
-        
-        playState = PlayState::Stop;
-        //        edit.getTransport().stop(true, false);
-        playButton.setToggleState(false, NotificationType::dontSendNotification);
-        playButton.setButtonText("Stopped");
-        HighResolutionTimer::stopTimer();
-        timeInMilliseconds = 0;
-        Bar = 0;
-        Beat = 0;
-    }
-}
-
-void MainComponent::hiResTimerCallback()
-{
-    BPMratio = BPMs/60.;
-    
-    if(HighResolutionTimer::getTimerInterval()) {
-        timeInMilliseconds ++ ;
-    }
-    
-    timeUIfloat = (static_cast<float>(timeInMilliseconds))/1000;
-    Bars = timeUIfloat*BPMratio/4;
-    Bar = static_cast<int>(Bars);
-    
-    Beats = (timeUIfloat)*BPMratio;
-    Beat = (static_cast<int>(Beats))%4 + 1;
-    
-    
-}
-
-void MainComponent::buttonClicked (Button* button)
-{
-    if (button == &playButton)
-    {
-        if (playState == PlayState::Play)
-        {
-            playButton.onClick = [&]() { stopTransport(); };
-        }
-        else
-        {
-            playButton.onClick = [&]() { playTransport(); };
-        }
-    }
-}
-
-
-
-void MainComponent::timerCallback() {
-    
-    repaint();
-    
-    
-}
-
+//
+//void MainComponent::transportSetup() {
+//    
+//    playButton.setToggleState(false, NotificationType::dontSendNotification);
+//    playButton.setColour(TextButton::ColourIds::buttonColourId, Colours::red);
+//    playButton.setColour(TextButton::ColourIds::buttonOnColourId, Colours::limegreen);
+//    playButton.onClick = [this]() { playTransport(); };
+//    playButton.addListener(this);
+//    addAndMakeVisible(playButton);
+//    
+//    
+//    labelBPM.setText ("BPM", dontSendNotification);
+//    labelBPM.attachToComponent (&textBPM, true);
+//    labelBPM.setColour (Label::textColourId, Colours::orange);
+//    labelBPM.setJustificationType (Justification::right);
+//    addAndMakeVisible (labelBPM);
+//    
+//    
+//    textBPM.setEditable (true);
+//    textBPM.setColour (Label::backgroundColourId, Colours::darkblue);
+//    addAndMakeVisible (textBPM);
+//    
+//    textBPM.onTextChange = [this] { BPMs = static_cast <int>(textBPM.getText().getFloatValue());};
+//    
+//    
+//    Timer::startTimer(100);
+//    
+//
+//}
+//
+//void MainComponent::playTransport()
+//{
+//    if (playState == PlayState::Stop)
+//    {
+//        playState = PlayState::Play;
+//        playButton.setToggleState(true, NotificationType::dontSendNotification);
+//        playButton.setButtonText("Playing");
+//        //        edit.getTransport().play(false);
+//        HighResolutionTimer::startTimer(1);
+//        
+//        
+//    }
+//}
+//
+//void MainComponent::stopTransport()
+//{
+//    if (playState == PlayState::Play)
+//    {
+//        
+//        playState = PlayState::Stop;
+//        //        edit.getTransport().stop(true, false);
+//        playButton.setToggleState(false, NotificationType::dontSendNotification);
+//        playButton.setButtonText("Stopped");
+//        HighResolutionTimer::stopTimer();
+//        timeInMilliseconds = 0;
+//        Bar = 0;
+//        Beat = 0;
+//    }
+//}
+//
+//void MainComponent::hiResTimerCallback()
+//{
+//    BPMratio = BPMs/60.;
+//    
+//    if(HighResolutionTimer::getTimerInterval()) {
+//        timeInMilliseconds ++ ;
+//    }
+//    
+//    timeUIfloat = (static_cast<float>(timeInMilliseconds))/1000;
+//    Bars = timeUIfloat*BPMratio/4;
+//    Bar = static_cast<int>(Bars);
+//    
+//    Beats = (timeUIfloat)*BPMratio;
+//    Beat = (static_cast<int>(Beats))%4 + 1;
+//    
+//    
+//}
+//
+//void MainComponent::buttonClicked (Button* button)
+//{
+//    if (button == &playButton)
+//    {
+//        if (playState == PlayState::Play)
+//        {
+//            playButton.onClick = [&]() { stopTransport(); };
+//        }
+//        else
+//        {
+//            playButton.onClick = [&]() { playTransport(); };
+//        }
+//    }
+//}
+//
+//
+//
+//void MainComponent::timerCallback() {
+//    
+//    repaint();
+//    
+//    
+//}
+//

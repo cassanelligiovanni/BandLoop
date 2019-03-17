@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="lYpEwJ" name="Recorder+Sampler" projectType="guiapp" jucerVersion="5.4.1">
+<JUCERPROJECT id="lYpEwJ" name="Recorder+Sampler" projectType="guiapp" jucerVersion="5.4.2">
   <MAINGROUP id="WzRhhu" name="Recorder+Sampler">
     <GROUP id="{798E6D8E-7B40-9AF2-985E-69BA8643211F}" name="Source">
       <FILE id="gtHywb" name="AudioRecorder.cpp" compile="1" resource="0"

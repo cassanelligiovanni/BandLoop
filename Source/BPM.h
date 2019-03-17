@@ -89,8 +89,6 @@ private:
     PlayState playState { PlayState::Stop };
     TextButton playButton { "Stopped" };
     
-//    AudioDeviceSelectorComponent audioSetupComp;
-    
     
     //==============================================================================
     // Your private member variables go here...

@@ -9,17 +9,14 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/Recorder+Sampler/Source/Track.h"
-#include "/Users/giovanni/Recorder+Sampler/Source/AudioRecorder.h"
-#include "/Users/giovanni/Recorder+Sampler/Source/SynthAudioSource.h"
-#include "/Users/giovanni/Recorder+Sampler/Source/BPM.h"
-#include "/Users/giovanni/Recorder+Sampler/Source/addTrackWindow.h"
+#include "/Users/giovanni/BandLoop/Source/Track.h"
+#include "/Users/giovanni/BandLoop/Source/AudioRecorder.h"
+#include "/Users/giovanni/BandLoop/Source/SynthAudioSource.h"
+#include "/Users/giovanni/BandLoop/Source/BPM.h"
+#include "/Users/giovanni/BandLoop/Source/addTrackWindow.h"
 
 class MainComponent   : public AudioAppComponent,
-public ChangeListener,
-public HighResolutionTimer,
-public Timer,
-public Button::Listener
+public ChangeListener
 {
 public:
     
@@ -28,14 +25,6 @@ public:
     MainComponent();
     ~MainComponent();
     
-    //==============================================================================
-    
-    void transportSetup();
-    void playTransport();
-    void stopTransport();
-    void hiResTimerCallback() override;
-    void timerCallback() override;
-    void buttonClicked (Button* button) override;
     
     //==============================================================================
     
@@ -80,6 +69,7 @@ private:
 //==============================================================================
     
     ScopedPointer<Track> fTracks;
+    OwnedArray<BPM> BPMS;
     
     Identifier  myNodeType = ("mainTree");
     ValueTree mainTree {myNodeType}  ;

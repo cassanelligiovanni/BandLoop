@@ -42,9 +42,6 @@ tree (v), undoManager (um)
     //    transportSource.addChangeListener (this);
     
     Timer::startTimer(100);
-    
-    
-    setSize (600, 300);
 
 }
 
@@ -122,38 +119,38 @@ void BPM::buttonClicked (Button* button)
 //==============================================================================
 void BPM::paint (Graphics& g)
 {
-    Rectangle<int> timeUIBounds { 50, 10, 100, 20 };
     
-    g.fillAll(Colours::black);
-    g.setFont(15.0f);
+    Rectangle<int> timeUIBounds = getLocalBounds().reduced(200, 40);
+    
+
+    g.setFont(15.f);
     g.setColour(Colours::white);
     BarToText = static_cast<String>(Bar);
     BeatToText = static_cast<String>(Beat);
-    g.drawText(BarToText, timeUIBounds, Justification::centred);
-    g.drawText(BeatToText, timeUIBounds, Justification::centred - 10);
+    g.drawText(BarToText, timeUIBounds.removeFromTop(20), Justification::topRight);
+    g.drawText(BeatToText, timeUIBounds, Justification::topRight);
     
     
 }
 
 void BPM::resized()
 {
-    Rectangle<int> bounds = getLocalBounds();
+
+    Rectangle<int> bounds {500, 80, 200, 200};
     
     FlexBox flexbox { FlexBox::Direction::row, FlexBox::Wrap::noWrap, FlexBox::AlignContent::center, FlexBox::AlignItems::center, FlexBox::JustifyContent::center };
     
-    flexbox.items.add(FlexItem(100, 100, playButton));
-    flexbox.items.add(FlexItem(100, 100, labelBPM));
-    flexbox.items.add(FlexItem(100, 100, textBPM));
+    flexbox.items.add(FlexItem(100, 50, playButton));
+    flexbox.items.add(FlexItem(100, 50, labelBPM));
+    flexbox.items.add(FlexItem(100, 50, textBPM));
     flexbox.performLayout(bounds);
-    //
-    //        repaint();
+
 }
 
 
 void BPM::timerCallback() {
     
     repaint();
-    
     
 }
 
