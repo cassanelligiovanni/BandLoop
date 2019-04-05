@@ -15,7 +15,7 @@ class AudioRecorder
 {
 public:
     
-    AudioRecorder(String name, const File& file);
+    AudioRecorder();
     
     /**
      * dtor.
@@ -27,8 +27,9 @@ public:
      * dtor.
      */
     
+    void setSampleRate(double SampleRate);
     
-    void startRecording (AudioBuffer<float>* bufferToRecord, const File& file);
+    void startRecording (const File& file);
     
     /**
      * dtor.
@@ -44,7 +45,7 @@ public:
     
     bool isRecording() const;
     
-    void Record(AudioBuffer<float>* bufferToRecord);
+    void Record (float** pointers, int numSamples);
 
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
     
@@ -58,19 +59,17 @@ private:
     
      AudioBuffer<float> toRecord;
     
-    TimeSliceThread backgroundThread; // the thread that will write our audio data to disk
+//    TimeSliceThread backgroundThread; // the thread that will write our audio data to disk
     
+
+    TimeSliceThread backgroundThread { "Audio Recorder Thread" }; // the thread that will write our audio data to disk
     std::unique_ptr<AudioFormatWriter::ThreadedWriter> threadedWriter; // the FIFO used to buffer the incoming data
-    
-    double sampleRate ;
-    
-    int64 nextSampleNum ;
+    double sampleRate = 0.0;
+    int64 nextSampleNum = 0;
     
     CriticalSection writerLock;
+    std::atomic<AudioFormatWriter::ThreadedWriter*> activeWriter { nullptr };
     
-    std::atomic<AudioFormatWriter::ThreadedWriter*> activeWriter ;
-    
-     AudioFormatWriter* wavWriter;
     
     File lastRecording;
     
@@ -80,7 +79,10 @@ private:
     
     OwnedArray<AudioBuffer<float>> inputs;
     
-    WavAudioFormat format;
+    int numSamples;
+    int startSamples;
+    int numChannels;
+    
     std::unique_ptr<AudioFormatWriter> writer = nullptr;
     
 };

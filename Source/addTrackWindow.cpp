@@ -24,36 +24,52 @@ wasCancelledByUser (false),
 
 tree (v), undoManager (um)
     {
+    
+        
+        setContentOwned (new AddTrackComponent(name, backgroundColour, buttonsNeeded, inputsAvailable, tree, undoManager), false);
+//        addAndMakeVisible(&nameTrack);
+//        addAndMakeVisible(&inputsLabel);
+//        addAndMakeVisible(&inputs);
+//
+        Rectangle<int> bounds = getLocalBounds();
+        
         tree.addListener(this);
         nameTrack.addListener(this);
         
-        juce::Component::addAndMakeVisible(inputs);
-        juce::Component::addAndMakeVisible(nameTrack);
-        juce::Component::addAndMakeVisible(inputsID);
-        juce::Component::addAndMakeVisible(nameTrackID);
         
         for (int i = 0; i < inputsAvailable.size(); i++){
             inputs.addItem (inputsAvailable[i], i+1);
  
         }
         
+        nameTrackLabel.setText ("BPM", dontSendNotification);
+        nameTrackLabel.setColour (Label::textColourId, Colours::BandLoopBackground);
+        nameTrackLabel.setJustificationType (Justification::left);
+        
+        
+        nameTrackLabelProperties.set ("fontSize", 30);
+        nameTrackLabelProperties.set ("fontStyleFlag", Font::italic);
+        
+        
+//        addAndMakeVisible (&nameTrackLabel);
+        
+        inputsLabelProperties.set ("fontSize", 30);
+        inputsLabelProperties.set ("fontStyleFlag", Font::plain);
+        
+    
+        
         nameTrack.setEditable(true);
-//        nameTrack.setJustificationType(Justification::centred);
-        nameTrack.setBounds(100, 25, 300, 25);
         
-//        inputs.setJustificationType(Justification::centred);
-        inputs.setBounds(100, 50, 300, 25);
+       
+        nameTrack.setBounds(100, 200, 300, 25);
+        inputs.setBounds(100, 250, 300, 25);
         
-        nameTrackID.setText("Name : ", dontSendNotification);
-        nameTrackID.attachToComponent(&nameTrack, true);
         
-        inputsID.setText("Inputs : ", dontSendNotification);
-        inputsID.attachToComponent(&inputs, true);
         
         launchThread(5);
         
         inputs.addListener (this);
-        tree.addListener (this);
+     
         
 //        inputTrackToPass = inputTrackToPass2;
         
@@ -62,9 +78,9 @@ tree (v), undoManager (um)
     
   addTrackWindow::~addTrackWindow()
     {
-        
-        
-
+        nameTrackLabel.setLookAndFeel(nullptr);
+        inputsLabel.setLookAndFeel(nullptr);
+        stopThread(200);
     }
 
 void addTrackWindow::run(){
@@ -117,8 +133,8 @@ void addTrackWindow::timerCallback()
 void addTrackWindow::labelTextChanged (Label* labelThatHasChanged) {
   
     if(labelThatHasChanged == &nameTrack){
-        Identifier propertyName ("NameTrack");
-        tree.setProperty(propertyName, nameTrack.getText(), nullptr);
+        Identifier propertyName ("Name");
+        tree.setProperty(propertyName, nameTrack.getText(), &undoManager);
         nameTrack.getText();
     }
     
@@ -133,7 +149,7 @@ void addTrackWindow::comboBoxChanged(ComboBox* comboBoxThatHasChanged){
     if (comboBoxThatHasChanged == &inputs)
     {
         Identifier propertyName ("Inputs");
-    tree.setProperty(propertyName, inputs.getText(), nullptr);
+    tree.setProperty(propertyName, inputs.getText(), &undoManager);
         
     }
         
@@ -147,5 +163,3 @@ void addTrackWindow::valueTreeChildRemoved (ValueTree& parentTree, ValueTree&, i
 void addTrackWindow::valueTreeChildOrderChanged (ValueTree& parentTree, int, int) {};
 void addTrackWindow::valueTreeParentChanged (ValueTree&) {};
 void addTrackWindow::valueTreePropertyChanged (ValueTree&, const Identifier&) {};
-
-

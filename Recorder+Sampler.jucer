@@ -1,28 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="lYpEwJ" name="Recorder+Sampler" projectType="guiapp" jucerVersion="5.4.2">
-  <MAINGROUP id="WzRhhu" name="Recorder+Sampler">
-    <GROUP id="{798E6D8E-7B40-9AF2-985E-69BA8643211F}" name="Source">
-      <FILE id="gtHywb" name="AudioRecorder.cpp" compile="1" resource="0"
-            file="Source/AudioRecorder.cpp"/>
-      <FILE id="lKkte0" name="AudioRecorder.h" compile="0" resource="0" file="Source/AudioRecorder.h"/>
-      <FILE id="a9Rs9H" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
-      <FILE id="XeJwbg" name="MainComponent.cpp" compile="1" resource="0"
-            file="Source/MainComponent.cpp"/>
-      <FILE id="G0nf81" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+<JUCERPROJECT id="lYpEwJ" name="BandLoop" projectType="guiapp" jucerVersion="5.4.1">
+  <MAINGROUP id="WzRhhu" name="BandLoop">
+    <FILE id="q9dnzd" name="AddTrackComponent.cpp" compile="1" resource="0"
+          file="Source/AddTrackComponent.cpp"/>
+    <FILE id="dkoA95" name="AddTrackComponent.h" compile="0" resource="0"
+          file="Source/AddTrackComponent.h"/>
+    <FILE id="mRygha" name="CustomLookAndFeel2.cpp" compile="1" resource="0"
+          file="Source/CustomLookAndFeel2.cpp"/>
+    <FILE id="SA2FPj" name="CustomLookAndFeel2.h" compile="0" resource="0"
+          file="Source/CustomLookAndFeel2.h"/>
+    <GROUP id="{798E6D8E-7B40-9AF2-985E-69BA8643211F}" name="Source"/>
+    <GROUP id="{9CC129A6-A8D3-8DE5-FF03-FDEA67D17DC7}" name="Assets">
+      <FILE id="oqpsis" name="DeleteTrack.svg" compile="0" resource="1" file="../Creative Cloud Files/SVG/DeleteTrack.svg"/>
+      <FILE id="nzCaDQ" name="BPMCounterOFF.svg" compile="0" resource="1"
+            file="../Creative Cloud Files/SVG/BPMCounterOFF.svg"/>
+      <FILE id="P3lCc1" name="BPMDisplay.svg" compile="0" resource="1" file="../Creative Cloud Files/SVG/BPMDisplay.svg"/>
+      <FILE id="bQ8PLR" name="BPMCounterON.svg" compile="0" resource="1"
+            file="../Creative Cloud Files/SVG/BPMCounterON.svg"/>
+      <FILE id="rH1eiS" name="PlayButton.svg" compile="0" resource="1" file="../Creative Cloud Files/SVG/PlayButton.svg"/>
+      <FILE id="lKGNTo" name="StopButton.svg" compile="0" resource="1" file="../Creative Cloud Files/SVG/StopButton.svg"/>
     </GROUP>
+    <FILE id="QnD0YS" name="CustomLookAndFeel.cpp" compile="1" resource="0"
+          file="Source/CustomLookAndFeel.cpp"/>
+    <FILE id="LhNeg5" name="CustomLookAndFeel.h" compile="0" resource="0"
+          file="Source/CustomLookAndFeel.h"/>
+    <FILE id="og8ACz" name="Sound.cpp" compile="1" resource="0" file="Source/Sound.cpp"/>
+    <FILE id="SO525d" name="Sound.h" compile="0" resource="0" file="Source/Sound.h"/>
+    <FILE id="gtHywb" name="AudioRecorder.cpp" compile="1" resource="0"
+          file="Source/AudioRecorder.cpp"/>
+    <FILE id="lKkte0" name="AudioRecorder.h" compile="0" resource="0" file="Source/AudioRecorder.h"/>
+    <FILE id="a9Rs9H" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+    <FILE id="XeJwbg" name="MainComponent.cpp" compile="1" resource="0"
+          file="Source/MainComponent.cpp"/>
+    <FILE id="G0nf81" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
     <FILE id="TVXPdl" name="addTrackWindow.cpp" compile="1" resource="0"
           file="Source/addTrackWindow.cpp"/>
     <FILE id="MYkxrB" name="addTrackWindow.h" compile="0" resource="0"
           file="Source/addTrackWindow.h"/>
     <FILE id="hekm3G" name="BPM.cpp" compile="1" resource="0" file="Source/BPM.cpp"/>
     <FILE id="ukkfSZ" name="BPM.h" compile="0" resource="0" file="Source/BPM.h"/>
-    <FILE id="As1a6c" name="SynthAudioSource.cpp" compile="1" resource="0"
-          file="Source/SynthAudioSource.cpp"/>
-    <FILE id="LhGR13" name="SynthAudioSource.h" compile="0" resource="0"
-          file="Source/SynthAudioSource.h"/>
+    <FILE id="mJi3Mx" name="SettingWindow.cpp" compile="1" resource="0"
+          file="Source/SettingWindow.cpp"/>
+    <FILE id="OAEXws" name="SettingWindow.h" compile="0" resource="0" file="Source/SettingWindow.h"/>
+    <FILE id="upRPw7" name="Playback.cpp" compile="1" resource="0" file="Source/Playback.cpp"/>
+    <FILE id="yr7A32" name="Playback.h" compile="0" resource="0" file="Source/Playback.h"/>
     <FILE id="dTRckt" name="Track.cpp" compile="1" resource="0" file="Source/Track.cpp"/>
     <FILE id="LYLCo6" name="Track.h" compile="0" resource="0" file="Source/Track.h"/>
+    <FILE id="WDtNVg" name="FallingSky.otf" compile="0" resource="1" file="../Downloads/kineticplasma-fonts_falling-sky/FallingSky.otf"/>
+    <FILE id="s8Fwk2" name="DecibelSlider.cpp" compile="1" resource="0"
+          file="Source/DecibelSlider.cpp"/>
+    <FILE id="O13Gr4" name="DecibelSlider.h" compile="0" resource="0" file="Source/DecibelSlider.h"/>
   </MAINGROUP>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX">

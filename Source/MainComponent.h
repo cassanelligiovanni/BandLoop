@@ -11,12 +11,20 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "/Users/giovanni/BandLoop/Source/Track.h"
 #include "/Users/giovanni/BandLoop/Source/AudioRecorder.h"
-#include "/Users/giovanni/BandLoop/Source/SynthAudioSource.h"
+#include "/Users/giovanni/BandLoop/Source/Playback.h"
 #include "/Users/giovanni/BandLoop/Source/BPM.h"
 #include "/Users/giovanni/BandLoop/Source/addTrackWindow.h"
+#include "/Users/giovanni/BandLoop/Source/SettingWindow.h"
+#include "/Users/giovanni/BandLoop/Source/Sound.h"
+#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel.h"
+
+
 
 class MainComponent   : public AudioAppComponent,
-public ChangeListener
+public ChangeListener,
+public ValueTree::Listener,
+public Button::Listener,
+private MidiInputCallback
 {
 public:
     
@@ -37,6 +45,8 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     
+    void buttonClicked(Button* button) override;
+    
     void startRecording();
     void stopRecording();
     
@@ -48,10 +58,27 @@ public:
 
     void createInputSelections(Array<int> toStereo);
     
+    void setupSquareLookAndFeelColours ();
+    
+    void showDocumentWindow (bool native, const ValueTree& newTree);
+    void showSettingWindow(bool native, const ValueTree& newTree, AudioDeviceSelectorComponent& audioSetupComp);
     void closeAllWindows();
-    void showDocumentWindow (bool native, String& inputTrackToPass, String& nameTrackToPass );
+    
+    
     
     void createNewTrack();
+    void deleteTrack(String trackToDelete);
+    
+    
+    void valueTreeChildAdded (ValueTree& parentTree, ValueTree&) override;
+    void valueTreeChildRemoved (ValueTree& parentTree, ValueTree&, int) override;
+    void valueTreeChildOrderChanged (ValueTree& parentTree, int, int) override;
+    void valueTreeParentChanged (ValueTree&) override;
+    void valueTreePropertyChanged (ValueTree&, const Identifier&) override;
+    
+    void handleIncomingMidiMessage (MidiInput* /*source*/,
+                                    const MidiMessage& message) override;
+    
     
 private:
     
@@ -62,19 +89,28 @@ private:
     MidiKeyboardState keyboardState;
     MidiMessageCollector midiCollector;
     AudioSourcePlayer audioSourcePlayer;
+    AudioSourcePlayer audioSourcePlayer2;
+    
+    OwnedArray<AudioSourcePlayer> audioSourcePlayers;
+    OwnedArray<MidiMessageCollector> fromPedals;
     
 
-    
 // CLASSES
 //==============================================================================
-    
-    ScopedPointer<Track> fTracks;
+
+    OwnedArray<FlexItem> flexItems ;
+    OwnedArray<Track> fTracks;
     OwnedArray<BPM> BPMS;
+ 
+    
+// TREEs
+//==============================================================================
     
     Identifier  myNodeType = ("mainTree");
-    ValueTree mainTree {myNodeType}  ;
-    
+    ValueTree parentTree {myNodeType} ;
+    OwnedArray<ValueTree> treeChildren;
     UndoManager undoManager;
+    int numOfTrees = 0 ;
     
 
     
@@ -91,15 +127,38 @@ private:
 // GRAPHICS (buttons, sliders, windows)
 //==============================================================================
     
+    //in the header:
+    ScopedPointer<Drawable> background_image;
+    
+    ScopedPointer<Drawable> deleteTrackImage = Drawable::createFromImageData (BinaryData::DeleteTrack_svg, BinaryData::DeleteTrack_svgSize);
+    
+    
+    OwnedArray<DrawableButton> deleteTrackButtons;
+    
+    CustomLookAndFeel customLookAndFeel;
+    
+    OwnedArray<TextButton> cancelTrackButtons;
+    
     Array<Component::SafePointer<Component>> windows;
     TextButton addTrack   { "+" };
+    TextButton settings   { "settings" };
     Slider sliderTrack1;
     TextButton buttonTrack1;
     TextButton recordButtonTrack1;
+   
     
     String nameTrackToPass ;
     
     String inputTrackToPass ;
+    
+//    FlexBox tracks { FlexBox::Direction::row, FlexBox::Wrap::wrap, FlexBox::AlignContent::center, FlexBox::AlignItems::center, FlexBox::JustifyContent::center };
+//    FlexBox cancelTracks { FlexBox::Direction::row, FlexBox::Wrap::wrap, FlexBox::AlignContent::center, FlexBox::AlignItems::center, FlexBox::JustifyContent::center };
+
+    
+//    Array<Colour> colours { Colours::yellow, Colours::orange, Colours::blue };
+    StringArray coloursOfTracks {"darkcyan", "orange", "rebeccapurple", "cornsilk", "pink","grey"} ;
+    StringArray trackColourAvailable;
+    StringArray trackColourAssigned ;
     
     
 // BOOLS and VALUES
@@ -108,6 +167,7 @@ private:
     bool recording = false ;
     int pos = 0;
     
+// Inputs Routing
     BigInteger bigIntegerInputsAvailable ;
     Array<int> toStereo;
     StringArray inputsAvailable;
@@ -117,30 +177,14 @@ private:
         for (auto i = 0; i <= b.getHighestBit(); ++i)
             if (b[i])
                 inputsAvailable.add(int (i)+1);
-        return inputsAvailable;
-    }
+        return inputsAvailable; }
+
+    
   
     
 // BPM Transport
 //==============================================================================
-    
-    enum class PlayState
-    {
-        Play,
-        Stop
-    };
-    
-    float previousBar = 0;
-    float startBar = 0;
-    
-    float loopUnit;
-    int loopLenght;
-    
-    std::atomic<float> timeUIfloat;
-    
-    String timeUI { "" };
-    int timeInMilliseconds = 0;
-    
+
     float Bars = 0;
     int Bar;
     float Beats = 0;
@@ -148,15 +192,6 @@ private:
     
     String BarToText = "0";
     String BeatToText = "0";
-    
-    int BPMs = 120;
-    float BPMratio = 0.;
-    
-    Label labelBPM;
-    Label textBPM;
-    
-    PlayState playState { PlayState::Stop };
-    TextButton playButton { "Stopped" };
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)

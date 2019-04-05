@@ -18,10 +18,28 @@ MainComponent::MainComponent()
 , lastRecording()
 
 {
-    addAndMakeVisible (audioSetupComp);
+    
+    
+//    background_image = Drawable::createFromImageData (BinaryData::PedalShape3_svg, BinaryData::PedalShape3_svgSize);
+//
+//
+//
+//    addAndMakeVisible (background_image);
+    
+//    customLookAndFeel.setDefaultSansSerifTypefaceName ("CoreText");
+    LookAndFeel::setDefaultLookAndFeel(&customLookAndFeel);
+ 
+    setupSquareLookAndFeelColours();
+    setLookAndFeel (&customLookAndFeel);
+    
+    
+    
+     trackColourAvailable = coloursOfTracks ;
+
+//    addAndMakeVisible (audioSetupComp);
     deviceManager.addChangeListener (this);
     
-  
+    parentTree.addListener(this);
     
     createBandLoopFolder();
     createTempFolder();
@@ -29,10 +47,10 @@ MainComponent::MainComponent()
     
     setSize (800, 600);
 
+    addAndMakeVisible (settings);
     addAndMakeVisible (addTrack);
-    addAndMakeVisible (recordButtonTrack1);
-    recordButtonTrack1.setColour (TextButton::buttonColourId, Colour (0xffff5c5c));
-    recordButtonTrack1.setColour (TextButton::textColourOnId, Colours::black);
+
+
     
     recordButtonTrack1.onClick = [this]
     {
@@ -51,26 +69,29 @@ MainComponent::MainComponent()
     };
     
     addTrack.onClick = [this] { createNewTrack();};
+    settings.onClick = [this] {  showSettingWindow(true, parentTree, audioSetupComp);};
+   
     
 
-    addAndMakeVisible (audioSetupComp);
-    
-    BPM* newComp = new BPM (mainTree, undoManager);
+    BPM* newComp = new BPM (parentTree, undoManager);
     addAndMakeVisible (newComp);
     BPMS.add (newComp);
     
- 
+    resized();
     
-    DBG(BPMS.size());
         setAudioChannels (2, 2);
 
     deviceManager.addAudioCallback (&audioSourcePlayer);
-    audioSourcePlayer.setSource(&fTracks[0]);
+    deviceManager.addAudioCallback (&audioSourcePlayer2);
+    
+    deviceManager.addMidiInputCallback ({}, this); // [6]
     
 }
 
 MainComponent::~MainComponent()
 {
+    setLookAndFeel (nullptr);
+
     deviceManager.removeChangeListener (this);
     // This shuts down the audio device and clears the audio source.
     closeAllWindows();
@@ -85,7 +106,7 @@ void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRat
 
 void MainComponent::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill)
 {
-
+   
     bufferToFill.clearActiveBufferRegion();
 }
 
@@ -96,10 +117,10 @@ void MainComponent::releaseResources()
 
 void MainComponent::paint (Graphics& g)
 {
+  
     
-    BPMS[0]->setBounds(getLocalBounds());
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
-    
+    g.fillAll (Colours::BandLoopBackground);
+
    
 }
 
@@ -108,10 +129,31 @@ void MainComponent::resized()
     
  
 // the Rest
+//    background_image->setBounds (getLocalBounds());
     auto area = getLocalBounds();
+    
+    int menuEight = 20;
+    int usualSpace = 10;
+    int trackWidth = 275;
+//    Z
+    
+    if(!BPMS.isEmpty())
+    BPMS.getLast()->setBounds(area.getWidth()/4, menuEight, area.getWidth()/2, area.getHeight()/8);
+    
     audioSetupComp.setBounds (10, 200, 400, 200);
-    recordButtonTrack1      .setBounds (area.removeFromTop (36).removeFromLeft (140).reduced (8));
-    addTrack.setBounds (area.removeFromTop (36).removeFromLeft (260).reduced (1));
+    addTrack.setBounds (getWidth()-100, getHeight()-100, 100, 100);
+    settings.setBounds (0, getHeight()-20, 50, 20);
+    
+    Rectangle<int> bounds {0, getHeight()/2, getWidth(), getHeight()/2};
+
+    for(int i =0 ; i < fTracks.size(); i++) {
+        
+        fTracks[i]->setBounds(i*(trackWidth+usualSpace) + usualSpace, area.getHeight()/8+menuEight+usualSpace , 275, area.getHeight()-220);
+        deleteTrackButtons[i]->setBounds(i*(trackWidth+usualSpace)+255+ usualSpace, area.getHeight()/8+menuEight+usualSpace-5, 30, 30);
+
+    }
+
+
 }
 
 void MainComponent::startRecording()
@@ -136,6 +178,8 @@ void MainComponent::changeListenerCallback (ChangeBroadcaster*)
     bigIntegerInputsAvailable = deviceManager.getCurrentAudioDevice()->getActiveInputChannels();
     toStereo = getListOfActiveBits(bigIntegerInputsAvailable);
     createInputSelections(toStereo);
+
+    
 }
 
 
@@ -168,35 +212,137 @@ void MainComponent::createSavedFolder() {
 //=========================================================================================
 void MainComponent::createNewTrack() {
     
+    String identifier = "Children n*" + String(numOfTrees);
+    numOfTrees ++;
+    Identifier treeIdentifier (identifier);
+    ValueTree newTree (treeIdentifier);
+    parentTree.appendChild(newTree, &undoManager);
     
     Identifier inputs ("Inputs");
-    mainTree.setProperty(inputs, "0", nullptr);
-    Identifier name ("name");
-    mainTree.setProperty(name, "0", nullptr);
+    newTree.setProperty(inputs, "0", &undoManager);
+    Identifier name ("Name");
+    newTree.setProperty(name, "0", &undoManager);
     
-    fTracks = new Track("Track",
-                        &sliderTrack1,
-                        &buttonTrack1,
-                        "2",
-                        &midiCollector,
-                        mainTree,
-                        undoManager);
+    MidiMessageCollector* newFromPedal = new MidiMessageCollector;
+    fromPedals.add(newFromPedal);
     
-    showDocumentWindow(true,  inputTrackToPass,  inputTrackToPass);
+    Track* newTrack = new Track(trackColourAvailable[0],
+                             &sliderTrack1,
+                             &buttonTrack1,
+                             "2",
+                                *fromPedals.getLast(),
+                             newTree,
+                             undoManager);
+    addAndMakeVisible(newTrack);
+    
+    trackColourAssigned.add(trackColourAvailable[0]);
+    
+    DrawableButton* newDeleteTrackButton = new DrawableButton(trackColourAvailable[0], DrawableButton::ImageFitted);
+    newDeleteTrackButton->setImages(deleteTrackImage);
+    addAndMakeVisible(newDeleteTrackButton);
+    deleteTrackButtons.add(newDeleteTrackButton);
+    newDeleteTrackButton->addListener(this);
+    
+    
 
+    trackColourAssigned.add(trackColourAvailable[0]);
+    trackColourAvailable.remove(0);
+    
+    fTracks.add (newTrack);
+    
+    AudioSourcePlayer* newAudioSourcePlayer = new AudioSourcePlayer;
+    audioSourcePlayers.add(newAudioSourcePlayer);
+    audioSourcePlayers.getLast()->setSource(fTracks.getLast());
+    deviceManager.addAudioCallback(audioSourcePlayers.getLast());
+    
+    
+    parentTree.addListener(fTracks.getLast());
+    
+    showDocumentWindow(true,  newTree);
+    
+    resized();
+
+    
 }
 
+void MainComponent::deleteTrack(String trackToDelete) {
+
+    for (int i = 0; i < fTracks.size(); i++) {
+        
+        
+        if(fTracks[i]->getColour() == trackToDelete) {
+            
+          
+//            parentTree.removeChild (fTracks[i]->tree, &fTracks[i]->undoManager);
+            trackColourAssigned.removeString(trackToDelete);
+            trackColourAvailable.add(trackToDelete);
+            
+    
+            
+            
+            for (int j = 0; j < audioSourcePlayers.size(); j++) {
+                
+                if(audioSourcePlayers[j]->getCurrentSource() == fTracks[i]) {
+                    
+                    deviceManager.removeAudioCallback(audioSourcePlayers[j]);
+                    audioSourcePlayers.remove(j, true);
+                    
+                }
+                
+            }
+            
+            
+            
+            parentTree.removeChild(fTracks[i]->tree, &fTracks[i]->undoManager);
+            parentTree.removeListener(fTracks[i]);
+            
+            fTracks.remove(i, true);
+            deleteTrackButtons.remove(i, true);
+            
+            
+        }
+        
+        
+    }
+    
+    resized();
+    
+}
 
 //=========================================================================================
 //  TRACK WINDOW
 //=========================================================================================
-void MainComponent::showDocumentWindow (bool native, String& inputTrackToPass, String& nameTrackToPass )
+void MainComponent::showDocumentWindow (bool native, const ValueTree& newTree)
 {
-    auto* dw = new addTrackWindow ("Add Track", getLookAndFeel().findColour (ResizableWindow::backgroundColourId), DocumentWindow::allButtons, inputsAvailable, mainTree,
-                                   undoManager);
+    auto* dw = new addTrackWindow ("Add Track", Colours::BandLoopBackground, DocumentWindow::allButtons, inputsAvailable, newTree, undoManager);
     windows.add (dw);
     
     Rectangle<int> area (200, 200, 300, 400);
+    RectanglePlacement placement ((native ? RectanglePlacement::xLeft
+                                   : RectanglePlacement::xRight)
+                                  | RectanglePlacement::yTop
+                                  | RectanglePlacement::doNotResize);
+    auto result = placement.appliedTo (area, Desktop::getInstance().getDisplays()
+                                       .getMainDisplay().userArea.reduced (20));
+//    dw->setSize(200, 350);
+    dw->setBounds (result);
+    dw->setResizable (false, ! native);
+    dw->setCentreRelative (0.5, 0.5);
+    dw->setUsingNativeTitleBar (native);
+    dw->setVisible (true);
+    }
+
+//=========================================================================================
+//  SETTINGS window
+//=========================================================================================
+
+void MainComponent::showSettingWindow(bool native, const ValueTree& newTree, AudioDeviceSelectorComponent& audioSetupComp){
+    
+    auto* dw = new SettingWindow ("Settings", Colours::BandLoopBackground, DocumentWindow::allButtons, newTree,
+                                   undoManager, deviceManager);
+    windows.add (dw);
+    
+    Rectangle<int> area (200, 200, 400, 200);
     RectanglePlacement placement ((native ? RectanglePlacement::xLeft
                                    : RectanglePlacement::xRight)
                                   | RectanglePlacement::yTop
@@ -207,14 +353,14 @@ void MainComponent::showDocumentWindow (bool native, String& inputTrackToPass, S
     dw->setResizable (true, ! native);
     dw->setUsingNativeTitleBar (native);
     dw->setVisible (true);
-
-    }
+    
+}
 
 
 void MainComponent::closeAllWindows()
 {
     for (auto& window : windows)
-        window.deleteAndZero();
+    window.deleteAndZero();
     windows.clear();
 }
 
@@ -238,117 +384,140 @@ void MainComponent::createInputSelections(Array<int> toStereo) {
             odd += " + " ;
             odd += static_cast<String>(toStereo[i+1]) ;
             inputsAvailable.add(odd);
-            
+        }
+    }
+}
+
+
+
+void MainComponent::valueTreeChildAdded (ValueTree& parentTree, ValueTree&) {};
+void MainComponent::valueTreeChildRemoved (ValueTree& parentTree, ValueTree&, int) {};
+void MainComponent::valueTreeChildOrderChanged (ValueTree& parentTree, int, int) {};
+void MainComponent::valueTreeParentChanged (ValueTree&) {};
+
+void MainComponent::valueTreePropertyChanged (ValueTree& tree, const Identifier& property) {
+ 
+    Identifier  BPMratio ("BPMratio");
+    if (property == BPMratio ) {
+        float pair = float(parentTree.getProperty(BPMratio));
+    
+    }
+    
+    Identifier  Beating ("beat");
+    float beating = parentTree.getProperty(Beating);
+    
+    
+    Identifier  Baring ("bar");
+    float baring = parentTree.getProperty(Baring);
+    
+    if(tree == parentTree && property == Baring) {
+    
+       
+        if((float(tree.getProperty(Baring))) > 0){
+            for( int i = 0; i<fTracks.size(); i++) {
+                fTracks[i]->checkEvent((float(tree.getProperty(Baring))));
+            }
         }
         
+        
+        if(tree.getProperty(Baring).equals(0
+                                           )){
+            for( int i = 0; i<fTracks.size(); i++)
+                fTracks[i]->triggerEvent();
+        }
+  }
+}
+
+
+void MainComponent::handleIncomingMidiMessage (MidiInput* /*source*/,
+                                const MidiMessage& message)
+{
+    if(message.getNoteNumber ()>30 && message.getNoteNumber ()<35) {
+        for(int i= 0; i < fTracks.size(); i++ ) {
+            if ( fTracks[i]->getColour() ==  coloursOfTracks[0])
+                fTracks[i]->midiCollectorFromPedals.addMessageToQueue (message);}
+    }
+    
+    if(message.getNoteNumber ()>35 && message.getNoteNumber ()<41) {
+        for(int i= 0; i < fTracks.size(); i++ ) {
+            if ( fTracks[i]->getColour() ==  coloursOfTracks[1])
+                fTracks[i]->midiCollectorFromPedals.addMessageToQueue (message);}
+    }
+    
+    if(message.getNoteNumber ()>42 && message.getNoteNumber ()<47) {
+        for(int i= 0; i < fTracks.size(); i++ ) {
+            if ( fTracks[i]->getColour() ==  coloursOfTracks[2])
+                fTracks[i]->midiCollectorFromPedals.addMessageToQueue (message);}
+    }
+    
+    if(message.getNoteNumber ()>48 && message.getNoteNumber ()<53) {
+        for(int i= 0; i < fTracks.size(); i++ ) {
+            if ( fTracks[i]->getColour() ==  coloursOfTracks[3])
+                fTracks[i]->midiCollectorFromPedals.addMessageToQueue (message);}
+    }
+    
+    if(message.getNoteNumber ()>54 && message.getNoteNumber ()<59) {
+        for(int i= 0; i < fTracks.size(); i++ ) {
+            if ( fTracks[i]->getColour() ==  coloursOfTracks[4])
+                fTracks[i]->midiCollectorFromPedals.addMessageToQueue (message);}
+    }
+    
+    if(message.getNoteNumber ()>60 && message.getNoteNumber ()<65) {
+        for(int i= 0; i < fTracks.size(); i++ ) {
+            if ( fTracks[i]->getColour() ==  coloursOfTracks[5])
+                fTracks[i]->midiCollectorFromPedals.addMessageToQueue (message);}
+    }
+    
+    if(message.getNoteNumber ()>66 && message.getNoteNumber ()<71) {
+        for(int i= 0; i < fTracks.size(); i++ ) {
+            if ( fTracks[i]->getColour() ==  coloursOfTracks[6])
+                fTracks[i]->midiCollectorFromPedals.addMessageToQueue (message);}
     }
     
 }
 
 
+void MainComponent::buttonClicked(Button* button) {
 
-/* ------------------------------------------------------------------------------------
-    Transport  -  BPM  -  Transport  -  BPM  -  Transport  -  BPM  -  Transport  -  BPM
----------------------------------------------------------------------------------------- */
-//
-//void MainComponent::transportSetup() {
-//    
-//    playButton.setToggleState(false, NotificationType::dontSendNotification);
-//    playButton.setColour(TextButton::ColourIds::buttonColourId, Colours::red);
-//    playButton.setColour(TextButton::ColourIds::buttonOnColourId, Colours::limegreen);
-//    playButton.onClick = [this]() { playTransport(); };
-//    playButton.addListener(this);
-//    addAndMakeVisible(playButton);
-//    
-//    
-//    labelBPM.setText ("BPM", dontSendNotification);
-//    labelBPM.attachToComponent (&textBPM, true);
-//    labelBPM.setColour (Label::textColourId, Colours::orange);
-//    labelBPM.setJustificationType (Justification::right);
-//    addAndMakeVisible (labelBPM);
-//    
-//    
-//    textBPM.setEditable (true);
-//    textBPM.setColour (Label::backgroundColourId, Colours::darkblue);
-//    addAndMakeVisible (textBPM);
-//    
-//    textBPM.onTextChange = [this] { BPMs = static_cast <int>(textBPM.getText().getFloatValue());};
-//    
-//    
-//    Timer::startTimer(100);
-//    
-//
-//}
-//
-//void MainComponent::playTransport()
-//{
-//    if (playState == PlayState::Stop)
-//    {
-//        playState = PlayState::Play;
-//        playButton.setToggleState(true, NotificationType::dontSendNotification);
-//        playButton.setButtonText("Playing");
-//        //        edit.getTransport().play(false);
-//        HighResolutionTimer::startTimer(1);
-//        
-//        
-//    }
-//}
-//
-//void MainComponent::stopTransport()
-//{
-//    if (playState == PlayState::Play)
-//    {
-//        
-//        playState = PlayState::Stop;
-//        //        edit.getTransport().stop(true, false);
-//        playButton.setToggleState(false, NotificationType::dontSendNotification);
-//        playButton.setButtonText("Stopped");
-//        HighResolutionTimer::stopTimer();
-//        timeInMilliseconds = 0;
-//        Bar = 0;
-//        Beat = 0;
-//    }
-//}
-//
-//void MainComponent::hiResTimerCallback()
-//{
-//    BPMratio = BPMs/60.;
-//    
-//    if(HighResolutionTimer::getTimerInterval()) {
-//        timeInMilliseconds ++ ;
-//    }
-//    
-//    timeUIfloat = (static_cast<float>(timeInMilliseconds))/1000;
-//    Bars = timeUIfloat*BPMratio/4;
-//    Bar = static_cast<int>(Bars);
-//    
-//    Beats = (timeUIfloat)*BPMratio;
-//    Beat = (static_cast<int>(Beats))%4 + 1;
-//    
-//    
-//}
-//
-//void MainComponent::buttonClicked (Button* button)
-//{
-//    if (button == &playButton)
-//    {
-//        if (playState == PlayState::Play)
-//        {
-//            playButton.onClick = [&]() { stopTransport(); };
-//        }
-//        else
-//        {
-//            playButton.onClick = [&]() { playTransport(); };
-//        }
-//    }
-//}
-//
-//
-//
-//void MainComponent::timerCallback() {
-//    
-//    repaint();
-//    
-//    
-//}
-//
+    for (int i = 0; i < deleteTrackButtons.size(); i++) {
+    
+        if (button == deleteTrackButtons[i]){
+            
+            String textToCancel = deleteTrackButtons[i]->getButtonText();
+            
+            deleteTrack(textToCancel);
+            
+            
+        }
+        
+        }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void MainComponent::setupSquareLookAndFeelColours ()
+{
+    
+    customLookAndFeel.setColour (Slider::thumbColourId,               Colour::greyLevel (0.95f));
+    customLookAndFeel.setColour (Slider::textBoxOutlineColourId,      Colours::transparentWhite);
+    customLookAndFeel.setColour (Slider::rotarySliderFillColourId,    Colour (0xff00b5f6));
+    customLookAndFeel.setColour (Slider::rotarySliderOutlineColourId, Colours::white);
+    
+    customLookAndFeel.setColour (TextButton::buttonColourId,  Colours::white);
+    customLookAndFeel.setColour (TextButton::textColourOffId, Colours::darkgrey);
+    
+    customLookAndFeel.setColour (TextButton::buttonOnColourId, customLookAndFeel.findColour (TextButton::textColourOffId));
+    customLookAndFeel.setColour (TextButton::textColourOnId,   Colours::darkgrey);
+    }

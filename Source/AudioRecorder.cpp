@@ -7,8 +7,9 @@
 
 #include "AudioRecorder.h"
 
-AudioRecorder::AudioRecorder(String name, const File& file): backgroundThread("Audio Recorder Thread")
-, threadedWriter() // the FIFO used to buffer the incoming data
+AudioRecorder::AudioRecorder():
+//backgroundThread("Audio Recorder Thread")
+ threadedWriter() // the FIFO used to buffer the incoming data
 , sampleRate(0.0)
 , nextSampleNum(0)
 , writerLock()
@@ -16,8 +17,7 @@ AudioRecorder::AudioRecorder(String name, const File& file): backgroundThread("A
 {
     
     backgroundThread.startThread();
-    lastRecording = file;
-
+    
     
 }
 
@@ -28,35 +28,47 @@ AudioRecorder::~AudioRecorder()    {
 //==============================================================================
 //Prepare to record a new File
 
-void AudioRecorder::startRecording (AudioBuffer<float>* bufferToRecord, const File& file)
+void AudioRecorder::startRecording (const File& file)
 {
     stop();
     
-    //    file.deleteFile();
-    
-    //get numChannel based on the track need (Mono or Stereo)
-    auto numChannels = bufferToRecord->getNumChannels();
-    
-    
-    //create a new file based on the passed argument
-    
-    writer.reset (format.createWriterFor (new FileOutputStream (file),
-                                          44100.0,
-                                          numChannels,
-                                          16,
-                                          {},
-                                          0));
+    if (sampleRate > 0)
+    {
+        DBG("startRecording");
+        // Create an OutputStream to write to our destination file...
+        file.deleteFile();
+        
+        if (auto fileStream = std::unique_ptr<FileOutputStream> (file.createOutputStream()))
+        {
+            // Now create a WAV writer object that writes to our output stream...
+            WavAudioFormat wavFormat;
+            
+            if (auto writer = wavFormat.createWriterFor (fileStream.get(), sampleRate, 1, 16, {}, 0))
+            {
+                fileStream.release(); // (passes responsibility for deleting the stream to the writer object that is now using it)
+                
+                // Now we'll create one of these helper objects which will act as a FIFO buffer, and will
+                // write the data to disk on our background thread.
+                threadedWriter.reset (new AudioFormatWriter::ThreadedWriter (writer, backgroundThread, 32768));
+                
+                
+                // And now, swap over our active writer pointer so that the audio callback will start using it..
+                const ScopedLock sl (writerLock);
+                activeWriter = threadedWriter.get();
+            }
+        }
+    }
 }
 
 //=============================================================================
 //Actual Recording
 
-void AudioRecorder::Record(AudioBuffer<float>* bufferToRecord)
+void AudioRecorder::Record (float** pointers, int numSamples)
 {
-    const auto numSamples = bufferToRecord->getNumSamples();
-    if (writer != 0)
-    {
-        writer->writeFromAudioSampleBuffer(*bufferToRecord, 0, numSamples);
+    const ScopedLock sl (writerLock);
+    if (activeWriter.load() != nullptr) {
+        activeWriter.load()->write (pointers, numSamples);
+
     }
 }
 
@@ -64,21 +76,30 @@ void AudioRecorder::Record(AudioBuffer<float>* bufferToRecord)
 //Stop Recording
 void AudioRecorder::stop()
 {
-    writer = nullptr;
+    // First, clear this pointer to stop the audio callback from using our writer object..
+    {
+        const ScopedLock sl (writerLock);
+        activeWriter = nullptr;
+    }
+    
+    // Now we can delete the writer object. It's done in this order because the deletion could
+    // take a little time while remaining data gets flushed to disk, so it's best to avoid blocking
+    // the audio callback while this happens.
+    threadedWriter.reset();
 }
 
 void AudioRecorder::stopRecording()
 {
-    this->stop();
     lastRecording = File();
+    this->stop();
+    
 }
 
 
-
-bool AudioRecorder::isRecording() const
-{
-    return wavWriter != nullptr;
-}
+//bool AudioRecorder::isRecording() const
+//{
+//    return wavWriter != nullptr;
+//}
 
 //=============================================================================
 
@@ -95,3 +116,8 @@ void AudioRecorder::changeName(String name )
 //}
 
 
+void AudioRecorder::setSampleRate(double SampleRate) {
+    
+    sampleRate = SampleRate;
+    
+}

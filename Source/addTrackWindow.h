@@ -10,7 +10,9 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-
+#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel.h"
+#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel2.h"
+#include "/Users/giovanni/BandLoop/Source/AddTrackComponent.h"
 
 class addTrackWindow   : public DocumentWindow,
                          public Thread,
@@ -71,10 +73,17 @@ public:
         const int timeOutMsWhenCancelling = 1000;
         bool wasCancelledByUser;
     
-       Label inputsID;
+       Label inputsLabel;
+    NamedValueSet& inputsLabelProperties = inputsLabel.getProperties();
         ComboBox inputs;
+    NamedValueSet& inputsProperties = inputs.getProperties();
          Label nameTrack;
-        Label nameTrackID;
+    NamedValueSet& nameTrackProperties = nameTrack.getProperties();
+        Label nameTrackLabel;
+    NamedValueSet& nameTrackLabelProperties = nameTrackLabel.getProperties();
+    
+    
+    CustomLookAndFeel2 customLookAndFeel2;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (addTrackWindow)
 };

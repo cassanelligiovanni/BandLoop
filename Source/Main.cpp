@@ -11,6 +11,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MainComponent.h"
 
+
 //==============================================================================
 class RecorderSamplerApplication  : public JUCEApplication
 {
@@ -28,6 +29,9 @@ public:
         // This method is where you should put your application's initialisation code..
 
         mainWindow.reset (new MainWindow (getApplicationName()));
+        constrainer.setMinimumWidth(800);
+        constrainer.setMinimumHeight(450);
+        mainWindow->setConstrainer(&constrainer);
     }
 
     void shutdown() override
@@ -61,8 +65,7 @@ public:
     {
     public:
         MainWindow (String name)  : DocumentWindow (name,
-                                                    Desktop::getInstance().getDefaultLookAndFeel()
-                                                                          .findColour (ResizableWindow::backgroundColourId),
+                                                    Colours::BandLoopBackground,
                                                     DocumentWindow::allButtons)
         {
             setUsingNativeTitleBar (true);
@@ -76,6 +79,8 @@ public:
            #endif
 
             setVisible (true);
+            
+            
         }
 
         void closeButtonPressed() override
@@ -99,6 +104,7 @@ public:
 
 private:
     std::unique_ptr<MainWindow> mainWindow;
+    ComponentBoundsConstrainer constrainer;
 };
 
 //==============================================================================
