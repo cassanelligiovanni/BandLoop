@@ -16,11 +16,11 @@ AddTrackComponent::AddTrackComponent (const String& name,
                                 int buttonsNeeded,
                                 StringArray inputsAvailable,
                                 const ValueTree& v,
-                                UndoManager& um)
+                                UndoManager& um, bool& toDestroy)
 :
 progress (0.0),
 wasCancelledByUser (false),
-
+flagToDestroy(toDestroy),
 tree (v), undoManager (um)
 {
   
@@ -28,6 +28,7 @@ tree (v), undoManager (um)
     
     tree.addListener(this);
     nameTrack.addListener(this);
+    acceptButton.addListener(this);
     
     
     for (int i = 0; i < inputsAvailable.size(); i++){
@@ -60,21 +61,34 @@ tree (v), undoManager (um)
     inputs.setTextWhenNothingSelected("select one...");
     inputs.addListener (this);
 
+//    cancelButton.setLookAndFeel(&customLookAndFeel2);
+    acceptButton.setLookAndFeel(&customLookAndFeel2);
+//    cancelButtonProperties.set ("fontSize", 30);
+    acceptButtonProperties.set ("fontSize", 30);
+//    cancelButtonProperties.set ("fontStyleFlag", Font::plain);
+    acceptButtonProperties.set ("fontStyleFlag", Font::plain);
+    
+    acceptButton.setColour(TextButton::buttonColourId, Colours::red.darker(0.5));
+//    cancelButton.setButtonText("cancel");
+    acceptButton.setButtonText("accept");
     
     addAndMakeVisible (nameTrackLabel);
     addAndMakeVisible (nameTrack);
     addAndMakeVisible (inputsLabel);
     addAndMakeVisible (inputs);
+    addAndMakeVisible (acceptButton);
+//    addAndMakeVisible (cancelButton);
     
-    //        inputTrackToPass = inputTrackToPass2;
-    
-    //        inputs.onChange = [this] { const_cast<String&>(inputTrackToPass) = "inputs.getText()"; };
+   
 }
 
 AddTrackComponent::~AddTrackComponent()
 {   inputs.setLookAndFeel(nullptr);
     nameTrack.setLookAndFeel(nullptr);
     inputsLabel.setLookAndFeel(nullptr);
+    acceptButton.setLookAndFeel(nullptr);
+//    cancelButton.setLookAndFeel(nullptr);
+    flagToDestroy = true;
 }
 
 
@@ -113,6 +127,16 @@ void AddTrackComponent::comboBoxChanged(ComboBox* comboBoxThatHasChanged){
     
 }
 
+void AddTrackComponent::buttonClicked (Button* button) {
+    
+    if (button == &acceptButton){
+        
+        delete this;
+        
+    }
+    
+};
+
 
 
 void AddTrackComponent::valueTreeChildAdded (ValueTree& parentTree, ValueTree&) {};
@@ -128,4 +152,6 @@ void AddTrackComponent::resized() {
     nameTrack.setBounds(30, 70, getWidth() - 60, 30);
     inputsLabel.setBounds(0, 140, getWidth(), 30);
     inputs.setBounds(30, 190, getWidth()-60, 40);
+//    cancelButton.setBounds(20, 300, (getWidth()-60)/2, 40);
+    acceptButton.setBounds(40, 300, (getWidth()-80), 40);
 }

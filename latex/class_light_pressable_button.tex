@@ -1,0 +1,71 @@
+\hypertarget{class_light_pressable_button}{}\section{Light\+Pressable\+Button Class Reference}
+\label{class_light_pressable_button}\index{LightPressableButton@{LightPressableButton}}
+
+
+{\ttfamily \#include $<$Light\+Pressable\+Button.\+h$>$}
+
+Inheritance diagram for Light\+Pressable\+Button\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_light_pressable_button}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_light_pressable_button_a6a87109cc5937942c7dc9d7f468a81a9}{Light\+Pressable\+Button}} (Record\+State \&record\+StateR, bool \&is\+Starting\+RecordingR, bool \&is\+Stopping\+RecordingR)
+\item 
+\mbox{\Hypertarget{class_light_pressable_button_ab418e6490c4daa03f6a329bcf42445da}\label{class_light_pressable_button_ab418e6490c4daa03f6a329bcf42445da}} 
+void {\bfseries timer\+Callback} () override
+\item 
+\mbox{\Hypertarget{class_light_pressable_button_aaa29b376943a6c6037801084669f51ed}\label{class_light_pressable_button_aaa29b376943a6c6037801084669f51ed}} 
+void {\bfseries paint} (Graphics \&g) override
+\item 
+\mbox{\Hypertarget{class_light_pressable_button_ae29df49e8a52cdce0128fd8858b4e025}\label{class_light_pressable_button_ae29df49e8a52cdce0128fd8858b4e025}} 
+void {\bfseries resized} () override
+\item 
+\mbox{\Hypertarget{class_light_pressable_button_a09793c6cb81c567724ecca01e1427fb1}\label{class_light_pressable_button_a09793c6cb81c567724ecca01e1427fb1}} 
+void {\bfseries bar\+Recording\+On} ()
+\item 
+\mbox{\Hypertarget{class_light_pressable_button_a0b8f9dadd194641b40ddda0c5f163280}\label{class_light_pressable_button_a0b8f9dadd194641b40ddda0c5f163280}} 
+void {\bfseries bar\+Recording\+Blinking} ()
+\item 
+\mbox{\Hypertarget{class_light_pressable_button_a0de43526261a784b2245bcb2dbf12f40}\label{class_light_pressable_button_a0de43526261a784b2245bcb2dbf12f40}} 
+void {\bfseries bar\+Playing\+On} ()
+\item 
+\mbox{\Hypertarget{class_light_pressable_button_a82757d7ab722e41e5c11cdccd3beac74}\label{class_light_pressable_button_a82757d7ab722e41e5c11cdccd3beac74}} 
+void {\bfseries bar\+Playing\+Blinking} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_light_pressable_button_aa9848497589960fa7d14cda183c3d554}\label{class_light_pressable_button_aa9848497589960fa7d14cda183c3d554}} 
+Text\+Button {\bfseries record\+Button} \{\char`\"{}All\+Button\char`\"{}\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A derived class of juce\+::\+Button.
+
+~\newline
+ It is both a Button and L\+ED Indicator
+
+~\newline
+ It allow the user to start and stop the recordings
+
+~\newline
+ and gives feedback on the process being made by the \mbox{\hyperlink{class_track}{Track}} 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_light_pressable_button_a6a87109cc5937942c7dc9d7f468a81a9}\label{class_light_pressable_button_a6a87109cc5937942c7dc9d7f468a81a9}} 
+\index{LightPressableButton@{LightPressableButton}!LightPressableButton@{LightPressableButton}}
+\index{LightPressableButton@{LightPressableButton}!LightPressableButton@{LightPressableButton}}
+\subsubsection{\texorpdfstring{LightPressableButton()}{LightPressableButton()}}
+{\footnotesize\ttfamily Light\+Pressable\+Button\+::\+Light\+Pressable\+Button (\begin{DoxyParamCaption}\item[{Record\+State \&}]{record\+StateR,  }\item[{bool \&}]{is\+Starting\+RecordingR,  }\item[{bool \&}]{is\+Stopping\+RecordingR }\end{DoxyParamCaption})}
+
+Creates a slider with Decibel range. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/Light\+Pressable\+Button.\+h\item 
+Source/Light\+Pressable\+Button.\+cpp\end{DoxyCompactItemize}

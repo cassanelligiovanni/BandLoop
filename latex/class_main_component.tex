@@ -1,0 +1,213 @@
+\hypertarget{class_main_component}{}\section{Main\+Component Class Reference}
+\label{class_main_component}\index{MainComponent@{MainComponent}}
+Inheritance diagram for Main\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.611511cm]{class_main_component}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_main_component_a3ce1d04f8a20bcc54454e5e94017c5ff}{prepare\+To\+Play}} (int samples\+Per\+Block\+Expected, double sample\+Rate) override
+\item 
+void \mbox{\hyperlink{class_main_component_a3c29a96205065fbe01eb6e0576f0ffa3}{get\+Next\+Audio\+Block}} (const Audio\+Source\+Channel\+Info \&buffer\+To\+Fill) override
+\item 
+void \mbox{\hyperlink{class_main_component_a38548494a56d6085df37edb026d3184d}{release\+Resources}} () override
+\item 
+void \mbox{\hyperlink{class_main_component_a42262770b7a79a2f5ac650aa96a3a45c}{paint}} (Graphics \&g) override
+\item 
+void \mbox{\hyperlink{class_main_component_a339148bc43089300e10d5883a0a80726}{resized}} () override
+\item 
+void \mbox{\hyperlink{class_main_component_a88cdd4473b3fd8054e3805fb70c323ff}{button\+Clicked}} (Button $\ast$button) override
+\item 
+\mbox{\Hypertarget{class_main_component_aa26e1cdc688e4dd7261d66d2948dc3e6}\label{class_main_component_aa26e1cdc688e4dd7261d66d2948dc3e6}} 
+void {\bfseries change\+Listener\+Callback} (Change\+Broadcaster $\ast$) override
+\item 
+\mbox{\Hypertarget{class_main_component_aa79ec6bf89cb6b60c9a5099c6f8fd3e9}\label{class_main_component_aa79ec6bf89cb6b60c9a5099c6f8fd3e9}} 
+void {\bfseries value\+Tree\+Child\+Added} (Value\+Tree \&parent\+Tree, Value\+Tree \&) override
+\item 
+\mbox{\Hypertarget{class_main_component_a26a8ef992172649a190e351dd185ded8}\label{class_main_component_a26a8ef992172649a190e351dd185ded8}} 
+void {\bfseries value\+Tree\+Child\+Removed} (Value\+Tree \&parent\+Tree, Value\+Tree \&, int) override
+\item 
+\mbox{\Hypertarget{class_main_component_a10c839e7cdb4f5b6d37bdc8818e1d2e8}\label{class_main_component_a10c839e7cdb4f5b6d37bdc8818e1d2e8}} 
+void {\bfseries value\+Tree\+Child\+Order\+Changed} (Value\+Tree \&parent\+Tree, int, int) override
+\item 
+\mbox{\Hypertarget{class_main_component_a37b10a46198211175fef1f0f3cbd5e12}\label{class_main_component_a37b10a46198211175fef1f0f3cbd5e12}} 
+void {\bfseries value\+Tree\+Parent\+Changed} (Value\+Tree \&) override
+\item 
+\mbox{\Hypertarget{class_main_component_a996b1fe48764a7dd5c4f9b8372e0698e}\label{class_main_component_a996b1fe48764a7dd5c4f9b8372e0698e}} 
+void {\bfseries value\+Tree\+Property\+Changed} (Value\+Tree \&, const Identifier \&) override
+\item 
+\mbox{\Hypertarget{class_main_component_a32bc00f32ee1aaaa8415c40d6b58a393}\label{class_main_component_a32bc00f32ee1aaaa8415c40d6b58a393}} 
+void {\bfseries handle\+Incoming\+Midi\+Message} (Midi\+Input $\ast$, const Midi\+Message \&message) override
+\item 
+void \mbox{\hyperlink{class_main_component_ad616083023bd51de9fd23702039dc10f}{initialise}} ()
+\item 
+void \mbox{\hyperlink{class_main_component_a0a21d29760452df310f4ae5b15290818}{create\+Band\+Loop\+Folder}} ()
+\item 
+void \mbox{\hyperlink{class_main_component_ab9345f49a82ce81b98cd552e88b0ee08}{create\+Temp\+Folder}} ()
+\item 
+void \mbox{\hyperlink{class_main_component_af9933860cbfc7c14fb4403e732e1f2c1}{create\+Saved\+Folder}} ()
+\item 
+void \mbox{\hyperlink{class_main_component_a6fa14be18558d997ff7eeccc8d85e4f4}{setup\+Square\+Look\+And\+Feel\+Colours}} ()
+\item 
+void \mbox{\hyperlink{class_main_component_a37ad1936a014ef9402641eb9a6a0cecf}{create\+New\+Track}} ()
+\item 
+Value\+Tree \mbox{\hyperlink{class_main_component_aabdd825c15b28c53ce5b506223293e39}{create\+New\+Child\+Tree}} ()
+\item 
+void \mbox{\hyperlink{class_main_component_a6932ee4943e32ec7c180c4ae95866794}{create\+Delete\+Button}} ()
+\item 
+void \mbox{\hyperlink{class_main_component_a6e63d5b027c5b9b9bdd81378e0d9c55e}{delete\+Track}} (String track\+To\+Delete)
+\item 
+void \mbox{\hyperlink{class_main_component_a8b2111fded9a8ff483c53c86c1827785}{show\+Setting\+Window}} (bool native, const Value\+Tree \&new\+Tree, Audio\+Device\+Selector\+Component \&audio\+Setup\+Comp)
+\item 
+void \mbox{\hyperlink{class_main_component_a4e6cc68f274c8f0aef85e089af9ccc8f}{close\+All\+Windows}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_main_component_a3ce1d04f8a20bcc54454e5e94017c5ff}\label{class_main_component_a3ce1d04f8a20bcc54454e5e94017c5ff}} 
+\index{MainComponent@{MainComponent}!prepareToPlay@{prepareToPlay}}
+\index{prepareToPlay@{prepareToPlay}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{prepareToPlay()}{prepareToPlay()}}
+{\footnotesize\ttfamily void Main\+Component\+::prepare\+To\+Play (\begin{DoxyParamCaption}\item[{int}]{samples\+Per\+Block\+Expected,  }\item[{double}]{sample\+Rate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+This callback allows the source to initialise any resources it might need when playing. 
+\begin{DoxyParams}{Parameters}
+{\em samples\+Per\+Block\+Expected} & (buffer\+Size) \\
+\hline
+{\em sample\+Rate} & (Hz) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_main_component_a3c29a96205065fbe01eb6e0576f0ffa3}\label{class_main_component_a3c29a96205065fbe01eb6e0576f0ffa3}} 
+\index{MainComponent@{MainComponent}!getNextAudioBlock@{getNextAudioBlock}}
+\index{getNextAudioBlock@{getNextAudioBlock}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{getNextAudioBlock()}{getNextAudioBlock()}}
+{\footnotesize\ttfamily void Main\+Component\+::get\+Next\+Audio\+Block (\begin{DoxyParamCaption}\item[{const Audio\+Source\+Channel\+Info \&}]{buffer\+To\+Fill }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+This callback will be made each time the audio playback hardware (or whatever other destination the audio data is going to) needs another block of data. \mbox{\Hypertarget{class_main_component_a38548494a56d6085df37edb026d3184d}\label{class_main_component_a38548494a56d6085df37edb026d3184d}} 
+\index{MainComponent@{MainComponent}!releaseResources@{releaseResources}}
+\index{releaseResources@{releaseResources}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{releaseResources()}{releaseResources()}}
+{\footnotesize\ttfamily void Main\+Component\+::release\+Resources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Allows the source to release anything it no longer needs after playback has stopped. \mbox{\Hypertarget{class_main_component_a42262770b7a79a2f5ac650aa96a3a45c}\label{class_main_component_a42262770b7a79a2f5ac650aa96a3a45c}} 
+\index{MainComponent@{MainComponent}!paint@{paint}}
+\index{paint@{paint}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void Main\+Component\+::paint (\begin{DoxyParamCaption}\item[{Graphics \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+The \mbox{\hyperlink{class_main_component_a42262770b7a79a2f5ac650aa96a3a45c}{paint()}} Method gets called when a region of a component needs redrawing, Never need to call this method directly
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & the graphics context that must be used to do the drawing operations. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_main_component_a339148bc43089300e10d5883a0a80726}\label{class_main_component_a339148bc43089300e10d5883a0a80726}} 
+\index{MainComponent@{MainComponent}!resized@{resized}}
+\index{resized@{resized}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{resized()}{resized()}}
+{\footnotesize\ttfamily void Main\+Component\+::resized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Called when this component\textquotesingle{}s size has been changed. \mbox{\Hypertarget{class_main_component_a88cdd4473b3fd8054e3805fb70c323ff}\label{class_main_component_a88cdd4473b3fd8054e3805fb70c323ff}} 
+\index{MainComponent@{MainComponent}!buttonClicked@{buttonClicked}}
+\index{buttonClicked@{buttonClicked}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{buttonClicked()}{buttonClicked()}}
+{\footnotesize\ttfamily void Main\+Component\+::button\+Clicked (\begin{DoxyParamCaption}\item[{Button $\ast$}]{button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Called when a Button is Pressed has been changed. 
+\begin{DoxyParams}{Parameters}
+{\em button,use} & this for filtering the button that is actually pressed if (button == record\+Button) then... \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_main_component_ad616083023bd51de9fd23702039dc10f}\label{class_main_component_ad616083023bd51de9fd23702039dc10f}} 
+\index{MainComponent@{MainComponent}!initialise@{initialise}}
+\index{initialise@{initialise}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{initialise()}{initialise()}}
+{\footnotesize\ttfamily void Main\+Component\+::initialise (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initialise the \mbox{\hyperlink{class_track}{Track}} \+:
+\begin{DoxyItemize}
+\item Create the necessary folders,
+\item Set the Look\+And\+Feel, \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_main_component_a0a21d29760452df310f4ae5b15290818}{create\+Band\+Loop\+Folder}},\mbox{\hyperlink{class_main_component_ab9345f49a82ce81b98cd552e88b0ee08}{create\+Temp\+Folder}}, \mbox{\hyperlink{class_main_component_af9933860cbfc7c14fb4403e732e1f2c1}{create\+Saved\+Folder}}, \mbox{\hyperlink{class_main_component_a6fa14be18558d997ff7eeccc8d85e4f4}{setup\+Square\+Look\+And\+Feel\+Colours}} 
+\end{DoxySeeAlso}
+
+\end{DoxyItemize}\mbox{\Hypertarget{class_main_component_a0a21d29760452df310f4ae5b15290818}\label{class_main_component_a0a21d29760452df310f4ae5b15290818}} 
+\index{MainComponent@{MainComponent}!createBandLoopFolder@{createBandLoopFolder}}
+\index{createBandLoopFolder@{createBandLoopFolder}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{createBandLoopFolder()}{createBandLoopFolder()}}
+{\footnotesize\ttfamily void Main\+Component\+::create\+Band\+Loop\+Folder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Create a \mbox{\hyperlink{class_band_loop}{Band\+Loop}} folder in the User Document Folder \mbox{\Hypertarget{class_main_component_ab9345f49a82ce81b98cd552e88b0ee08}\label{class_main_component_ab9345f49a82ce81b98cd552e88b0ee08}} 
+\index{MainComponent@{MainComponent}!createTempFolder@{createTempFolder}}
+\index{createTempFolder@{createTempFolder}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{createTempFolder()}{createTempFolder()}}
+{\footnotesize\ttfamily void Main\+Component\+::create\+Temp\+Folder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Create a \char`\"{}\+Temp\char`\"{} folder in the \mbox{\hyperlink{class_band_loop}{Band\+Loop}} Folder \mbox{\Hypertarget{class_main_component_af9933860cbfc7c14fb4403e732e1f2c1}\label{class_main_component_af9933860cbfc7c14fb4403e732e1f2c1}} 
+\index{MainComponent@{MainComponent}!createSavedFolder@{createSavedFolder}}
+\index{createSavedFolder@{createSavedFolder}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{createSavedFolder()}{createSavedFolder()}}
+{\footnotesize\ttfamily void Main\+Component\+::create\+Saved\+Folder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Create a \char`\"{}\+Saved\char`\"{} folder in the \mbox{\hyperlink{class_band_loop}{Band\+Loop}} Folder \mbox{\Hypertarget{class_main_component_a6fa14be18558d997ff7eeccc8d85e4f4}\label{class_main_component_a6fa14be18558d997ff7eeccc8d85e4f4}} 
+\index{MainComponent@{MainComponent}!setupSquareLookAndFeelColours@{setupSquareLookAndFeelColours}}
+\index{setupSquareLookAndFeelColours@{setupSquareLookAndFeelColours}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{setupSquareLookAndFeelColours()}{setupSquareLookAndFeelColours()}}
+{\footnotesize\ttfamily void Main\+Component\+::setup\+Square\+Look\+And\+Feel\+Colours (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Set the default Look\+And\+Feel Method and its Colours It is used to decide appearence of C\+O\+M\+P\+O\+N\+E\+N\+TS and how they will be draw, by inheriting from their Look\+And\+Feel\+Methods \mbox{\Hypertarget{class_main_component_a37ad1936a014ef9402641eb9a6a0cecf}\label{class_main_component_a37ad1936a014ef9402641eb9a6a0cecf}} 
+\index{MainComponent@{MainComponent}!createNewTrack@{createNewTrack}}
+\index{createNewTrack@{createNewTrack}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{createNewTrack()}{createNewTrack()}}
+{\footnotesize\ttfamily void Main\+Component\+::create\+New\+Track (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+crea \mbox{\Hypertarget{class_main_component_aabdd825c15b28c53ce5b506223293e39}\label{class_main_component_aabdd825c15b28c53ce5b506223293e39}} 
+\index{MainComponent@{MainComponent}!createNewChildTree@{createNewChildTree}}
+\index{createNewChildTree@{createNewChildTree}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{createNewChildTree()}{createNewChildTree()}}
+{\footnotesize\ttfamily Value\+Tree Main\+Component\+::create\+New\+Child\+Tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+create a Child\+Tree, append it to the Main\+Tree and return it. \begin{DoxyReturn}{Returns}
+Value\+Tree 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_main_component_a6932ee4943e32ec7c180c4ae95866794}\label{class_main_component_a6932ee4943e32ec7c180c4ae95866794}} 
+\index{MainComponent@{MainComponent}!createDeleteButton@{createDeleteButton}}
+\index{createDeleteButton@{createDeleteButton}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{createDeleteButton()}{createDeleteButton()}}
+{\footnotesize\ttfamily void Main\+Component\+::create\+Delete\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Create a delete\+Button for each track, it is outside the \mbox{\hyperlink{class_track}{Track}} object because it needs to keep track of the available colours \mbox{\Hypertarget{class_main_component_a6e63d5b027c5b9b9bdd81378e0d9c55e}\label{class_main_component_a6e63d5b027c5b9b9bdd81378e0d9c55e}} 
+\index{MainComponent@{MainComponent}!deleteTrack@{deleteTrack}}
+\index{deleteTrack@{deleteTrack}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{deleteTrack()}{deleteTrack()}}
+{\footnotesize\ttfamily void Main\+Component\+::delete\+Track (\begin{DoxyParamCaption}\item[{String}]{track\+To\+Delete }\end{DoxyParamCaption})}
+
+Delete track, update colours available, trees, track array, and delete\+Button array. \mbox{\Hypertarget{class_main_component_a8b2111fded9a8ff483c53c86c1827785}\label{class_main_component_a8b2111fded9a8ff483c53c86c1827785}} 
+\index{MainComponent@{MainComponent}!showSettingWindow@{showSettingWindow}}
+\index{showSettingWindow@{showSettingWindow}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{showSettingWindow()}{showSettingWindow()}}
+{\footnotesize\ttfamily void Main\+Component\+::show\+Setting\+Window (\begin{DoxyParamCaption}\item[{bool}]{native,  }\item[{const Value\+Tree \&}]{new\+Tree,  }\item[{Audio\+Device\+Selector\+Component \&}]{audio\+Setup\+Comp }\end{DoxyParamCaption})}
+
+Open setting Window 
+\begin{DoxyParams}{Parameters}
+{\em bool} & native, \\
+\hline
+{\em Audio\+Device\+Selector\+Component\&} & audio\+Setup\+Comp \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_main_component_a4e6cc68f274c8f0aef85e089af9ccc8f}\label{class_main_component_a4e6cc68f274c8f0aef85e089af9ccc8f}} 
+\index{MainComponent@{MainComponent}!closeAllWindows@{closeAllWindows}}
+\index{closeAllWindows@{closeAllWindows}!MainComponent@{MainComponent}}
+\subsubsection{\texorpdfstring{closeAllWindows()}{closeAllWindows()}}
+{\footnotesize\ttfamily void Main\+Component\+::close\+All\+Windows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Close all Windows 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/Main\+Component.\+h\item 
+Source/Main\+Component.\+cpp\end{DoxyCompactItemize}

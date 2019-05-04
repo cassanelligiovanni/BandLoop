@@ -1,0 +1,94 @@
+\hypertarget{class_playback}{}\section{Playback Class Reference}
+\label{class_playback}\index{Playback@{Playback}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_playback_a3e0894ba2543a097353183a56ff963b7}\label{class_playback_a3e0894ba2543a097353183a56ff963b7}} 
+{\bfseries Playback} (Midi\+Message\+Collector \&from\+Pedal)
+\item 
+void \mbox{\hyperlink{class_playback_a9ab23908a3f6a1c91636f5d107cfbda0}{prepare\+To\+Play}} (int samples\+Per\+Block\+Expected, double sample\+Rate)
+\item 
+void \mbox{\hyperlink{class_playback_a9267b09168b637dbe4964fe2c2d70faf}{release\+Resources}} ()
+\item 
+void \mbox{\hyperlink{class_playback_ad733ca6b60c689fbb7b32e8f9542d46d}{get\+Next\+Audio\+Block}} (Audio\+Buffer$<$ float $>$ \&output\+Buffer, int num\+Samples)
+\item 
+void \mbox{\hyperlink{class_playback_a7a9305b20478e6341b5e642a9430106a}{create\+Sound}} (File last\+Recording, File actual\+Folder, float loop\+Unit)
+\item 
+void \mbox{\hyperlink{class_playback_af7732d93fe617e0b1d2c82b1f7c949f3}{check\+Event}} (int bar)
+\item 
+void \mbox{\hyperlink{class_playback_a760402c6c68ba6fe5b154ec0d19c3b25}{trigger\+Event}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_playback_a2f261fc2a3752a8a2e2f4cde8d635294}\label{class_playback_a2f261fc2a3752a8a2e2f4cde8d635294}} 
+Midi\+Message\+Collector \& {\bfseries midi\+Collector}
+\item 
+\mbox{\Hypertarget{class_playback_a4921589c33b80b9a3f97b266eaedd5f8}\label{class_playback_a4921589c33b80b9a3f97b266eaedd5f8}} 
+Midi\+Message\+Collector {\bfseries playback\+Collector}
+\item 
+\mbox{\Hypertarget{class_playback_af74d89db1bd204f70fe59067d30be40a}\label{class_playback_af74d89db1bd204f70fe59067d30be40a}} 
+Synthesiser {\bfseries synth}
+\item 
+\mbox{\Hypertarget{class_playback_aec0480c699078359b10d7d565565e94e}\label{class_playback_aec0480c699078359b10d7d565565e94e}} 
+Midi\+Buffer {\bfseries midi\+Queue}
+\item 
+\mbox{\Hypertarget{class_playback_ab3113bd40829c765a653a48912b7151b}\label{class_playback_ab3113bd40829c765a653a48912b7151b}} 
+float {\bfseries loop\+Unit}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_playback_a9ab23908a3f6a1c91636f5d107cfbda0}\label{class_playback_a9ab23908a3f6a1c91636f5d107cfbda0}} 
+\index{Playback@{Playback}!prepareToPlay@{prepareToPlay}}
+\index{prepareToPlay@{prepareToPlay}!Playback@{Playback}}
+\subsubsection{\texorpdfstring{prepareToPlay()}{prepareToPlay()}}
+{\footnotesize\ttfamily void Playback\+::prepare\+To\+Play (\begin{DoxyParamCaption}\item[{int}]{samples\+Per\+Block\+Expected,  }\item[{double}]{sample\+Rate }\end{DoxyParamCaption})}
+
+This callback allows the source to initialise any resources it might need when playing. 
+\begin{DoxyParams}{Parameters}
+{\em samples\+Per\+Block\+Expected} & (buffer\+Size) \\
+\hline
+{\em sample\+Rate} & (Hz) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_playback_a9267b09168b637dbe4964fe2c2d70faf}\label{class_playback_a9267b09168b637dbe4964fe2c2d70faf}} 
+\index{Playback@{Playback}!releaseResources@{releaseResources}}
+\index{releaseResources@{releaseResources}!Playback@{Playback}}
+\subsubsection{\texorpdfstring{releaseResources()}{releaseResources()}}
+{\footnotesize\ttfamily void Playback\+::release\+Resources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Allows the source to release anything it no longer needs after playback has stopped. \mbox{\Hypertarget{class_playback_ad733ca6b60c689fbb7b32e8f9542d46d}\label{class_playback_ad733ca6b60c689fbb7b32e8f9542d46d}} 
+\index{Playback@{Playback}!getNextAudioBlock@{getNextAudioBlock}}
+\index{getNextAudioBlock@{getNextAudioBlock}!Playback@{Playback}}
+\subsubsection{\texorpdfstring{getNextAudioBlock()}{getNextAudioBlock()}}
+{\footnotesize\ttfamily void Playback\+::get\+Next\+Audio\+Block (\begin{DoxyParamCaption}\item[{Audio\+Buffer$<$ float $>$ \&}]{output\+Buffer,  }\item[{int}]{num\+Samples }\end{DoxyParamCaption})}
+
+This callback will be made each time the audio playback hardware (or whatever other destination the audio data is going to) needs another block of data. \mbox{\Hypertarget{class_playback_a7a9305b20478e6341b5e642a9430106a}\label{class_playback_a7a9305b20478e6341b5e642a9430106a}} 
+\index{Playback@{Playback}!createSound@{createSound}}
+\index{createSound@{createSound}!Playback@{Playback}}
+\subsubsection{\texorpdfstring{createSound()}{createSound()}}
+{\footnotesize\ttfamily void Playback\+::create\+Sound (\begin{DoxyParamCaption}\item[{File}]{last\+Recording,  }\item[{File}]{actual\+Folder,  }\item[{float}]{loop\+Unit }\end{DoxyParamCaption})}
+
+Add the just recorded \char`\"{}.\+wav\char`\"{} to the Synthesiser(\+Sampler), and then create a \mbox{\hyperlink{class_sound}{Sound}} instance to keep track of its quality ( length, note, start\+Point, etc...) \mbox{\Hypertarget{class_playback_af7732d93fe617e0b1d2c82b1f7c949f3}\label{class_playback_af7732d93fe617e0b1d2c82b1f7c949f3}} 
+\index{Playback@{Playback}!checkEvent@{checkEvent}}
+\index{checkEvent@{checkEvent}!Playback@{Playback}}
+\subsubsection{\texorpdfstring{checkEvent()}{checkEvent()}}
+{\footnotesize\ttfamily void Playback\+::check\+Event (\begin{DoxyParamCaption}\item[{int}]{bar }\end{DoxyParamCaption})}
+
+Called just before the new Bar. ~\newline
+ It update the actual Bar from the Global Tempo(\mbox{\hyperlink{_b_p_m_8h_source}{B\+P\+M.\+h}}) It will be used by the \mbox{\hyperlink{class_playback_a760402c6c68ba6fe5b154ec0d19c3b25}{trigger\+Event()}} \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_playback_a760402c6c68ba6fe5b154ec0d19c3b25}{trigger\+Event}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_playback_a760402c6c68ba6fe5b154ec0d19c3b25}\label{class_playback_a760402c6c68ba6fe5b154ec0d19c3b25}} 
+\index{Playback@{Playback}!triggerEvent@{triggerEvent}}
+\index{triggerEvent@{triggerEvent}!Playback@{Playback}}
+\subsubsection{\texorpdfstring{triggerEvent()}{triggerEvent()}}
+{\footnotesize\ttfamily void Playback\+::trigger\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check wheter a loop is came to an end and has to be trigger again 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/Playback.\+h\item 
+Source/Playback.\+cpp\end{DoxyCompactItemize}

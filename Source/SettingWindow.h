@@ -10,54 +10,51 @@
 
 
 #pragma once
+#include "/Users/giovanni/BandLoop/Source/SettingWindowComponent.h"
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel2.h"
 
 
 class SettingWindow   : public DocumentWindow,
-public Thread,
-public Label::Listener,
-public ValueTree::Listener,
-private ComboBox::Listener,
-private Timer,
-private ChangeListener
+public Thread
+
+
 {
 public:
     SettingWindow (const String& name,
                    Colour backgroundColour,
                    int buttonsNeeded,
                    const ValueTree& v,
-                   UndoManager& um, AudioDeviceManager& deviceManager);
+                   UndoManager& um, AudioDeviceManager& deviceManager, Array<int>& pedalsAvailable, MidiMessageCollector& midiMessageCollector);
     
     ~SettingWindow() ;
     
     void run() override;
     
     void closeButtonPressed() override;
-    
-    void changeListenerCallback (ChangeBroadcaster* source) override;
-    
-    void comboBoxChanged(ComboBox* comboBoxThatHasChanged) override;
-    
-    void valueTreeChildAdded (ValueTree& parentTree, ValueTree&) override;
-    void valueTreeChildRemoved (ValueTree& parentTree, ValueTree&, int) override;
-    void valueTreeChildOrderChanged (ValueTree& parentTree, int, int) override;
-    void valueTreeParentChanged (ValueTree&) override;
-    void valueTreePropertyChanged (ValueTree&, const Identifier&) override;
-    
-    void labelTextChanged (Label *labelThatHasChanged) override;
-    
+
     void launchThread (int priority = 5);
     
+    void pairing();
+    
+    void numberOfPedals ();
+    
+    void pedalClicked(int pedalNumber);
+    
+    MidiMessageCollector& midiCollector ;
+    Array<int>& pedalsAvailables ;
     
 private:
     //==============================================================================
     
     AudioDeviceSelectorComponent audioSetupComp;
     
+    TextButton pairingButton {"Pairing Button"};
+//    MidiOutput midiOutput;
+    
     ValueTree tree;
     UndoManager& undoManager;
     
-    void timerCallback() override;
     double progress;
     
     String message;
@@ -65,6 +62,15 @@ private:
     const int timeOutMsWhenCancelling = 1000;
     bool wasCancelledByUser;
 
+    CustomLookAndFeel2  customLookAndFeel2;
+    
+    ScopedPointer<Drawable> pedalImage = Drawable::createFromImageData (BinaryData::pedal_svg, BinaryData::pedal_svgSize);
+    ScopedPointer<Drawable> pedalImagePressed = Drawable::createFromImageData (BinaryData::pedal_svg, BinaryData::pedal_svgSize);
+
+    
+    OwnedArray<DrawableButton> pedalButtons;
+    
+    SettingWindowComponent settingWindow;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SettingWindow)
 };

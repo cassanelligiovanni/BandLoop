@@ -25,71 +25,29 @@ wasCancelledByUser (false),
 tree (v), undoManager (um)
     {
     
-        
-        setContentOwned (new AddTrackComponent(name, backgroundColour, buttonsNeeded, inputsAvailable, tree, undoManager), false);
-//        addAndMakeVisible(&nameTrack);
-//        addAndMakeVisible(&inputsLabel);
-//        addAndMakeVisible(&inputs);
-//
-        Rectangle<int> bounds = getLocalBounds();
-        
-        tree.addListener(this);
-        nameTrack.addListener(this);
-        
-        
-        for (int i = 0; i < inputsAvailable.size(); i++){
-            inputs.addItem (inputsAvailable[i], i+1);
- 
-        }
-        
-        nameTrackLabel.setText ("BPM", dontSendNotification);
-        nameTrackLabel.setColour (Label::textColourId, Colours::BandLoopBackground);
-        nameTrackLabel.setJustificationType (Justification::left);
-        
-        
-        nameTrackLabelProperties.set ("fontSize", 30);
-        nameTrackLabelProperties.set ("fontStyleFlag", Font::italic);
-        
-        
-//        addAndMakeVisible (&nameTrackLabel);
-        
-        inputsLabelProperties.set ("fontSize", 30);
-        inputsLabelProperties.set ("fontStyleFlag", Font::plain);
-        
-    
-        
-        nameTrack.setEditable(true);
-        
-       
-        nameTrack.setBounds(100, 200, 300, 25);
-        inputs.setBounds(100, 250, 300, 25);
-        
-        
-        
+        setContentOwned (new AddTrackComponent(name, backgroundColour, buttonsNeeded, inputsAvailable, tree, undoManager, toDestroy), false);
+
         launchThread(5);
         
-        inputs.addListener (this);
      
-        
-//        inputTrackToPass = inputTrackToPass2;
-        
-//        inputs.onChange = [this] { const_cast<String&>(inputTrackToPass) = "inputs.getText()"; };
     }
     
   addTrackWindow::~addTrackWindow()
     {
-        nameTrackLabel.setLookAndFeel(nullptr);
-        inputsLabel.setLookAndFeel(nullptr);
+
         stopThread(200);
     }
 
 void addTrackWindow::run(){
 
+    
+    
+
+    
     while (! threadShouldExit())
     {
         wait (100);
-    
-        // because this is a background thread, we mustn't do any UI work without
+                // because this is a background thread, we mustn't do any UI work without
         // first grabbing a MessageManagerLock..
         const MessageManagerLock mml (Thread::getCurrentThread());
         
@@ -126,18 +84,14 @@ void addTrackWindow::launchThread (int priority)
 
 void addTrackWindow::timerCallback()
 {
-
+    if (toDestroy == true)
+        closeButtonPressed();
 
 }
 
 void addTrackWindow::labelTextChanged (Label* labelThatHasChanged) {
   
-    if(labelThatHasChanged == &nameTrack){
-        Identifier propertyName ("Name");
-        tree.setProperty(propertyName, nameTrack.getText(), &undoManager);
-        nameTrack.getText();
-    }
-    
+
 };
 
 
@@ -145,14 +99,6 @@ void addTrackWindow::labelTextChanged (Label* labelThatHasChanged) {
 
 void addTrackWindow::comboBoxChanged(ComboBox* comboBoxThatHasChanged){
     
-    
-    if (comboBoxThatHasChanged == &inputs)
-    {
-        Identifier propertyName ("Inputs");
-    tree.setProperty(propertyName, inputs.getText(), &undoManager);
-        
-    }
-        
     
 }
 

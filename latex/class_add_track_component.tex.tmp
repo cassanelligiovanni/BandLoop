@@ -1,0 +1,55 @@
+\hypertarget{class_add_track_component}{}\section{Add\+Track\+Component Class Reference}
+\label{class_add_track_component}\index{AddTrackComponent@{AddTrackComponent}}
+
+
+Inheritance diagram for Add\+Track\+Component\+:
+% FIG 0
+
+
+Collaboration diagram for Add\+Track\+Component\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_add_track_component_af2fb1e2c563abb0f8823daf1ae513f38}\label{class_add_track_component_af2fb1e2c563abb0f8823daf1ae513f38}} 
+{\bfseries Add\+Track\+Component} (const String \&name, Colour background\+Colour, int buttons\+Needed, String\+Array inputs\+Available, const Value\+Tree \&v, Undo\+Manager \&um, bool \&to\+Destroy)
+\item 
+\mbox{\Hypertarget{class_add_track_component_a31fa580e34614a965b7977759df09b79}\label{class_add_track_component_a31fa580e34614a965b7977759df09b79}} 
+void {\bfseries paint} (Graphics \&g) override
+\item 
+\mbox{\Hypertarget{class_add_track_component_a6d3f13028cb0ea1ee54801bb673c1278}\label{class_add_track_component_a6d3f13028cb0ea1ee54801bb673c1278}} 
+void {\bfseries resized} () override
+\item 
+\mbox{\Hypertarget{class_add_track_component_a39d72dc581c242cee61e098bff0e9080}\label{class_add_track_component_a39d72dc581c242cee61e098bff0e9080}} 
+void {\bfseries change\+Listener\+Callback} (Change\+Broadcaster $\ast$source) override
+\item 
+\mbox{\Hypertarget{class_add_track_component_a1e82e5894028dc1ea1bf7ac029957b83}\label{class_add_track_component_a1e82e5894028dc1ea1bf7ac029957b83}} 
+void {\bfseries combo\+Box\+Changed} (Combo\+Box $\ast$combo\+Box\+That\+Has\+Changed) override
+\item 
+\mbox{\Hypertarget{class_add_track_component_aa50733ce5221af36c6ef411a39f0782f}\label{class_add_track_component_aa50733ce5221af36c6ef411a39f0782f}} 
+void {\bfseries button\+Clicked} (Button $\ast$button) override
+\item 
+\mbox{\Hypertarget{class_add_track_component_a5316ba379b212eeb5e95ebb5d91b8947}\label{class_add_track_component_a5316ba379b212eeb5e95ebb5d91b8947}} 
+void {\bfseries value\+Tree\+Child\+Added} (Value\+Tree \&parent\+Tree, Value\+Tree \&) override
+\item 
+\mbox{\Hypertarget{class_add_track_component_a66d7bfccf52654f675bb02436e3c466d}\label{class_add_track_component_a66d7bfccf52654f675bb02436e3c466d}} 
+void {\bfseries value\+Tree\+Child\+Removed} (Value\+Tree \&parent\+Tree, Value\+Tree \&, int) override
+\item 
+\mbox{\Hypertarget{class_add_track_component_a2560eb3534add103c40b4f51896541c2}\label{class_add_track_component_a2560eb3534add103c40b4f51896541c2}} 
+void {\bfseries value\+Tree\+Child\+Order\+Changed} (Value\+Tree \&parent\+Tree, int, int) override
+\item 
+\mbox{\Hypertarget{class_add_track_component_afc24a17c0447ebfbb2d6af49418cbc81}\label{class_add_track_component_afc24a17c0447ebfbb2d6af49418cbc81}} 
+void {\bfseries value\+Tree\+Parent\+Changed} (Value\+Tree \&) override
+\item 
+\mbox{\Hypertarget{class_add_track_component_aa689966f2c4b2cf34b1560b6584c3618}\label{class_add_track_component_aa689966f2c4b2cf34b1560b6584c3618}} 
+void {\bfseries value\+Tree\+Property\+Changed} (Value\+Tree \&, const Identifier \&) override
+\item 
+\mbox{\Hypertarget{class_add_track_component_ab24e65cd1de37d4e572d7ac4ff7cae63}\label{class_add_track_component_ab24e65cd1de37d4e572d7ac4ff7cae63}} 
+void {\bfseries label\+Text\+Changed} (Label $\ast$label\+That\+Has\+Changed) override
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/Add\+Track\+Component.\+h\item 
+Source/Add\+Track\+Component.\+cpp\end{DoxyCompactItemize}

@@ -13,11 +13,11 @@
 
 
 //==============================================================================
-class RecorderSamplerApplication  : public JUCEApplication
+class BandLoop  : public JUCEApplication
 {
 public:
     //==============================================================================
-    RecorderSamplerApplication() {}
+    BandLoop() {}
 
     const String getApplicationName() override       { return ProjectInfo::projectName; }
     const String getApplicationVersion() override    { return ProjectInfo::versionString; }
@@ -109,4 +109,4 @@ private:
 
 //==============================================================================
 // This macro generates the main() routine that launches the app.
-START_JUCE_APPLICATION (RecorderSamplerApplication)
+START_JUCE_APPLICATION (BandLoop)

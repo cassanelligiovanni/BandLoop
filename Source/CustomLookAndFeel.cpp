@@ -10,32 +10,27 @@
 
 #include "CustomLookAndFeel.h"
 
-CustomLookAndFeel::CustomLookAndFeel(){}
 
-void CustomLookAndFeel::drawRoundThumb (Graphics& g, float x, float y, float diameter, Colour colour, float outlineThickness)
-{
-    auto halfThickness = outlineThickness * 0.5f;
+CustomLookAndFeel::CustomLookAndFeel(){
     
-    Path p;
-    p.addEllipse (x + halfThickness,
-                  y + halfThickness,
-                  diameter - outlineThickness,
-                  diameter - outlineThickness);
     
-    DropShadow (Colours::black, 1, {}).drawForPath (g, p);
+    Image verticalSliderKnob = ImageCache::getFromMemory (Fader::fader_png2,
+                                                          Fader::fader_png2Size);
     
-    g.setColour (colour);
-    g.fillPath (p);
-    
-    g.setColour (colour.brighter());
-    g.strokePath (p, PathStrokeType (outlineThickness));
+    setColour(TextButton::buttonColourId, Colours::BandLoopBackground);
+    setColour(TextButton::textColourOffId, Colours::BandLoopText);
+    setColour(ListBox::backgroundColourId,                Colours::BandLoopBackground);
+    setColour(ListBox::outlineColourId,                   Colours::BandLoopBackground);
+    setColour(ListBox::textColourId,                       Colours::BandLoopText);
+
 }
+
+
 
 void CustomLookAndFeel::drawButtonBackground (Graphics& g, Button& button, const Colour& backgroundColour,
                            bool isMouseOverButton, bool isButtonDown)
 {
-    auto baseColour = backgroundColour.withMultipliedSaturation (button.hasKeyboardFocus (true) ? 1.3f : 0.9f)
-    .withMultipliedAlpha      (button.isEnabled() ? 0.9f : 0.5f);
+    auto baseColour =Colours::BandLoopBackground;
     
     if (isButtonDown || isMouseOverButton)
         baseColour = baseColour.contrasting (isButtonDown ? 0.2f : 0.1f);
@@ -76,70 +71,25 @@ void CustomLookAndFeel::drawButtonBackground (Graphics& g, Button& button, const
     }
 }
 
-void CustomLookAndFeel::drawTickBox (Graphics& g, Component& component,
-                  float x, float y, float w, float h,
-                  bool ticked,
-                  bool isEnabled,
-                  bool isMouseOverButton,
-                  bool isButtonDown)
-{
-    auto boxSize = w * 0.7f;
-    
-    auto isDownOrDragging = component.isEnabled() && (component.isMouseOverOrDragging() || component.isMouseButtonDown());
-    
-    auto colour = component.findColour (TextButton::buttonColourId)
-    .withMultipliedSaturation ((component.hasKeyboardFocus (false) || isDownOrDragging) ? 1.3f : 0.9f)
-    .withMultipliedAlpha (component.isEnabled() ? 1.0f : 0.7f);
-    
-    drawRoundThumb (g, x, y + (h - boxSize) * 0.5f, boxSize, colour,
-                    isEnabled ? ((isButtonDown || isMouseOverButton) ? 1.1f : 0.5f) : 0.3f);
-    
-    if (ticked)
-    {
-        g.setColour (isEnabled ? findColour (TextButton::buttonOnColourId) : Colours::grey);
-        
-        auto scale = 9.0f;
-        auto trans = AffineTransform::scale (w / scale, h / scale).translated (x - 2.5f, y + 1.0f);
-        
-        g.fillPath (LookAndFeel_V4::getTickShape (6.0f), trans);
-    }
-}
 
-//void CustomLookAndFeel::drawLinearSliderThumb (Graphics& g, int x, int y, int width, int height,
-//                            float sliderPos, float minSliderPos, float maxSliderPos,
-//                            const Slider::SliderStyle style, Slider& slider)
-//{
-//    auto sliderRadius = (float) (getSliderThumbRadius (slider) - 2);
-//    
-//    auto isDownOrDragging = slider.isEnabled() && (slider.isMouseOverOrDragging() || slider.isMouseButtonDown());
-//    
-//    auto knobColour = slider.findColour (Slider::thumbColourId)
-//    .withMultipliedSaturation ((slider.hasKeyboardFocus (false) || isDownOrDragging) ? 1.3f : 0.9f)
-//    .withMultipliedAlpha (slider.isEnabled() ? 1.0f : 0.7f);
-//    
-//    if (style == Slider::LinearHorizontal || style == Slider::LinearVertical)
-//    {
-//        float kx, ky;
-//        
-//        if (style == Slider::LinearVertical)
-//        {
-//            kx = x + width * 0.5f;
-//            ky = sliderPos;
-//        }
-//        else
-//        {
-//            kx = sliderPos;
-//            ky = y + height * 0.5f;
-//        }
-//        
-//        auto outlineThickness = slider.isEnabled() ? 0.8f : 0.3f;
-//        
-//        drawRoundThumb (g,
-//                        kx - sliderRadius,
-//                        ky - sliderRadius,
-//                        sliderRadius * 2.0f,
-//                        knobColour, outlineThickness);
-//    }
+
+void CustomLookAndFeel::drawLinearSliderThumb(Graphics& g,
+                           int x, int y,
+                           int width, int height,
+                           float sliderPos,
+                           float minSliderPos,
+                           float maxSliderPos,
+                           const Slider::SliderStyle style,
+                           Slider& slider)
+{
+    
+//        g.setOpacity(1.0);
+//        int centerX = x + width /2;
+//        int centerY = sliderPos;
+//
+//        g.drawImageAt(verticalSliderKnob, centerX - verticalSliderKnob.getWidth()/2,
+//                      centerY - verticalSliderKnob.getHeight()/2, false);
+    }
 //    else
 //    {
 //        // Just call the base class for the demo
@@ -147,72 +97,148 @@ void CustomLookAndFeel::drawTickBox (Graphics& g, Component& component,
 //    }
 //}
 //
-//void CustomLookAndFeel::drawLinearSlider (Graphics& g, int x, int y, int width, int height,
-//                       float sliderPos, float minSliderPos, float maxSliderPos,
-//                       const Slider::SliderStyle style, Slider& slider)
-//{
-//    g.fillAll (slider.findColour (Slider::backgroundColourId));
-//    
-//    if (style == Slider::LinearBar || style == Slider::LinearBarVertical)
-//    {
-//        Path p;
-//        
-//        if (style == Slider::LinearBarVertical)
-//            p.addRectangle ((float) x, sliderPos, (float) width, 1.0f + height - sliderPos);
-//        else
-//            p.addRectangle ((float) x, (float) y, sliderPos - x, (float) height);
-//        
-//        auto baseColour = slider.findColour (Slider::rotarySliderFillColourId)
-//        .withMultipliedSaturation (slider.isEnabled() ? 1.0f : 0.5f)
-//        .withMultipliedAlpha (0.8f);
-//        
-//        g.setColour (baseColour);
-//        g.fillPath (p);
-//        
-//        auto lineThickness = jmin (15.0f, jmin (width, height) * 0.45f) * 0.1f;
-//        g.drawRect (slider.getLocalBounds().toFloat(), lineThickness);
-//    }
-//    else
-//    {
-//        drawLinearSliderBackground (g, x, y, width, height, sliderPos, minSliderPos, maxSliderPos, style, slider);
-//        drawLinearSliderThumb      (g, x, y, width, height, sliderPos, minSliderPos, maxSliderPos, style, slider);
-//    }
-//}
+void CustomLookAndFeel::drawLinearSlider (Graphics& g, int x, int y, int width, int height,
+                       float sliderPos, float minSliderPos, float maxSliderPos,
+                       const Slider::SliderStyle style, Slider& slider)
+{
+     drawLinearSliderBackground (g, x, y, width, height, sliderPos, minSliderPos, maxSliderPos, style, slider);
+   
+    if (slider.isBar())
+    {
+        g.setColour (slider.findColour (Slider::trackColourId));
+        g.fillRect (slider.isHorizontal() ? Rectangle<float> (static_cast<float> (x), y + 0.5f, sliderPos - x, height - 1.0f)
+                    : Rectangle<float> (x + 0.5f, sliderPos, width - 1.0f, y + (height - sliderPos)));
+    }
+    else
+    {
+        auto isTwoVal   = (style == Slider::SliderStyle::TwoValueVertical   || style == Slider::SliderStyle::TwoValueHorizontal);
+        auto isThreeVal = (style == Slider::SliderStyle::ThreeValueVertical || style == Slider::SliderStyle::ThreeValueHorizontal);
+        
+        auto trackWidth = jmin (6.0f, slider.isHorizontal() ? height * 0.25f : width * 0.25f);
+        
+        Point<float> startPoint (slider.isHorizontal() ? x : x + width * 0.5f,
+                                 slider.isHorizontal() ? y + height * 0.5f : height + y);
+        
+        Point<float> endPoint (slider.isHorizontal() ? width + x : startPoint.x,
+                               slider.isHorizontal() ? startPoint.y : y);
+        
+        Path backgroundTrack;
+        backgroundTrack.startNewSubPath (startPoint);
+        backgroundTrack.lineTo (endPoint);
+        g.setColour (slider.findColour (Slider::backgroundColourId));
+        g.strokePath (backgroundTrack, { trackWidth, PathStrokeType::curved, PathStrokeType::rounded });
+        
+        Path valueTrack;
+        Point<float> minPoint, maxPoint, thumbPoint;
+        
+        if (isTwoVal || isThreeVal)
+        {
+            minPoint = { slider.isHorizontal() ? minSliderPos : width * 0.5f,
+                slider.isHorizontal() ? height * 0.5f : minSliderPos };
+            
+            if (isThreeVal)
+                thumbPoint = { slider.isHorizontal() ? sliderPos : width * 0.5f,
+                    slider.isHorizontal() ? height * 0.5f : sliderPos };
+            
+            maxPoint = { slider.isHorizontal() ? maxSliderPos : width * 0.5f,
+                slider.isHorizontal() ? height * 0.5f : maxSliderPos };
+        }
+        else
+        {
+            auto kx = slider.isHorizontal() ? sliderPos : (x + width * 0.5f);
+            auto ky = slider.isHorizontal() ? (y + height * 0.5f) : sliderPos;
+            
+            if (ky > y + height - 30)
+                ky = y + height - 30;
+            
+            if (ky < y + 2)
+                ky = y + 2;
+            
+            minPoint = startPoint;
+            maxPoint = { kx, ky };
+        }
+        
+        auto thumbWidth = getSliderThumbRadius (slider);
+        
+        valueTrack.startNewSubPath (minPoint);
+        valueTrack.lineTo (isThreeVal ? thumbPoint : maxPoint);
+        g.setColour (slider.findColour (Slider::trackColourId));
+        g.strokePath (valueTrack, { trackWidth, PathStrokeType::curved, PathStrokeType::rounded });
+        
+        if (! isTwoVal)
+        {
+            
+            Rectangle<float> faderBounds (Rectangle<float> (static_cast<float> (20), static_cast<float> (60)).withCentre (maxPoint.translated(0, 20)));
+            
+            faderImage->drawWithin(g, faderBounds, 1, 1);
+    
+        }
+        
+        if (isTwoVal || isThreeVal)
+        {
+            auto sr = jmin (trackWidth, (slider.isHorizontal() ? height : width) * 0.4f);
+            auto pointerColour = slider.findColour (Slider::thumbColourId);
+            
+            if (slider.isHorizontal())
+            {
+                drawPointer (g, minSliderPos - sr,
+                             jmax (0.0f, y + height * 0.5f - trackWidth * 2.0f),
+                             trackWidth * 2.0f, pointerColour, 2);
+                
+                drawPointer (g, maxSliderPos - trackWidth,
+                             jmin (y + height - trackWidth * 2.0f, y + height * 0.5f),
+                             trackWidth * 2.0f, pointerColour, 4);
+            }
+            else
+            {
+                drawPointer (g, jmax (0.0f, x + width * 0.5f - trackWidth * 2.0f),
+                             minSliderPos - trackWidth,
+                             trackWidth * 2.0f, pointerColour, 1);
+                
+                drawPointer (g, jmin (x + width - trackWidth * 2.0f, x + width * 0.5f), maxSliderPos - sr,
+                             trackWidth * 2.0f, pointerColour, 3);
+            
+            }
+        }
+    }
+    
+   
+
+}
 //
-//void CustomLookAndFeel::drawLinearSliderBackground (Graphics& g, int x, int y, int width, int height,
-//                                 float /*sliderPos*/,
-//                                 float /*minSliderPos*/,
-//                                 float /*maxSliderPos*/,
-//                                 const Slider::SliderStyle /*style*/, Slider& slider)
-//{
-//    auto sliderRadius = getSliderThumbRadius (slider) - 5.0f;
-//    Path on, off;
-//    
-//    if (slider.isHorizontal())
-//    {
-//        auto iy = y + height * 0.5f - sliderRadius * 0.5f;
-//        Rectangle<float> r (x - sliderRadius * 0.5f, iy, width + sliderRadius, sliderRadius);
-//        auto onW = r.getWidth() * ((float) slider.valueToProportionOfLength (slider.getValue()));
-//        
-//        on.addRectangle (r.removeFromLeft (onW));
-//        off.addRectangle (r);
-//    }
-//    else
-//    {
-//        auto ix = x + width * 0.5f - sliderRadius * 0.5f;
-//        Rectangle<float> r (ix, y - sliderRadius * 0.5f, sliderRadius, height + sliderRadius);
-//        auto onH = r.getHeight() * ((float) slider.valueToProportionOfLength (slider.getValue()));
-//        
-//        on.addRectangle (r.removeFromBottom (onH));
-//        off.addRectangle (r);
-//    }
-//    
-//    g.setColour (slider.findColour (Slider::rotarySliderFillColourId));
-//    g.fillPath (on);
-//    
-//    g.setColour (slider.findColour (Slider::trackColourId));
-//    g.fillPath (off);
-//}
+void CustomLookAndFeel::drawLinearSliderBackground (Graphics& g, int x, int y, int width, int height,
+                                 float /*sliderPos*/,
+                                 float /*minSliderPos*/,
+                                 float /*maxSliderPos*/,
+                                 const Slider::SliderStyle /*style*/, Slider& slider)
+{
+    
+    const float infinity = -30.f;
+    
+        Rectangle<int> bounds(x, y, width, height);
+    
+        const float h = (bounds.getHeight() - 2.0) * 0.05;
+        g.setFont (h * 0.8f);
+        for (int i=2; i<20; ++i) {
+            const float y = bounds.getY() + i * h;
+            if (i % 2 == 0) {
+                g.drawHorizontalLine (y + 1,
+                                      bounds.getX() + 4,
+                                      bounds.getRight());
+                if (i < 20) {
+//                    g.drawFittedText (juce::String (i * 0.05 * infinity),
+//                                      bounds.getX(), y + 4, bounds.getWidth(), h * 0.6,
+//                                      juce::Justification::topRight, 1);
+                }
+            }
+            else {
+                g.drawHorizontalLine (y + 2,
+                                      bounds.getWidth()/4 ,
+                                      bounds.getWidth()/4*3);
+            }
+        }
+    
+}
 //
 //void CustomLookAndFeel::drawRotarySlider (Graphics& g, int x, int y, int width, int height, float sliderPos,
 //                       float rotaryStartAngle, float rotaryEndAngle, Slider& slider)
@@ -257,3 +283,156 @@ Font CustomLookAndFeel::getLabelFont (Label& label)
 }
 
 
+
+void CustomLookAndFeel::drawPopupMenuBackground (Graphics& g, int width, int height){
+    auto background = Colours::BandLoopBackground;
+    
+    g.fillAll (background);
+    g.setColour (background.overlaidWith (Colours::BandLoopBackground));
+    
+    for (int i = 0; i < height; i += 3)
+        g.fillRect (0, i, width, 1);
+    
+#if ! JUCE_MAC
+    g.setColour (Colours::BandLoopBackground.withAlpha (0.6f));
+    g.drawRect (0, 0, width, height);
+#endif
+}
+
+void CustomLookAndFeel::drawPopupMenuItem (Graphics& g, const Rectangle<int>& area,
+                                            const bool isSeparator, const bool isActive,
+                                            const bool isHighlighted, const bool isTicked,
+                                            const bool hasSubMenu, const String& text,
+                                            const String& shortcutKeyText,
+                                            const Drawable* icon, const Colour* const textColourToUse)
+{
+    if (isSeparator)
+    {
+        auto r = area.reduced (5, 0);
+        r.removeFromTop (r.getHeight() / 2 - 1);
+        
+        g.setColour (Colours::BandLoopText);
+        g.fillRect (r.removeFromTop (1));
+        
+        g.setColour (Colours::BandLoopText);
+        g.fillRect (r.removeFromTop (1));
+    }
+    else
+    {
+        auto textColour = Colours::BandLoopText;
+        
+        //        if (textColourToUse != nullptr)
+        //            textColour = *textColourToUse;
+        
+        auto r = area.reduced (1);
+        
+        if (isHighlighted)
+        {
+            g.setColour (Colours::BandLoopBackground.darker(0.1));
+            g.fillRect (r);
+            
+            g.setColour (Colours::BandLoopText);
+        }
+        else
+        {
+            g.setColour (Colours::BandLoopText);
+        }
+        
+        if (! isActive)
+            g.setOpacity (0.3f);
+        
+        Font font (getPopupMenuFont());
+        
+        auto maxFontHeight = area.getHeight() / 1.3f;
+        
+        if (font.getHeight() > maxFontHeight)
+            font.setHeight (maxFontHeight);
+        
+        g.setFont (font);
+        
+        auto iconArea = r.removeFromLeft ((r.getHeight() * 5) / 4).reduced (3).toFloat();
+        
+        if (icon != nullptr)
+        {
+            icon->drawWithin (g, iconArea, RectanglePlacement::centred | RectanglePlacement::onlyReduceInSize, 1.0f);
+        }
+        else if (isTicked)
+        {
+            auto tick = getTickShape (1.0f);
+            g.fillPath (tick, tick.getTransformToScaleToFit (iconArea, true));
+        }
+        
+        if (hasSubMenu)
+        {
+            auto arrowH = 0.6f * getPopupMenuFont().getAscent();
+            
+            auto x = (float) r.removeFromRight ((int) arrowH).getX();
+            auto halfH = (float) r.getCentreY();
+            
+            Path p;
+            p.addTriangle (x, halfH - arrowH * 0.5f,
+                           x, halfH + arrowH * 0.5f,
+                           x + arrowH * 0.6f, halfH);
+            
+            g.fillPath (p);
+        }
+        
+        r.removeFromRight (3);
+        g.drawFittedText (text, r, Justification::centredLeft, 1);
+        
+        if (shortcutKeyText.isNotEmpty())
+        {
+            Font f2 (font);
+            f2.setHeight (f2.getHeight() * 0.75f);
+            f2.setHorizontalScale (0.95f);
+            g.setFont (f2);
+            
+            g.drawText (shortcutKeyText, r, Justification::centredRight, true);
+        }
+    }
+}
+
+void CustomLookAndFeel::drawComboBoxTextWhenNothingSelected (Graphics& g, ComboBox& box, Label& label)
+{
+    g.setColour (Colours::BandLoopText.withMultipliedAlpha (0.5f));
+    
+    auto font = label.getLookAndFeel().getLabelFont (label);
+    
+    g.setFont (font);
+    
+    auto textArea = getLabelBorderSize (label).subtractedFrom (label.getLocalBounds());
+    
+    g.drawFittedText (box.getTextWhenNothingSelected(), textArea, label.getJustificationType(),
+                      jmax (1, (int) (textArea.getHeight() / font.getHeight())),
+                      label.getMinimumHorizontalScale());
+}
+
+
+
+Label *     CustomLookAndFeel::createComboBoxTextBox (ComboBox &box) {return new Label (String(), String());};
+
+void    CustomLookAndFeel::positionComboBoxText (ComboBox &box, Label &label) {
+    label.setBounds (1, 1,box.getWidth() + 3 - box.getHeight(),box.getHeight() - 2);
+    label.setFont (Font ("Falling Sky", "Regular", 12.f));
+    label.setColour(Label::textColourId, Colours::BandLoopText);
+};
+
+
+PopupMenu::Options     CustomLookAndFeel::getOptionsForComboBoxPopupMenu (ComboBox &box, Label &label) {
+    return PopupMenu::Options().withTargetComponent (&box)
+    .withItemThatMustBeVisible (box.getSelectedId())
+    .withMinimumWidth (box.getWidth())
+    .withMaximumNumColumns (1)
+    .withStandardItemHeight (label.getHeight());
+};
+
+
+Font CustomLookAndFeel::getTextButtonFont (TextButton& box, int buttonHeight)
+{
+    const NamedValueSet& properties = box.getProperties();
+    String typefaceName = properties.getWithDefault ("fontTypefaceName", "Falling Sky");
+    int fontSize = properties.getWithDefault ("fontSize", 12);
+    int styleFlag = properties.getWithDefault ("fontStyleFlag", Font::plain);
+    
+    return Font (typefaceName, fontSize, styleFlag);
+}

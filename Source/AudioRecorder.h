@@ -17,74 +17,55 @@ public:
     
     AudioRecorder();
     
-    /**
-     * dtor.
-     */
+  
     
     ~AudioRecorder();
     
+
     /**
-     * dtor.
+     * Prepare to record ( create an OutputStream, a WavWriter and configure the ActiveWriter )
+     @param File, the file to write on
      */
-    
-    void setSampleRate(double SampleRate);
-    
     void startRecording (const File& file);
     
     /**
-     * dtor.
+     * Recording..... by writing on the ActiveWriter
      */
+    void  Record (float** pointers, int numSamples);
     
+    /**
+     *  reset the ActiveWriter
+     */
+    void stopRecording();
+    
+    /**
+     * Stop the Recording..... call the stopRecording()
+     */
     void stop();
     
     /**
-     * dtor.
+     * Set SampleRate
      */
-    
-    void stopRecording();
-    
-    bool isRecording() const;
-    
-    void Record (float** pointers, int numSamples);
+    void setSampleRate(double SampleRate);
 
-    void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
-    
-//
-//    void Record(const AudioSourceChannelInfo& bufferToFill, const File& file, StringArray inputs);
-    
-    
     void changeName(String name);
 
 private:
-    
-     AudioBuffer<float> toRecord;
-    
-//    TimeSliceThread backgroundThread; // the thread that will write our audio data to disk
-    
 
-    TimeSliceThread backgroundThread { "Audio Recorder Thread" }; // the thread that will write our audio data to disk
-    std::unique_ptr<AudioFormatWriter::ThreadedWriter> threadedWriter; // the FIFO used to buffer the incoming data
     double sampleRate = 0.0;
-    int64 nextSampleNum = 0;
-    
-    CriticalSection writerLock;
-    std::atomic<AudioFormatWriter::ThreadedWriter*> activeWriter { nullptr };
-    
-    
-    File lastRecording;
-    
-    String toRecordName ;
 
-    String mood = "";
-    
-    OwnedArray<AudioBuffer<float>> inputs;
+    File lastRecording;
+    String toRecordName ;
     
     int numSamples;
     int startSamples;
     int numChannels;
-    
+ 
+    TimeSliceThread backgroundThread { "Audio Recorder Thread" }; // the thread that will write our audio data to disk
+    std::unique_ptr<AudioFormatWriter::ThreadedWriter> threadedWriter; // the FIFO used to buffer the incoming data
+    std::atomic<AudioFormatWriter::ThreadedWriter*> activeWriter { nullptr };
     std::unique_ptr<AudioFormatWriter> writer = nullptr;
-    
+    CriticalSection writerLock;
 };
 
 

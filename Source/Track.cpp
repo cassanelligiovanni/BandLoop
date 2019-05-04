@@ -12,95 +12,98 @@
 
 
 Track::Track(String trackColour,
-             Slider* slider,
-             TextButton* playStop,
              String inputs,
-              MidiMessageCollector& fromPedals,
+              OwnedArray<MidiMessageCollector>& fromPedals, Array<int>& pedalsAvailables,
              const ValueTree& v,
-             UndoManager& um)
+             UndoManager& um,  ADMinfo& AdmInfo )
 : tree (v)
 , midiCollectorFromPedals (fromPedals)
 , undoManager (um)
 , recorder()
-, recordButton("Press To Record")
-{
-//   tree.addListener (this);
+, admInfo(AdmInfo)
+, pedalAvailable(pedalsAvailables)
 
+{
     
     
-    Identifier  BPMratio ("BPMratio");
+    setLookAndFeel(&customLookAndFeel);
     
-    loopUnit = float(tree.getParent().getProperty(BPMratio));
+     colour = trackColour;
+
+     initialise();
     
+     initialiseMeter();
+     initialiseSlider();
+     initialiseInputSelector();
+     initialisePedalSelector();
+     initialiseNameOfTrack();
+     initialiseButton();
     
-    colour = trackColour;
-    
-    formatManager.registerBasicFormats();
-    
-    recordButton.setColour(TextButton::ColourIds::buttonOnColourId, Colours::red);
-    recordButton.setColour(TextButton::ColourIds::buttonColourId, Colours::limegreen);//    recordButton.onClick = [this]() { play(); };
-    addAndMakeVisible(recordButton);
-    
-    selectFolder(nameOfTrack);
-    
-//    levelSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
-//    levelSlider.setColour (Label::textColourId, Colours::orange);
-//    addAndMakeVisible (levelSlider);
-    recordButton.addListener(this);
-    recordButton.onClick = [this]() { startRecording(nameOfTrack); };
-//    levelSlider.addListener(this);
-    
-    decibelSlider.setRange (-100, 6);
-    decibelSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
-    decibelSlider.setTextBoxStyle (Slider::TextBoxBelow, false, 100, 20);
-    decibelSlider.onValueChange = [this] { sliderValue = Decibels::decibelsToGain ((float) decibelSlider.getValue()); };
-    decibelSlider.setValue (Decibels::gainToDecibels (sliderValue));
-//    decibelLabel.setText ("Noise Level in dB", dontSendNotification);
-    decibelLabel.attachToComponent(&decibelSlider, false);
-    
-    addAndMakeVisible (decibelSlider);
-    addAndMakeVisible (decibelLabel);
-    
-    resized();
-    
-//    recordButton.onClick = [this]() { startRecording(nameOfTrack);};
-    LabelOfTrack.attachToComponent(&decibelSlider, false);
-    LabelOfTrack.setText(nameOfTrack, dontSendNotification);
-    
+    startTimer(100);
+
+     resized();
 }
 
     Track::~Track(){
+    
+        setLookAndFeel(nullptr);
+        admInfo.removeAudioCallback(&audioSourcePlayer);
+        audioSourcePlayer.setSource(nullptr);
+        decibelSlider.setLookAndFeel(nullptr);
+        meter.setLookAndFeel (nullptr);
     }
-    
-    void Track::process(AudioBuffer<float> bufferIn, const AudioSourceChannelInfo& bufferOut, Slider* slider, int input){}
-    
-    void Track::setValue(float value){}
+
 
 //=============================================================================
     void Track::prepareToPlay (int samplesPerBlockExpected, double sampleRate) {
 
+        levelMeterSource.resize (2, 200* 0.001f * sampleRate / samplesPerBlockExpected);
+        
         bufferToRecordL.setSize(1, samplesPerBlockExpected);
         bufferToRecordR.setSize(1, samplesPerBlockExpected);
         bufferToRecordStereo.setSize(2, samplesPerBlockExpected);
         
+         bufferOutL.setSize(1, samplesPerBlockExpected);
+         bufferOutR.setSize(1, samplesPerBlockExpected);
+         bufferOutStereo.setSize(2, samplesPerBlockExpected);
+        
         recorder.setSampleRate(sampleRate);
         playback.prepareToPlay(samplesPerBlockExpected, sampleRate);
-        midiCollectorFromPedals.reset (sampleRate);
+        
+        for (int i = 0; i < midiCollectorFromPedals.size(); i ++ ) {
+            
+            midiCollectorFromPedals[i]->reset(sampleRate);
+            
+        }
         
     }
+
     void Track::releaseResources() {}
 
     void Track::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) {
 
-        
         MidiBuffer incomingMidi;
-    
-        midiCollectorFromPedals.removeNextBlockOfMessages (incomingMidi, bufferToFill.numSamples); // [11]
-
-    
-//        playback.getNe (*bufferToFill.buffer, incomingMidi,
-//                               bufferToFill.startSample, bufferToFill.numSamples);
+ 
+        if (nPedal) {
+            
+            midiCollectorFromPedals[nPedal]->removeNextBlockOfMessages(midiBufferFromPedal, bufferToFill.numSamples);
+            
+            MidiBuffer::Iterator iterator (midiBufferFromPedal);
+            MidiMessage message;
+            int sampleNumber = 0;
+            int note ;
+            while (iterator.getNextEvent (message, sampleNumber)) // [5]
+            {
+                message.setTimeStamp (Time::getMillisecondCounterHiRes() * 0.001);; // [7]
+                note = message.getNoteNumber();
+                
+                lastMidiNote = note;
+            
+            }
+            
+        }
         
+    
         int numSamples = bufferToFill.numSamples ;
         
         if (inputL){
@@ -111,7 +114,9 @@ Track::Track(String trackColour,
 
                 bufferToRecordL.copyFrom(0, 0, *bufferToFill.buffer, (inputL - 1), 0, numSamples);
 
-                bufferToRecordL.applyGain(0, 0, numSamples, sliderValue);
+                bufferToRecordL.applyGain(0, 0, numSamples, sliderValue.load());
+                            
+                bufferOutL.copyFrom(0, 0, bufferToRecordL, 0, 0, numSamples);
                             
         float* pointers [2] = { bufferToRecordL.getWritePointer (0, bufferToFill.startSample),
                                 bufferToRecordL.getWritePointer (0, bufferToFill.startSample) };
@@ -120,8 +125,30 @@ Track::Track(String trackColour,
                     recorder.Record(pointers, numSamples);
 
                 bufferToFill.clearActiveBufferRegion();
-                bufferToFill.buffer->addFrom(0, 0, bufferToRecordL, 0, 0, numSamples);
-                bufferToFill.buffer->addFrom(1, 0, bufferToRecordL, 0, 0, numSamples);
+
+                            if(!outIsStereo){
+                                
+                                playback.getNextAudioBlock(bufferOutL, numSamples);
+                                bufferOutL.applyGain(0, 0, numSamples, sliderValue.load());
+                                
+                                levelMeterSource.measureBlock(bufferOutL);
+                                
+                                // non sara 0 ma la variabile output
+                                 bufferToFill.buffer->addFrom((outputL-1), 0, bufferOutL, 0, 0, numSamples);
+                            }
+                            
+                            if(outIsStereo){
+                            
+                                playback.getNextAudioBlock(bufferOutL, numSamples);
+                                
+                                bufferOutL.applyGain(0, 0, numSamples, sliderValue.load());
+                                
+                                levelMeterSource.measureBlock(bufferOutL);
+                                
+                                bufferToFill.buffer->addFrom((outputL-1), 0, bufferOutL, 0, 0, numSamples);
+                                bufferToFill.buffer->addFrom((outputR-1), 0, bufferOutL, 0, 0, numSamples);
+                                
+                            }
 
         }
             if(isStereo){
@@ -136,20 +163,51 @@ Track::Track(String trackColour,
                 bufferToRecordStereo.copyFrom(0, 0, bufferToRecordL, 0, 0, numSamples);
                 bufferToRecordStereo.copyFrom(1, 0, bufferToRecordR, 0, 0, numSamples);
 
-                bufferToRecordStereo.applyGain(0, 0, numSamples, sliderValue);
-                bufferToRecordStereo.applyGain(1, 0, numSamples, sliderValue);
+                bufferToRecordStereo.applyGain(0, 0, numSamples, sliderValue.load());
+                bufferToRecordStereo.applyGain(1, 0, numSamples, sliderValue.load());
+                
+                bufferOutStereo.copyFrom(0, 0, bufferToRecordStereo, 0, 0, numSamples);
+                bufferOutStereo.copyFrom(1, 0, bufferToRecordStereo, 1, 0, numSamples);
 
+                
         float* pointers [2] = { bufferToRecordStereo.getWritePointer (0, bufferToFill.startSample),
                                 bufferToRecordStereo.getWritePointer (1, bufferToFill.startSample) };
                 
                 if (recordState == RecordState::Recording)
                     recorder.Record(pointers, numSamples);
-
-                bufferToFill.buffer->addFrom(0, 0, bufferToRecordStereo, 0, 0, numSamples);
-                bufferToFill.buffer->addFrom(1, 0, bufferToRecordStereo, 1, 0, numSamples);
+            
+                
+                if(!outIsStereo){
+                    
+                    playback.getNextAudioBlock(bufferOutStereo, numSamples);
+                  
+                    bufferOutStereo.applyGain(0, 0, numSamples, sliderValue.load());
+                    bufferOutStereo.applyGain(1, 0, numSamples, sliderValue.load());
+                    
+                    levelMeterSource.measureBlock(bufferOutStereo);
+                    
+                    // non sara 0 ma la variabile output
+                    bufferToFill.buffer->addFrom((outputL-1), 0, bufferOutStereo, 0, 0, numSamples);
+                     bufferToFill.buffer->addFrom((outputR-1), 0, bufferOutStereo, 1, 0, numSamples);
+                }
+                
+                if(outIsStereo){
+                    
+                    playback.getNextAudioBlock(bufferOutStereo, numSamples);
+                    
+                    bufferOutStereo.applyGain(0, 0, numSamples, sliderValue.load());
+                    bufferOutStereo.applyGain(1, 0, numSamples, sliderValue.load());
+                    
+                    levelMeterSource.measureBlock(bufferOutStereo);
+                    
+                    bufferToFill.buffer->addFrom(0, 0, bufferOutStereo, 0, 0, numSamples);
+                    bufferToFill.buffer->addFrom(1, 0, bufferOutStereo, 1, 0, numSamples);
+                    
+                }
+            
             }
             
-            playback.getNextAudioBlock(bufferToFill);
+    
 
         }
         
@@ -158,18 +216,20 @@ Track::Track(String trackColour,
                           bufferToFill.clearActiveBufferRegion();
              
          }
-        
-        
-        
+//        
+//        if( recordState == RecordState::Playing) {DBG("PLAYING");};
+//        if (recordState == RecordState::Recording) {DBG("RECORDING");};
+
     }
         
        
 
-//=============================================================================
+    // ===============   COMPONENT Methods  ==================================
+
 void Track::paint (Graphics& g)
 {
     
-    Rectangle<int> bounds= getLocalBounds();
+        Rectangle<int> bounds= getLocalBounds().removeFromTop(getHeight()-20);
     Path pedal;
     pedal.addRoundedRectangle(bounds, 20, 20);
   
@@ -186,60 +246,76 @@ void Track::paint (Graphics& g)
 
     g.setGradientFill (gradient);
     g.fillPath (pedal);
-
     
+    Rectangle<int> gradientLabelBounds{bounds.getWidth()/4, bounds.getHeight()*9/10, bounds.getWidth()/2, bounds.getHeight()/10} ;
+
 }
 
 void Track::resized()
 {
-    Rectangle<int> bounds= getLocalBounds();
+    Rectangle<int> bounds= getLocalBounds().removeFromTop(getHeight()-20);
     Path pedal;
     pedal.addRoundedRectangle(bounds, 20, 20);
     
-//    recordButton.setBounds(0, 0, 75, 75);
-    decibelSlider.setBounds(bounds.removeFromBottom(bounds.getHeight()-60));
+    selectPedals.setBounds(20, bounds.getHeight()*(14./16.), (bounds.getWidth()/ 2)-40, 20);
+    selectInputs.setBounds(bounds.getWidth()/ 2 + 20, bounds.getHeight()*(14./16.), (bounds.getWidth()/ 2)-40, 20);
 
+    decibelSlider.setBounds(bounds.getWidth()/2 -75, bounds.getHeight()*(4./16.), 60, bounds.getHeight()/5.*3-20) ;
+    meter.setBounds(bounds.getWidth()/2 +15, bounds.getHeight()*(4./16.)+ 30, 60, bounds.getHeight()/5.*3.- 50 );
     
+    labelNameOfTrack.setBounds(bounds.getWidth()/4, bounds.getHeight()*9.8/10, bounds.getWidth()/2, 30);
+    
+    lightPressableButton->setBounds( (bounds.getWidth()/6)*3, (bounds.getHeight()*(2./16.)), 30, 30);
+    DrawableRecordButton.setBounds((bounds.getWidth()/6), (bounds.getHeight()*(2./16.)),30, 30);
+    playback.setBounds((bounds.getWidth()/6)*2, (bounds.getHeight()*(2./16.)), 30, 30);
+    
+    
+    stopImmediatellyButton.setBounds(200, 5, (getWidth()-60)/4, 20);
+    undoButton.setBounds(20, 5, (getWidth()-60)/4, 20);
+    saveButton.setBounds(80, 5, (getWidth()-60)/4, 20);
+    newSongButton.setBounds(140, 5, (getWidth()-60)/4, 20);
 }
 
 
 //=============================================================================
-void Track::startRecording(String name) {
-    
-    isStartingRecording = true ;
-    
-
-}
-
-void Track::stopRecording() {
-    
-    isStoppingRecording = true;
-
-}
 
 void Track::buttonClicked (Button* button) {
     
-    if (button == &recordButton)
+    if (button == &DrawableRecordButton)
     {
-        if (recordState == RecordState::Playing)
-        {
-            recordButton.onClick = [&]() { startRecording(nameOfTrack); };
-        }
-        else
-        {
-            recordButton.onClick = [&]() { stopRecording(); };
-        }
+        
+        firstFootSwitch();
+//        if (recordState == RecordState::Playing)
+//        {
+//            DrawableRecordButton.onClick = [&]() { isStartingRecording = true ; };
+//        }
+//        else if (recordState == RecordState::Recording && isStoppingRecording )
+//        {
+//            DrawableRecordButton.onClick = [&]() { isStartingRecording = true ;};
+//        }
+//        else
+//        {
+//            DrawableRecordButton.onClick = [&]() { isStoppingRecording = true; };
+//        }
     }
     
+    if (button == &stopImmediatellyButton){ secondFootSwitch();};
+        if (button == &undoButton){ thirdFootSwitch();};
+            if (button == &saveButton) { fourthFootSwitch();};
+                if (button == &newSongButton)  { sixthFootSwitch();};
 };
 
 
 void Track::sliderValueChanged(Slider* slider) {
-//    if(slider == &slider){
-//        sliderValue = levelSlider.getValue();
-//    }
-    
+
 };
+
+void Track::labelTextChanged (Label *labelThatHasChanged){
+    
+    nameOfTrack = labelNameOfTrack.text.getText();
+    selectFolder(nameOfTrack);
+    
+}
 
 //create a folder named as the Track;
 //=============================================================================
@@ -259,6 +335,7 @@ auto parentDir = File::getSpecialLocation (File::userDocumentsDirectory).getChil
 }
 
 
+
 // TREE callbacks;
 //=============================================================================
 void Track::valueTreeChildAdded (ValueTree& parentTree, ValueTree&) {};
@@ -269,7 +346,6 @@ void Track::valueTreeParentChanged (ValueTree& parentTreeChanged) {
 };
 
 void Track::valueTreePropertyChanged (ValueTree& treeChanged, const Identifier& property) {
-
     
     Identifier  BPMratio ("BPMratio");
     if (property == BPMratio ) {
@@ -290,38 +366,8 @@ void Track::valueTreePropertyChanged (ValueTree& treeChanged, const Identifier& 
         String named = treeChanged.getProperty(name);
     nameOfTrack = named;
         selectFolder(nameOfTrack);
-    LabelOfTrack.setText(named, dontSendNotification);
     }
 
-    
-// Retrieving the Inputs and isStereo
-    Identifier inputs = "Inputs";
-    StringArray tokens;
-if (property == inputs && treeChanged == tree) {
-    
-        String named = treeChanged.getProperty(inputs);
-        tokens.addTokens (named,"+" );
-        if(tokens.size() == 1)
-            isStereo = false;
-        else
-           isStereo = true;
-        if(isStereo){
-            inputL = tokens[0].getIntValue();
-            inputR = tokens[2].getIntValue();
-        }
-        else if (!isStereo){
-            inputL = tokens[0].getIntValue();
-        }
-        if(isStereo){
-            inputL = tokens[0].getIntValue();
-            inputR = tokens[2].getIntValue();
-        }
-        else if (!isStereo){
-            inputL = tokens[0].getIntValue();
-            inputR = 0;
-        }
-
-};
     
 };
 
@@ -331,16 +377,13 @@ String Track::getColour() {
 }
 
 void Track::checkEvent(int bar) {
-    
+  
     playback.checkEvent(bar);
-    
 
     if (isStoppingRecording) {
         recorder.stopRecording();
         playback.createSound(lastRecording, actualFolder, loopUnit);
         recordState = RecordState::Playing;
-        recordButton.setToggleState(false, NotificationType::dontSendNotification);
-        recordButton.setButtonText("Playing");
         isStoppingRecording = false;
     }
     
@@ -348,17 +391,313 @@ void Track::checkEvent(int bar) {
 }
 void Track::triggerEvent() {
  
+//    routeMidiMessage();
+    
     if (isStartingRecording){
         lastRecording = actualFolder.getNonexistentChildFile(nameOfTrack, ".wav");
         recorder.startRecording(lastRecording);
         recordState = RecordState::Recording;
-        recordButton.setToggleState(true, NotificationType::dontSendNotification);
-        recordButton.setButtonText("Recording");
+
         isStartingRecording = false;
     }
 
     playback.triggerEvent();
     
+      lightPressableButton->updateTrue();
+}
+
+void Track::timerCallback() {
+  
+    routeMidiMessage();
+    lastMidiNote = 0;
+
+}
+
+void Track::comboBoxChanged(ComboBox* comboBoxThatHasChanged){
+    if (comboBoxThatHasChanged == &selectInputs) {
+    String named = selectInputs.getText();
+        retrieveInputs(named);
+        inputsAvailables = admInfo.inputsAvailable;
+        updateInputs();
+    }
+    
+    if (comboBoxThatHasChanged == &selectPedals) {
+        nPedal =  (selectPedals.getSelectedId());
+      
+    }
+    
+    
     
 }
 
+void Track::retrieveInputs(String fromComboBox){
+    StringArray tokens;
+    tokens.addTokens (fromComboBox,"+" );
+    if(tokens.size() == 1)
+        isStereo = false;
+    else
+        isStereo = true;
+    if(isStereo){
+        inputL = tokens[0].getIntValue();
+        inputR = tokens[2].getIntValue();
+    }
+    else if (!isStereo){
+        inputL = tokens[0].getIntValue();
+    }
+    if(isStereo){
+        inputL = tokens[0].getIntValue();
+        inputR = tokens[2].getIntValue();
+    }
+    else if (!isStereo){
+        inputL = tokens[0].getIntValue();
+        inputR = 0;
+    }
+}
+
+
+    
+
+
+void Track::changeListenerCallback (ChangeBroadcaster*) {
+ //Inputs Changed
+    selectInputs.clear();
+    for (int i = 0; i < admInfo.inputsAvailable.size(); i++){
+        selectInputs.addItem (admInfo.inputsAvailable[i], i+1);
+    }
+    inputsAvailables = admInfo.inputsAvailable;
+    updateInputs();
+
+//Pedals Changed
+    
+    selectPedals.clear();
+    
+    for (int i = 1; i < pedalAvailable.size() + 1; i++){
+        selectPedals.addItem (String(i), i);
+    }
+};
+
+void Track::updateInputs() {
+    String inputsLmomentary = String(inputL);
+    String inputsRmomentary = String(inputR);
+    inputL  = inputsAvailables.indexOf(inputsLmomentary) + 1;
+    inputR  = inputsAvailables.indexOf(inputsRmomentary) + 1;
+
+}
+
+
+
+void Track::initialise() {
+  
+    admInfo.addChangeListener(this);
+    lightPressableButton.reset(new LightPressableButton(recordState, isStartingRecording, isStoppingRecording, nPedal));
+    audioSourcePlayer.setSource(this);
+    admInfo.addAudioCallback(&audioSourcePlayer);
+    Identifier  BPMratio ("BPMratio");
+    loopUnit = float(tree.getParent().getProperty(BPMratio));
+    formatManager.registerBasicFormats();
+    selectFolder(nameOfTrack);
+
+    setDefaultLookAndFeelColours();
+    
+}
+
+
+void Track::initialiseMeter() {
+    
+    meter.setLookAndFeel (&levelMeterLookAndFeel);
+    meter.setMeterSource (&levelMeterSource);
+    addAndMakeVisible (&meter);
+    levelMeterLookAndFeel.setColour (FFAU::LevelMeter::lmBackgroundColour,       Colours::transparentWhite);
+    levelMeterLookAndFeel.setColour (FFAU::LevelMeter::lmTicksColour,            Colours::BandLoopBackground);
+    levelMeterLookAndFeel.setColour (FFAU::LevelMeter::lmOutlineColour,           Colours::transparentWhite);
+    meter.setMeterFlags(FFAU::LevelMeter::SingleChannel);
+    meter.setSelectedChannel(0);
+    levelMeterLookAndFeel.setColour (FFAU::LevelMeter::lmMeterForegroundColour,  Colours::transparentWhite.darker(1));
+    levelMeterLookAndFeel.setColour (FFAU::LevelMeter::lmMeterOutlineColour,     Colours::transparentWhite.darker(1));
+    levelMeterLookAndFeel.setColour (FFAU::LevelMeter::lmMeterBackgroundColour,  Colours::transparentWhite.darker(1));
+
+}
+
+void Track::initialiseSlider() {
+    
+    decibelSlider.setRange (-100, 6);
+    decibelSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
+    decibelSlider.setTextBoxStyle (Slider::TextBoxAbove, false, 100, 20);
+    decibelSlider.onValueChange = [this] { sliderValue.store(Decibels::decibelsToGain ((float) decibelSlider.getValue())); };
+    decibelSlider.setValue (Decibels::gainToDecibels (sliderValue.load()));
+    addAndMakeVisible (decibelSlider);
+    decibelSlider.setLookAndFeel (&customLookAndFeel);
+    
+    
+}
+
+void Track::initialiseInputSelector() {
+    
+    selectInputs.addListener(this);
+    labelSelectInputs.attachToComponent(&selectInputs, false);
+    labelSelectInputs.setText ("Input:", dontSendNotification);
+    addAndMakeVisible(labelSelectInputs);
+    addAndMakeVisible(selectInputs);
+    inputsAvailables = admInfo.inputsAvailable;
+    for (int i = 0; i < admInfo.inputsAvailable.size(); i++){
+        selectInputs.addItem (admInfo.inputsAvailable[i], i+1);
+    }
+    
+}
+
+
+void Track::initialisePedalSelector() {
+    
+    selectPedals.addListener(this);
+    addAndMakeVisible(selectPedals);
+    labelSelectPedals.attachToComponent(&selectPedals, false);
+    labelSelectPedals.setText ("Pedal:", dontSendNotification);
+    addAndMakeVisible(labelSelectPedals);
+    for (int i = 1; i < pedalAvailable.size() + 1; i++){
+        selectPedals.addItem (String(i), pedalAvailable[i-1]);
+    }
+    
+}
+
+void Track::initialiseNameOfTrack() {
+    
+    labelNameOfTrack.setColour(Colours::BandLoopBackground.brighter(0.15));
+    addAndMakeVisible(labelNameOfTrack);
+    labelNameOfTrack.text.addListener(this);
+    labelNameOfTrack.setName(nameOfTrack, 20);
+    
+}
+
+
+void Track::initialiseButton() {
+    
+    addAndMakeVisible(playback);
+    
+    playButtonImage = Drawable::createFromImageData (BinaryData::StartRecordingButton_svg, BinaryData::StartRecordingButton_svgSize);
+    stopButtonImage = Drawable::createFromImageData (BinaryData::StopRecordingButton_svg, BinaryData::StopRecordingButton_svgSize);
+    DrawableRecordButton.setImages ( playButtonImage,
+                                  playButtonImage,
+                                  playButtonImage,
+                                  playButtonImage,
+                                  stopButtonImage,
+                                  stopButtonImage,
+                                  stopButtonImage, stopButtonImage);
+    addAndMakeVisible(DrawableRecordButton);
+    
+    DrawableRecordButton.addListener(this);
+    
+//    DrawableRecordButton.onClick = [this]() { isStartingRecording = true ; };
+    addAndMakeVisible(*lightPressableButton);
+    
+    addAndMakeVisible (stopImmediatellyButton);
+    addAndMakeVisible (undoButton);
+    addAndMakeVisible (saveButton);
+    addAndMakeVisible (newSongButton);
+
+    undoButton.addListener(this);
+    saveButton.addListener(this);
+    newSongButton.addListener(this);
+    stopImmediatellyButton.addListener(this);
+    
+
+
+}
+
+void Track::routeMidiMessage(){
+    
+
+        
+        if (lastMidiNote == 1) {firstFootSwitch();}
+        if (lastMidiNote == 2) {secondFootSwitch();}
+        if (lastMidiNote == 3) {thirdFootSwitch();}
+        if (lastMidiNote == 4) {fourthFootSwitch();}
+        if (lastMidiNote == 5) {fifthFootSwitch();}
+        if (lastMidiNote == 6) {sixthFootSwitch();}
+  
+    midiBufferFromPedal.clear();
+
+    }
+
+
+
+// ===============   FROM Pedals Methods  =================================
+
+void Track::firstFootSwitch(){
+    
+    if (recordState == RecordState::Playing)
+    {
+        DrawableRecordButton.setToggleState(true, dontSendNotification);
+        isStartingRecording = true ;
+        lastThingDoneFirstButton = "isStartingRecording";
+        lastThingDoneGeneral = "isStartingRecording";
+    }
+    else if (recordState == RecordState::Recording && isStoppingRecording )
+    {
+        DrawableRecordButton.setToggleState(true, dontSendNotification);
+        isStartingRecording = true ;
+        lastThingDoneFirstButton = "isStartingRecording";
+        lastThingDoneGeneral = "isStartingRecording";
+    }
+    else
+    {
+        DrawableRecordButton.setToggleState(false, dontSendNotification);
+
+        isStartingRecording = false ;
+        isStoppingRecording = true ;
+        lastThingDoneFirstButton = "isStoppingRecording";
+        lastThingDoneGeneral = "isStoppingRecording";
+    }
+    
+    playback.startRecording();
+    
+};
+
+
+void Track::secondFootSwitch(){
+    
+
+    if (lastThingDoneFirstButton == "isStartingRecording") {isStartingRecording = false ;}
+    
+    if (lastThingDoneFirstButton == "isStoppingRecording") {isStoppingRecording = false ;}
+    
+    if (recordState == RecordState::Recording) {recordState = RecordState::Playing;
+        
+        DrawableRecordButton.setToggleState(false, dontSendNotification);
+        
+    }
+
+    playback.stopImmediatelly();
+    
+};
+
+
+void Track::thirdFootSwitch(){
+    
+    
+    
+    
+};
+
+void Track::fourthFootSwitch(){playback.save();};
+
+void Track::fifthFootSwitch(){ playback.startOrStopAtNextBar(); };
+
+void Track::sixthFootSwitch(){ playback.newSong();};
+
+
+void Track::setDefaultLookAndFeelColours(){
+    
+    customLookAndFeel.setColour (ComboBox::backgroundColourId, Colours::BandLoopBackground);
+    customLookAndFeel.setColour (ComboBox::textColourId,Colours::BandLoopText);
+    customLookAndFeel.setColour (ComboBox::buttonColourId,Colours::BandLoopBackground);
+    customLookAndFeel.setColour (ComboBox::arrowColourId, Colours::BandLoopText);
+    customLookAndFeel.setColour (ComboBox::focusedOutlineColourId,Colours::BandLoopText);
+}
+
+
+void Track::updateGuiAndPedals() {
+    
+    lightPressableButton->updateTrue();
+    
+    
+};

@@ -1,0 +1,243 @@
+\hypertarget{class_track}{}\section{Track Class Reference}
+\label{class_track}\index{Track@{Track}}
+Inheritance diagram for Track\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=10.000000cm]{class_track}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_track_af7c1002b99aa7ffb69775b0409cdf1dc}\label{class_track_af7c1002b99aa7ffb69775b0409cdf1dc}} 
+{\bfseries Track} (String track\+Colour, String inputs, Midi\+Message\+Collector \&from\+Pedal, const Value\+Tree \&v, Undo\+Manager \&um, \mbox{\hyperlink{class_a_d_minfo}{A\+D\+Minfo}} \&Adm\+Info)
+\item 
+void \mbox{\hyperlink{class_track_a0c093e11c72e34eb8696c351ca020fb9}{prepare\+To\+Play}} (int samples\+Per\+Block\+Expected, double sample\+Rate) override
+\item 
+void \mbox{\hyperlink{class_track_ae1b8b567bc88db45ba20f990ce872c96}{get\+Next\+Audio\+Block}} (const Audio\+Source\+Channel\+Info \&buffer\+To\+Fill) override
+\item 
+void \mbox{\hyperlink{class_track_a7d0d27ceff045cfe777c94ca8116c372}{release\+Resources}} () override
+\item 
+void \mbox{\hyperlink{class_track_a8ad88c68d4c7608f89f84ece5e06881e}{paint}} (Graphics \&g) override
+\item 
+void \mbox{\hyperlink{class_track_a64ce8e4f98a9a9b84d42bd77d869366b}{resized}} () override
+\item 
+void \mbox{\hyperlink{class_track_acc9d4ec238e6cbfa01cb1b656dd842d9}{button\+Clicked}} (Button $\ast$button) override
+\item 
+void \mbox{\hyperlink{class_track_aa79209142c2fc3321441f2eb04f17ba2}{slider\+Value\+Changed}} (Slider $\ast$slider) override
+\item 
+void \mbox{\hyperlink{class_track_ac9870b46d656c0390cbec57731d96d9e}{combo\+Box\+Changed}} (Combo\+Box $\ast$combo\+Box\+That\+Has\+Changed) override
+\item 
+void \mbox{\hyperlink{class_track_a7dd5facb0d03d74f578b86b0280f33da}{label\+Text\+Changed}} (Label $\ast$label\+That\+Has\+Changed) override
+\item 
+void \mbox{\hyperlink{class_track_a84b1934243994bd64120e4cc79f8a054}{change\+Listener\+Callback}} (Change\+Broadcaster $\ast$) override
+\item 
+void \mbox{\hyperlink{class_track_ac20c0787d81235fde26e08c133998450}{retrieve\+Inputs}} (String from\+Combo\+Box)
+\item 
+void \mbox{\hyperlink{class_track_abf06d5a33a170a0c903f765a01fb6f23}{update\+Inputs}} ()
+\item 
+\mbox{\Hypertarget{class_track_acf4e21647334887f49c16d9ec155b725}\label{class_track_acf4e21647334887f49c16d9ec155b725}} 
+void {\bfseries timer\+Callback} () override
+\item 
+void \mbox{\hyperlink{class_track_afc1af9074d7a5c729b787e35fef2ba8b}{check\+Event}} (int bar)
+\item 
+void \mbox{\hyperlink{class_track_aeae974f2aacaf6f9139a2cfc12a67e8e}{trigger\+Event}} ()
+\item 
+\mbox{\Hypertarget{class_track_ad29545ea4a067d785b94fedfb82d6339}\label{class_track_ad29545ea4a067d785b94fedfb82d6339}} 
+void {\bfseries initialise} ()
+\item 
+\mbox{\Hypertarget{class_track_afe70b23f590240b40413c73d655e4d9a}\label{class_track_afe70b23f590240b40413c73d655e4d9a}} 
+void {\bfseries initialise\+Meter} ()
+\item 
+\mbox{\Hypertarget{class_track_a29f8cb781832a8202642875a5108de24}\label{class_track_a29f8cb781832a8202642875a5108de24}} 
+void {\bfseries initialise\+Slider} ()
+\item 
+\mbox{\Hypertarget{class_track_a1a897cea72c5e71db87421cef4c7d0ce}\label{class_track_a1a897cea72c5e71db87421cef4c7d0ce}} 
+void {\bfseries initialise\+Input\+Selector} ()
+\item 
+\mbox{\Hypertarget{class_track_a00ef1300dc459d5106e72ec819f72a7f}\label{class_track_a00ef1300dc459d5106e72ec819f72a7f}} 
+void {\bfseries initialise\+Pedal\+Selector} ()
+\item 
+\mbox{\Hypertarget{class_track_ae997925e085f959980da24b6245b94cc}\label{class_track_ae997925e085f959980da24b6245b94cc}} 
+void {\bfseries initialise\+Name\+Of\+Track} ()
+\item 
+\mbox{\Hypertarget{class_track_aac881f87a120244d2a0f3486f0493e0b}\label{class_track_aac881f87a120244d2a0f3486f0493e0b}} 
+void {\bfseries initialise\+Button} ()
+\item 
+\mbox{\Hypertarget{class_track_a1721072991932b92d775bfcefbea17db}\label{class_track_a1721072991932b92d775bfcefbea17db}} 
+void {\bfseries value\+Tree\+Child\+Added} (Value\+Tree \&parent\+Tree, Value\+Tree \&) override
+\item 
+\mbox{\Hypertarget{class_track_a35dfa1c3211d03014466f038f1b596d4}\label{class_track_a35dfa1c3211d03014466f038f1b596d4}} 
+void {\bfseries value\+Tree\+Child\+Removed} (Value\+Tree \&parent\+Tree, Value\+Tree \&, int) override
+\item 
+\mbox{\Hypertarget{class_track_a750139df1ead2f5d7fde5ad467af07ca}\label{class_track_a750139df1ead2f5d7fde5ad467af07ca}} 
+void {\bfseries value\+Tree\+Child\+Order\+Changed} (Value\+Tree \&parent\+Tree, int, int) override
+\item 
+\mbox{\Hypertarget{class_track_a078ecba375d2d7a0dd23f32dfe66fcee}\label{class_track_a078ecba375d2d7a0dd23f32dfe66fcee}} 
+void {\bfseries value\+Tree\+Parent\+Changed} (Value\+Tree \&) override
+\item 
+\mbox{\Hypertarget{class_track_ae1b012e1f47f2f9eebb7f9598e0b85dc}\label{class_track_ae1b012e1f47f2f9eebb7f9598e0b85dc}} 
+void {\bfseries value\+Tree\+Property\+Changed} (Value\+Tree \&, const Identifier \&) override
+\item 
+void \mbox{\hyperlink{class_track_af1861edf6919ed15f3a370fe1069d1ec}{select\+Folder}} (String name)
+\item 
+\mbox{\Hypertarget{class_track_a4c3852a7c322f6867697dca7c364fffb}\label{class_track_a4c3852a7c322f6867697dca7c364fffb}} 
+String {\bfseries get\+Colour} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_track_a73983cdf7f99af0f4b6fa743398653d2}\label{class_track_a73983cdf7f99af0f4b6fa743398653d2}} 
+Value\+Tree {\bfseries tree}
+\item 
+\mbox{\Hypertarget{class_track_a66900bc7b7c24d93c142fabba87a4406}\label{class_track_a66900bc7b7c24d93c142fabba87a4406}} 
+Undo\+Manager \& {\bfseries undo\+Manager}
+\item 
+\mbox{\Hypertarget{class_track_a868ab78dd0f719644a996d98cd30e2a2}\label{class_track_a868ab78dd0f719644a996d98cd30e2a2}} 
+Midi\+Message\+Collector \& {\bfseries midi\+Collector\+From\+Pedals}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_track_a0c093e11c72e34eb8696c351ca020fb9}\label{class_track_a0c093e11c72e34eb8696c351ca020fb9}} 
+\index{Track@{Track}!prepareToPlay@{prepareToPlay}}
+\index{prepareToPlay@{prepareToPlay}!Track@{Track}}
+\subsubsection{\texorpdfstring{prepareToPlay()}{prepareToPlay()}}
+{\footnotesize\ttfamily void Track\+::prepare\+To\+Play (\begin{DoxyParamCaption}\item[{int}]{samples\+Per\+Block\+Expected,  }\item[{double}]{sample\+Rate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+This callback allows the source to initialise any resources it might need when playing. 
+\begin{DoxyParams}{Parameters}
+{\em samples\+Per\+Block\+Expected} & (buffer\+Size) \\
+\hline
+{\em sample\+Rate} & (Hz) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_track_ae1b8b567bc88db45ba20f990ce872c96}\label{class_track_ae1b8b567bc88db45ba20f990ce872c96}} 
+\index{Track@{Track}!getNextAudioBlock@{getNextAudioBlock}}
+\index{getNextAudioBlock@{getNextAudioBlock}!Track@{Track}}
+\subsubsection{\texorpdfstring{getNextAudioBlock()}{getNextAudioBlock()}}
+{\footnotesize\ttfamily void Track\+::get\+Next\+Audio\+Block (\begin{DoxyParamCaption}\item[{const Audio\+Source\+Channel\+Info \&}]{buffer\+To\+Fill }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+This callback will be made each time the audio playback hardware (or whatever other destination the audio data is going to) needs another block of data. \mbox{\Hypertarget{class_track_a7d0d27ceff045cfe777c94ca8116c372}\label{class_track_a7d0d27ceff045cfe777c94ca8116c372}} 
+\index{Track@{Track}!releaseResources@{releaseResources}}
+\index{releaseResources@{releaseResources}!Track@{Track}}
+\subsubsection{\texorpdfstring{releaseResources()}{releaseResources()}}
+{\footnotesize\ttfamily void Track\+::release\+Resources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Allows the source to release anything it no longer needs after playback has stopped. \mbox{\Hypertarget{class_track_a8ad88c68d4c7608f89f84ece5e06881e}\label{class_track_a8ad88c68d4c7608f89f84ece5e06881e}} 
+\index{Track@{Track}!paint@{paint}}
+\index{paint@{paint}!Track@{Track}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void Track\+::paint (\begin{DoxyParamCaption}\item[{Graphics \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+The \mbox{\hyperlink{class_track_a8ad88c68d4c7608f89f84ece5e06881e}{paint()}} Method gets called when a region of a component needs redrawing, Never need to call this method directly
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & the graphics context that must be used to do the drawing operations. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_track_a64ce8e4f98a9a9b84d42bd77d869366b}\label{class_track_a64ce8e4f98a9a9b84d42bd77d869366b}} 
+\index{Track@{Track}!resized@{resized}}
+\index{resized@{resized}!Track@{Track}}
+\subsubsection{\texorpdfstring{resized()}{resized()}}
+{\footnotesize\ttfamily void Track\+::resized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Called when this component\textquotesingle{}s size has been changed. \mbox{\Hypertarget{class_track_acc9d4ec238e6cbfa01cb1b656dd842d9}\label{class_track_acc9d4ec238e6cbfa01cb1b656dd842d9}} 
+\index{Track@{Track}!buttonClicked@{buttonClicked}}
+\index{buttonClicked@{buttonClicked}!Track@{Track}}
+\subsubsection{\texorpdfstring{buttonClicked()}{buttonClicked()}}
+{\footnotesize\ttfamily void Track\+::button\+Clicked (\begin{DoxyParamCaption}\item[{Button $\ast$}]{button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Called when a Button is Pressed has been changed. 
+\begin{DoxyParams}{Parameters}
+{\em button,use} & this for filtering the button that is actually pressed if (button == record\+Button) then... \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_track_aa79209142c2fc3321441f2eb04f17ba2}\label{class_track_aa79209142c2fc3321441f2eb04f17ba2}} 
+\index{Track@{Track}!sliderValueChanged@{sliderValueChanged}}
+\index{sliderValueChanged@{sliderValueChanged}!Track@{Track}}
+\subsubsection{\texorpdfstring{sliderValueChanged()}{sliderValueChanged()}}
+{\footnotesize\ttfamily void Track\+::slider\+Value\+Changed (\begin{DoxyParamCaption}\item[{Slider $\ast$}]{slider }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Called when a Slider is moved. 
+\begin{DoxyParams}{Parameters}
+{\em slider,use} & this for filtering the button that is actually pressed if (slider == decibel\+Slider) then... \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_track_ac9870b46d656c0390cbec57731d96d9e}\label{class_track_ac9870b46d656c0390cbec57731d96d9e}} 
+\index{Track@{Track}!comboBoxChanged@{comboBoxChanged}}
+\index{comboBoxChanged@{comboBoxChanged}!Track@{Track}}
+\subsubsection{\texorpdfstring{comboBoxChanged()}{comboBoxChanged()}}
+{\footnotesize\ttfamily void Track\+::combo\+Box\+Changed (\begin{DoxyParamCaption}\item[{Combo\+Box $\ast$}]{combo\+Box\+That\+Has\+Changed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Called when a Combo\+Box option is choosen (drop Down menu) . 
+\begin{DoxyParams}{Parameters}
+{\em combo\+Box\+That\+Has\+Changed,use} & this for filtering the button that is actually pressed if (combo\+Box\+That\+Has\+Changed == select\+Input) then... \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_track_a7dd5facb0d03d74f578b86b0280f33da}\label{class_track_a7dd5facb0d03d74f578b86b0280f33da}} 
+\index{Track@{Track}!labelTextChanged@{labelTextChanged}}
+\index{labelTextChanged@{labelTextChanged}!Track@{Track}}
+\subsubsection{\texorpdfstring{labelTextChanged()}{labelTextChanged()}}
+{\footnotesize\ttfamily void Track\+::label\+Text\+Changed (\begin{DoxyParamCaption}\item[{Label $\ast$}]{label\+That\+Has\+Changed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Called when a Label option is choosen (drop Down menu) . 
+\begin{DoxyParams}{Parameters}
+{\em label\+Text\+Changed,use} & this for filtering the button that is actually pressed if (label\+That\+Has\+Changed == select\+Input) then... \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_track_a84b1934243994bd64120e4cc79f8a054}\label{class_track_a84b1934243994bd64120e4cc79f8a054}} 
+\index{Track@{Track}!changeListenerCallback@{changeListenerCallback}}
+\index{changeListenerCallback@{changeListenerCallback}!Track@{Track}}
+\subsubsection{\texorpdfstring{changeListenerCallback()}{changeListenerCallback()}}
+{\footnotesize\ttfamily void Track\+::change\+Listener\+Callback (\begin{DoxyParamCaption}\item[{Change\+Broadcaster $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Called the inputs available from the Audio\+Device\+Manager changes, ~\newline
+ the callback is made listening to the A\+M\+Dinfo Wrapper \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_track_ac20c0787d81235fde26e08c133998450}{retrieve\+Inputs}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_track_ac20c0787d81235fde26e08c133998450}\label{class_track_ac20c0787d81235fde26e08c133998450}} 
+\index{Track@{Track}!retrieveInputs@{retrieveInputs}}
+\index{retrieveInputs@{retrieveInputs}!Track@{Track}}
+\subsubsection{\texorpdfstring{retrieveInputs()}{retrieveInputs()}}
+{\footnotesize\ttfamily void Track\+::retrieve\+Inputs (\begin{DoxyParamCaption}\item[{String}]{from\+Combo\+Box }\end{DoxyParamCaption})}
+
+It translates the inputs Strings from the Combo\+Box (ex \+: \char`\"{}1 + 2\char`\"{} or \char`\"{}1\char`\"{}), into channel references (inputL or inputR). \mbox{\Hypertarget{class_track_abf06d5a33a170a0c903f765a01fb6f23}\label{class_track_abf06d5a33a170a0c903f765a01fb6f23}} 
+\index{Track@{Track}!updateInputs@{updateInputs}}
+\index{updateInputs@{updateInputs}!Track@{Track}}
+\subsubsection{\texorpdfstring{updateInputs()}{updateInputs()}}
+{\footnotesize\ttfamily void Track\+::update\+Inputs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+When the Inputs available are changed, it updates the channel references (inputL or inputR). ~\newline
+ This is because sometimes if only input 1 and 3 are available, then input 3 is the channel (2) and not (3) \mbox{\Hypertarget{class_track_afc1af9074d7a5c729b787e35fef2ba8b}\label{class_track_afc1af9074d7a5c729b787e35fef2ba8b}} 
+\index{Track@{Track}!checkEvent@{checkEvent}}
+\index{checkEvent@{checkEvent}!Track@{Track}}
+\subsubsection{\texorpdfstring{checkEvent()}{checkEvent()}}
+{\footnotesize\ttfamily void Track\+::check\+Event (\begin{DoxyParamCaption}\item[{int}]{bar }\end{DoxyParamCaption})}
+
+It is called by the main\+Component each time we are close to the next Bar \+: ~\newline
+ Update the \mbox{\hyperlink{class_playback}{Playback}} Object what bar will be, ~\newline
+ Update the Recorder if it has to stop record \mbox{\Hypertarget{class_track_aeae974f2aacaf6f9139a2cfc12a67e8e}\label{class_track_aeae974f2aacaf6f9139a2cfc12a67e8e}} 
+\index{Track@{Track}!triggerEvent@{triggerEvent}}
+\index{triggerEvent@{triggerEvent}!Track@{Track}}
+\subsubsection{\texorpdfstring{triggerEvent()}{triggerEvent()}}
+{\footnotesize\ttfamily void Track\+::trigger\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+It is called by the main\+Component each time we get to a new Bar \+: ~\newline
+ Update the \mbox{\hyperlink{class_playback}{Playback}} Object what bar it is, and the playback eventually will trigger the sounds ~\newline
+ Update the Recorder if it has to start record \mbox{\Hypertarget{class_track_af1861edf6919ed15f3a370fe1069d1ec}\label{class_track_af1861edf6919ed15f3a370fe1069d1ec}} 
+\index{Track@{Track}!selectFolder@{selectFolder}}
+\index{selectFolder@{selectFolder}!Track@{Track}}
+\subsubsection{\texorpdfstring{selectFolder()}{selectFolder()}}
+{\footnotesize\ttfamily void Track\+::select\+Folder (\begin{DoxyParamCaption}\item[{String}]{name }\end{DoxyParamCaption})}
+
+It is the function that create a folder with the name of the \mbox{\hyperlink{class_track}{Track}}, it is called during initialisation and give the name of the actual Date and Hour,
+\begin{DoxyItemize}
+\item It is called each time the name is changed trhough the label\+Name\+Of\+Track 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/Track.\+h\item 
+Source/Track.\+cpp\end{DoxyCompactItemize}

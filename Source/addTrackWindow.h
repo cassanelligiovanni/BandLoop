@@ -73,14 +73,7 @@ public:
         const int timeOutMsWhenCancelling = 1000;
         bool wasCancelledByUser;
     
-       Label inputsLabel;
-    NamedValueSet& inputsLabelProperties = inputsLabel.getProperties();
-        ComboBox inputs;
-    NamedValueSet& inputsProperties = inputs.getProperties();
-         Label nameTrack;
-    NamedValueSet& nameTrackProperties = nameTrack.getProperties();
-        Label nameTrackLabel;
-    NamedValueSet& nameTrackLabelProperties = nameTrackLabel.getProperties();
+    bool toDestroy = false ;
     
     
     CustomLookAndFeel2 customLookAndFeel2;
