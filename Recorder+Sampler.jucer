@@ -3,36 +3,38 @@
 <JUCERPROJECT id="lYpEwJ" name="BandLoop" projectType="guiapp" jucerVersion="5.4.3">
   <MAINGROUP id="WzRhhu" name="BandLoop">
     <GROUP id="{9CC129A6-A8D3-8DE5-FF03-FDEA67D17DC7}" name="Assets">
-      <FILE id="MbONWi" name="StartPlayingButton.svg" compile="0" resource="1"
-            file="../Creative Cloud Files/SVG/StartPlayingButton.svg"/>
-      <FILE id="Jl5BfK" name="StopPlayingButton.svg" compile="0" resource="1"
-            file="../Creative Cloud Files/SVG/StopPlayingButton.svg"/>
-      <FILE id="IG4aQt" name="StartRecordingButton.svg" compile="0" resource="1"
-            file="../Creative Cloud Files/SVG/StartRecordingButton.svg"/>
-      <FILE id="WJuFnk" name="StopRecordingButton.svg" compile="0" resource="1"
-            file="../Creative Cloud Files/SVG/StopRecordingButton.svg"/>
-      <FILE id="Fp3oYr" name="BarPlayingOff.svg" compile="0" resource="1"
-            file="../Creative Cloud Files/SVG/BarPlayingOff.svg"/>
-      <FILE id="kN9U1E" name="BarPlayingOn.svg" compile="0" resource="1"
-            file="../Creative Cloud Files/SVG/BarPlayingOn.svg"/>
-      <FILE id="ZHP8bP" name="BarRecordingOff.svg" compile="0" resource="1"
-            file="../Creative Cloud Files/SVG/BarRecordingOff.svg"/>
-      <FILE id="ORb0zK" name="BarRecordingOn.svg" compile="0" resource="1"
-            file="../Creative Cloud Files/SVG/BarRecordingOn.svg"/>
+      <FILE id="kAJM2L" name="BarPlayingOff.svg" compile="0" resource="1"
+            file="Assets/BarPlayingOff.svg"/>
+      <FILE id="C3nedy" name="BarPlayingOn.svg" compile="0" resource="1"
+            file="Assets/BarPlayingOn.svg"/>
+      <FILE id="KxTIAF" name="BarRecordingOff.svg" compile="0" resource="1"
+            file="Assets/BarRecordingOff.svg"/>
+      <FILE id="Un4R1e" name="BarRecordingOn.svg" compile="0" resource="1"
+            file="Assets/BarRecordingOn.svg"/>
+      <FILE id="KKh0nl" name="BPMCounterOFF.svg" compile="0" resource="1"
+            file="Assets/BPMCounterOFF.svg"/>
+      <FILE id="c0fZm8" name="BPMCounterON.svg" compile="0" resource="1"
+            file="Assets/BPMCounterON.svg"/>
+      <FILE id="MHrDBv" name="BPMDisplay.svg" compile="0" resource="1" file="Assets/BPMDisplay.svg"/>
+      <FILE id="hSUHPX" name="DeleteTrack.svg" compile="0" resource="1" file="Assets/DeleteTrack.svg"/>
+      <FILE id="TbGX57" name="PlayButton.svg" compile="0" resource="1" file="Assets/PlayButton.svg"/>
+      <FILE id="fuzfiE" name="StartPlayingButton.svg" compile="0" resource="1"
+            file="Assets/StartPlayingButton.svg"/>
+      <FILE id="ZIuF7r" name="StartRecordingButton.svg" compile="0" resource="1"
+            file="Assets/StartRecordingButton.svg"/>
+      <FILE id="LQJlNQ" name="StopButton.svg" compile="0" resource="1" file="Assets/StopButton.svg"/>
+      <FILE id="qi0Y21" name="StopPlayingButton.svg" compile="0" resource="1"
+            file="Assets/StopPlayingButton.svg"/>
+      <FILE id="eCiLg5" name="StopRecordingButton.svg" compile="0" resource="1"
+            file="Assets/StopRecordingButton.svg"/>
       <FILE id="ohYv18" name="pedal.svg" compile="0" resource="1" file="../Downloads/pedal.svg"/>
       <FILE id="jzHfsg" name="one.wav" compile="0" resource="1" file="Assets/one.wav"/>
       <FILE id="EB1W68" name="two.wav" compile="0" resource="1" file="Assets/two.wav"/>
       <FILE id="cUruJz" name="Fader.png" compile="0" resource="1" file="Assets/Fader.png"/>
-      <FILE id="oqpsis" name="DeleteTrack.svg" compile="0" resource="1" file="../Creative Cloud Files/SVG/DeleteTrack.svg"/>
-      <FILE id="nzCaDQ" name="BPMCounterOFF.svg" compile="0" resource="1"
-            file="../Creative Cloud Files/SVG/BPMCounterOFF.svg"/>
-      <FILE id="P3lCc1" name="BPMDisplay.svg" compile="0" resource="1" file="../Creative Cloud Files/SVG/BPMDisplay.svg"/>
-      <FILE id="bQ8PLR" name="BPMCounterON.svg" compile="0" resource="1"
-            file="../Creative Cloud Files/SVG/BPMCounterON.svg"/>
-      <FILE id="rH1eiS" name="PlayButton.svg" compile="0" resource="1" file="../Creative Cloud Files/SVG/PlayButton.svg"/>
-      <FILE id="lKGNTo" name="StopButton.svg" compile="0" resource="1" file="../Creative Cloud Files/SVG/StopButton.svg"/>
     </GROUP>
     <GROUP id="{6693E86E-E98E-A342-CB31-EB44E9442E2B}" name="Unused">
+      <FILE id="IlTSnn" name="MasterTrack.cpp" compile="1" resource="0" file="Source/MasterTrack.cpp"/>
+      <FILE id="ngEsn3" name="MasterTrack.h" compile="0" resource="0" file="Source/MasterTrack.h"/>
       <FILE id="qvVNLd" name="PassthroughProcessor.cpp" compile="1" resource="0"
             file="Source/PassthroughProcessor.cpp"/>
       <FILE id="XyyJFj" name="PassthroughProcessor.h" compile="0" resource="0"
@@ -40,8 +42,6 @@
       <FILE id="LL6Z1C" name="GainProcessor.cpp" compile="1" resource="0"
             file="Source/GainProcessor.cpp"/>
       <FILE id="VjXgE2" name="GainProcessor.h" compile="0" resource="0" file="Source/GainProcessor.h"/>
-      <FILE id="UOvLQo" name="MasterTrack.cpp" compile="1" resource="0" file="../Creative Cloud Files/SVG/MasterTrack.cpp"/>
-      <FILE id="SgNEo3" name="MasterTrack.h" compile="0" resource="0" file="../Creative Cloud Files/SVG/MasterTrack.h"/>
       <FILE id="TVXPdl" name="addTrackWindow.cpp" compile="1" resource="0"
             file="Source/addTrackWindow.cpp"/>
       <FILE id="MYkxrB" name="addTrackWindow.h" compile="0" resource="0"

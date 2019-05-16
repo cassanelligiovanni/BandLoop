@@ -57,6 +57,10 @@
 			isa = PBXBuildFile;
 			fileRef = 1BF79DBFFE896DA0F6C9DCE6;
 		};
+		677F6C98B785FD2659BA005B = {
+			isa = PBXBuildFile;
+			fileRef = CC61DA62888A5059A871DAC3;
+		};
 		50597CCE60DE453F1B505ED7 = {
 			isa = PBXBuildFile;
 			fileRef = 6D9378B2862EB3BD06F57BCC;
@@ -64,10 +68,6 @@
 		C2D08BCDA59438F34F473EF7 = {
 			isa = PBXBuildFile;
 			fileRef = 4948AF488E7C133B8EDF290E;
-		};
-		2EA792649DDC7F74B093666C = {
-			isa = PBXBuildFile;
-			fileRef = A40599AE13315621FF27B01A;
 		};
 		9C034967540268041CE1EE22 = {
 			isa = PBXBuildFile;
@@ -275,11 +275,18 @@
 			path = ../../Source/CustomLookAndFeel.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
-		0B735BA74A87C0E78FA9A46B = {
+		0D5D92D784595F10B1457F77 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.svg;
-			name = StopRecordingButton.svg;
-			path = "../../../Creative Cloud Files/SVG/StopRecordingButton.svg";
+			name = BarPlayingOn.svg;
+			path = ../../Assets/BarPlayingOn.svg;
+			sourceTree = "SOURCE_ROOT";
+		};
+		0FB33A1DA92AE18084002542 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.svg;
+			name = StartRecordingButton.svg;
+			path = ../../Assets/StartRecordingButton.svg;
 			sourceTree = "SOURCE_ROOT";
 		};
 		0FCC07797B2CBE06A2E3BF1B = {
@@ -366,6 +373,13 @@
 			path = ../../Source/BPM.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
+		2442091ED965F4EA8D5065A1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.svg;
+			name = BarRecordingOff.svg;
+			path = ../../Assets/BarRecordingOff.svg;
+			sourceTree = "SOURCE_ROOT";
+		};
 		26FE6CEC11ED1DC5A6B6A21D = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -394,11 +408,32 @@
 			path = ../../Source/LightPressableButton.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		2F3142415B4D6AA4451F9F37 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.svg;
+			name = BPMCounterON.svg;
+			path = ../../Assets/BPMCounterON.svg;
+			sourceTree = "SOURCE_ROOT";
+		};
 		325DB30D7EC9724CF44575C1 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = LightPressableButton.cpp;
 			path = ../../Source/LightPressableButton.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
+		34BB5790350DFD441D731737 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.svg;
+			name = StartPlayingButton.svg;
+			path = ../../Assets/StartPlayingButton.svg;
+			sourceTree = "SOURCE_ROOT";
+		};
+		38495EC9DDF647B39463D3D1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.svg;
+			name = BarPlayingOff.svg;
+			path = ../../Assets/BarPlayingOff.svg;
 			sourceTree = "SOURCE_ROOT";
 		};
 		3AF7BEB89AF5B84F34115B54 = {
@@ -415,11 +450,11 @@
 			path = System/Library/Frameworks/CoreMIDI.framework;
 			sourceTree = SDKROOT;
 		};
-		3C570DD87C902C82241AC135 = {
+		3C595836934490CF37FEE199 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.svg;
-			name = StopButton.svg;
-			path = "../../../Creative Cloud Files/SVG/StopButton.svg";
+			name = StopRecordingButton.svg;
+			path = ../../Assets/StopRecordingButton.svg;
 			sourceTree = "SOURCE_ROOT";
 		};
 		3DCC200274B8FB9A503E8251 = {
@@ -450,18 +485,18 @@
 			path = ../../Source/AddTrackComponent.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		4762E446B5CE11B97A5E6354 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.svg;
+			name = StopPlayingButton.svg;
+			path = ../../Assets/StopPlayingButton.svg;
+			sourceTree = "SOURCE_ROOT";
+		};
 		4948AF488E7C133B8EDF290E = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = GainProcessor.cpp;
 			path = ../../Source/GainProcessor.cpp;
-			sourceTree = "SOURCE_ROOT";
-		};
-		4AF4489506E94E3F731D4EBA = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.svg;
-			name = DeleteTrack.svg;
-			path = "../../../Creative Cloud Files/SVG/DeleteTrack.svg";
 			sourceTree = "SOURCE_ROOT";
 		};
 		54093E5A7AB5AF761E289F27 = {
@@ -485,6 +520,13 @@
 			path = "../../ff_meters-master 2/LICENSE.md";
 			sourceTree = "SOURCE_ROOT";
 		};
+		55E823BD6A849276CB5057C6 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.svg;
+			name = BarRecordingOn.svg;
+			path = ../../Assets/BarRecordingOn.svg;
+			sourceTree = "SOURCE_ROOT";
+		};
 		581C154BDC36B5ADF8B89925 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -497,13 +539,6 @@
 			lastKnownFileType = sourcecode.c.h;
 			name = BPM.h;
 			path = ../../Source/BPM.h;
-			sourceTree = "SOURCE_ROOT";
-		};
-		5CD99C2C4451A67F803FA4E9 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.svg;
-			name = BarRecordingOn.svg;
-			path = "../../../Creative Cloud Files/SVG/BarRecordingOn.svg";
 			sourceTree = "SOURCE_ROOT";
 		};
 		5E36946CB40554A71BA56E66 = {
@@ -562,11 +597,11 @@
 			path = ../../Source/PassthroughProcessor.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
-		724B169479B07ED1FC83C14D = {
+		70979E7E98D3FD46974A8F55 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.svg;
-			name = StartRecordingButton.svg;
-			path = "../../../Creative Cloud Files/SVG/StartRecordingButton.svg";
+			name = BPMCounterOFF.svg;
+			path = ../../Assets/BPMCounterOFF.svg;
 			sourceTree = "SOURCE_ROOT";
 		};
 		7565BFB0837C7BD11B2B28DB = {
@@ -604,6 +639,13 @@
 			path = "../../ff_meters-master 2/ff_meters_LevelMeter.h";
 			sourceTree = "SOURCE_ROOT";
 		};
+		802C15A1C7C9BF2703C8FEBB = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.svg;
+			name = PlayButton.svg;
+			path = ../../Assets/PlayButton.svg;
+			sourceTree = "SOURCE_ROOT";
+		};
 		810110289174935A0F03076F = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -616,13 +658,6 @@
 			lastKnownFileType = sourcecode.c.h;
 			name = GainProcessor.h;
 			path = ../../Source/GainProcessor.h;
-			sourceTree = "SOURCE_ROOT";
-		};
-		843CC971FA6B53DA7BC61D3B = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.svg;
-			name = BPMCounterOFF.svg;
-			path = "../../../Creative Cloud Files/SVG/BPMCounterOFF.svg";
 			sourceTree = "SOURCE_ROOT";
 		};
 		859220CE6541F0174C72CAC1 = {
@@ -667,6 +702,13 @@
 			path = System/Library/Frameworks/Carbon.framework;
 			sourceTree = SDKROOT;
 		};
+		8EEE8BA5E85B361E2F00032F = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = MasterTrack.h;
+			path = ../../Source/MasterTrack.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		909854405C7CA316BD747EF0 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -688,13 +730,6 @@
 			path = ../../Source/Track.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		97B698F5E760252A906F10F8 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.svg;
-			name = BarRecordingOff.svg;
-			path = "../../../Creative Cloud Files/SVG/BarRecordingOff.svg";
-			sourceTree = "SOURCE_ROOT";
-		};
 		989BA6CC4600C366601AE768 = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -709,11 +744,11 @@
 			path = ../../JuceLibraryCode/JuceHeader.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		9BD8C3BAA3D2293CF6CF987C = {
+		9C49AA872CE9F1DE2637DFB1 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.svg;
-			name = PlayButton.svg;
-			path = "../../../Creative Cloud Files/SVG/PlayButton.svg";
+			name = BPMDisplay.svg;
+			path = ../../Assets/BPMDisplay.svg;
 			sourceTree = "SOURCE_ROOT";
 		};
 		9E7BA632082DED90FEBAA997 = {
@@ -730,13 +765,6 @@
 			path = ../../Source/PassthroughProcessor.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		9FFE7316ADC40995728CE2DD = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.svg;
-			name = StartPlayingButton.svg;
-			path = "../../../Creative Cloud Files/SVG/StartPlayingButton.svg";
-			sourceTree = "SOURCE_ROOT";
-		};
 		A3C4B09A09907EDA0B620E8C = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -744,18 +772,18 @@
 			path = ../../Source/Fader.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
-		A40599AE13315621FF27B01A = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = MasterTrack.cpp;
-			path = "../../../Creative Cloud Files/SVG/MasterTrack.cpp";
-			sourceTree = "SOURCE_ROOT";
-		};
 		A46DD6212783443B40A8D40E = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
 			name = "ff_meters_StereoFieldBuffer.h";
 			path = "../../ff_meters-master 2/ff_meters_StereoFieldBuffer.h";
+			sourceTree = "SOURCE_ROOT";
+		};
+		A4BA60EEAC91239E22A03652 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.svg;
+			name = DeleteTrack.svg;
+			path = ../../Assets/DeleteTrack.svg;
 			sourceTree = "SOURCE_ROOT";
 		};
 		A6063D908EC05C09E2720A30 = {
@@ -779,11 +807,11 @@
 			path = ../../JuceLibraryCode/AppConfig.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		AC425BC849713F4E1B2F6BEC = {
+		AB4797E1C1163A4AE7841AA7 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.svg;
-			name = BarPlayingOn.svg;
-			path = "../../../Creative Cloud Files/SVG/BarPlayingOn.svg";
+			name = StopButton.svg;
+			path = ../../Assets/StopButton.svg;
 			sourceTree = "SOURCE_ROOT";
 		};
 		B05700CB40E607578213FC5C = {
@@ -842,13 +870,6 @@
 			path = ../../Source/Sound.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
-		C621499E14234B468D1658BB = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.svg;
-			name = BPMDisplay.svg;
-			path = "../../../Creative Cloud Files/SVG/BPMDisplay.svg";
-			sourceTree = "SOURCE_ROOT";
-		};
 		C924F4123B6C0B86F637A0FF = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -861,6 +882,13 @@
 			lastKnownFileType = file.wav;
 			name = two.wav;
 			path = ../../Assets/two.wav;
+			sourceTree = "SOURCE_ROOT";
+		};
+		CC61DA62888A5059A871DAC3 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = MasterTrack.cpp;
+			path = ../../Source/MasterTrack.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
 		CDC3EB62EEB97702D8A8012B = {
@@ -905,32 +933,11 @@
 			path = "../../JuceLibraryCode/include_juce_cryptography.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
-		DB5B46A995F8DD56196F2CCD = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.svg;
-			name = BPMCounterON.svg;
-			path = "../../../Creative Cloud Files/SVG/BPMCounterON.svg";
-			sourceTree = "SOURCE_ROOT";
-		};
 		DDA0FD03075181B81AD08CE1 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
 			name = Doxyfile;
 			path = "../../ff_meters-master 2/Doxyfile";
-			sourceTree = "SOURCE_ROOT";
-		};
-		DF9674F7A120435DD1B7A3BE = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.svg;
-			name = StopPlayingButton.svg;
-			path = "../../../Creative Cloud Files/SVG/StopPlayingButton.svg";
-			sourceTree = "SOURCE_ROOT";
-		};
-		E484F199B555F82B2815516E = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = MasterTrack.h;
-			path = "../../../Creative Cloud Files/SVG/MasterTrack.h";
 			sourceTree = "SOURCE_ROOT";
 		};
 		E5B95E0AB2F2DDDF89AF3635 = {
@@ -1024,13 +1031,6 @@
 			path = ../../Source/addTrackWindow.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
-		F804C9A64F372330C4C10787 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.svg;
-			name = BarPlayingOff.svg;
-			path = "../../../Creative Cloud Files/SVG/BarPlayingOff.svg";
-			sourceTree = "SOURCE_ROOT";
-		};
 		F8E4016D1C4E12A8CFBACA31 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -1048,24 +1048,24 @@
 		27CBFB398CA1B0B13CA3BC6A = {
 			isa = PBXGroup;
 			children = (
-				9FFE7316ADC40995728CE2DD,
-				DF9674F7A120435DD1B7A3BE,
-				724B169479B07ED1FC83C14D,
-				0B735BA74A87C0E78FA9A46B,
-				F804C9A64F372330C4C10787,
-				AC425BC849713F4E1B2F6BEC,
-				97B698F5E760252A906F10F8,
-				5CD99C2C4451A67F803FA4E9,
+				38495EC9DDF647B39463D3D1,
+				0D5D92D784595F10B1457F77,
+				2442091ED965F4EA8D5065A1,
+				55E823BD6A849276CB5057C6,
+				70979E7E98D3FD46974A8F55,
+				2F3142415B4D6AA4451F9F37,
+				9C49AA872CE9F1DE2637DFB1,
+				A4BA60EEAC91239E22A03652,
+				802C15A1C7C9BF2703C8FEBB,
+				34BB5790350DFD441D731737,
+				0FB33A1DA92AE18084002542,
+				AB4797E1C1163A4AE7841AA7,
+				4762E446B5CE11B97A5E6354,
+				3C595836934490CF37FEE199,
 				CF5A4BDA0BA177FAE6CD7BF5,
 				CFD0F4EF6B0CB6529BA580D4,
 				CC24C15C8F9F6E853B44B8B6,
 				17F5EB8C616BCE5EE5B42A2F,
-				4AF4489506E94E3F731D4EBA,
-				843CC971FA6B53DA7BC61D3B,
-				C621499E14234B468D1658BB,
-				DB5B46A995F8DD56196F2CCD,
-				9BD8C3BAA3D2293CF6CF987C,
-				3C570DD87C902C82241AC135,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -1073,12 +1073,12 @@
 		27397325A2D9EB2766BC27E1 = {
 			isa = PBXGroup;
 			children = (
+				CC61DA62888A5059A871DAC3,
+				8EEE8BA5E85B361E2F00032F,
 				6D9378B2862EB3BD06F57BCC,
 				9FCF51DA145B7923B6C862E4,
 				4948AF488E7C133B8EDF290E,
 				8294E4DBAF83A293A16512F6,
-				A40599AE13315621FF27B01A,
-				E484F199B555F82B2815516E,
 				F7DFD5005202EECD0E6D56ED,
 				127B44143E8F397A78F68275,
 				FF88CBEBAA0487274114E737,
@@ -1454,9 +1454,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				677F6C98B785FD2659BA005B,
 				50597CCE60DE453F1B505ED7,
 				C2D08BCDA59438F34F473EF7,
-				2EA792649DDC7F74B093666C,
 				9C034967540268041CE1EE22,
 				7923A1236F5C429C064A8B22,
 				3D377DAD5D368490A373EDF8,

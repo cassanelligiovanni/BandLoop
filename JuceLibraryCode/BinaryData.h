@@ -8,18 +8,6 @@
 
 namespace BinaryData
 {
-    extern const char*   StartPlayingButton_svg;
-    const int            StartPlayingButton_svgSize = 1932;
-
-    extern const char*   StopPlayingButton_svg;
-    const int            StopPlayingButton_svgSize = 501;
-
-    extern const char*   StartRecordingButton_svg;
-    const int            StartRecordingButton_svgSize = 1634;
-
-    extern const char*   StopRecordingButton_svg;
-    const int            StopRecordingButton_svgSize = 1848;
-
     extern const char*   BarPlayingOff_svg;
     const int            BarPlayingOff_svgSize = 6046;
 
@@ -32,6 +20,36 @@ namespace BinaryData
     extern const char*   BarRecordingOn_svg;
     const int            BarRecordingOn_svgSize = 13325;
 
+    extern const char*   BPMCounterOFF_svg;
+    const int            BPMCounterOFF_svgSize = 3533;
+
+    extern const char*   BPMCounterON_svg;
+    const int            BPMCounterON_svgSize = 5484;
+
+    extern const char*   BPMDisplay_svg;
+    const int            BPMDisplay_svgSize = 358;
+
+    extern const char*   DeleteTrack_svg;
+    const int            DeleteTrack_svgSize = 1496;
+
+    extern const char*   PlayButton_svg;
+    const int            PlayButton_svgSize = 1575;
+
+    extern const char*   StartPlayingButton_svg;
+    const int            StartPlayingButton_svgSize = 1932;
+
+    extern const char*   StartRecordingButton_svg;
+    const int            StartRecordingButton_svgSize = 1634;
+
+    extern const char*   StopButton_svg;
+    const int            StopButton_svgSize = 1347;
+
+    extern const char*   StopPlayingButton_svg;
+    const int            StopPlayingButton_svgSize = 501;
+
+    extern const char*   StopRecordingButton_svg;
+    const int            StopRecordingButton_svgSize = 1848;
+
     extern const char*   pedal_svg;
     const int            pedal_svgSize = 2304;
 
@@ -43,24 +61,6 @@ namespace BinaryData
 
     extern const char*   Fader_png;
     const int            Fader_pngSize = 11346;
-
-    extern const char*   DeleteTrack_svg;
-    const int            DeleteTrack_svgSize = 1496;
-
-    extern const char*   BPMCounterOFF_svg;
-    const int            BPMCounterOFF_svgSize = 3533;
-
-    extern const char*   BPMDisplay_svg;
-    const int            BPMDisplay_svgSize = 358;
-
-    extern const char*   BPMCounterON_svg;
-    const int            BPMCounterON_svgSize = 5484;
-
-    extern const char*   PlayButton_svg;
-    const int            PlayButton_svgSize = 1575;
-
-    extern const char*   StopButton_svg;
-    const int            StopButton_svgSize = 1347;
 
     extern const char*   Doxyfile;
     const int            DoxyfileSize = 79645;

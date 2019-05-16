@@ -7,56 +7,8 @@
 namespace BinaryData
 {
 
-//================== StartPlayingButton.svg ==================
-static const unsigned char temp_binary_data_0[] =
-"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 122 141.22\"><defs><style>.b378a933-8009-422f-8106-831576029945{fill:url(#e8e796cb-62f2-40b6-8b12-ace6d5104034);}.e24b2d5f-9b81-4012-b021-708b55995fb"
-"9{fill:url(#a2baece0-59ad-42f7-8e91-b6e6f687fc5e);}</style><linearGradient id=\"e8e796cb-62f2-40b6-8b12-ace6d5104034\" x1=\"-139.79\" y1=\"72.95\" x2=\"819.43\" y2=\"59.1\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.05\" stop-color=\"lime\"/><"
-"stop offset=\"0.1\" stop-color=\"#05e104\"/><stop offset=\"0.16\" stop-color=\"#0abd09\"/><stop offset=\"0.23\" stop-color=\"#0fa00e\"/><stop offset=\"0.3\" stop-color=\"#128911\"/><stop offset=\"0.38\" stop-color=\"#157913\"/><stop offset=\"0.46\" s"
-"top-color=\"#176f15\"/><stop offset=\"0.57\" stop-color=\"#176c15\"/></linearGradient><linearGradient id=\"a2baece0-59ad-42f7-8e91-b6e6f687fc5e\" x1=\"531.05\" y1=\"70.16\" x2=\"-971.93\" y2=\"71.49\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0"
-".05\" stop-color=\"lime\"/><stop offset=\"0.13\" stop-color=\"#05e104\"/><stop offset=\"0.25\" stop-color=\"#0abd09\"/><stop offset=\"0.37\" stop-color=\"#0fa00e\"/><stop offset=\"0.5\" stop-color=\"#128911\"/><stop offset=\"0.64\" stop-color=\"#1579"
-"13\"/><stop offset=\"0.8\" stop-color=\"#176f15\"/><stop offset=\"1\" stop-color=\"#176c15\"/></linearGradient></defs><title>StartPlayingButton</title><g id=\"af346b9f-6c49-46f0-9370-fd7f2726fba7\" data-name=\"Layer 2\"><g id=\"ad34f4d3-b8fa-49c6-b48"
-"f-4f6f45536ee2\" data-name=\"Layer 1\"><g id=\"a40481cb-61c0-4b59-8b62-0c1e6d8df98a\" data-name=\"PlayButton\"><path class=\"b378a933-8009-422f-8106-831576029945\" d=\"M22.23,141.22C10,141.22,0,130.71,0,117.8V23.42C0,10.51,10,0,22.23,0A21.33,21.33,0,"
-"0,1,33.32,3.16l77.57,47.18a24,24,0,0,1,0,40.54L33.32,138.06a21.33,21.33,0,0,1-11.09,3.16Z\"/><path class=\"e24b2d5f-9b81-4012-b021-708b55995fb9\" d=\"M109.13,60.59l-82-49.88a11.73,11.73,0,0,0-17.83,10v99.76a11.73,11.73,0,0,0,17.83,10l82-49.88A11.73,1"
-"1.73,0,0,0,109.13,60.59Z\"/></g></g></g></svg>";
-
-const char* StartPlayingButton_svg = (const char*) temp_binary_data_0;
-
-//================== StopPlayingButton.svg ==================
-static const unsigned char temp_binary_data_1[] =
-"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 175 193\"><defs><style>.af8e091d-cc74-4a2f-ade6-c8e408d9bcbb{fill:#fcee21;}</style></defs><title>StopPlayingButton_2</title><g id=\"f9978a4b-82d6-4ea2-82f6-aa7a4a7e4b8d\" data-name=\"Layer 2\"><"
-"g id=\"e392abfd-7d13-408a-a058-f627996ee9a6\" data-name=\"Layer 1\"><rect class=\"af8e091d-cc74-4a2f-ade6-c8e408d9bcbb\" width=\"77\" height=\"193\" rx=\"21.95\"/><rect class=\"af8e091d-cc74-4a2f-ade6-c8e408d9bcbb\" x=\"98\" width=\"77\" height=\"193"
-"\" rx=\"21.95\"/></g></g></svg>";
-
-const char* StopPlayingButton_svg = (const char*) temp_binary_data_1;
-
-//================== StartRecordingButton.svg ==================
-static const unsigned char temp_binary_data_2[] =
-"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 139 141\"><defs><style>.a9107882-f8f5-4102-bc96-2c5052eb5419{fill:url(#b7e1aac9-18f7-4916-90dd-cac53af65d3c);}.acc26953-d2df-42cc-b65d-c690bccd6df4{f"
-"ill:url(#f0634662-11ab-458b-bea1-6f52611fd1b3);}</style><linearGradient id=\"b7e1aac9-18f7-4916-90dd-cac53af65d3c\" x1=\"-183.35\" y1=\"68.61\" x2=\"824.2\" y2=\"76.14\" gradientTransform=\"translate(-1 140) rotate(-90)\" gradientUnits=\"userSpaceOnU"
-"se\"><stop offset=\"0.05\" stop-color=\"#ed1c24\"/><stop offset=\"0.17\" stop-color=\"#cc181f\"/><stop offset=\"0.38\" stop-color=\"#981217\"/><stop offset=\"0.57\" stop-color=\"#700d11\"/><stop offset=\"0.74\" stop-color=\"#530a0d\"/><stop offset=\""
-"0.89\" stop-color=\"#41080a\"/><stop offset=\"1\" stop-color=\"#3b0709\"/></linearGradient><linearGradient id=\"f0634662-11ab-458b-bea1-6f52611fd1b3\" x1=\"189.12\" y1=\"69.36\" x2=\"-310.35\" y2=\"74.11\" gradientUnits=\"userSpaceOnUse\"><stop offse"
-"t=\"0.06\" stop-color=\"#ed1c24\"/><stop offset=\"0.08\" stop-color=\"#e81b23\"/><stop offset=\"0.41\" stop-color=\"#9f1318\"/><stop offset=\"0.69\" stop-color=\"#690c10\"/><stop offset=\"0.89\" stop-color=\"#48080b\"/><stop offset=\"1\" stop-color=\""
-"#3b0709\"/></linearGradient></defs><title>StartRecordingButton</title><g id=\"ef985773-9134-4800-8c2e-210192532167\" data-name=\"Layer 2\"><g id=\"a0f3f064-7911-4ca8-9fe6-fa508d76eb80\" data-name=\"Layer 1\"><rect class=\"a9107882-f8f5-4102-bc96-2c50"
-"52eb5419\" x=\"-1\" y=\"1\" width=\"141\" height=\"139\" rx=\"68.09\" transform=\"translate(140 1) rotate(90)\"/><rect class=\"acc26953-d2df-42cc-b65d-c690bccd6df4\" x=\"9.37\" y=\"9.51\" width=\"120.26\" height=\"121.99\" rx=\"55.76\"/></g></g></svg"
-">";
-
-const char* StartRecordingButton_svg = (const char*) temp_binary_data_2;
-
-//================== StopRecordingButton.svg ==================
-static const unsigned char temp_binary_data_3[] =
-"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 110.99 119.76\"><defs><style>.fb645c76-3239-46a9-aa27-5c923f15d285{fill:url(#e9cd8186-5074-4a3a-9cbc-2f8fefb8a5e8);}.a7c4c3ae-b71b-4cf1-b522-f7e824f3"
-"24e0{fill:url(#f0fbf7a4-1a91-4e42-aaf5-9fe01046b2c2);}</style><linearGradient id=\"e9cd8186-5074-4a3a-9cbc-2f8fefb8a5e8\" x1=\"-73.69\" y1=\"21.03\" x2=\"574.2\" y2=\"25.87\" gradientTransform=\"matrix(0, -1.24, 1.34, 0, 25.65, 170.33)\" gradientUnit"
-"s=\"userSpaceOnUse\"><stop offset=\"0.05\" stop-color=\"#ed1c24\"/><stop offset=\"0.17\" stop-color=\"#cc181f\"/><stop offset=\"0.38\" stop-color=\"#981217\"/><stop offset=\"0.57\" stop-color=\"#700d11\"/><stop offset=\"0.74\" stop-color=\"#530a0d\"/"
-"><stop offset=\"0.89\" stop-color=\"#41080a\"/><stop offset=\"1\" stop-color=\"#3b0709\"/></linearGradient><linearGradient id=\"f0fbf7a4-1a91-4e42-aaf5-9fe01046b2c2\" x1=\"165.94\" y1=\"21.52\" x2=\"-155.72\" y2=\"24.57\" gradientTransform=\"translat"
-"e(-54.95 30.04) scale(1.24 1.34)\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.06\" stop-color=\"#ed1c24\"/><stop offset=\"0.08\" stop-color=\"#e81b23\"/><stop offset=\"0.41\" stop-color=\"#9f1318\"/><stop offset=\"0.69\" stop-color=\"#690c10\""
-"/><stop offset=\"0.89\" stop-color=\"#48080b\"/><stop offset=\"1\" stop-color=\"#3b0709\"/></linearGradient></defs><title>StopRecordingButton</title><g id=\"a3d1b255-12c5-4738-b290-a39cd3e890ae\" data-name=\"Layer 2\"><g id=\"ee171c8a-eada-4b80-9f24-"
-"f4a3a4a1a2e1\" data-name=\"Layer 1\"><g id=\"b23b142a-9604-4fb2-ada5-4cc038de0238\" data-name=\"StopButton\"><rect class=\"fb645c76-3239-46a9-aa27-5c923f15d285\" x=\"-4.2\" y=\"4.6\" width=\"119.39\" height=\"110.56\" rx=\"23.24\" transform=\"transla"
-"te(115.05 4.04) rotate(89.67)\"/><rect class=\"a7c4c3ae-b71b-4cf1-b522-f7e824f324e0\" x=\"7.67\" y=\"8.23\" width=\"95.66\" height=\"103.29\" rx=\"15.49\" transform=\"translate(-0.35 0.32) rotate(-0.33)\"/></g></g></g></svg>";
-
-const char* StopRecordingButton_svg = (const char*) temp_binary_data_3;
-
 //================== BarPlayingOff.svg ==================
-static const unsigned char temp_binary_data_4[] =
+static const unsigned char temp_binary_data_0[] =
 "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 60 60\"><defs><style>.a89eaa10-0a98-48bb-b99e-105dbd9bd004{fill:url(#ef58090e-b029-4696-b508-c5fe1bc0d1b6);}.f4db86cc-0cf2-4cd1-b6d6-c5495f1a272c{fil"
 "l:url(#a76b1717-5507-4cd9-99d2-242dcd2bbd12);}.aaa42d43-3380-41f7-a81d-9bfddafb53f5{fill:#5e6756;}.b0b54088-395f-4348-802f-0230c3f99411{fill:#5f6857;}.fbbf5da6-3897-4ec9-a3f8-9649841b3f88{fill:#606958;}.bf3377c8-629a-403e-ad2c-0fca64402670{fill:#616a"
 "59;}.b7fde9a2-4438-42a7-8a40-088fd36b5eb3{fill:#626a5a;}.e97210d3-3110-456b-b0cb-96aae9b1c928{fill:#636b5b;}.a6c7d82b-6866-4fb7-a13a-4aacf3a6e74d{fill:#646c5c;}.f984287c-34e0-4e52-8e1d-b97838cd7050{fill:#646d5d;}.bb3766fd-4159-4502-beb0-b9d286052438{"
@@ -84,10 +36,10 @@ static const unsigned char temp_binary_data_4[] =
 "0\" cy=\"34.57\" r=\"11.86\"/><circle class=\"ed88942a-249f-4aac-8636-8dd99c5af8d6\" cx=\"30\" cy=\"34.71\" r=\"11.42\"/><circle class=\"b3d9ce77-36a0-4507-bcad-f19119b9ccd2\" cx=\"30\" cy=\"34.85\" r=\"10.98\"/><circle class=\"a93212fd-e2b7-4f54-adb"
 "4-cd06078ba274\" cx=\"30\" cy=\"34.99\" r=\"10.54\"/><circle class=\"b5395449-dec7-463e-ad2f-aff9007fc83f\" cx=\"30\" cy=\"35.14\" r=\"10.1\"/></g></g></g></svg>";
 
-const char* BarPlayingOff_svg = (const char*) temp_binary_data_4;
+const char* BarPlayingOff_svg = (const char*) temp_binary_data_0;
 
 //================== BarPlayingOn.svg ==================
-static const unsigned char temp_binary_data_5[] =
+static const unsigned char temp_binary_data_1[] =
 "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 60 60\"><defs><style>.b1fed799-9041-4cb6-bf4c-84444d7bf607{fill:url(#a7ccef17-f8ad-4c6b-9b6c-aaabf3f54257);}.b0aba6f6-0d7c-4ace-acac-3494ed83a7a8{fil"
 "l:url(#ae6d2a0c-88b0-43f6-b27b-5e45dc7b429c);}.aa77f142-afac-40b1-a0ea-0447d837493b{fill:#4eb719;}.bbb6a006-ecef-44ba-b6de-2f2fbb8d51a6{fill:#4fb819;}.f8ba3765-cd70-4b94-a7b7-5f74bd7ef5d3{fill:#50b919;}.f352e88e-de02-40b1-a8e1-6b935c6ea612{fill:#50ba"
 "19;}.ae51cb8d-08bb-41f9-9abb-6545d2762d26{fill:#51bb1a;}.a677358e-5170-4d16-a74f-0df2479fc550{fill:#52bc1a;}.f5e2bee4-ba77-4e56-9b84-2378a1e8cfba{fill:#53bd1a;}.bd8c2d30-0060-479d-93ce-52a8265fe0f5{fill:#53be1a;}.af853c8e-9c58-4990-8c28-63fdf0ab82ac{"
@@ -130,10 +82,10 @@ static const unsigned char temp_binary_data_5[] =
 "<circle class=\"abf3b29d-b731-4fb4-bc9f-d45984de0443\" cx=\"30\" cy=\"34.89\" r=\"10.86\"/><circle class=\"a101f93c-a85c-41d1-ac8b-ddf2099144f1\" cx=\"30\" cy=\"34.97\" r=\"10.61\"/><circle class=\"e66b187f-7668-4e1b-a658-b50d4759d731\" cx=\"30\" cy="
 "\"35.05\" r=\"10.35\"/><circle class=\"b82d6381-0333-4d1c-bf37-53049c78d88d\" cx=\"30\" cy=\"35.14\" r=\"10.1\"/></g></g></g></svg>";
 
-const char* BarPlayingOn_svg = (const char*) temp_binary_data_5;
+const char* BarPlayingOn_svg = (const char*) temp_binary_data_1;
 
 //================== BarRecordingOff.svg ==================
-static const unsigned char temp_binary_data_6[] =
+static const unsigned char temp_binary_data_2[] =
 "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 60 60\"><defs><style>.a0fb944f-586b-45a4-9f7e-1d4d87523f8b{fill:url(#a788b5c0-b1a4-43db-be2b-46fa9e12e183);}.ab200a83-b832-4e21-9f2c-d28c9ca5bf01{fil"
 "l:url(#f04563fd-985a-4951-ae98-2e75f9c3ec0a);}.f16f971d-403b-443a-b353-baabb37409bb{fill:#665656;}.a5573c46-43cf-47d7-a3c9-476f4893a2e8{fill:#675757;}.f834b958-5c66-47b0-80eb-976ae74ffef7{fill:#685858;}.f19d9545-dbdc-4518-88ee-f1088b5daa34{fill:#6959"
 "59;}.f9f725d7-9d78-4593-bca7-06353fd564a4{fill:#695a5a;}.b99d5a97-25f8-4882-83c6-db2ccc6bf5de{fill:#6a5b5b;}.e4bda831-22e1-441c-b2c6-aabed960d7f4{fill:#6b5c5c;}.aab347a5-9ac3-496f-8d54-11120eb91091{fill:#6c5d5d;}.b8c57929-314a-479a-8d9b-89ca5f4bfbaa{"
@@ -161,10 +113,10 @@ static const unsigned char temp_binary_data_6[] =
 "e class=\"a5c39c2e-c56c-4c17-8504-3fc378a75aab\" cx=\"30\" cy=\"34.57\" r=\"11.86\"/><circle class=\"b6139039-ddf3-4273-8100-2a34992ff9f8\" cx=\"30\" cy=\"34.71\" r=\"11.42\"/><circle class=\"a93a9b8f-5473-4e73-a459-f36db2417d45\" cx=\"30\" cy=\"34.8"
 "5\" r=\"10.98\"/><circle class=\"ba436f41-ff3f-4792-b8e7-94de15160389\" cx=\"30\" cy=\"34.99\" r=\"10.54\"/><circle class=\"a66a2e31-e306-464a-9b7e-f43fa01d3ead\" cx=\"30\" cy=\"35.14\" r=\"10.1\"/></g></g></g></svg>";
 
-const char* BarRecordingOff_svg = (const char*) temp_binary_data_6;
+const char* BarRecordingOff_svg = (const char*) temp_binary_data_2;
 
 //================== BarRecordingOn.svg ==================
-static const unsigned char temp_binary_data_7[] =
+static const unsigned char temp_binary_data_3[] =
 "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 60 60\"><defs><style>.bca57f10-9ce6-43a6-a661-cfaef69c682d{fill:url(#ab34060d-a4a1-4cbc-8364-d507c9b95c16);}.e51bef34-ad65-4f8f-9dd1-b71c5a430da5{fil"
 "l:url(#ae47062a-5781-4fc5-a555-d5ad9d054d4e);}.fc3d02aa-dd92-4fb0-8f76-cab95835eee2{fill:#991a1a;}.a21206bf-f0e1-46af-b201-5b55b7b8e40d{fill:#9a1a1a;}.e7770041-3791-4580-87a2-1e036935d336{fill:#9b1a1a;}.ab314b2b-8dd9-4f5a-a4af-505e5c44d76d{fill:#9c1a"
 "1a;}.e0468f29-0ac4-4e47-a4c1-a06f84d3040f{fill:#9d1a1a;}.aa925bd3-02b3-482a-9ad9-6a64b7186474{fill:#9e1a1a;}.ff5d7293-c494-4964-b21e-0ab097716245{fill:#9f1b1b;}.f3d084ef-d81a-4ceb-9320-958d37d432e7{fill:#a01b1b;}.f571a2b1-7eb5-4246-9fc6-7b64c0f5afcb{"
@@ -223,10 +175,151 @@ static const unsigned char temp_binary_data_7[] =
 "lass=\"b1a7fd72-1b1b-4fa2-bdf0-711823022455\" cx=\"30\" cy=\"34.97\" r=\"10.63\"/><circle class=\"a956d8a8-a9b6-4c31-95b7-23f280b92254\" cx=\"30\" cy=\"35.02\" r=\"10.45\"/><circle class=\"f2eed5cb-8883-4c91-9735-c0af608b9c90\" cx=\"30\" cy=\"35.08\""
 " r=\"10.27\"/><circle class=\"aff4daca-d391-4470-93a0-58684b31c7ca\" cx=\"30\" cy=\"35.14\" r=\"10.1\"/></g></g></g></svg>";
 
-const char* BarRecordingOn_svg = (const char*) temp_binary_data_7;
+const char* BarRecordingOn_svg = (const char*) temp_binary_data_3;
+
+//================== BPMCounterOFF.svg ==================
+static const unsigned char temp_binary_data_4[] =
+"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 60 60\"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}.cls-3{fill:#5e6756;}.cls-4{fill:#5f6857;}.cls-5{fill:#6"
+"06958;}.cls-6{fill:#616a59;}.cls-7{fill:#626a5a;}.cls-8{fill:#636b5b;}.cls-9{fill:#646c5c;}.cls-10{fill:#646d5d;}.cls-11{fill:#656e5e;}.cls-12{fill:#666f5f;}.cls-13{fill:#677060;}.cls-14{fill:#687061;}.cls-15{fill:#697162;}.cls-16{fill:#6a7263;}.cls-"
+"17{fill:#6b7364;}.cls-18{fill:#6c7465;}.cls-19{fill:#6d7566;}.cls-20{fill:#6e7667;}.cls-21{fill:#6f7768;}.cls-22{fill:#707869;}.cls-23{fill:#71796a;}.cls-24{fill:#727a6b;}.cls-25{fill:#737b6c;}.cls-26{fill:#747c6d;}.cls-27{fill:#757d6e;}.cls-28{fill:"
+"#767d6f;}.cls-29{fill:#777e70;}.cls-30{fill:#787f71;}.cls-31{fill:#798072;}.cls-32{fill:#798173;}.cls-33{fill:#7a8274;}.cls-34{fill:#7b8375;}.cls-35{fill:#7c8376;}.cls-36{fill:#7d8477;}.cls-37{fill:#7e8578;}.cls-38{fill:#7f8679;}</style><linearGradie"
+"nt id=\"linear-gradient\" x1=\"-96.2\" y1=\"30\" x2=\"68.71\" y2=\"30\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.14\" stop-color=\"#fff\"/><stop offset=\"1\"/></linearGradient><linearGradient id=\"linear-gradient-2\" x1=\"-87.79\" y1=\"30\" "
+"x2=\"66.13\" y2=\"30\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.14\" stop-color=\"#afb3ab\"/><stop offset=\"1\" stop-color=\"#41433b\"/></linearGradient></defs><title>BPMCounterOFF</title><g id=\"Layer_2\" data-name=\"Layer 2\"><g id=\"Layer"
+"_1-2\" data-name=\"Layer 1\"><g id=\"bpmON\"><circle class=\"cls-1\" cx=\"30\" cy=\"30\" r=\"30\"/><circle class=\"cls-2\" cx=\"30\" cy=\"30\" r=\"28\"/><circle class=\"cls-3\" cx=\"30\" cy=\"30\" r=\"26\"/><circle class=\"cls-4\" cx=\"30\" cy=\"30.1"
+"4\" r=\"25.56\"/><circle class=\"cls-5\" cx=\"30\" cy=\"30.29\" r=\"25.12\"/><circle class=\"cls-6\" cx=\"30\" cy=\"30.43\" r=\"24.67\"/><circle class=\"cls-7\" cx=\"30\" cy=\"30.57\" r=\"24.23\"/><circle class=\"cls-8\" cx=\"30\" cy=\"30.71\" r=\"23"
+".79\"/><circle class=\"cls-9\" cx=\"30\" cy=\"30.86\" r=\"23.35\"/><circle class=\"cls-10\" cx=\"30\" cy=\"31\" r=\"22.91\"/><circle class=\"cls-11\" cx=\"30\" cy=\"31.14\" r=\"22.47\"/><circle class=\"cls-12\" cx=\"30\" cy=\"31.28\" r=\"22.02\"/><ci"
+"rcle class=\"cls-13\" cx=\"30\" cy=\"31.43\" r=\"21.58\"/><circle class=\"cls-14\" cx=\"30\" cy=\"31.57\" r=\"21.14\"/><circle class=\"cls-15\" cx=\"30\" cy=\"31.71\" r=\"20.7\"/><circle class=\"cls-16\" cx=\"30\" cy=\"31.86\" r=\"20.26\"/><circle cl"
+"ass=\"cls-17\" cx=\"30\" cy=\"32\" r=\"19.81\"/><circle class=\"cls-18\" cx=\"30\" cy=\"32.14\" r=\"19.37\"/><circle class=\"cls-19\" cx=\"30\" cy=\"32.28\" r=\"18.93\"/><circle class=\"cls-20\" cx=\"30\" cy=\"32.43\" r=\"18.49\"/><circle class=\"cls"
+"-21\" cx=\"30\" cy=\"32.57\" r=\"18.05\"/><circle class=\"cls-21\" cx=\"30\" cy=\"32.71\" r=\"17.61\"/><circle class=\"cls-22\" cx=\"30\" cy=\"32.85\" r=\"17.16\"/><circle class=\"cls-23\" cx=\"30\" cy=\"33\" r=\"16.72\"/><circle class=\"cls-24\" cx="
+"\"30\" cy=\"33.14\" r=\"16.28\"/><circle class=\"cls-25\" cx=\"30\" cy=\"33.28\" r=\"15.84\"/><circle class=\"cls-26\" cx=\"30\" cy=\"33.42\" r=\"15.4\"/><circle class=\"cls-27\" cx=\"30\" cy=\"33.57\" r=\"14.95\"/><circle class=\"cls-28\" cx=\"30\" "
+"cy=\"33.71\" r=\"14.51\"/><circle class=\"cls-29\" cx=\"30\" cy=\"33.85\" r=\"14.07\"/><circle class=\"cls-30\" cx=\"30\" cy=\"34\" r=\"13.63\"/><circle class=\"cls-31\" cx=\"30\" cy=\"34.14\" r=\"13.19\"/><circle class=\"cls-32\" cx=\"30\" cy=\"34.2"
+"8\" r=\"12.75\"/><circle class=\"cls-33\" cx=\"30\" cy=\"34.42\" r=\"12.3\"/><circle class=\"cls-34\" cx=\"30\" cy=\"34.57\" r=\"11.86\"/><circle class=\"cls-35\" cx=\"30\" cy=\"34.71\" r=\"11.42\"/><circle class=\"cls-36\" cx=\"30\" cy=\"34.85\" r=\""
+"10.98\"/><circle class=\"cls-37\" cx=\"30\" cy=\"34.99\" r=\"10.54\"/><circle class=\"cls-38\" cx=\"30\" cy=\"35.14\" r=\"10.1\"/></g></g></g></svg>";
+
+const char* BPMCounterOFF_svg = (const char*) temp_binary_data_4;
+
+//================== BPMCounterON.svg ==================
+static const unsigned char temp_binary_data_5[] =
+"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 60 60\"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}.cls-3{fill:#4eb719;}.cls-4{fill:#4fb819;}.cls-5{fill:#5"
+"0b919;}.cls-6{fill:#50ba19;}.cls-7{fill:#51bb1a;}.cls-8{fill:#52bc1a;}.cls-9{fill:#53bd1a;}.cls-10{fill:#53be1a;}.cls-11{fill:#54bf1a;}.cls-12{fill:#55c01a;}.cls-13{fill:#56c11a;}.cls-14{fill:#56c21a;}.cls-15{fill:#57c31b;}.cls-16{fill:#58c41b;}.cls-"
+"17{fill:#59c51b;}.cls-18{fill:#59c61b;}.cls-19{fill:#5ac71b;}.cls-20{fill:#5bc81b;}.cls-21{fill:#5cc91b;}.cls-22{fill:#5cca1b;}.cls-23{fill:#5dcb1c;}.cls-24{fill:#5ecc1c;}.cls-25{fill:#5fcd1c;}.cls-26{fill:#5fce1c;}.cls-27{fill:#60cf1c;}.cls-28{fill:"
+"#61d01c;}.cls-29{fill:#62d11c;}.cls-30{fill:#62d21c;}.cls-31{fill:#63d31d;}.cls-32{fill:#64d41d;}.cls-33{fill:#65d51d;}.cls-34{fill:#66d61d;}.cls-35{fill:#67d71d;}.cls-36{fill:#68d81d;}.cls-37{fill:#69d91e;}.cls-38{fill:#69da1e;}.cls-39{fill:#6adb1e;"
+"}.cls-40{fill:#6bdc1e;}.cls-41{fill:#6cdd1e;}.cls-42{fill:#6cde1e;}.cls-43{fill:#6ddf1e;}.cls-44{fill:#6ee01e;}.cls-45{fill:#6fe11f;}.cls-46{fill:#6fe21f;}.cls-47{fill:#70e31f;}.cls-48{fill:#71e41f;}.cls-49{fill:#72e51f;}.cls-50{fill:#72e61f;}.cls-51"
+"{fill:#73e71f;}.cls-52{fill:#74e81f;}.cls-53{fill:#75e920;}.cls-54{fill:#75ea20;}.cls-55{fill:#76eb20;}.cls-56{fill:#77ec20;}.cls-57{fill:#78ed20;}.cls-58{fill:#78ee20;}.cls-59{fill:#79ef20;}.cls-60{fill:#7af020;}.cls-61{fill:#7bf121;}.cls-62{fill:#7"
+"bf221;}.cls-63{fill:#7cf321;}.cls-64{fill:#7df421;}</style><linearGradient id=\"linear-gradient\" x1=\"-96.2\" y1=\"30\" x2=\"68.71\" y2=\"30\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.14\" stop-color=\"#fff\"/><stop offset=\"1\"/></linearGr"
+"adient><linearGradient id=\"linear-gradient-2\" x1=\"-87.79\" y1=\"30\" x2=\"66.13\" y2=\"30\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.14\" stop-color=\"#a7db8c\"/><stop offset=\"1\" stop-color=\"#396b1d\"/></linearGradient></defs><title>BP"
+"MCounterON</title><g id=\"Layer_2\" data-name=\"Layer 2\"><g id=\"Layer_1-2\" data-name=\"Layer 1\"><g id=\"bpmON\"><circle class=\"cls-1\" cx=\"30\" cy=\"30\" r=\"30\"/><circle class=\"cls-2\" cx=\"30\" cy=\"30\" r=\"28\"/><circle class=\"cls-3\" cx"
+"=\"30\" cy=\"30\" r=\"26\"/><circle class=\"cls-4\" cx=\"30\" cy=\"30.08\" r=\"25.74\"/><circle class=\"cls-5\" cx=\"30\" cy=\"30.17\" r=\"25.49\"/><circle class=\"cls-6\" cx=\"30\" cy=\"30.25\" r=\"25.23\"/><circle class=\"cls-7\" cx=\"30\" cy=\"30."
+"33\" r=\"24.97\"/><circle class=\"cls-8\" cx=\"30\" cy=\"30.41\" r=\"24.72\"/><circle class=\"cls-9\" cx=\"30\" cy=\"30.5\" r=\"24.46\"/><circle class=\"cls-10\" cx=\"30\" cy=\"30.58\" r=\"24.2\"/><circle class=\"cls-11\" cx=\"30\" cy=\"30.66\" r=\"2"
+"3.95\"/><circle class=\"cls-12\" cx=\"30\" cy=\"30.75\" r=\"23.69\"/><circle class=\"cls-13\" cx=\"30\" cy=\"30.83\" r=\"23.43\"/><circle class=\"cls-14\" cx=\"30\" cy=\"30.91\" r=\"23.18\"/><circle class=\"cls-15\" cx=\"30\" cy=\"30.99\" r=\"22.92\""
+"/><circle class=\"cls-16\" cx=\"30\" cy=\"31.08\" r=\"22.67\"/><circle class=\"cls-17\" cx=\"30\" cy=\"31.16\" r=\"22.41\"/><circle class=\"cls-18\" cx=\"30\" cy=\"31.24\" r=\"22.15\"/><circle class=\"cls-19\" cx=\"30\" cy=\"31.33\" r=\"21.9\"/><circ"
+"le class=\"cls-20\" cx=\"30\" cy=\"31.41\" r=\"21.64\"/><circle class=\"cls-21\" cx=\"30\" cy=\"31.49\" r=\"21.38\"/><circle class=\"cls-22\" cx=\"30\" cy=\"31.57\" r=\"21.13\"/><circle class=\"cls-23\" cx=\"30\" cy=\"31.66\" r=\"20.87\"/><circle cla"
+"ss=\"cls-24\" cx=\"30\" cy=\"31.74\" r=\"20.61\"/><circle class=\"cls-25\" cx=\"30\" cy=\"31.82\" r=\"20.36\"/><circle class=\"cls-26\" cx=\"30\" cy=\"31.91\" r=\"20.1\"/><circle class=\"cls-27\" cx=\"30\" cy=\"31.99\" r=\"19.84\"/><circle class=\"cl"
+"s-28\" cx=\"30\" cy=\"32.07\" r=\"19.59\"/><circle class=\"cls-29\" cx=\"30\" cy=\"32.15\" r=\"19.33\"/><circle class=\"cls-30\" cx=\"30\" cy=\"32.24\" r=\"19.07\"/><circle class=\"cls-31\" cx=\"30\" cy=\"32.32\" r=\"18.82\"/><circle class=\"cls-32\""
+" cx=\"30\" cy=\"32.4\" r=\"18.56\"/><circle class=\"cls-33\" cx=\"30\" cy=\"32.49\" r=\"18.3\"/><circle class=\"cls-34\" cx=\"30\" cy=\"32.57\" r=\"18.05\"/><circle class=\"cls-34\" cx=\"30\" cy=\"32.65\" r=\"17.79\"/><circle class=\"cls-35\" cx=\"30"
+"\" cy=\"32.73\" r=\"17.53\"/><circle class=\"cls-36\" cx=\"30\" cy=\"32.82\" r=\"17.28\"/><circle class=\"cls-37\" cx=\"30\" cy=\"32.9\" r=\"17.02\"/><circle class=\"cls-38\" cx=\"30\" cy=\"32.98\" r=\"16.76\"/><circle class=\"cls-39\" cx=\"30\" cy=\""
+"33.07\" r=\"16.51\"/><circle class=\"cls-40\" cx=\"30\" cy=\"33.15\" r=\"16.25\"/><circle class=\"cls-41\" cx=\"30\" cy=\"33.23\" r=\"16\"/><circle class=\"cls-42\" cx=\"30\" cy=\"33.31\" r=\"15.74\"/><circle class=\"cls-43\" cx=\"30\" cy=\"33.4\" r="
+"\"15.48\"/><circle class=\"cls-44\" cx=\"30\" cy=\"33.48\" r=\"15.23\"/><circle class=\"cls-45\" cx=\"30\" cy=\"33.56\" r=\"14.97\"/><circle class=\"cls-46\" cx=\"30\" cy=\"33.65\" r=\"14.71\"/><circle class=\"cls-47\" cx=\"30\" cy=\"33.73\" r=\"14.4"
+"6\"/><circle class=\"cls-48\" cx=\"30\" cy=\"33.81\" r=\"14.2\"/><circle class=\"cls-49\" cx=\"30\" cy=\"33.89\" r=\"13.94\"/><circle class=\"cls-50\" cx=\"30\" cy=\"33.98\" r=\"13.69\"/><circle class=\"cls-51\" cx=\"30\" cy=\"34.06\" r=\"13.43\"/><c"
+"ircle class=\"cls-52\" cx=\"30\" cy=\"34.14\" r=\"13.17\"/><circle class=\"cls-53\" cx=\"30\" cy=\"34.23\" r=\"12.92\"/><circle class=\"cls-54\" cx=\"30\" cy=\"34.31\" r=\"12.66\"/><circle class=\"cls-55\" cx=\"30\" cy=\"34.39\" r=\"12.4\"/><circle c"
+"lass=\"cls-56\" cx=\"30\" cy=\"34.47\" r=\"12.15\"/><circle class=\"cls-57\" cx=\"30\" cy=\"34.56\" r=\"11.89\"/><circle class=\"cls-58\" cx=\"30\" cy=\"34.64\" r=\"11.63\"/><circle class=\"cls-59\" cx=\"30\" cy=\"34.72\" r=\"11.38\"/><circle class=\""
+"cls-60\" cx=\"30\" cy=\"34.81\" r=\"11.12\"/><circle class=\"cls-61\" cx=\"30\" cy=\"34.89\" r=\"10.86\"/><circle class=\"cls-62\" cx=\"30\" cy=\"34.97\" r=\"10.61\"/><circle class=\"cls-63\" cx=\"30\" cy=\"35.05\" r=\"10.35\"/><circle class=\"cls-64"
+"\" cx=\"30\" cy=\"35.14\" r=\"10.1\"/></g></g></g></svg>";
+
+const char* BPMCounterON_svg = (const char*) temp_binary_data_5;
+
+//================== BPMDisplay.svg ==================
+static const unsigned char temp_binary_data_6[] =
+"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 255.85 179.34\"><defs><style>.cls-1{fill:#d3dde0;}</style></defs><title>BPMDisplay</title><g id=\"Layer_2\" data-name=\"Layer 2\"><g id=\"Layer_1-2\" data-name=\"Layer 1\"><rect class=\"cls-1\" "
+"x=\"0.11\" y=\"0.16\" width=\"255.63\" height=\"179.01\" rx=\"9.48\" transform=\"translate(-0.12 0.18) rotate(-0.08)\"/></g></g></svg>";
+
+const char* BPMDisplay_svg = (const char*) temp_binary_data_6;
+
+//================== DeleteTrack.svg ==================
+static const unsigned char temp_binary_data_7[] =
+"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 59 59\"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}.cls-3{font-size:40px;fill:#3a3a3a;font-family:FallingSk"
+"y, Falling Sky;}</style><linearGradient id=\"linear-gradient\" x1=\"-77.8\" y1=\"28.7\" x2=\"349.76\" y2=\"31.89\" gradientTransform=\"translate(0 59) rotate(-90)\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.05\" stop-color=\"#ed1c24\"/><stop "
+"offset=\"0.17\" stop-color=\"#cc181f\"/><stop offset=\"0.38\" stop-color=\"#981217\"/><stop offset=\"0.57\" stop-color=\"#700d11\"/><stop offset=\"0.74\" stop-color=\"#530a0d\"/><stop offset=\"0.89\" stop-color=\"#41080a\"/><stop offset=\"1\" stop-co"
+"lor=\"#3b0709\"/></linearGradient><linearGradient id=\"linear-gradient-2\" x1=\"80.27\" y1=\"29.02\" x2=\"-131.72\" y2=\"31.03\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.06\" stop-color=\"#ed1c24\"/><stop offset=\"0.08\" stop-color=\"#e81b23"
+"\"/><stop offset=\"0.41\" stop-color=\"#9f1318\"/><stop offset=\"0.69\" stop-color=\"#690c10\"/><stop offset=\"0.89\" stop-color=\"#48080b\"/><stop offset=\"1\" stop-color=\"#3b0709\"/></linearGradient></defs><title>DeleteTrack</title><g id=\"Layer_2"
+"\" data-name=\"Layer 2\"><g id=\"Layer_1-2\" data-name=\"Layer 1\"><g id=\"StopButton\"><rect class=\"cls-1\" width=\"59\" height=\"59\" rx=\"29.5\" transform=\"translate(59 0) rotate(90)\"/><rect class=\"cls-2\" x=\"3.98\" y=\"3.98\" width=\"51.04\""
+" height=\"51.04\" rx=\"23.5\"/><text class=\"cls-3\" transform=\"translate(19.54 39.59)\">x</text></g></g></g></svg>";
+
+const char* DeleteTrack_svg = (const char*) temp_binary_data_7;
+
+//================== PlayButton.svg ==================
+static const unsigned char temp_binary_data_8[] =
+"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 78.68 86.44\"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}</style><linearGradient id=\"linear-gradient\" x1="
+"\"-90.1\" y1=\"44.73\" x2=\"528.31\" y2=\"35.8\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.05\" stop-color=\"lime\"/><stop offset=\"0.1\" stop-color=\"#05e104\"/><stop offset=\"0.16\" stop-color=\"#0abd09\"/><stop offset=\"0.23\" stop-color=\""
+"#0fa00e\"/><stop offset=\"0.3\" stop-color=\"#128911\"/><stop offset=\"0.38\" stop-color=\"#157913\"/><stop offset=\"0.46\" stop-color=\"#176f15\"/><stop offset=\"0.57\" stop-color=\"#176c15\"/></linearGradient><linearGradient id=\"linear-gradient-2\""
+" x1=\"340.6\" y1=\"42.93\" x2=\"-623.26\" y2=\"43.78\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.05\" stop-color=\"lime\"/><stop offset=\"0.13\" stop-color=\"#05e104\"/><stop offset=\"0.25\" stop-color=\"#0abd09\"/><stop offset=\"0.37\" stop-"
+"color=\"#0fa00e\"/><stop offset=\"0.5\" stop-color=\"#128911\"/><stop offset=\"0.64\" stop-color=\"#157913\"/><stop offset=\"0.8\" stop-color=\"#176f15\"/><stop offset=\"1\" stop-color=\"#176c15\"/></linearGradient></defs><title>PlayButton</title><g "
+"id=\"Layer_2\" data-name=\"Layer 2\"><g id=\"Layer_1-2\" data-name=\"Layer 1\"><g id=\"PlayButton\"><path class=\"cls-1\" d=\"M14.34,86.44A14.35,14.35,0,0,1,0,72.11V14.34A14.31,14.31,0,0,1,21.49,1.93l50,28.89a14.32,14.32,0,0,1,0,24.81l-50,28.88a14.39"
+",14.39,0,0,1-7.15,1.93Z\"/><path class=\"cls-2\" d=\"M70,36.84,17.05,6.3A7.37,7.37,0,0,0,6,12.68V73.76a7.37,7.37,0,0,0,11.05,6.38L70,49.6A7.37,7.37,0,0,0,70,36.84Z\"/></g></g></g></svg>";
+
+const char* PlayButton_svg = (const char*) temp_binary_data_8;
+
+//================== StartPlayingButton.svg ==================
+static const unsigned char temp_binary_data_9[] =
+"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 122 141.22\"><defs><style>.b378a933-8009-422f-8106-831576029945{fill:url(#e8e796cb-62f2-40b6-8b12-ace6d5104034);}.e24b2d5f-9b81-4012-b021-708b55995fb"
+"9{fill:url(#a2baece0-59ad-42f7-8e91-b6e6f687fc5e);}</style><linearGradient id=\"e8e796cb-62f2-40b6-8b12-ace6d5104034\" x1=\"-139.79\" y1=\"72.95\" x2=\"819.43\" y2=\"59.1\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.05\" stop-color=\"lime\"/><"
+"stop offset=\"0.1\" stop-color=\"#05e104\"/><stop offset=\"0.16\" stop-color=\"#0abd09\"/><stop offset=\"0.23\" stop-color=\"#0fa00e\"/><stop offset=\"0.3\" stop-color=\"#128911\"/><stop offset=\"0.38\" stop-color=\"#157913\"/><stop offset=\"0.46\" s"
+"top-color=\"#176f15\"/><stop offset=\"0.57\" stop-color=\"#176c15\"/></linearGradient><linearGradient id=\"a2baece0-59ad-42f7-8e91-b6e6f687fc5e\" x1=\"531.05\" y1=\"70.16\" x2=\"-971.93\" y2=\"71.49\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0"
+".05\" stop-color=\"lime\"/><stop offset=\"0.13\" stop-color=\"#05e104\"/><stop offset=\"0.25\" stop-color=\"#0abd09\"/><stop offset=\"0.37\" stop-color=\"#0fa00e\"/><stop offset=\"0.5\" stop-color=\"#128911\"/><stop offset=\"0.64\" stop-color=\"#1579"
+"13\"/><stop offset=\"0.8\" stop-color=\"#176f15\"/><stop offset=\"1\" stop-color=\"#176c15\"/></linearGradient></defs><title>StartPlayingButton</title><g id=\"af346b9f-6c49-46f0-9370-fd7f2726fba7\" data-name=\"Layer 2\"><g id=\"ad34f4d3-b8fa-49c6-b48"
+"f-4f6f45536ee2\" data-name=\"Layer 1\"><g id=\"a40481cb-61c0-4b59-8b62-0c1e6d8df98a\" data-name=\"PlayButton\"><path class=\"b378a933-8009-422f-8106-831576029945\" d=\"M22.23,141.22C10,141.22,0,130.71,0,117.8V23.42C0,10.51,10,0,22.23,0A21.33,21.33,0,"
+"0,1,33.32,3.16l77.57,47.18a24,24,0,0,1,0,40.54L33.32,138.06a21.33,21.33,0,0,1-11.09,3.16Z\"/><path class=\"e24b2d5f-9b81-4012-b021-708b55995fb9\" d=\"M109.13,60.59l-82-49.88a11.73,11.73,0,0,0-17.83,10v99.76a11.73,11.73,0,0,0,17.83,10l82-49.88A11.73,1"
+"1.73,0,0,0,109.13,60.59Z\"/></g></g></g></svg>";
+
+const char* StartPlayingButton_svg = (const char*) temp_binary_data_9;
+
+//================== StartRecordingButton.svg ==================
+static const unsigned char temp_binary_data_10[] =
+"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 139 141\"><defs><style>.a9107882-f8f5-4102-bc96-2c5052eb5419{fill:url(#b7e1aac9-18f7-4916-90dd-cac53af65d3c);}.acc26953-d2df-42cc-b65d-c690bccd6df4{f"
+"ill:url(#f0634662-11ab-458b-bea1-6f52611fd1b3);}</style><linearGradient id=\"b7e1aac9-18f7-4916-90dd-cac53af65d3c\" x1=\"-183.35\" y1=\"68.61\" x2=\"824.2\" y2=\"76.14\" gradientTransform=\"translate(-1 140) rotate(-90)\" gradientUnits=\"userSpaceOnU"
+"se\"><stop offset=\"0.05\" stop-color=\"#ed1c24\"/><stop offset=\"0.17\" stop-color=\"#cc181f\"/><stop offset=\"0.38\" stop-color=\"#981217\"/><stop offset=\"0.57\" stop-color=\"#700d11\"/><stop offset=\"0.74\" stop-color=\"#530a0d\"/><stop offset=\""
+"0.89\" stop-color=\"#41080a\"/><stop offset=\"1\" stop-color=\"#3b0709\"/></linearGradient><linearGradient id=\"f0634662-11ab-458b-bea1-6f52611fd1b3\" x1=\"189.12\" y1=\"69.36\" x2=\"-310.35\" y2=\"74.11\" gradientUnits=\"userSpaceOnUse\"><stop offse"
+"t=\"0.06\" stop-color=\"#ed1c24\"/><stop offset=\"0.08\" stop-color=\"#e81b23\"/><stop offset=\"0.41\" stop-color=\"#9f1318\"/><stop offset=\"0.69\" stop-color=\"#690c10\"/><stop offset=\"0.89\" stop-color=\"#48080b\"/><stop offset=\"1\" stop-color=\""
+"#3b0709\"/></linearGradient></defs><title>StartRecordingButton</title><g id=\"ef985773-9134-4800-8c2e-210192532167\" data-name=\"Layer 2\"><g id=\"a0f3f064-7911-4ca8-9fe6-fa508d76eb80\" data-name=\"Layer 1\"><rect class=\"a9107882-f8f5-4102-bc96-2c50"
+"52eb5419\" x=\"-1\" y=\"1\" width=\"141\" height=\"139\" rx=\"68.09\" transform=\"translate(140 1) rotate(90)\"/><rect class=\"acc26953-d2df-42cc-b65d-c690bccd6df4\" x=\"9.37\" y=\"9.51\" width=\"120.26\" height=\"121.99\" rx=\"55.76\"/></g></g></svg"
+">";
+
+const char* StartRecordingButton_svg = (const char*) temp_binary_data_10;
+
+//================== StopButton.svg ==================
+static const unsigned char temp_binary_data_11[] =
+"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 89 89\"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}</style><linearGradient id=\"linear-gradient\" x1=\"-118"
+".07\" y1=\"43.29\" x2=\"529.74\" y2=\"48.12\" gradientTransform=\"translate(0 89) rotate(-90)\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.05\" stop-color=\"#ed1c24\"/><stop offset=\"0.17\" stop-color=\"#cc181f\"/><stop offset=\"0.38\" stop-co"
+"lor=\"#981217\"/><stop offset=\"0.57\" stop-color=\"#700d11\"/><stop offset=\"0.74\" stop-color=\"#530a0d\"/><stop offset=\"0.89\" stop-color=\"#41080a\"/><stop offset=\"1\" stop-color=\"#3b0709\"/></linearGradient><linearGradient id=\"linear-gradien"
+"t-2\" x1=\"121.53\" y1=\"43.77\" x2=\"-200.1\" y2=\"46.82\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.06\" stop-color=\"#ed1c24\"/><stop offset=\"0.08\" stop-color=\"#e81b23\"/><stop offset=\"0.41\" stop-color=\"#9f1318\"/><stop offset=\"0.69"
+"\" stop-color=\"#690c10\"/><stop offset=\"0.89\" stop-color=\"#48080b\"/><stop offset=\"1\" stop-color=\"#3b0709\"/></linearGradient></defs><title>StopButton_1</title><g id=\"Layer_2\" data-name=\"Layer 2\"><g id=\"Layer_1-2\" data-name=\"Layer 1\"><"
+"g id=\"StopButton\"><rect class=\"cls-1\" width=\"89\" height=\"89\" rx=\"18\" transform=\"translate(89) rotate(90)\"/><rect class=\"cls-2\" x=\"6\" y=\"6\" width=\"77\" height=\"77\" rx=\"12\"/></g></g></g></svg>";
+
+const char* StopButton_svg = (const char*) temp_binary_data_11;
+
+//================== StopPlayingButton.svg ==================
+static const unsigned char temp_binary_data_12[] =
+"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 175 193\"><defs><style>.af8e091d-cc74-4a2f-ade6-c8e408d9bcbb{fill:#fcee21;}</style></defs><title>StopPlayingButton_2</title><g id=\"f9978a4b-82d6-4ea2-82f6-aa7a4a7e4b8d\" data-name=\"Layer 2\"><"
+"g id=\"e392abfd-7d13-408a-a058-f627996ee9a6\" data-name=\"Layer 1\"><rect class=\"af8e091d-cc74-4a2f-ade6-c8e408d9bcbb\" width=\"77\" height=\"193\" rx=\"21.95\"/><rect class=\"af8e091d-cc74-4a2f-ade6-c8e408d9bcbb\" x=\"98\" width=\"77\" height=\"193"
+"\" rx=\"21.95\"/></g></g></svg>";
+
+const char* StopPlayingButton_svg = (const char*) temp_binary_data_12;
+
+//================== StopRecordingButton.svg ==================
+static const unsigned char temp_binary_data_13[] =
+"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 110.99 119.76\"><defs><style>.fb645c76-3239-46a9-aa27-5c923f15d285{fill:url(#e9cd8186-5074-4a3a-9cbc-2f8fefb8a5e8);}.a7c4c3ae-b71b-4cf1-b522-f7e824f3"
+"24e0{fill:url(#f0fbf7a4-1a91-4e42-aaf5-9fe01046b2c2);}</style><linearGradient id=\"e9cd8186-5074-4a3a-9cbc-2f8fefb8a5e8\" x1=\"-73.69\" y1=\"21.03\" x2=\"574.2\" y2=\"25.87\" gradientTransform=\"matrix(0, -1.24, 1.34, 0, 25.65, 170.33)\" gradientUnit"
+"s=\"userSpaceOnUse\"><stop offset=\"0.05\" stop-color=\"#ed1c24\"/><stop offset=\"0.17\" stop-color=\"#cc181f\"/><stop offset=\"0.38\" stop-color=\"#981217\"/><stop offset=\"0.57\" stop-color=\"#700d11\"/><stop offset=\"0.74\" stop-color=\"#530a0d\"/"
+"><stop offset=\"0.89\" stop-color=\"#41080a\"/><stop offset=\"1\" stop-color=\"#3b0709\"/></linearGradient><linearGradient id=\"f0fbf7a4-1a91-4e42-aaf5-9fe01046b2c2\" x1=\"165.94\" y1=\"21.52\" x2=\"-155.72\" y2=\"24.57\" gradientTransform=\"translat"
+"e(-54.95 30.04) scale(1.24 1.34)\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.06\" stop-color=\"#ed1c24\"/><stop offset=\"0.08\" stop-color=\"#e81b23\"/><stop offset=\"0.41\" stop-color=\"#9f1318\"/><stop offset=\"0.69\" stop-color=\"#690c10\""
+"/><stop offset=\"0.89\" stop-color=\"#48080b\"/><stop offset=\"1\" stop-color=\"#3b0709\"/></linearGradient></defs><title>StopRecordingButton</title><g id=\"a3d1b255-12c5-4738-b290-a39cd3e890ae\" data-name=\"Layer 2\"><g id=\"ee171c8a-eada-4b80-9f24-"
+"f4a3a4a1a2e1\" data-name=\"Layer 1\"><g id=\"b23b142a-9604-4fb2-ada5-4cc038de0238\" data-name=\"StopButton\"><rect class=\"fb645c76-3239-46a9-aa27-5c923f15d285\" x=\"-4.2\" y=\"4.6\" width=\"119.39\" height=\"110.56\" rx=\"23.24\" transform=\"transla"
+"te(115.05 4.04) rotate(89.67)\"/><rect class=\"a7c4c3ae-b71b-4cf1-b522-f7e824f324e0\" x=\"7.67\" y=\"8.23\" width=\"95.66\" height=\"103.29\" rx=\"15.49\" transform=\"translate(-0.35 0.32) rotate(-0.33)\"/></g></g></g></svg>";
+
+const char* StopRecordingButton_svg = (const char*) temp_binary_data_13;
 
 //================== pedal.svg ==================
-static const unsigned char temp_binary_data_8[] =
+static const unsigned char temp_binary_data_14[] =
 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n"
 "<svg width=\"52px\" height=\"64px\" viewBox=\"0 0 52 64\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:sketch=\"http://www.bohemiancoding.com/sketch/ns\">\n"
 "    <!-- Generator: Sketch 3.5.1 (25234) - http://www.bohemiancoding.com/sketch -->\n"
@@ -246,10 +339,10 @@ static const unsigned char temp_binary_data_8[] =
 "    </g>\n"
 "</svg>";
 
-const char* pedal_svg = (const char*) temp_binary_data_8;
+const char* pedal_svg = (const char*) temp_binary_data_14;
 
 //================== one.wav ==================
-static const unsigned char temp_binary_data_9[] =
+static const unsigned char temp_binary_data_15[] =
 { 82,73,70,70,176,103,0,0,87,65,86,69,102,109,116,32,16,0,0,0,1,0,2,0,68,172,0,0,16,177,2,0,4,0,16,0,98,101,120,116,90,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,82,69,65,80,69,82,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -586,10 +679,10 @@ static const unsigned char temp_binary_data_9[] =
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
 
-const char* one_wav = (const char*) temp_binary_data_9;
+const char* one_wav = (const char*) temp_binary_data_15;
 
 //================== two.wav ==================
-static const unsigned char temp_binary_data_10[] =
+static const unsigned char temp_binary_data_16[] =
 { 82,73,70,70,200,67,0,0,87,65,86,69,102,109,116,32,16,0,0,0,1,0,2,0,68,172,0,0,16,177,2,0,4,0,16,0,98,101,120,116,90,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,82,69,65,80,69,82,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -816,10 +909,10 @@ static const unsigned char temp_binary_data_10[] =
 25,0,25,0,27,0,27,0,23,0,23,0,25,0,25,0,27,0,27,0,38,0,38,0,45,0,45,0,45,0,45,0,41,0,41,0,43,0,43,0,38,0,38,0,32,0,32,0,18,0,18,0,9,0,9,0,0,0,0,0,254,255,254,255,254,255,254,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0 };
 
-const char* two_wav = (const char*) temp_binary_data_10;
+const char* two_wav = (const char*) temp_binary_data_16;
 
 //================== Fader.png ==================
-static const unsigned char temp_binary_data_11[] =
+static const unsigned char temp_binary_data_17[] =
 { 137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,134,0,0,1,24,8,6,0,0,0,153,98,142,22,0,0,0,1,115,82,71,66,0,174,206,28,233,0,0,1,89,105,84,88,116,88,77,76,58,99,111,109,46,97,100,111,98,101,46,120,109,112,0,0,0,0,0,60,120,58,120,109,112,109,101,116,
 97,32,120,109,108,110,115,58,120,61,34,97,100,111,98,101,58,110,115,58,109,101,116,97,47,34,32,120,58,120,109,112,116,107,61,34,88,77,80,32,67,111,114,101,32,53,46,52,46,48,34,62,10,32,32,32,60,114,100,102,58,82,68,70,32,120,109,108,110,115,58,114,100,
 102,61,34,104,116,116,112,58,47,47,119,119,119,46,119,51,46,111,114,103,47,49,57,57,57,47,48,50,47,50,50,45,114,100,102,45,115,121,110,116,97,120,45,110,115,35,34,62,10,32,32,32,32,32,32,60,114,100,102,58,68,101,115,99,114,105,112,116,105,111,110,32,
@@ -983,100 +1076,7 @@ static const unsigned char temp_binary_data_11[] =
 120,82,130,191,211,78,241,55,122,36,124,65,253,43,11,192,199,116,160,29,240,145,179,132,174,111,71,126,235,44,184,11,128,121,79,107,252,146,214,248,223,52,151,127,81,81,188,216,207,233,255,2,129,206,59,253,180,45,101,197,0,0,0,0,73,69,78,68,174,66,96,
 130,0,0 };
 
-const char* Fader_png = (const char*) temp_binary_data_11;
-
-//================== DeleteTrack.svg ==================
-static const unsigned char temp_binary_data_12[] =
-"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 59 59\"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}.cls-3{font-size:40px;fill:#3a3a3a;font-family:FallingSk"
-"y, Falling Sky;}</style><linearGradient id=\"linear-gradient\" x1=\"-77.8\" y1=\"28.7\" x2=\"349.76\" y2=\"31.89\" gradientTransform=\"translate(0 59) rotate(-90)\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.05\" stop-color=\"#ed1c24\"/><stop "
-"offset=\"0.17\" stop-color=\"#cc181f\"/><stop offset=\"0.38\" stop-color=\"#981217\"/><stop offset=\"0.57\" stop-color=\"#700d11\"/><stop offset=\"0.74\" stop-color=\"#530a0d\"/><stop offset=\"0.89\" stop-color=\"#41080a\"/><stop offset=\"1\" stop-co"
-"lor=\"#3b0709\"/></linearGradient><linearGradient id=\"linear-gradient-2\" x1=\"80.27\" y1=\"29.02\" x2=\"-131.72\" y2=\"31.03\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.06\" stop-color=\"#ed1c24\"/><stop offset=\"0.08\" stop-color=\"#e81b23"
-"\"/><stop offset=\"0.41\" stop-color=\"#9f1318\"/><stop offset=\"0.69\" stop-color=\"#690c10\"/><stop offset=\"0.89\" stop-color=\"#48080b\"/><stop offset=\"1\" stop-color=\"#3b0709\"/></linearGradient></defs><title>DeleteTrack</title><g id=\"Layer_2"
-"\" data-name=\"Layer 2\"><g id=\"Layer_1-2\" data-name=\"Layer 1\"><g id=\"StopButton\"><rect class=\"cls-1\" width=\"59\" height=\"59\" rx=\"29.5\" transform=\"translate(59 0) rotate(90)\"/><rect class=\"cls-2\" x=\"3.98\" y=\"3.98\" width=\"51.04\""
-" height=\"51.04\" rx=\"23.5\"/><text class=\"cls-3\" transform=\"translate(19.54 39.59)\">x</text></g></g></g></svg>";
-
-const char* DeleteTrack_svg = (const char*) temp_binary_data_12;
-
-//================== BPMCounterOFF.svg ==================
-static const unsigned char temp_binary_data_13[] =
-"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 60 60\"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}.cls-3{fill:#5e6756;}.cls-4{fill:#5f6857;}.cls-5{fill:#6"
-"06958;}.cls-6{fill:#616a59;}.cls-7{fill:#626a5a;}.cls-8{fill:#636b5b;}.cls-9{fill:#646c5c;}.cls-10{fill:#646d5d;}.cls-11{fill:#656e5e;}.cls-12{fill:#666f5f;}.cls-13{fill:#677060;}.cls-14{fill:#687061;}.cls-15{fill:#697162;}.cls-16{fill:#6a7263;}.cls-"
-"17{fill:#6b7364;}.cls-18{fill:#6c7465;}.cls-19{fill:#6d7566;}.cls-20{fill:#6e7667;}.cls-21{fill:#6f7768;}.cls-22{fill:#707869;}.cls-23{fill:#71796a;}.cls-24{fill:#727a6b;}.cls-25{fill:#737b6c;}.cls-26{fill:#747c6d;}.cls-27{fill:#757d6e;}.cls-28{fill:"
-"#767d6f;}.cls-29{fill:#777e70;}.cls-30{fill:#787f71;}.cls-31{fill:#798072;}.cls-32{fill:#798173;}.cls-33{fill:#7a8274;}.cls-34{fill:#7b8375;}.cls-35{fill:#7c8376;}.cls-36{fill:#7d8477;}.cls-37{fill:#7e8578;}.cls-38{fill:#7f8679;}</style><linearGradie"
-"nt id=\"linear-gradient\" x1=\"-96.2\" y1=\"30\" x2=\"68.71\" y2=\"30\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.14\" stop-color=\"#fff\"/><stop offset=\"1\"/></linearGradient><linearGradient id=\"linear-gradient-2\" x1=\"-87.79\" y1=\"30\" "
-"x2=\"66.13\" y2=\"30\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.14\" stop-color=\"#afb3ab\"/><stop offset=\"1\" stop-color=\"#41433b\"/></linearGradient></defs><title>BPMCounterOFF</title><g id=\"Layer_2\" data-name=\"Layer 2\"><g id=\"Layer"
-"_1-2\" data-name=\"Layer 1\"><g id=\"bpmON\"><circle class=\"cls-1\" cx=\"30\" cy=\"30\" r=\"30\"/><circle class=\"cls-2\" cx=\"30\" cy=\"30\" r=\"28\"/><circle class=\"cls-3\" cx=\"30\" cy=\"30\" r=\"26\"/><circle class=\"cls-4\" cx=\"30\" cy=\"30.1"
-"4\" r=\"25.56\"/><circle class=\"cls-5\" cx=\"30\" cy=\"30.29\" r=\"25.12\"/><circle class=\"cls-6\" cx=\"30\" cy=\"30.43\" r=\"24.67\"/><circle class=\"cls-7\" cx=\"30\" cy=\"30.57\" r=\"24.23\"/><circle class=\"cls-8\" cx=\"30\" cy=\"30.71\" r=\"23"
-".79\"/><circle class=\"cls-9\" cx=\"30\" cy=\"30.86\" r=\"23.35\"/><circle class=\"cls-10\" cx=\"30\" cy=\"31\" r=\"22.91\"/><circle class=\"cls-11\" cx=\"30\" cy=\"31.14\" r=\"22.47\"/><circle class=\"cls-12\" cx=\"30\" cy=\"31.28\" r=\"22.02\"/><ci"
-"rcle class=\"cls-13\" cx=\"30\" cy=\"31.43\" r=\"21.58\"/><circle class=\"cls-14\" cx=\"30\" cy=\"31.57\" r=\"21.14\"/><circle class=\"cls-15\" cx=\"30\" cy=\"31.71\" r=\"20.7\"/><circle class=\"cls-16\" cx=\"30\" cy=\"31.86\" r=\"20.26\"/><circle cl"
-"ass=\"cls-17\" cx=\"30\" cy=\"32\" r=\"19.81\"/><circle class=\"cls-18\" cx=\"30\" cy=\"32.14\" r=\"19.37\"/><circle class=\"cls-19\" cx=\"30\" cy=\"32.28\" r=\"18.93\"/><circle class=\"cls-20\" cx=\"30\" cy=\"32.43\" r=\"18.49\"/><circle class=\"cls"
-"-21\" cx=\"30\" cy=\"32.57\" r=\"18.05\"/><circle class=\"cls-21\" cx=\"30\" cy=\"32.71\" r=\"17.61\"/><circle class=\"cls-22\" cx=\"30\" cy=\"32.85\" r=\"17.16\"/><circle class=\"cls-23\" cx=\"30\" cy=\"33\" r=\"16.72\"/><circle class=\"cls-24\" cx="
-"\"30\" cy=\"33.14\" r=\"16.28\"/><circle class=\"cls-25\" cx=\"30\" cy=\"33.28\" r=\"15.84\"/><circle class=\"cls-26\" cx=\"30\" cy=\"33.42\" r=\"15.4\"/><circle class=\"cls-27\" cx=\"30\" cy=\"33.57\" r=\"14.95\"/><circle class=\"cls-28\" cx=\"30\" "
-"cy=\"33.71\" r=\"14.51\"/><circle class=\"cls-29\" cx=\"30\" cy=\"33.85\" r=\"14.07\"/><circle class=\"cls-30\" cx=\"30\" cy=\"34\" r=\"13.63\"/><circle class=\"cls-31\" cx=\"30\" cy=\"34.14\" r=\"13.19\"/><circle class=\"cls-32\" cx=\"30\" cy=\"34.2"
-"8\" r=\"12.75\"/><circle class=\"cls-33\" cx=\"30\" cy=\"34.42\" r=\"12.3\"/><circle class=\"cls-34\" cx=\"30\" cy=\"34.57\" r=\"11.86\"/><circle class=\"cls-35\" cx=\"30\" cy=\"34.71\" r=\"11.42\"/><circle class=\"cls-36\" cx=\"30\" cy=\"34.85\" r=\""
-"10.98\"/><circle class=\"cls-37\" cx=\"30\" cy=\"34.99\" r=\"10.54\"/><circle class=\"cls-38\" cx=\"30\" cy=\"35.14\" r=\"10.1\"/></g></g></g></svg>";
-
-const char* BPMCounterOFF_svg = (const char*) temp_binary_data_13;
-
-//================== BPMDisplay.svg ==================
-static const unsigned char temp_binary_data_14[] =
-"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 255.85 179.34\"><defs><style>.cls-1{fill:#d3dde0;}</style></defs><title>BPMDisplay</title><g id=\"Layer_2\" data-name=\"Layer 2\"><g id=\"Layer_1-2\" data-name=\"Layer 1\"><rect class=\"cls-1\" "
-"x=\"0.11\" y=\"0.16\" width=\"255.63\" height=\"179.01\" rx=\"9.48\" transform=\"translate(-0.12 0.18) rotate(-0.08)\"/></g></g></svg>";
-
-const char* BPMDisplay_svg = (const char*) temp_binary_data_14;
-
-//================== BPMCounterON.svg ==================
-static const unsigned char temp_binary_data_15[] =
-"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 60 60\"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}.cls-3{fill:#4eb719;}.cls-4{fill:#4fb819;}.cls-5{fill:#5"
-"0b919;}.cls-6{fill:#50ba19;}.cls-7{fill:#51bb1a;}.cls-8{fill:#52bc1a;}.cls-9{fill:#53bd1a;}.cls-10{fill:#53be1a;}.cls-11{fill:#54bf1a;}.cls-12{fill:#55c01a;}.cls-13{fill:#56c11a;}.cls-14{fill:#56c21a;}.cls-15{fill:#57c31b;}.cls-16{fill:#58c41b;}.cls-"
-"17{fill:#59c51b;}.cls-18{fill:#59c61b;}.cls-19{fill:#5ac71b;}.cls-20{fill:#5bc81b;}.cls-21{fill:#5cc91b;}.cls-22{fill:#5cca1b;}.cls-23{fill:#5dcb1c;}.cls-24{fill:#5ecc1c;}.cls-25{fill:#5fcd1c;}.cls-26{fill:#5fce1c;}.cls-27{fill:#60cf1c;}.cls-28{fill:"
-"#61d01c;}.cls-29{fill:#62d11c;}.cls-30{fill:#62d21c;}.cls-31{fill:#63d31d;}.cls-32{fill:#64d41d;}.cls-33{fill:#65d51d;}.cls-34{fill:#66d61d;}.cls-35{fill:#67d71d;}.cls-36{fill:#68d81d;}.cls-37{fill:#69d91e;}.cls-38{fill:#69da1e;}.cls-39{fill:#6adb1e;"
-"}.cls-40{fill:#6bdc1e;}.cls-41{fill:#6cdd1e;}.cls-42{fill:#6cde1e;}.cls-43{fill:#6ddf1e;}.cls-44{fill:#6ee01e;}.cls-45{fill:#6fe11f;}.cls-46{fill:#6fe21f;}.cls-47{fill:#70e31f;}.cls-48{fill:#71e41f;}.cls-49{fill:#72e51f;}.cls-50{fill:#72e61f;}.cls-51"
-"{fill:#73e71f;}.cls-52{fill:#74e81f;}.cls-53{fill:#75e920;}.cls-54{fill:#75ea20;}.cls-55{fill:#76eb20;}.cls-56{fill:#77ec20;}.cls-57{fill:#78ed20;}.cls-58{fill:#78ee20;}.cls-59{fill:#79ef20;}.cls-60{fill:#7af020;}.cls-61{fill:#7bf121;}.cls-62{fill:#7"
-"bf221;}.cls-63{fill:#7cf321;}.cls-64{fill:#7df421;}</style><linearGradient id=\"linear-gradient\" x1=\"-96.2\" y1=\"30\" x2=\"68.71\" y2=\"30\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.14\" stop-color=\"#fff\"/><stop offset=\"1\"/></linearGr"
-"adient><linearGradient id=\"linear-gradient-2\" x1=\"-87.79\" y1=\"30\" x2=\"66.13\" y2=\"30\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.14\" stop-color=\"#a7db8c\"/><stop offset=\"1\" stop-color=\"#396b1d\"/></linearGradient></defs><title>BP"
-"MCounterON</title><g id=\"Layer_2\" data-name=\"Layer 2\"><g id=\"Layer_1-2\" data-name=\"Layer 1\"><g id=\"bpmON\"><circle class=\"cls-1\" cx=\"30\" cy=\"30\" r=\"30\"/><circle class=\"cls-2\" cx=\"30\" cy=\"30\" r=\"28\"/><circle class=\"cls-3\" cx"
-"=\"30\" cy=\"30\" r=\"26\"/><circle class=\"cls-4\" cx=\"30\" cy=\"30.08\" r=\"25.74\"/><circle class=\"cls-5\" cx=\"30\" cy=\"30.17\" r=\"25.49\"/><circle class=\"cls-6\" cx=\"30\" cy=\"30.25\" r=\"25.23\"/><circle class=\"cls-7\" cx=\"30\" cy=\"30."
-"33\" r=\"24.97\"/><circle class=\"cls-8\" cx=\"30\" cy=\"30.41\" r=\"24.72\"/><circle class=\"cls-9\" cx=\"30\" cy=\"30.5\" r=\"24.46\"/><circle class=\"cls-10\" cx=\"30\" cy=\"30.58\" r=\"24.2\"/><circle class=\"cls-11\" cx=\"30\" cy=\"30.66\" r=\"2"
-"3.95\"/><circle class=\"cls-12\" cx=\"30\" cy=\"30.75\" r=\"23.69\"/><circle class=\"cls-13\" cx=\"30\" cy=\"30.83\" r=\"23.43\"/><circle class=\"cls-14\" cx=\"30\" cy=\"30.91\" r=\"23.18\"/><circle class=\"cls-15\" cx=\"30\" cy=\"30.99\" r=\"22.92\""
-"/><circle class=\"cls-16\" cx=\"30\" cy=\"31.08\" r=\"22.67\"/><circle class=\"cls-17\" cx=\"30\" cy=\"31.16\" r=\"22.41\"/><circle class=\"cls-18\" cx=\"30\" cy=\"31.24\" r=\"22.15\"/><circle class=\"cls-19\" cx=\"30\" cy=\"31.33\" r=\"21.9\"/><circ"
-"le class=\"cls-20\" cx=\"30\" cy=\"31.41\" r=\"21.64\"/><circle class=\"cls-21\" cx=\"30\" cy=\"31.49\" r=\"21.38\"/><circle class=\"cls-22\" cx=\"30\" cy=\"31.57\" r=\"21.13\"/><circle class=\"cls-23\" cx=\"30\" cy=\"31.66\" r=\"20.87\"/><circle cla"
-"ss=\"cls-24\" cx=\"30\" cy=\"31.74\" r=\"20.61\"/><circle class=\"cls-25\" cx=\"30\" cy=\"31.82\" r=\"20.36\"/><circle class=\"cls-26\" cx=\"30\" cy=\"31.91\" r=\"20.1\"/><circle class=\"cls-27\" cx=\"30\" cy=\"31.99\" r=\"19.84\"/><circle class=\"cl"
-"s-28\" cx=\"30\" cy=\"32.07\" r=\"19.59\"/><circle class=\"cls-29\" cx=\"30\" cy=\"32.15\" r=\"19.33\"/><circle class=\"cls-30\" cx=\"30\" cy=\"32.24\" r=\"19.07\"/><circle class=\"cls-31\" cx=\"30\" cy=\"32.32\" r=\"18.82\"/><circle class=\"cls-32\""
-" cx=\"30\" cy=\"32.4\" r=\"18.56\"/><circle class=\"cls-33\" cx=\"30\" cy=\"32.49\" r=\"18.3\"/><circle class=\"cls-34\" cx=\"30\" cy=\"32.57\" r=\"18.05\"/><circle class=\"cls-34\" cx=\"30\" cy=\"32.65\" r=\"17.79\"/><circle class=\"cls-35\" cx=\"30"
-"\" cy=\"32.73\" r=\"17.53\"/><circle class=\"cls-36\" cx=\"30\" cy=\"32.82\" r=\"17.28\"/><circle class=\"cls-37\" cx=\"30\" cy=\"32.9\" r=\"17.02\"/><circle class=\"cls-38\" cx=\"30\" cy=\"32.98\" r=\"16.76\"/><circle class=\"cls-39\" cx=\"30\" cy=\""
-"33.07\" r=\"16.51\"/><circle class=\"cls-40\" cx=\"30\" cy=\"33.15\" r=\"16.25\"/><circle class=\"cls-41\" cx=\"30\" cy=\"33.23\" r=\"16\"/><circle class=\"cls-42\" cx=\"30\" cy=\"33.31\" r=\"15.74\"/><circle class=\"cls-43\" cx=\"30\" cy=\"33.4\" r="
-"\"15.48\"/><circle class=\"cls-44\" cx=\"30\" cy=\"33.48\" r=\"15.23\"/><circle class=\"cls-45\" cx=\"30\" cy=\"33.56\" r=\"14.97\"/><circle class=\"cls-46\" cx=\"30\" cy=\"33.65\" r=\"14.71\"/><circle class=\"cls-47\" cx=\"30\" cy=\"33.73\" r=\"14.4"
-"6\"/><circle class=\"cls-48\" cx=\"30\" cy=\"33.81\" r=\"14.2\"/><circle class=\"cls-49\" cx=\"30\" cy=\"33.89\" r=\"13.94\"/><circle class=\"cls-50\" cx=\"30\" cy=\"33.98\" r=\"13.69\"/><circle class=\"cls-51\" cx=\"30\" cy=\"34.06\" r=\"13.43\"/><c"
-"ircle class=\"cls-52\" cx=\"30\" cy=\"34.14\" r=\"13.17\"/><circle class=\"cls-53\" cx=\"30\" cy=\"34.23\" r=\"12.92\"/><circle class=\"cls-54\" cx=\"30\" cy=\"34.31\" r=\"12.66\"/><circle class=\"cls-55\" cx=\"30\" cy=\"34.39\" r=\"12.4\"/><circle c"
-"lass=\"cls-56\" cx=\"30\" cy=\"34.47\" r=\"12.15\"/><circle class=\"cls-57\" cx=\"30\" cy=\"34.56\" r=\"11.89\"/><circle class=\"cls-58\" cx=\"30\" cy=\"34.64\" r=\"11.63\"/><circle class=\"cls-59\" cx=\"30\" cy=\"34.72\" r=\"11.38\"/><circle class=\""
-"cls-60\" cx=\"30\" cy=\"34.81\" r=\"11.12\"/><circle class=\"cls-61\" cx=\"30\" cy=\"34.89\" r=\"10.86\"/><circle class=\"cls-62\" cx=\"30\" cy=\"34.97\" r=\"10.61\"/><circle class=\"cls-63\" cx=\"30\" cy=\"35.05\" r=\"10.35\"/><circle class=\"cls-64"
-"\" cx=\"30\" cy=\"35.14\" r=\"10.1\"/></g></g></g></svg>";
-
-const char* BPMCounterON_svg = (const char*) temp_binary_data_15;
-
-//================== PlayButton.svg ==================
-static const unsigned char temp_binary_data_16[] =
-"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 78.68 86.44\"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}</style><linearGradient id=\"linear-gradient\" x1="
-"\"-90.1\" y1=\"44.73\" x2=\"528.31\" y2=\"35.8\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.05\" stop-color=\"lime\"/><stop offset=\"0.1\" stop-color=\"#05e104\"/><stop offset=\"0.16\" stop-color=\"#0abd09\"/><stop offset=\"0.23\" stop-color=\""
-"#0fa00e\"/><stop offset=\"0.3\" stop-color=\"#128911\"/><stop offset=\"0.38\" stop-color=\"#157913\"/><stop offset=\"0.46\" stop-color=\"#176f15\"/><stop offset=\"0.57\" stop-color=\"#176c15\"/></linearGradient><linearGradient id=\"linear-gradient-2\""
-" x1=\"340.6\" y1=\"42.93\" x2=\"-623.26\" y2=\"43.78\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.05\" stop-color=\"lime\"/><stop offset=\"0.13\" stop-color=\"#05e104\"/><stop offset=\"0.25\" stop-color=\"#0abd09\"/><stop offset=\"0.37\" stop-"
-"color=\"#0fa00e\"/><stop offset=\"0.5\" stop-color=\"#128911\"/><stop offset=\"0.64\" stop-color=\"#157913\"/><stop offset=\"0.8\" stop-color=\"#176f15\"/><stop offset=\"1\" stop-color=\"#176c15\"/></linearGradient></defs><title>PlayButton</title><g "
-"id=\"Layer_2\" data-name=\"Layer 2\"><g id=\"Layer_1-2\" data-name=\"Layer 1\"><g id=\"PlayButton\"><path class=\"cls-1\" d=\"M14.34,86.44A14.35,14.35,0,0,1,0,72.11V14.34A14.31,14.31,0,0,1,21.49,1.93l50,28.89a14.32,14.32,0,0,1,0,24.81l-50,28.88a14.39"
-",14.39,0,0,1-7.15,1.93Z\"/><path class=\"cls-2\" d=\"M70,36.84,17.05,6.3A7.37,7.37,0,0,0,6,12.68V73.76a7.37,7.37,0,0,0,11.05,6.38L70,49.6A7.37,7.37,0,0,0,70,36.84Z\"/></g></g></g></svg>";
-
-const char* PlayButton_svg = (const char*) temp_binary_data_16;
-
-//================== StopButton.svg ==================
-static const unsigned char temp_binary_data_17[] =
-"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 89 89\"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}</style><linearGradient id=\"linear-gradient\" x1=\"-118"
-".07\" y1=\"43.29\" x2=\"529.74\" y2=\"48.12\" gradientTransform=\"translate(0 89) rotate(-90)\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.05\" stop-color=\"#ed1c24\"/><stop offset=\"0.17\" stop-color=\"#cc181f\"/><stop offset=\"0.38\" stop-co"
-"lor=\"#981217\"/><stop offset=\"0.57\" stop-color=\"#700d11\"/><stop offset=\"0.74\" stop-color=\"#530a0d\"/><stop offset=\"0.89\" stop-color=\"#41080a\"/><stop offset=\"1\" stop-color=\"#3b0709\"/></linearGradient><linearGradient id=\"linear-gradien"
-"t-2\" x1=\"121.53\" y1=\"43.77\" x2=\"-200.1\" y2=\"46.82\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0.06\" stop-color=\"#ed1c24\"/><stop offset=\"0.08\" stop-color=\"#e81b23\"/><stop offset=\"0.41\" stop-color=\"#9f1318\"/><stop offset=\"0.69"
-"\" stop-color=\"#690c10\"/><stop offset=\"0.89\" stop-color=\"#48080b\"/><stop offset=\"1\" stop-color=\"#3b0709\"/></linearGradient></defs><title>StopButton_1</title><g id=\"Layer_2\" data-name=\"Layer 2\"><g id=\"Layer_1-2\" data-name=\"Layer 1\"><"
-"g id=\"StopButton\"><rect class=\"cls-1\" width=\"89\" height=\"89\" rx=\"18\" transform=\"translate(89) rotate(90)\"/><rect class=\"cls-2\" x=\"6\" y=\"6\" width=\"77\" height=\"77\" rx=\"12\"/></g></g></g></svg>";
-
-const char* StopButton_svg = (const char*) temp_binary_data_17;
+const char* Fader_png = (const char*) temp_binary_data_17;
 
 //================== Doxyfile ==================
 static const unsigned char temp_binary_data_18[] =
@@ -3950,24 +3950,24 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes)
 
     switch (hash)
     {
-        case 0x81da2e83:  numBytes = 1932; return StartPlayingButton_svg;
-        case 0xfa8342a3:  numBytes = 501; return StopPlayingButton_svg;
-        case 0x1fcf4506:  numBytes = 1634; return StartRecordingButton_svg;
-        case 0x1283d126:  numBytes = 1848; return StopRecordingButton_svg;
         case 0x80c88e59:  numBytes = 6046; return BarPlayingOff_svg;
         case 0xba42c49f:  numBytes = 9557; return BarPlayingOn_svg;
         case 0x352e0676:  numBytes = 6100; return BarRecordingOff_svg;
         case 0x2b6f54e2:  numBytes = 13325; return BarRecordingOn_svg;
+        case 0x97c46997:  numBytes = 3533; return BPMCounterOFF_svg;
+        case 0x36ee1581:  numBytes = 5484; return BPMCounterON_svg;
+        case 0xde2c3e28:  numBytes = 358; return BPMDisplay_svg;
+        case 0x1eb7c3e5:  numBytes = 1496; return DeleteTrack_svg;
+        case 0x0b33ee4b:  numBytes = 1575; return PlayButton_svg;
+        case 0x81da2e83:  numBytes = 1932; return StartPlayingButton_svg;
+        case 0x1fcf4506:  numBytes = 1634; return StartRecordingButton_svg;
+        case 0x54924199:  numBytes = 1347; return StopButton_svg;
+        case 0xfa8342a3:  numBytes = 501; return StopPlayingButton_svg;
+        case 0x1283d126:  numBytes = 1848; return StopRecordingButton_svg;
         case 0x2f5b561f:  numBytes = 2304; return pedal_svg;
         case 0xb1450593:  numBytes = 26552; return one_wav;
         case 0xc9acb679:  numBytes = 17360; return two_wav;
         case 0x43c44fc0:  numBytes = 11346; return Fader_png;
-        case 0x1eb7c3e5:  numBytes = 1496; return DeleteTrack_svg;
-        case 0x97c46997:  numBytes = 3533; return BPMCounterOFF_svg;
-        case 0xde2c3e28:  numBytes = 358; return BPMDisplay_svg;
-        case 0x36ee1581:  numBytes = 5484; return BPMCounterON_svg;
-        case 0x0b33ee4b:  numBytes = 1575; return PlayButton_svg;
-        case 0x54924199:  numBytes = 1347; return StopButton_svg;
         case 0x5b423868:  numBytes = 79645; return Doxyfile;
         case 0xc91a6275:  numBytes = 1726; return LICENSE_md;
         case 0x64791dc8:  numBytes = 3574; return README_md;
@@ -3981,24 +3981,24 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes)
 
 const char* namedResourceList[] =
 {
-    "StartPlayingButton_svg",
-    "StopPlayingButton_svg",
-    "StartRecordingButton_svg",
-    "StopRecordingButton_svg",
     "BarPlayingOff_svg",
     "BarPlayingOn_svg",
     "BarRecordingOff_svg",
     "BarRecordingOn_svg",
+    "BPMCounterOFF_svg",
+    "BPMCounterON_svg",
+    "BPMDisplay_svg",
+    "DeleteTrack_svg",
+    "PlayButton_svg",
+    "StartPlayingButton_svg",
+    "StartRecordingButton_svg",
+    "StopButton_svg",
+    "StopPlayingButton_svg",
+    "StopRecordingButton_svg",
     "pedal_svg",
     "one_wav",
     "two_wav",
     "Fader_png",
-    "DeleteTrack_svg",
-    "BPMCounterOFF_svg",
-    "BPMDisplay_svg",
-    "BPMCounterON_svg",
-    "PlayButton_svg",
-    "StopButton_svg",
     "Doxyfile",
     "LICENSE_md",
     "README_md",
@@ -4007,24 +4007,24 @@ const char* namedResourceList[] =
 
 const char* originalFilenames[] =
 {
-    "StartPlayingButton.svg",
-    "StopPlayingButton.svg",
-    "StartRecordingButton.svg",
-    "StopRecordingButton.svg",
     "BarPlayingOff.svg",
     "BarPlayingOn.svg",
     "BarRecordingOff.svg",
     "BarRecordingOn.svg",
+    "BPMCounterOFF.svg",
+    "BPMCounterON.svg",
+    "BPMDisplay.svg",
+    "DeleteTrack.svg",
+    "PlayButton.svg",
+    "StartPlayingButton.svg",
+    "StartRecordingButton.svg",
+    "StopButton.svg",
+    "StopPlayingButton.svg",
+    "StopRecordingButton.svg",
     "pedal.svg",
     "one.wav",
     "two.wav",
     "Fader.png",
-    "DeleteTrack.svg",
-    "BPMCounterOFF.svg",
-    "BPMDisplay.svg",
-    "BPMCounterON.svg",
-    "PlayButton.svg",
-    "StopButton.svg",
     "Doxyfile",
     "LICENSE.md",
     "README.md",
