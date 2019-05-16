@@ -10,7 +10,8 @@
 
 #include "Playback.h"
 
-Playback::Playback()
+Playback::Playback(RecordState& recordState) :
+recState(recordState)
 {
     
     playButtonImage = Drawable::createFromImageData (BinaryData::StartPlayingButton_svg, BinaryData::StartPlayingButton_svgSize);
@@ -80,18 +81,35 @@ void Playback::buttonClicked (Button* button) {
     
     if (button == &DrawablePlayButton)
     {
-        if (isPlaying)
-        {
-            isStoppingPlaying = !isStoppingPlaying ;
-            DrawablePlayButton.setToggleState(!(DrawablePlayButton.getToggleState()), dontSendNotification);
-            }
+        
+        if (recState == RecordState::Playing ) {
+            recState = RecordState::isStartingStopping;
+            DrawablePlayButton.setToggleState(false, dontSendNotification);
+        }
+        
+        if (recState == RecordState::Recording ) {
+            recState = RecordState::isStartingStopping;
+            DrawablePlayButton.setToggleState(false, dontSendNotification);
+        }
+            
+        if (recState == RecordState::Stopped) {
+            recState = RecordState::isStartingPlaying;
+            DrawablePlayButton.setToggleState(true, dontSendNotification);
+        }
         
         
-        else if (!isPlaying)
-        {
-            isStartingPlaying  = !isStartingPlaying ;
-            DrawablePlayButton.setToggleState(!(DrawablePlayButton.getToggleState()), dontSendNotification);
-        };
+//        if (isPlaying)
+//        {
+//            isStoppingPlaying = !isStoppingPlaying ;
+//            DrawablePlayButton.setToggleState(!(DrawablePlayButton.getToggleState()), dontSendNotification);
+//            }
+//
+//
+//        else if (!isPlaying)
+//        {
+//            isStartingPlaying  = !isStartingPlaying ;
+//            DrawablePlayButton.setToggleState(!(DrawablePlayButton.getToggleState()), dontSendNotification);
+//        };
     
      
  }
@@ -111,7 +129,6 @@ void Playback::createSound(File lastRecording, File actualFolder, float loopUnit
     path.findChildFiles(resultFiles, 2, false, lastRecording.getFileName());
     
     File toPlay = resultFiles.getLast();
-
     
     std::unique_ptr<AudioFormatReader> audioReader2 (wavFormat.createReaderFor (toPlay.createInputStream(), true));
     
@@ -163,17 +180,26 @@ void Playback::checkEvent(int bar){
 void Playback::triggerEvent(){
    
     
-    if (isStartingPlaying == true) {
-        isPlaying = true ;
-        isStartingPlaying = false;
-    }
+//    if (isStartingPlaying == true) {
+//        isPlaying = true ;
+//        isStartingPlaying = false;
+//    }
+//
+//    if (isStoppingPlaying == true) {
+//        isPlaying = false ;
+//        isStoppingPlaying = false;
     
-    if (isStoppingPlaying == true) {
-        isPlaying = false ;
-        isStoppingPlaying = false;
+    if (recState == RecordState::Stopped) {
+        
+        for(int i = 0; i < sounds.size(); i++) {
+            
+            synth.noteOff(1,sounds[i]->getNote(), 0.8f, false);
+            
+        }
     }
+//    }
     
-    if (isPlaying) {
+    if (!(recState == RecordState::Stopped)) {
     
     for(int i = 0; i < sounds.size(); i++) {
         
@@ -190,14 +216,16 @@ void Playback::triggerEvent(){
 
 void Playback::stopImmediatelly() {
     
+    if(!sounds.isEmpty()) {
+    
      for(int i = 0; i < sounds.size(); i++) {
          
           synth.noteOff(1,sounds[i]->getNote(), 0.8f, false);
          
      }
-    
-    isPlaying = false;
-     isStartingPlaying = false;
+    }
+//    isPlaying = false;
+//     isStartingPlaying = false;
     
     updateGui();
 }
@@ -205,31 +233,74 @@ void Playback::stopImmediatelly() {
 
 void Playback::startOrStopAtNextBar(){
     
-    if (isPlaying)
-           isStoppingPlaying = true;
-    
-    if (!isPlaying)
-        isStartingPlaying = true;
+//    if (isPlaying)
+//           isStoppingPlaying = true;
+//    
+//    if (!isPlaying)
+//        isStartingPlaying = true;
 };
 
 void Playback::startRecording() {
     
-    isStartingPlaying = true;
+//    isStartingPlaying = true;
 }
 
 void Playback::updateGui() {
     
-    if (isPlaying)
-        DrawablePlayButton.setToggleState(true
-                                          , dontSendNotification);
-        
-    if (!isPlaying)
-        DrawablePlayButton.setToggleState(false
-                                          , dontSendNotification);
+//    if (isPlaying)
+//        DrawablePlayButton.setToggleState(true
+//                                          , dontSendNotification);
+//
+//    if (!isPlaying)
+//        DrawablePlayButton.setToggleState(false
+//                                          , dontSendNotification);
 
 }
 
 
-void Playback::newSong() {};
+void Playback::newSong(File oldFolder, File actualFolder) {
+    
+    
+    
+    for (int i = 10; i < 120; i++) {
+        
+        notesAvailable.add(i);
+    }
+    
+    notesAssigned.clear();
+    
+    
+    Array<File> filesToDelete;
+    FileSearchPath path(actualFolder.getFullPathName());
+    path.findChildFiles(filesToDelete, 2, false, "*.wav");
+    for (int i = 0; i <  actualFolder.getNumberOfChildFiles(2); i++ ) {
+        
+        filesToDelete[i].deleteFile() ;
+        
+        
+    };
+    
+    
+    Array<File> filesToDelete2;
+    FileSearchPath path2(oldFolder.getFullPathName());
+    path.findChildFiles(filesToDelete2, 2, false, "*.wav");
+    for (int i = 0; i <  oldFolder.getNumberOfChildFiles(2)+1; i++ ) {
+        
+        filesToDelete2[i].deleteRecursively() ;
+        
+    };
+    
+    sounds.clear();
+    
+};
 
-void Playback::save() {};
+void Playback::save(File savedFolder, File actualFolder) {
+    
+    
+    File parentDir = actualFolder;
+    
+    actualFolder.copyDirectoryTo(savedFolder);
+    
+
+    
+};

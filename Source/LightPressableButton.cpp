@@ -12,11 +12,12 @@
 #include "/Users/giovanni/BandLoop/Source/RecordState.h"
 
 
-LightPressableButton::LightPressableButton(RecordState& recordStateR, bool& isStartingRecordingR, bool& isStoppingRecordingR,int& pedalNumber) :
+LightPressableButton::LightPressableButton(RecordState& recordStateR, bool& isStartingRecordingR, bool& isStoppingRecordingR,int& pedalNumber, RecordState& recordState) :
 recordState(recordStateR)
 , isStartingRecording(isStartingRecordingR)
 , isStoppingRecording(isStoppingRecordingR)
 , nPedal(pedalNumber)
+, recState(recordState)
 
 {
     DrawablePlayingBarOn.setImages(barPlayingOnImage);
@@ -69,19 +70,23 @@ void LightPressableButton::timerCallback() {
    
     alternateFlag ++ ;
 
-    if (isStartingRecording) {
+    if (recState == RecordState::isStartingRecording) {
         barRecordingBlinking();
     }
 
-    if (isStoppingRecording && !isStartingRecording) {
+    if (recState == RecordState::isStartingPlaying || recState == RecordState::isStartingStopping) {
         barPlayingBlinking();
     }
 
-    if(recordState == RecordState::Recording && !isStoppingRecording) {
+    if(recState == RecordState::Recording ) {
         barRecordingOn();
     }
     
-    if(recordState == RecordState::Playing && !isStartingRecording) {
+    if(recState == RecordState::Playing) {
+        barPlayingOn();
+    }
+    
+    if(recState == RecordState::Stopped) {
         barPlayingOn();
     }
     

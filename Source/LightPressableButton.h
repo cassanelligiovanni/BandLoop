@@ -37,7 +37,7 @@ public:
     /**
      *Creates a slider with Decibel range.
      */
-    LightPressableButton(RecordState& recordStateR, bool& isStartingRecordingR, bool& isStoppingRecordingR, int& pedalNumber);
+    LightPressableButton(RecordState& recordStateR, bool& isStartingRecordingR, bool& isStoppingRecordingR, int& pedalNumber, RecordState& recordState);
     
     ~LightPressableButton();
     
@@ -64,6 +64,8 @@ public:
 private:
     
     int& nPedal;
+    
+    RecordState& recState ;
     
     Rectangle<int> labelBounds ;
 //    GradientLabel frame;

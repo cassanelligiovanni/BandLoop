@@ -48,21 +48,21 @@ pedalsAvailables(pedalsAvailable)
     launchThread(5);
     
     audioSetupComp.setBounds (0, 0, 350, 200);
-    pairingButton.setBounds(20, 330, 360, 30);
+    pairingButton.setBounds(20, 400, 360, 30);
     for (int i = 0 ; i < 5 ; i++  ) {
         
         auto* newPedal = new DrawableButton("newButton", DrawableButton::ImageFitted );
         pedalButtons.add(newPedal);
         pedalButtons.getLast()->setImages(pedalImage, pedalImage, pedalImage , pedalImage, pedalImagePressed);
         
-        pedalButtons.getLast()->setBounds ( (i*60) + 20, 400, 50, 50);
+        pedalButtons.getLast()->setBounds ( (i*60) + 20, 470, 50, 50);
         
         
         auto* newLabel = new Label("newLabel",String(pedalButtons.size()));
         newLabel->attachToComponent(pedalButtons.getLast(), false);
         
         addAndMakeVisible(pedalButtons[i]);
-        pedalButtons[i]->setBounds ( (i*60) + 20, 400, 50, 50);
+        pedalButtons[i]->setBounds ( (i*60) + 20, 470, 50, 50);
         
         
     }
@@ -212,7 +212,6 @@ void SettingWindowComponent::numberOfPedals() {
 void SettingWindowComponent::pedalClicked(int pedalNumber) {
 
     pedalJustTriggered = pedalNumber;
-//    DBG(String(pedalJustTriggered));
     
 }
 

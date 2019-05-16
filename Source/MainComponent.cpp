@@ -33,7 +33,7 @@ MainComponent::MainComponent()
     addTrack.onClick = [this] { createNewTrack();};
     settings.onClick = [this] {  showSettingWindow(true, parentTree, audioSetupComp);};
    
-    globalTempo.reset(new BPM (parentTree, undoManager));
+    globalTempo.reset(new BPM (parentTree, undoManager, *admInfo));
     addAndMakeVisible (globalTempo.get());
 
     deviceManager.addAudioCallback (&audioSourcePlayerClick);
@@ -45,6 +45,26 @@ MainComponent::MainComponent()
     
     resized();
     
+    
+    
+
+    fPlayer.setProcessor(&fGraph);
+    deviceManager.addAudioCallback(&fPlayer);
+    
+    fGraph.clear();
+    
+    // Create and add new input/output processor nodes.
+    AudioProcessorGraph::AudioGraphIOProcessor* in =
+    new AudioProcessorGraph::AudioGraphIOProcessor(
+                                                   AudioProcessorGraph::AudioGraphIOProcessor::audioInputNode);
+//    fInputNode = fGraph->AddProcessor(in);
+    
+    AudioProcessorGraph::AudioGraphIOProcessor* out =
+    new AudioProcessorGraph::AudioGraphIOProcessor(
+                                                   AudioProcessorGraph::AudioGraphIOProcessor::audioOutputNode);
+    fOutputNode = this->AddProcessor(out);
+    
+//    this->Connect(fInputNode, fOutputNode);
 }
 
 MainComponent::~MainComponent()
@@ -129,7 +149,7 @@ void MainComponent::resized()
     int trackWidth = 275;
     
   
-    globalTempo.get()->setBounds(area.getWidth()/4, menuEight, area.getWidth()/2, area.getHeight()/8);
+    globalTempo.get()->setBounds(area.getWidth()/6, menuEight, area.getWidth()/1.5, area.getHeight()/8);
     
     audioSetupComp.setBounds (10, 200, 400, 200);
     addTrack.setBounds (getWidth()-75, getHeight()-75, 75, 75);
@@ -264,8 +284,8 @@ void MainComponent::showSettingWindow(bool native, const ValueTree& newTree, Aud
                                    undoManager, deviceManager, pedalsAvailables, midiCollector);
     windows.add (dw);
     
-    dw->setCentreRelative(0.4, 0.4);
-    dw->setSize(400, 500);
+    dw->setCentreRelative(0.5, 0.5);
+    dw->setSize(400, 600);
     dw->setResizable (false, ! native);
     dw->setUsingNativeTitleBar (native);
     dw->setVisible (true);
@@ -347,9 +367,10 @@ void MainComponent::handleIncomingMidiMessage (MidiInput* /*source*/,
                     if(message.isNoteOn()) {
                     auto messageToPedal = MidiMessage::noteOn (1, message.getNoteNumber()- (i*10), 0.8f);
                         
-                        DBG(String(message.getNoteNumber()));
                         
                     messageToPedal.setTimeStamp (Time::getMillisecondCounterHiRes() * 0.001);
+                        DBG("note in Component:");
+                        DBG(String(message.getNoteNumber()));
             fromPedals[i]->addMessageToQueue(messageToPedal);
                      }
                     }
@@ -466,6 +487,7 @@ void MainComponent::setupSquareLookAndFeelColours ()
     customLookAndFeel.setColour (TextButton::textColourOffId,Colours::BandLoopText);
     customLookAndFeel.setColour (TextButton::textColourOnId, Colours::BandLoopText);
     customLookAndFeel.setColour (TextButton::buttonOnColourId, Colours::BandLoopBackground);
+    customLookAndFeel.setColour (Label::textColourId, Colours::BandLoopText);
     
     customLookAndFeel.setColour (ComboBox::backgroundColourId, Colours::BandLoopText);
     customLookAndFeel.setColour (ComboBox::textColourId,Colours::BandLoopText);
@@ -498,4 +520,12 @@ void MainComponent::numberPedalClicked (int note) {
         windows[i]->pedalClicked( pedalsAvailables.indexOf(round(note/10)));
     }
         
+}
+
+
+NodeId MainComponent::AddProcessor(AudioProcessor* p)
+{
+//    AudioProcessorGraph::Node* node;
+//    node = fGraph.addNode(p,node->nodeID);
+//    return node->nodeID;
 }

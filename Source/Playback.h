@@ -10,6 +10,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "/Users/giovanni/BandLoop/Source/Sound.h"
+#include "/Users/giovanni/BandLoop/Source/RecordState.h"
 #pragma once
 
 class Playback : public Component,
@@ -17,7 +18,7 @@ public Button::Listener
 {
     
 public :
-    Playback();
+    Playback(RecordState& recordState);
     ~Playback();
 
 // ===============   Methods inspired by AUDIO SOURCE  ==================================
@@ -91,14 +92,15 @@ public :
      */
     void startRecording();
  
-    void newSong();
+    void newSong(File savedFolder, File actualFolder);
     
-    void save();
+    void save(File savedFolder, File actualFolder);
     
     
     
 private:
     
+    RecordState& recState;
     
     AudioFormatManager formatManager;  
     OwnedArray<Sound> sounds;

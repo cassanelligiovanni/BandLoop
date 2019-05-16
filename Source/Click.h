@@ -17,7 +17,9 @@ class Click : public AudioSource
 {
     public:
 
-    Click ();
+    Click (  bool& foutIsStereo ,
+           int& foutputL ,
+           int& foutputR );
     
     ~Click();
     
@@ -53,8 +55,14 @@ class Click : public AudioSource
     
     private :
     
+       CriticalSection lock;
+    
+    AudioBuffer<float> tempBuffer;
+    
     Synthesiser clickSounds ; //!<  Class that actually play the sound
 
-
+    bool& outIsStereo ;
+    int& outputL ;
+    int& outputR ;
     
 };

@@ -47,13 +47,23 @@ ADMinfo (AudioDeviceManager& audioDeviceManager);
     /**
      * Fill the array and ComboBox with the available inputs
      */
-    void createInputSelections(Array<int> toStereo);
+    void createInputSelections(Array<int> fromStereo);
     
     /**
      * Create stereo inputs(ex : "1+2", "3+4" ... )
      */
     void createStereoInput(int first, int next);
     
+    
+    /**
+     * Fill the array and ComboBox with the available outputs
+     */
+    void createOutputSelections(Array<int> toStereo);
+    
+    /**
+     * Create stereo outputs(ex : "1+2", "3+4" ... )
+     */
+    void createStereoOutput(int first, int next);
 
     bool isPairable(int first, int next);
     
@@ -61,6 +71,7 @@ ADMinfo (AudioDeviceManager& audioDeviceManager);
     
     
     StringArray inputsAvailable;
+       StringArray outputsAvailable;
 
     
  private :
@@ -68,6 +79,10 @@ ADMinfo (AudioDeviceManager& audioDeviceManager);
     AudioDeviceManager& deviceManager;
 
     BigInteger bigIntegerInputsAvailable ;
+    
+    Array<int> fromStereo; /**< enum value 1 */
+    
+    BigInteger bigIntegerOutputsAvailable ;
     
     Array<int> toStereo; /**< enum value 1 */
    
@@ -81,5 +96,6 @@ ADMinfo (AudioDeviceManager& audioDeviceManager);
             if (b[i])
                 inputsAvailable.add(int (i)+1);
         return inputsAvailable; };
+    
 
 };

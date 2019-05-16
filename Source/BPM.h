@@ -20,6 +20,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "/Users/giovanni/BandLoop/Source/Click.h"
+#include "/Users/giovanni/BandLoop/Source/ADMinfo.h"
 
 //==============================================================================
 /*
@@ -30,12 +31,14 @@ class BPM :
 public Component,
 public HighResolutionTimer,
 public Timer,
-public Button::Listener
+public Button::Listener,
+public ComboBox::Listener,
+public ChangeListener
 {
 public:
     //==============================================================================
     BPM(const ValueTree& v,
-        UndoManager& um);
+        UndoManager& um, ADMinfo& ADM);
     ~BPM();
     
     //==============================================================================
@@ -79,6 +82,18 @@ public:
      * \n ex :     if (button == &recordButton) then...
      */
     void buttonClicked (Button* button) override;
+    
+    /** Called the inputs available from the AudioDeviceManager changes,
+     \n the callback is made listening to the AMDinfo Wrapper
+     @see retrieveInputs
+     */
+    void changeListenerCallback (ChangeBroadcaster*)override;
+    
+    
+    /** Called when a ComboBox option is choosen (drop Down menu) .
+     @param comboBoxThatHasChanged, use this for filtering the button that is actually pressed if (comboBoxThatHasChanged == selectInput) then...
+     */
+    void comboBoxChanged(ComboBox* comboBoxThatHasChanged) override;
     
     /**
      *  Load images and draw the display which keep Timing Informations
@@ -134,8 +149,30 @@ public:
      */
     Click click;
     
+    /** It translates the inputs Strings from the ComboBox (ex : "1 + 2" or "1"), into
+     channel references (outputL or outputR).
+     */
+    void retrieveOutputs(String fromComboBox);
+    
+    /** When the Outputs available are changed, it updates the channel references (outputL or outputR).
+     * \n This is because sometimes if only output 1 and 3 are available, then output 3 is the channel (2) and not (3)
+     */
+    void updateOutputs();
+    
+    void initialiseOutputSelector();
+    
+    
 private:
-
+    
+    ADMinfo& admInfo;
+    
+    Label labelHeadphonesOutputSelector;
+    ComboBox headphonesOutputSelector;
+    
+    bool outIsStereo = true;
+    int outputL = 1;
+    int outputR =2;
+        StringArray outputsAvailables ;
     
     ValueTree tree;
     UndoManager& undoManager;
@@ -191,6 +228,7 @@ private:
     ScopedPointer<Drawable> OFF;
     
     OwnedArray<DrawableButton> BpmCounters; //!<  Array of Light - Counters (4)
+    
 
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BPM)

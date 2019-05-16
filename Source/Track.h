@@ -113,6 +113,17 @@ class Track : public AudioSource,
      */
     void updateInputs();
     
+    
+    /** It translates the inputs Strings from the ComboBox (ex : "1 + 2" or "1"), into
+     channel references (outputL or outputR).
+     */
+    void retrieveOutputs(String fromComboBox);
+    
+    /** When the Outputs available are changed, it updates the channel references (outputL or outputR).
+     * \n This is because sometimes if only output 1 and 3 are available, then output 3 is the channel (2) and not (3)
+     */
+    void updateOutputs();
+    
     void timerCallback()override;
     
     
@@ -133,6 +144,7 @@ class Track : public AudioSource,
     void initialiseMeter();
     void initialiseSlider();
     void initialiseInputSelector();
+    void initialiseOutputSelector();
     void initialisePedalSelector();
     void initialiseNameOfTrack();
     void initialiseButton();
@@ -160,7 +172,10 @@ class Track : public AudioSource,
      it is called during initialisation and give the name of the actual Date and Hour,
      \* It is called each time the name is changed trhough the labelNameOfTrack
      */
-   void selectFolder(String name);
+    
+    void save();
+    
+    void selectFolder(String name);
     
     void setDefaultLookAndFeelColours();
     
@@ -208,9 +223,13 @@ CustomLookAndFeel customLookAndFeel;
     
     Label labelSelectInputs;
     ComboBox selectInputs;
+    
+    Label labelSelectOutputs;
+    ComboBox selectOutputs;
    
     Label labelSelectPedals;
     ComboBox selectPedals;
+    
     
     TextButton undoButton {"Undo"};
     TextButton saveButton{"Save"};
@@ -246,13 +265,14 @@ CustomLookAndFeel customLookAndFeel;
 // AUDIO ROUTING
 //==============================================================================
     bool isStereo;
-    
     int inputL = 0;
     int inputR;
-    bool outIsStereo = true;
     
+    bool outIsStereo = true;
     int outputL = 1;
     int outputR = 2;
+    
+    
     
 // ===============   FROM Pedals  Attributes ==============
     
@@ -269,6 +289,8 @@ CustomLookAndFeel customLookAndFeel;
     
     String nameOfTrack { Time::getCurrentTime().toString(true, false)};
     File actualFolder;
+    File oldFolder;
+    File savedFolder;
     File lastRecording;
     
     RecordState recordState { RecordState::Playing };
@@ -278,6 +300,7 @@ CustomLookAndFeel customLookAndFeel;
     bool isStoppingRecording = false;
     
     StringArray inputsAvailables ;
+    StringArray outputsAvailables ;
     
     Array<int>& pedalAvailable;
     int nPedal = 0;
