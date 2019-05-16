@@ -11,7 +11,7 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel2.h"
+#include "../Source/CustomLookAndFeel2.h"
 
 
 class GradientLabel : public Component

@@ -19,8 +19,8 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/BandLoop/Source/Click.h"
-#include "/Users/giovanni/BandLoop/Source/ADMinfo.h"
+#include "../Source/Click.h"
+#include "../Source/ADMinfo.h"
 
 //==============================================================================
 /*

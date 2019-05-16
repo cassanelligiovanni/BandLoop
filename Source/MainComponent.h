@@ -9,18 +9,18 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/BandLoop/Source/Track.h"
-#include "/Users/giovanni/BandLoop/Source/AudioRecorder.h"
-#include "/Users/giovanni/BandLoop/Source/Playback.h"
-#include "/Users/giovanni/BandLoop/Source/BPM.h"
-#include "/Users/giovanni/BandLoop/Source/addTrackWindow.h"
-#include "/Users/giovanni/BandLoop/Source/SettingWindow.h"
-#include "/Users/giovanni/BandLoop/Source/Sound.h"
-#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel.h"
-#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel2.h"
-#include "/Users/giovanni/BandLoop/Source/ADMinfo.h"
-#include "/Users/giovanni/BandLoop/Source/PassthroughProcessor.h"
-#include "/Users/giovanni/BandLoop/Source/GainProcessor.h"
+#include "../Source/Track.h"
+#include "../Source/AudioRecorder.h"
+#include "../Source/Playback.h"
+#include "../Source/BPM.h"
+#include "../Source/addTrackWindow.h"
+#include "../Source/SettingWindow.h"
+#include "../Source/Sound.h"
+#include "../Source/CustomLookAndFeel.h"
+#include "../Source/CustomLookAndFeel2.h"
+#include "../Source/ADMinfo.h"
+#include "../Source/PassthroughProcessor.h"
+#include "../Source/GainProcessor.h"
 
 
 typedef uint32  NodeId;

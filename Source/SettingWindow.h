@@ -10,9 +10,9 @@
 
 
 #pragma once
-#include "/Users/giovanni/BandLoop/Source/SettingWindowComponent.h"
+#include "../Source/SettingWindowComponent.h"
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel2.h"
+#include "../Source/CustomLookAndFeel2.h"
 
 
 class SettingWindow   : public DocumentWindow,

@@ -8,15 +8,6 @@
 
 namespace BinaryData
 {
-    extern const char*   Doxyfile;
-    const int            DoxyfileSize = 79645;
-
-    extern const char*   LICENSE_md;
-    const int            LICENSE_mdSize = 1726;
-
-    extern const char*   README_md;
-    const int            README_mdSize = 3574;
-
     extern const char*   StartPlayingButton_svg;
     const int            StartPlayingButton_svgSize = 1932;
 
@@ -70,6 +61,15 @@ namespace BinaryData
 
     extern const char*   StopButton_svg;
     const int            StopButton_svgSize = 1347;
+
+    extern const char*   Doxyfile;
+    const int            DoxyfileSize = 79645;
+
+    extern const char*   LICENSE_md;
+    const int            LICENSE_mdSize = 1726;
+
+    extern const char*   README_md;
+    const int            README_mdSize = 3574;
 
     extern const char*   FallingSky_otf;
     const int            FallingSky_otfSize = 125092;

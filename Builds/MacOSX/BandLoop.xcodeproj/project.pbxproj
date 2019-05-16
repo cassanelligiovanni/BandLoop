@@ -65,6 +65,22 @@
 			isa = PBXBuildFile;
 			fileRef = 4948AF488E7C133B8EDF290E;
 		};
+		2EA792649DDC7F74B093666C = {
+			isa = PBXBuildFile;
+			fileRef = A40599AE13315621FF27B01A;
+		};
+		9C034967540268041CE1EE22 = {
+			isa = PBXBuildFile;
+			fileRef = F7DFD5005202EECD0E6D56ED;
+		};
+		7923A1236F5C429C064A8B22 = {
+			isa = PBXBuildFile;
+			fileRef = FF88CBEBAA0487274114E737;
+		};
+		3D377DAD5D368490A373EDF8 = {
+			isa = PBXBuildFile;
+			fileRef = 6A13263878D2D6E972AB5DBF;
+		};
 		DB65406A49313383C820061F = {
 			isa = PBXBuildFile;
 			fileRef = EED052F07C5779EECD8202D4;
@@ -81,25 +97,9 @@
 			isa = PBXBuildFile;
 			fileRef = EAA3397F5AFB8390778E92F3;
 		};
-		4601EC84CBF3A57887DF7231 = {
-			isa = PBXBuildFile;
-			fileRef = 9C05F72F6CF399A7C20739B0;
-		};
 		A624494033F2EA204C921307 = {
 			isa = PBXBuildFile;
 			fileRef = 206118CF6F5969249AA8F2C0;
-		};
-		2EA792649DDC7F74B093666C = {
-			isa = PBXBuildFile;
-			fileRef = A40599AE13315621FF27B01A;
-		};
-		9C034967540268041CE1EE22 = {
-			isa = PBXBuildFile;
-			fileRef = F7DFD5005202EECD0E6D56ED;
-		};
-		7923A1236F5C429C064A8B22 = {
-			isa = PBXBuildFile;
-			fileRef = FF88CBEBAA0487274114E737;
 		};
 		7918D4E0F277C0C9BF599BD5 = {
 			isa = PBXBuildFile;
@@ -205,6 +205,13 @@
 			isa = PBXBuildFile;
 			fileRef = B0C052701B78E38A1706F674;
 		};
+		0051C922A2671F38785410C3 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "ff_meters.h";
+			path = "../../ff_meters-master 2/ff_meters.h";
+			sourceTree = "SOURCE_ROOT";
+		};
 		0410249E15C2EB10D1D8A331 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -217,6 +224,13 @@
 			lastKnownFileType = sourcecode.cpp.objcpp;
 			name = "include_juce_audio_utils.mm";
 			path = "../../JuceLibraryCode/include_juce_audio_utils.mm";
+			sourceTree = "SOURCE_ROOT";
+		};
+		04DFDA9BA6B1BB5284EE6DF8 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "ff_meters_StereoFieldComponent.h";
+			path = "../../ff_meters-master 2/ff_meters_StereoFieldComponent.h";
 			sourceTree = "SOURCE_ROOT";
 		};
 		05282D5D1BF3019165F0CD1F = {
@@ -282,13 +296,6 @@
 			path = ../../Source/addTrackWindow.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		1652D0AF70D4E490833E3872 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = "ff_meters_StereoFieldBuffer.h";
-			path = "../../../Downloads/ff_meters-master 2/ff_meters_StereoFieldBuffer.h";
-			sourceTree = "SOURCE_ROOT";
-		};
 		16E9CC1BCEC9988C677C74A6 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -329,13 +336,6 @@
 			lastKnownFileType = file.nib;
 			name = RecentFilesMenuTemplate.nib;
 			path = RecentFilesMenuTemplate.nib;
-			sourceTree = "SOURCE_ROOT";
-		};
-		1E6F6ABE17E67A63C761B9BA = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.md;
-			name = README.md;
-			path = "../../../Downloads/ff_meters-master 2/README.md";
 			sourceTree = "SOURCE_ROOT";
 		};
 		1F549D513DEB578528D67A01 = {
@@ -401,13 +401,6 @@
 			path = ../../Source/LightPressableButton.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
-		33E24524170225D4EA4398D3 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.otf;
-			name = FallingSky.otf;
-			path = "../../../Downloads/kineticplasma-fonts_falling-sky/FallingSky.otf";
-			sourceTree = "SOURCE_ROOT";
-		};
 		3AF7BEB89AF5B84F34115B54 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -442,6 +435,13 @@
 			name = "juce_gui_extra";
 			path = "~/JUCE/modules/juce_gui_extra";
 			sourceTree = "<absolute>";
+		};
+		3E5FE784622C0649D81A6DD3 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "ff_meters_SoundFieldLookAndFeelMethods.h";
+			path = "../../ff_meters-master 2/ff_meters_SoundFieldLookAndFeelMethods.h";
+			sourceTree = "SOURCE_ROOT";
 		};
 		46702D938DEDB8E29CC2A640 = {
 			isa = PBXFileReference;
@@ -478,6 +478,13 @@
 			path = ../../Source/ADMinfo.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		550DCD5D3F43E54F8DF56985 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.md;
+			name = LICENSE.md;
+			path = "../../ff_meters-master 2/LICENSE.md";
+			sourceTree = "SOURCE_ROOT";
+		};
 		581C154BDC36B5ADF8B89925 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -506,11 +513,25 @@
 			path = "../../JuceLibraryCode/include_juce_events.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
+		60A83B3BE4ABEAF53F792D71 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "ff_meters_OutlineBuffer.h";
+			path = "../../ff_meters-master 2/ff_meters_OutlineBuffer.h";
+			sourceTree = "SOURCE_ROOT";
+		};
 		68F64E633AACC3F7397F6F8C = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = MainComponent.cpp;
 			path = ../../Source/MainComponent.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
+		6986AD2B86EEE9A5D85C901F = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "ff_meters_LevelMeterSource.h";
+			path = "../../ff_meters-master 2/ff_meters_LevelMeterSource.h";
 			sourceTree = "SOURCE_ROOT";
 		};
 		69A4E45C90465E950DB85985 = {
@@ -519,6 +540,13 @@
 			name = Accelerate.framework;
 			path = System/Library/Frameworks/Accelerate.framework;
 			sourceTree = SDKROOT;
+		};
+		6A13263878D2D6E972AB5DBF = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = "ff_meters_LevelMeter.cpp";
+			path = "../../ff_meters-master 2/ff_meters_LevelMeter.cpp";
+			sourceTree = "SOURCE_ROOT";
 		};
 		6C2FD3183FFF0F7B7AD6B48A = {
 			isa = PBXFileReference;
@@ -548,18 +576,11 @@
 			path = BandLoop.app;
 			sourceTree = "BUILT_PRODUCTS_DIR";
 		};
-		7755D189BCD2C90F5A40AC19 = {
+		7A26B2505C88CC012E7F7A19 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			name = "ff_meters.h";
-			path = "../../../Downloads/ff_meters-master 2/ff_meters.h";
-			sourceTree = "SOURCE_ROOT";
-		};
-		77A57489D0CF5FF08FC597B9 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = "ff_meters_OutlineBuffer.h";
-			path = "../../../Downloads/ff_meters-master 2/ff_meters_OutlineBuffer.h";
+			name = "ff_meters_LookAndFeel.h";
+			path = "../../ff_meters-master 2/ff_meters_LookAndFeel.h";
 			sourceTree = "SOURCE_ROOT";
 		};
 		7B46DEBA3631A29C49E17519 = {
@@ -574,6 +595,13 @@
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = SettingWindowComponent.cpp;
 			path = ../../Source/SettingWindowComponent.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
+		7D546307D62AE4CF89BCA7FB = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "ff_meters_LevelMeter.h";
+			path = "../../ff_meters-master 2/ff_meters_LevelMeter.h";
 			sourceTree = "SOURCE_ROOT";
 		};
 		810110289174935A0F03076F = {
@@ -617,6 +645,13 @@
 			name = "juce_graphics";
 			path = "~/JUCE/modules/juce_graphics";
 			sourceTree = "<absolute>";
+		};
+		8BDDF52C73CED1FCFD4E2DF0 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.md;
+			name = README.md;
+			path = "../../ff_meters-master 2/README.md";
+			sourceTree = "SOURCE_ROOT";
 		};
 		8D99235D01E9DC760532FFC6 = {
 			isa = PBXFileReference;
@@ -674,25 +709,11 @@
 			path = ../../JuceLibraryCode/JuceHeader.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		9BD4304AFBBAD162AF8D4EA1 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = "ff_meters_LookAndFeelMethods.h";
-			path = "../../../Downloads/ff_meters-master 2/ff_meters_LookAndFeelMethods.h";
-			sourceTree = "SOURCE_ROOT";
-		};
 		9BD8C3BAA3D2293CF6CF987C = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.svg;
 			name = PlayButton.svg;
 			path = "../../../Creative Cloud Files/SVG/PlayButton.svg";
-			sourceTree = "SOURCE_ROOT";
-		};
-		9C05F72F6CF399A7C20739B0 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = "ff_meters_LevelMeter.cpp";
-			path = "../../../Downloads/ff_meters-master 2/ff_meters_LevelMeter.cpp";
 			sourceTree = "SOURCE_ROOT";
 		};
 		9E7BA632082DED90FEBAA997 = {
@@ -730,6 +751,13 @@
 			path = "../../../Creative Cloud Files/SVG/MasterTrack.cpp";
 			sourceTree = "SOURCE_ROOT";
 		};
+		A46DD6212783443B40A8D40E = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "ff_meters_StereoFieldBuffer.h";
+			path = "../../ff_meters-master 2/ff_meters_StereoFieldBuffer.h";
+			sourceTree = "SOURCE_ROOT";
+		};
 		A6063D908EC05C09E2720A30 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -756,13 +784,6 @@
 			lastKnownFileType = file.svg;
 			name = BarPlayingOn.svg;
 			path = "../../../Creative Cloud Files/SVG/BarPlayingOn.svg";
-			sourceTree = "SOURCE_ROOT";
-		};
-		AE4451398B4B8A40134255B1 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = Doxyfile;
-			path = "../../../Downloads/ff_meters-master 2/Doxyfile";
 			sourceTree = "SOURCE_ROOT";
 		};
 		B05700CB40E607578213FC5C = {
@@ -800,6 +821,13 @@
 			path = "../../JuceLibraryCode/include_juce_data_structures.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
+		B51A2540AF7278549A847A6D = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "ff_meters_LookAndFeelMethods.h";
+			path = "../../ff_meters-master 2/ff_meters_LookAndFeelMethods.h";
+			sourceTree = "SOURCE_ROOT";
+		};
 		BA1F192590856D9C3382293F = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -828,13 +856,6 @@
 			path = System/Library/Frameworks/WebKit.framework;
 			sourceTree = SDKROOT;
 		};
-		C9BDAA78D5DD297BB7F136C9 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = "ff_meters_LookAndFeel.h";
-			path = "../../../Downloads/ff_meters-master 2/ff_meters_LookAndFeel.h";
-			sourceTree = "SOURCE_ROOT";
-		};
 		CC24C15C8F9F6E853B44B8B6 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.wav;
@@ -842,11 +863,11 @@
 			path = ../../Assets/two.wav;
 			sourceTree = "SOURCE_ROOT";
 		};
-		CD12190AEF7DEA22E5833201 = {
+		CDC3EB62EEB97702D8A8012B = {
 			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = "ff_meters_StereoFieldComponent.h";
-			path = "../../../Downloads/ff_meters-master 2/ff_meters_StereoFieldComponent.h";
+			lastKnownFileType = file.otf;
+			name = FallingSky.otf;
+			path = ../../FallingSky.otf;
 			sourceTree = "SOURCE_ROOT";
 		};
 		CF5A4BDA0BA177FAE6CD7BF5 = {
@@ -877,13 +898,6 @@
 			path = "~/JUCE/modules/juce_core";
 			sourceTree = "<absolute>";
 		};
-		D300A69C07096F6633D86E4C = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = "ff_meters_SoundFieldLookAndFeelMethods.h";
-			path = "../../../Downloads/ff_meters-master 2/ff_meters_SoundFieldLookAndFeelMethods.h";
-			sourceTree = "SOURCE_ROOT";
-		};
 		D53E7C394406828F30B3C22A = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -891,18 +905,18 @@
 			path = "../../JuceLibraryCode/include_juce_cryptography.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
-		D6D5DAD7948D237BF05B2B77 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.md;
-			name = LICENSE.md;
-			path = "../../../Downloads/ff_meters-master 2/LICENSE.md";
-			sourceTree = "SOURCE_ROOT";
-		};
 		DB5B46A995F8DD56196F2CCD = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.svg;
 			name = BPMCounterON.svg;
 			path = "../../../Creative Cloud Files/SVG/BPMCounterON.svg";
+			sourceTree = "SOURCE_ROOT";
+		};
+		DDA0FD03075181B81AD08CE1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = Doxyfile;
+			path = "../../ff_meters-master 2/Doxyfile";
 			sourceTree = "SOURCE_ROOT";
 		};
 		DF9674F7A120435DD1B7A3BE = {
@@ -996,13 +1010,6 @@
 			path = "../../JuceLibraryCode/include_juce_gui_basics.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
-		F654B702BE90746BD67EB7E3 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = "ff_meters_LevelMeter.h";
-			path = "../../../Downloads/ff_meters-master 2/ff_meters_LevelMeter.h";
-			sourceTree = "SOURCE_ROOT";
-		};
 		F7A2D897A79BEB3CE8DC1A9A = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -1031,52 +1038,12 @@
 			path = ../../Source/SettingWindow.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
-		F9B40ECFAE6B3F28258A5939 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = "ff_meters_LevelMeterSource.h";
-			path = "../../../Downloads/ff_meters-master 2/ff_meters_LevelMeterSource.h";
-			sourceTree = "SOURCE_ROOT";
-		};
 		FF88CBEBAA0487274114E737 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = AddTrackComponent.cpp;
 			path = ../../Source/AddTrackComponent.cpp;
 			sourceTree = "SOURCE_ROOT";
-		};
-		F1D8B3EF496A9613885009F3 = {
-			isa = PBXGroup;
-			children = (
-				AE4451398B4B8A40134255B1,
-				7755D189BCD2C90F5A40AC19,
-				9C05F72F6CF399A7C20739B0,
-				F654B702BE90746BD67EB7E3,
-				F9B40ECFAE6B3F28258A5939,
-				C9BDAA78D5DD297BB7F136C9,
-				9BD4304AFBBAD162AF8D4EA1,
-				77A57489D0CF5FF08FC597B9,
-				D300A69C07096F6633D86E4C,
-				1652D0AF70D4E490833E3872,
-				CD12190AEF7DEA22E5833201,
-				D6D5DAD7948D237BF05B2B77,
-				1E6F6ABE17E67A63C761B9BA,
-			);
-			name = "ff_meters-master 2";
-			sourceTree = "<group>";
-		};
-		27397325A2D9EB2766BC27E1 = {
-			isa = PBXGroup;
-			children = (
-				A40599AE13315621FF27B01A,
-				E484F199B555F82B2815516E,
-				F7DFD5005202EECD0E6D56ED,
-				127B44143E8F397A78F68275,
-				FF88CBEBAA0487274114E737,
-				46702D938DEDB8E29CC2A640,
-			);
-			name = Unused;
-			sourceTree = "<group>";
 		};
 		27CBFB398CA1B0B13CA3BC6A = {
 			isa = PBXGroup;
@@ -1103,13 +1070,49 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
-		74E4C0DAA75FF59A91AA02ED = {
+		27397325A2D9EB2766BC27E1 = {
 			isa = PBXGroup;
 			children = (
 				6D9378B2862EB3BD06F57BCC,
 				9FCF51DA145B7923B6C862E4,
 				4948AF488E7C133B8EDF290E,
 				8294E4DBAF83A293A16512F6,
+				A40599AE13315621FF27B01A,
+				E484F199B555F82B2815516E,
+				F7DFD5005202EECD0E6D56ED,
+				127B44143E8F397A78F68275,
+				FF88CBEBAA0487274114E737,
+				46702D938DEDB8E29CC2A640,
+			);
+			name = Unused;
+			sourceTree = "<group>";
+		};
+		91CE57023F03D5891AD0B792 = {
+			isa = PBXGroup;
+			children = (
+				DDA0FD03075181B81AD08CE1,
+				0051C922A2671F38785410C3,
+				6A13263878D2D6E972AB5DBF,
+				7D546307D62AE4CF89BCA7FB,
+				6986AD2B86EEE9A5D85C901F,
+				7A26B2505C88CC012E7F7A19,
+				B51A2540AF7278549A847A6D,
+				60A83B3BE4ABEAF53F792D71,
+				3E5FE784622C0649D81A6DD3,
+				A46DD6212783443B40A8D40E,
+				04DFDA9BA6B1BB5284EE6DF8,
+				550DCD5D3F43E54F8DF56985,
+				8BDDF52C73CED1FCFD4E2DF0,
+			);
+			name = "ff_meters-master 2";
+			sourceTree = "<group>";
+		};
+		74E4C0DAA75FF59A91AA02ED = {
+			isa = PBXGroup;
+			children = (
+				27CBFB398CA1B0B13CA3BC6A,
+				27397325A2D9EB2766BC27E1,
+				91CE57023F03D5891AD0B792,
 				EED052F07C5779EECD8202D4,
 				581C154BDC36B5ADF8B89925,
 				B05700CB40E607578213FC5C,
@@ -1119,13 +1122,10 @@
 				549211B7B6E6F0CD05CE59C2,
 				EAA3397F5AFB8390778E92F3,
 				859220CE6541F0174C72CAC1,
-				F1D8B3EF496A9613885009F3,
 				206118CF6F5969249AA8F2C0,
 				AA245310E2A2EB77430E4FA9,
-				27397325A2D9EB2766BC27E1,
 				09FF88ADD5BDDA94579A717E,
 				26FE6CEC11ED1DC5A6B6A21D,
-				27CBFB398CA1B0B13CA3BC6A,
 				A3C4B09A09907EDA0B620E8C,
 				E8076D95CD2EB450DF7122B2,
 				BD5D33B25ABC213266F1DDBA,
@@ -1145,7 +1145,7 @@
 				05282D5D1BF3019165F0CD1F,
 				3DCC200274B8FB9A503E8251,
 				92DD1839E3D6528EBC8772F7,
-				33E24524170225D4EA4398D3,
+				CDC3EB62EEB97702D8A8012B,
 				E63D38636655BFB7BD152733,
 				195BB1D710B032B20FB08F84,
 			);
@@ -1352,7 +1352,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
@@ -1371,7 +1371,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "BandLoop";
-				WARNING_CFLAGS = -Wreorder;
+				WARNING_CFLAGS = "-Wreorder";
 				ZERO_LINK = NO;
 			};
 			name = Debug;
@@ -1398,7 +1398,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
@@ -1415,7 +1415,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PRODUCT_NAME = "BandLoop";
-				WARNING_CFLAGS = -Wreorder;
+				WARNING_CFLAGS = "-Wreorder";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1456,15 +1456,15 @@
 			files = (
 				50597CCE60DE453F1B505ED7,
 				C2D08BCDA59438F34F473EF7,
+				2EA792649DDC7F74B093666C,
+				9C034967540268041CE1EE22,
+				7923A1236F5C429C064A8B22,
+				3D377DAD5D368490A373EDF8,
 				DB65406A49313383C820061F,
 				B1E4A23F409685548CC54524,
 				3D1FD678B7DE1063D5D91AA8,
 				AD9840366A000064EBD3E75B,
-				4601EC84CBF3A57887DF7231,
 				A624494033F2EA204C921307,
-				2EA792649DDC7F74B093666C,
-				9C034967540268041CE1EE22,
-				7923A1236F5C429C064A8B22,
 				7918D4E0F277C0C9BF599BD5,
 				3BC859A840B94DBCF455D3A7,
 				34D6B14E9AF8DE1DE47EEC7F,
@@ -1530,13 +1530,14 @@
 		0F4A7DE372036151F607F19C = {
 			isa = PBXProject;
 			buildConfigurationList = 0ABD02CA32D3CAC751E80BE9;
-			attributes = { LastUpgradeCheck = 0930; ORGANIZATIONNAME = ""; TargetAttributes = { 24BC5E21112BEF9CCE2ACDEC = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; }; }; };
+			attributes = { LastUpgradeCheck = 1010; ORGANIZATIONNAME = ""; TargetAttributes = { 24BC5E21112BEF9CCE2ACDEC = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; }; }; };
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 0;
 			mainGroup = FEB453DA7FEC299D551C5D75;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (24BC5E21112BEF9CCE2ACDEC);
+			knownRegions = (en, Base);
 		};
 	};
 	rootObject = 0F4A7DE372036151F607F19C;

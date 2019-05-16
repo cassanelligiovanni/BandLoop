@@ -1,70 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="lYpEwJ" name="BandLoop" projectType="guiapp" jucerVersion="5.4.1">
+<JUCERPROJECT id="lYpEwJ" name="BandLoop" projectType="guiapp" jucerVersion="5.4.3">
   <MAINGROUP id="WzRhhu" name="BandLoop">
-    <FILE id="qvVNLd" name="PassthroughProcessor.cpp" compile="1" resource="0"
-          file="Source/PassthroughProcessor.cpp"/>
-    <FILE id="XyyJFj" name="PassthroughProcessor.h" compile="0" resource="0"
-          file="Source/PassthroughProcessor.h"/>
-    <FILE id="LL6Z1C" name="GainProcessor.cpp" compile="1" resource="0"
-          file="Source/GainProcessor.cpp"/>
-    <FILE id="VjXgE2" name="GainProcessor.h" compile="0" resource="0" file="Source/GainProcessor.h"/>
-    <FILE id="wW3y3Q" name="GradientLabel.cpp" compile="1" resource="0"
-          file="Source/GradientLabel.cpp"/>
-    <FILE id="utp1JB" name="GradientLabel.h" compile="0" resource="0" file="Source/GradientLabel.h"/>
-    <FILE id="bP1LZp" name="RecordState.h" compile="0" resource="0" file="Source/RecordState.h"/>
-    <FILE id="wZOKHH" name="LightPressableButton.cpp" compile="1" resource="0"
-          file="Source/LightPressableButton.cpp"/>
-    <FILE id="AHoM3k" name="LightPressableButton.h" compile="0" resource="0"
-          file="Source/LightPressableButton.h"/>
-    <FILE id="crYd2R" name="ADMinfo.cpp" compile="1" resource="0" file="Source/ADMinfo.cpp"/>
-    <FILE id="ixl7qP" name="ADMinfo.h" compile="0" resource="0" file="Source/ADMinfo.h"/>
-    <FILE id="LvA8Qu" name="Click.cpp" compile="1" resource="0" file="Source/Click.cpp"/>
-    <FILE id="MSiX9J" name="Click.h" compile="0" resource="0" file="Source/Click.h"/>
-    <GROUP id="{2E980698-2CE4-892E-38A5-7844812F1194}" name="ff_meters-master 2">
-      <FILE id="F4wVZU" name="Doxyfile" compile="0" resource="1" file="../Downloads/ff_meters-master 2/Doxyfile"/>
-      <FILE id="RsDOZs" name="ff_meters.h" compile="0" resource="0" file="../Downloads/ff_meters-master 2/ff_meters.h"/>
-      <FILE id="d2DKVa" name="ff_meters_LevelMeter.cpp" compile="1" resource="0"
-            file="../Downloads/ff_meters-master 2/ff_meters_LevelMeter.cpp"/>
-      <FILE id="M8UOR5" name="ff_meters_LevelMeter.h" compile="0" resource="0"
-            file="../Downloads/ff_meters-master 2/ff_meters_LevelMeter.h"/>
-      <FILE id="Ktjoji" name="ff_meters_LevelMeterSource.h" compile="0" resource="0"
-            file="../Downloads/ff_meters-master 2/ff_meters_LevelMeterSource.h"/>
-      <FILE id="ki5Qac" name="ff_meters_LookAndFeel.h" compile="0" resource="0"
-            file="../Downloads/ff_meters-master 2/ff_meters_LookAndFeel.h"/>
-      <FILE id="A4eeCb" name="ff_meters_LookAndFeelMethods.h" compile="0"
-            resource="0" file="../Downloads/ff_meters-master 2/ff_meters_LookAndFeelMethods.h"/>
-      <FILE id="DfgLKb" name="ff_meters_OutlineBuffer.h" compile="0" resource="0"
-            file="../Downloads/ff_meters-master 2/ff_meters_OutlineBuffer.h"/>
-      <FILE id="DiYlyc" name="ff_meters_SoundFieldLookAndFeelMethods.h" compile="0"
-            resource="0" file="../Downloads/ff_meters-master 2/ff_meters_SoundFieldLookAndFeelMethods.h"/>
-      <FILE id="Xg9aU2" name="ff_meters_StereoFieldBuffer.h" compile="0"
-            resource="0" file="../Downloads/ff_meters-master 2/ff_meters_StereoFieldBuffer.h"/>
-      <FILE id="HQoR3X" name="ff_meters_StereoFieldComponent.h" compile="0"
-            resource="0" file="../Downloads/ff_meters-master 2/ff_meters_StereoFieldComponent.h"/>
-      <FILE id="LUXZy1" name="LICENSE.md" compile="0" resource="1" file="../Downloads/ff_meters-master 2/LICENSE.md"/>
-      <FILE id="AjUlRL" name="README.md" compile="0" resource="1" file="../Downloads/ff_meters-master 2/README.md"/>
-    </GROUP>
-    <FILE id="mRygha" name="CustomLookAndFeel2.cpp" compile="1" resource="0"
-          file="Source/CustomLookAndFeel2.cpp"/>
-    <FILE id="SA2FPj" name="CustomLookAndFeel2.h" compile="0" resource="0"
-          file="Source/CustomLookAndFeel2.h"/>
-    <GROUP id="{6693E86E-E98E-A342-CB31-EB44E9442E2B}" name="Unused">
-      <FILE id="UOvLQo" name="MasterTrack.cpp" compile="1" resource="0" file="../Creative Cloud Files/SVG/MasterTrack.cpp"/>
-      <FILE id="SgNEo3" name="MasterTrack.h" compile="0" resource="0" file="../Creative Cloud Files/SVG/MasterTrack.h"/>
-      <FILE id="TVXPdl" name="addTrackWindow.cpp" compile="1" resource="0"
-            file="Source/addTrackWindow.cpp"/>
-      <FILE id="MYkxrB" name="addTrackWindow.h" compile="0" resource="0"
-            file="Source/addTrackWindow.h"/>
-      <FILE id="q9dnzd" name="AddTrackComponent.cpp" compile="1" resource="0"
-            file="Source/AddTrackComponent.cpp"/>
-      <FILE id="dkoA95" name="AddTrackComponent.h" compile="0" resource="0"
-            file="Source/AddTrackComponent.h"/>
-    </GROUP>
-    <FILE id="QnD0YS" name="CustomLookAndFeel.cpp" compile="1" resource="0"
-          file="Source/CustomLookAndFeel.cpp"/>
-    <FILE id="LhNeg5" name="CustomLookAndFeel.h" compile="0" resource="0"
-          file="Source/CustomLookAndFeel.h"/>
     <GROUP id="{9CC129A6-A8D3-8DE5-FF03-FDEA67D17DC7}" name="Assets">
       <FILE id="MbONWi" name="StartPlayingButton.svg" compile="0" resource="1"
             file="../Creative Cloud Files/SVG/StartPlayingButton.svg"/>
@@ -95,6 +32,69 @@
       <FILE id="rH1eiS" name="PlayButton.svg" compile="0" resource="1" file="../Creative Cloud Files/SVG/PlayButton.svg"/>
       <FILE id="lKGNTo" name="StopButton.svg" compile="0" resource="1" file="../Creative Cloud Files/SVG/StopButton.svg"/>
     </GROUP>
+    <GROUP id="{6693E86E-E98E-A342-CB31-EB44E9442E2B}" name="Unused">
+      <FILE id="qvVNLd" name="PassthroughProcessor.cpp" compile="1" resource="0"
+            file="Source/PassthroughProcessor.cpp"/>
+      <FILE id="XyyJFj" name="PassthroughProcessor.h" compile="0" resource="0"
+            file="Source/PassthroughProcessor.h"/>
+      <FILE id="LL6Z1C" name="GainProcessor.cpp" compile="1" resource="0"
+            file="Source/GainProcessor.cpp"/>
+      <FILE id="VjXgE2" name="GainProcessor.h" compile="0" resource="0" file="Source/GainProcessor.h"/>
+      <FILE id="UOvLQo" name="MasterTrack.cpp" compile="1" resource="0" file="../Creative Cloud Files/SVG/MasterTrack.cpp"/>
+      <FILE id="SgNEo3" name="MasterTrack.h" compile="0" resource="0" file="../Creative Cloud Files/SVG/MasterTrack.h"/>
+      <FILE id="TVXPdl" name="addTrackWindow.cpp" compile="1" resource="0"
+            file="Source/addTrackWindow.cpp"/>
+      <FILE id="MYkxrB" name="addTrackWindow.h" compile="0" resource="0"
+            file="Source/addTrackWindow.h"/>
+      <FILE id="q9dnzd" name="AddTrackComponent.cpp" compile="1" resource="0"
+            file="Source/AddTrackComponent.cpp"/>
+      <FILE id="dkoA95" name="AddTrackComponent.h" compile="0" resource="0"
+            file="Source/AddTrackComponent.h"/>
+    </GROUP>
+    <GROUP id="{9676BD85-6625-0026-9F5C-2C905272AC72}" name="ff_meters-master 2">
+      <FILE id="iUZRCi" name="Doxyfile" compile="0" resource="1" file="ff_meters-master 2/Doxyfile"/>
+      <FILE id="mT7Gt7" name="ff_meters.h" compile="0" resource="0" file="ff_meters-master 2/ff_meters.h"/>
+      <FILE id="YGVhvu" name="ff_meters_LevelMeter.cpp" compile="1" resource="0"
+            file="ff_meters-master 2/ff_meters_LevelMeter.cpp"/>
+      <FILE id="kYNmjv" name="ff_meters_LevelMeter.h" compile="0" resource="0"
+            file="ff_meters-master 2/ff_meters_LevelMeter.h"/>
+      <FILE id="kfvZge" name="ff_meters_LevelMeterSource.h" compile="0" resource="0"
+            file="ff_meters-master 2/ff_meters_LevelMeterSource.h"/>
+      <FILE id="eXEtfs" name="ff_meters_LookAndFeel.h" compile="0" resource="0"
+            file="ff_meters-master 2/ff_meters_LookAndFeel.h"/>
+      <FILE id="MVpgfI" name="ff_meters_LookAndFeelMethods.h" compile="0"
+            resource="0" file="ff_meters-master 2/ff_meters_LookAndFeelMethods.h"/>
+      <FILE id="PwVWJC" name="ff_meters_OutlineBuffer.h" compile="0" resource="0"
+            file="ff_meters-master 2/ff_meters_OutlineBuffer.h"/>
+      <FILE id="U4NdSo" name="ff_meters_SoundFieldLookAndFeelMethods.h" compile="0"
+            resource="0" file="ff_meters-master 2/ff_meters_SoundFieldLookAndFeelMethods.h"/>
+      <FILE id="lbcpjx" name="ff_meters_StereoFieldBuffer.h" compile="0"
+            resource="0" file="ff_meters-master 2/ff_meters_StereoFieldBuffer.h"/>
+      <FILE id="sJSdPD" name="ff_meters_StereoFieldComponent.h" compile="0"
+            resource="0" file="ff_meters-master 2/ff_meters_StereoFieldComponent.h"/>
+      <FILE id="FmvquO" name="LICENSE.md" compile="0" resource="1" file="ff_meters-master 2/LICENSE.md"/>
+      <FILE id="UmFPRI" name="README.md" compile="0" resource="1" file="ff_meters-master 2/README.md"/>
+    </GROUP>
+    <FILE id="wW3y3Q" name="GradientLabel.cpp" compile="1" resource="0"
+          file="Source/GradientLabel.cpp"/>
+    <FILE id="utp1JB" name="GradientLabel.h" compile="0" resource="0" file="Source/GradientLabel.h"/>
+    <FILE id="bP1LZp" name="RecordState.h" compile="0" resource="0" file="Source/RecordState.h"/>
+    <FILE id="wZOKHH" name="LightPressableButton.cpp" compile="1" resource="0"
+          file="Source/LightPressableButton.cpp"/>
+    <FILE id="AHoM3k" name="LightPressableButton.h" compile="0" resource="0"
+          file="Source/LightPressableButton.h"/>
+    <FILE id="crYd2R" name="ADMinfo.cpp" compile="1" resource="0" file="Source/ADMinfo.cpp"/>
+    <FILE id="ixl7qP" name="ADMinfo.h" compile="0" resource="0" file="Source/ADMinfo.h"/>
+    <FILE id="LvA8Qu" name="Click.cpp" compile="1" resource="0" file="Source/Click.cpp"/>
+    <FILE id="MSiX9J" name="Click.h" compile="0" resource="0" file="Source/Click.h"/>
+    <FILE id="mRygha" name="CustomLookAndFeel2.cpp" compile="1" resource="0"
+          file="Source/CustomLookAndFeel2.cpp"/>
+    <FILE id="SA2FPj" name="CustomLookAndFeel2.h" compile="0" resource="0"
+          file="Source/CustomLookAndFeel2.h"/>
+    <FILE id="QnD0YS" name="CustomLookAndFeel.cpp" compile="1" resource="0"
+          file="Source/CustomLookAndFeel.cpp"/>
+    <FILE id="LhNeg5" name="CustomLookAndFeel.h" compile="0" resource="0"
+          file="Source/CustomLookAndFeel.h"/>
     <FILE id="F2UMba" name="Fader.cpp" compile="1" resource="0" file="Source/Fader.cpp"/>
     <FILE id="j2SM33" name="Fader.h" compile="0" resource="0" file="Source/Fader.h"/>
     <FILE id="og8ACz" name="Sound.cpp" compile="1" resource="0" file="Source/Sound.cpp"/>
@@ -119,7 +119,7 @@
     <FILE id="yr7A32" name="Playback.h" compile="0" resource="0" file="Source/Playback.h"/>
     <FILE id="dTRckt" name="Track.cpp" compile="1" resource="0" file="Source/Track.cpp"/>
     <FILE id="LYLCo6" name="Track.h" compile="0" resource="0" file="Source/Track.h"/>
-    <FILE id="WDtNVg" name="FallingSky.otf" compile="0" resource="1" file="../Downloads/kineticplasma-fonts_falling-sky/FallingSky.otf"/>
+    <FILE id="gv2EYY" name="FallingSky.otf" compile="0" resource="1" file="FallingSky.otf"/>
     <FILE id="s8Fwk2" name="DecibelSlider.cpp" compile="1" resource="0"
           file="Source/DecibelSlider.cpp"/>
     <FILE id="O13Gr4" name="DecibelSlider.h" compile="0" resource="0" file="Source/DecibelSlider.h"/>
