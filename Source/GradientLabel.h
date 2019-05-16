@@ -24,7 +24,7 @@ class GradientLabel : public Component
     
     ~GradientLabel();
     
-    void paint(Graphics& g);
+    void paint(Graphics& g) override;
     
     void resized() override;
     

@@ -13,10 +13,11 @@
 enum class RecordState
 {
     null,
-    readyToRecord,
+    isStartingRecording,
     Recording,
-    readyToPlayback,
+    isStartingPlaying,
     Playing,
-    Stopping
+    isStartingStopping,
+    Stopped
     
 };

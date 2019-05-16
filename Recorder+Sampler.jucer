@@ -2,6 +2,13 @@
 
 <JUCERPROJECT id="lYpEwJ" name="BandLoop" projectType="guiapp" jucerVersion="5.4.1">
   <MAINGROUP id="WzRhhu" name="BandLoop">
+    <FILE id="qvVNLd" name="PassthroughProcessor.cpp" compile="1" resource="0"
+          file="Source/PassthroughProcessor.cpp"/>
+    <FILE id="XyyJFj" name="PassthroughProcessor.h" compile="0" resource="0"
+          file="Source/PassthroughProcessor.h"/>
+    <FILE id="LL6Z1C" name="GainProcessor.cpp" compile="1" resource="0"
+          file="Source/GainProcessor.cpp"/>
+    <FILE id="VjXgE2" name="GainProcessor.h" compile="0" resource="0" file="Source/GainProcessor.h"/>
     <FILE id="wW3y3Q" name="GradientLabel.cpp" compile="1" resource="0"
           file="Source/GradientLabel.cpp"/>
     <FILE id="utp1JB" name="GradientLabel.h" compile="0" resource="0" file="Source/GradientLabel.h"/>
@@ -43,6 +50,8 @@
     <FILE id="SA2FPj" name="CustomLookAndFeel2.h" compile="0" resource="0"
           file="Source/CustomLookAndFeel2.h"/>
     <GROUP id="{6693E86E-E98E-A342-CB31-EB44E9442E2B}" name="Unused">
+      <FILE id="UOvLQo" name="MasterTrack.cpp" compile="1" resource="0" file="../Creative Cloud Files/SVG/MasterTrack.cpp"/>
+      <FILE id="SgNEo3" name="MasterTrack.h" compile="0" resource="0" file="../Creative Cloud Files/SVG/MasterTrack.h"/>
       <FILE id="TVXPdl" name="addTrackWindow.cpp" compile="1" resource="0"
             file="Source/addTrackWindow.cpp"/>
       <FILE id="MYkxrB" name="addTrackWindow.h" compile="0" resource="0"

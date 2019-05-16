@@ -14,15 +14,20 @@
 
 //==============================================================================
 
-BPM::BPM(const ValueTree& v, UndoManager& um)
+BPM::BPM(const ValueTree& v, UndoManager& um, ADMinfo& ADM)
 : tree (v)
 , undoManager (um)
+,  admInfo(ADM)
+, click(outIsStereo, outputL, outputR)
 
 {
     
     drawButton();
     drawBPMdisplay();
     drawCounter();
+    
+    admInfo.addChangeListener(this);
+    initialiseOutputSelector();
 
     DrawablePlayButton.onClick = [this](){play();};
     DrawablePlayButton.addListener(this);
@@ -31,6 +36,7 @@ BPM::BPM(const ValueTree& v, UndoManager& um)
     tree.setProperty(BPMratio, loopUnit, &undoManager);
     
     Timer::startTimer(5);
+    
 
 }
 
@@ -73,16 +79,18 @@ void BPM::resized()
 {
 
     Rectangle<int> bounds = getLocalBounds();
-    DrawablePlayButton.setBounds(0, -10, bounds.getWidth()/10, bounds.getHeight());
-    textBPM.setBounds(7*(bounds.getWidth()/10), (bounds.getHeight()/2), (bounds.getWidth()/10*3), (bounds.getHeight()/2));
+    DrawablePlayButton.setBounds(0, -10, bounds.getWidth()/13, bounds.getHeight());
+    textBPM.setBounds(7*(bounds.getWidth()/13), (bounds.getHeight()/2), (bounds.getWidth()/13*3), (bounds.getHeight()/2));
     labelBPMProperties.set("fontSize", (bounds.getHeight()/2*0.6));
     textBPMProperties.set("fontSize", (bounds.getHeight()/2));
-    labelBar.setBounds(9*(bounds.getWidth()/10), 0, (bounds.getWidth()/10*3), (bounds.getHeight()/2));
+    labelBar.setBounds(9*(bounds.getWidth()/13), 0, (bounds.getWidth()/13*3), (bounds.getHeight()/2));
     labelBarProperties.set("fontSize", (bounds.getHeight()/2*0.6));
-    bpmDisplayButton.setBounds(7*(bounds.getWidth()/10), 0, (bounds.getWidth()/10*3), bounds.getHeight());
+    bpmDisplayButton.setBounds(7*(bounds.getWidth()/13), 0, (bounds.getWidth()/13*3), bounds.getHeight());
     for(int i = 0; i< BpmCounters.size(); i++) {
-        BpmCounters[i]->setBounds((i+2)*(bounds.getWidth()/10), /*(bounds.getWidth()/10/2 - (bounds.getWidth()/10/2)*0.8)*/0, (bounds.getWidth()/10)*0.8, (bounds.getHeight())*0.8);
+        BpmCounters[i]->setBounds((i+2)*(bounds.getWidth()/13), /*(bounds.getWidth()/10/2 - (bounds.getWidth()/10/2)*0.8)*/0, (bounds.getWidth()/13)*0.8, (bounds.getHeight())*0.8);
     }
+    
+//    headphonesOutputSelector.setBounds(11*(bounds.getWidth()/13), 20, (bounds.getWidth()/13*2), 25);
 }
 
 
@@ -313,4 +321,88 @@ void BPM::buttonClicked (Button* button)
                     DrawablePlayButton.onClick = [&]() { play(); };
                 }
         }
+}
+
+
+
+void BPM::changeListenerCallback (ChangeBroadcaster*) {
+    
+    //Inputs Changed
+    headphonesOutputSelector.clear();
+    for (int i = 0; i < admInfo.outputsAvailable.size(); i++){
+        headphonesOutputSelector.addItem (admInfo.outputsAvailable[i], i+1);
+    }
+    outputsAvailables = admInfo.outputsAvailable;
+    updateOutputs();
+
+    
+    
+    
+}
+
+
+void BPM::retrieveOutputs(String fromComboBox){
+    StringArray tokens;
+    
+    tokens.addTokens (fromComboBox,"+");
+    if(tokens.size() == 1)
+        outIsStereo = false;
+    else
+        outIsStereo = true;
+    if(outIsStereo){
+        outputL = tokens[0].getIntValue();
+        outputR = tokens[2].getIntValue();
+    }
+    else if (!outIsStereo){
+        outputL = tokens[0].getIntValue();
+    }
+    if(outIsStereo){
+        outputL = tokens[0].getIntValue();
+        outputR = tokens[2].getIntValue();
+    }
+    else if (!outIsStereo){
+        outputL = tokens[0].getIntValue();
+        outputR = 0;
+    }
+    
+    
+    
+}
+
+
+
+void BPM::updateOutputs() {
+    String outputLmomentary = String(outputL);
+    String outputRmomentary = String(outputR);
+    outputL  = outputsAvailables.indexOf(outputLmomentary) + 1;
+    outputR  = outputsAvailables.indexOf(outputRmomentary) + 1;
+}
+
+
+void BPM::initialiseOutputSelector() {
+    
+    headphonesOutputSelector.addListener(this);
+    labelHeadphonesOutputSelector.attachToComponent(&headphonesOutputSelector, false);
+    labelHeadphonesOutputSelector.setText ("Metronome Output:", dontSendNotification);
+    addAndMakeVisible(labelHeadphonesOutputSelector);
+    addAndMakeVisible(headphonesOutputSelector);
+    outputsAvailables = admInfo.outputsAvailable;
+    for (int i = 0; i < admInfo.outputsAvailable.size(); i++){
+        headphonesOutputSelector.addItem (admInfo.outputsAvailable[i], i+1);
+    }
+    
+    headphonesOutputSelector.setTextWhenNothingSelected("1+2");
+    
+}
+
+
+void BPM::comboBoxChanged(ComboBox* comboBoxThatHasChanged){
+
+if (comboBoxThatHasChanged == &headphonesOutputSelector) {
+    String named = headphonesOutputSelector.getText();
+    retrieveOutputs(named);
+    outputsAvailables = admInfo.outputsAvailable;
+    updateOutputs();
+    }
+
 }

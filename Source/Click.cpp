@@ -10,7 +10,11 @@
 
 #include "Click.h"
 
-Click::Click () {
+Click::Click (bool& foutIsStereo,int& foutputL, int& foutputR) :
+outIsStereo (foutIsStereo),
+outputL (foutputL),
+outputR (foutputR)
+{
     
     for (auto i = 0; i < 8; ++i)
     {
@@ -62,10 +66,41 @@ void Click::releaseResources() {};
 
 void Click::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) {
    
+// const ScopedLock sl (lock);
+    
+    
     bufferToFill.clearActiveBufferRegion();
-    int numSamples = bufferToFill.numSamples ;
+    
     MidiBuffer incomingMidi;
-    clickSounds.renderNextBlock (*bufferToFill.buffer, incomingMidi, 0, numSamples);
+//    
+//    tempBuffer.setSize (2, bufferToFill.buffer->getNumSamples());
+//    
+    clickSounds.renderNextBlock(*bufferToFill.buffer, incomingMidi, 0, bufferToFill.numSamples);
+    
+//
+//    bufferToFill.buffer->addFrom (0, bufferToFill.startSample, tempBuffer, 1, 0, bufferToFill.numSamples);
+//
+//    }
+    
+    
+//    if(outputL) {
+//
+//    if(outIsStereo) {
+//
+//        bufferToFill.buffer->addFrom((outputL-1), 0, temp, 0, 0, numSamples);
+////        std::cout<<outIsStereo<<std::endl;
+////        bufferToFill.buffer->addFrom(outputL-1, bufferToFill.startSample, temp, 0, 0, bufferToFill.numSamples);
+////             bufferToFill.buffer->addFrom(outputR-1, bufferToFill.startSample, temp, 1, 0, bufferToFill.numSamples);
+//    }
+//
+//
+//    else if (!outIsStereo) {
+//
+////        bufferToFill.buffer->addFrom(outputL-1, bufferToFill.startSample, *info2.buffer, 0, 0, bufferToFill.numSamples);
+//    }
+//
+//
+//    }
 
 };
 

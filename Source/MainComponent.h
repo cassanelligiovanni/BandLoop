@@ -19,7 +19,11 @@
 #include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel.h"
 #include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel2.h"
 #include "/Users/giovanni/BandLoop/Source/ADMinfo.h"
+#include "/Users/giovanni/BandLoop/Source/PassthroughProcessor.h"
+#include "/Users/giovanni/BandLoop/Source/GainProcessor.h"
 
+
+typedef uint32  NodeId;
 
 class MainComponent   :
                             public AudioAppComponent,
@@ -149,6 +153,8 @@ class MainComponent   :
     
     void numberPedalClicked(int note);
     
+    NodeId AddProcessor(AudioProcessor* p);
+    
     
 private:
     
@@ -219,6 +225,12 @@ private:
     Array<int> pedalsAvailables;
     int sampleHz ;
     
+    
+    AudioProcessorPlayer fPlayer;
+    AudioProcessorGraph  fGraph;
+    
+    NodeId fInputNode;
+    NodeId fOutputNode;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

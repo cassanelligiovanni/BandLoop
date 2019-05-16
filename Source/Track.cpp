@@ -22,6 +22,7 @@ Track::Track(String trackColour,
 , recorder()
 , admInfo(AdmInfo)
 , pedalAvailable(pedalsAvailables)
+, playback(recordState)
 
 {
     
@@ -35,6 +36,7 @@ Track::Track(String trackColour,
      initialiseMeter();
      initialiseSlider();
      initialiseInputSelector();
+     initialiseOutputSelector();
      initialisePedalSelector();
      initialiseNameOfTrack();
      initialiseButton();
@@ -121,8 +123,7 @@ Track::Track(String trackColour,
         float* pointers [2] = { bufferToRecordL.getWritePointer (0, bufferToFill.startSample),
                                 bufferToRecordL.getWritePointer (0, bufferToFill.startSample) };
 
-                if (recordState == RecordState::Recording)
-                    recorder.Record(pointers, numSamples);
+                            if(!(recordState == RecordState::Stopped || recordState == RecordState::Playing ))                    recorder.Record(pointers, numSamples);
 
                 bufferToFill.clearActiveBufferRegion();
 
@@ -173,7 +174,7 @@ Track::Track(String trackColour,
         float* pointers [2] = { bufferToRecordStereo.getWritePointer (0, bufferToFill.startSample),
                                 bufferToRecordStereo.getWritePointer (1, bufferToFill.startSample) };
                 
-                if (recordState == RecordState::Recording)
+                if (!(recordState == RecordState::Stopped || recordState == RecordState::Playing ))
                     recorder.Record(pointers, numSamples);
             
                 
@@ -186,9 +187,8 @@ Track::Track(String trackColour,
                     
                     levelMeterSource.measureBlock(bufferOutStereo);
                     
-                    // non sara 0 ma la variabile output
                     bufferToFill.buffer->addFrom((outputL-1), 0, bufferOutStereo, 0, 0, numSamples);
-                     bufferToFill.buffer->addFrom((outputR-1), 0, bufferOutStereo, 1, 0, numSamples);
+                     bufferToFill.buffer->addFrom((outputL-1), 0, bufferOutStereo, 1, 0, numSamples);
                 }
                 
                 if(outIsStereo){
@@ -200,8 +200,8 @@ Track::Track(String trackColour,
                     
                     levelMeterSource.measureBlock(bufferOutStereo);
                     
-                    bufferToFill.buffer->addFrom(0, 0, bufferOutStereo, 0, 0, numSamples);
-                    bufferToFill.buffer->addFrom(1, 0, bufferOutStereo, 1, 0, numSamples);
+                    bufferToFill.buffer->addFrom((outputL-1), 0, bufferOutStereo, 0, 0, numSamples);
+                    bufferToFill.buffer->addFrom((outputR-1), 0, bufferOutStereo, 1, 0, numSamples);
                     
                 }
             
@@ -216,9 +216,13 @@ Track::Track(String trackColour,
                           bufferToFill.clearActiveBufferRegion();
              
          }
-//        
+        
 //        if( recordState == RecordState::Playing) {DBG("PLAYING");};
 //        if (recordState == RecordState::Recording) {DBG("RECORDING");};
+//        if( recordState == RecordState::isStartingPlaying) {DBG("isStartingPlaying");};
+//        if (recordState == RecordState::isStartingRecording) {DBG("isStartingRecording");};
+//        if( recordState == RecordState::isStartingStopping) {DBG("isStartingStopping");};
+//        if (recordState == RecordState::Stopped) {DBG("Stopped");};
 
     }
         
@@ -257,9 +261,12 @@ void Track::resized()
     Path pedal;
     pedal.addRoundedRectangle(bounds, 20, 20);
     
-    selectPedals.setBounds(20, bounds.getHeight()*(14./16.), (bounds.getWidth()/ 2)-40, 20);
-    selectInputs.setBounds(bounds.getWidth()/ 2 + 20, bounds.getHeight()*(14./16.), (bounds.getWidth()/ 2)-40, 20);
+    selectPedals.setBounds(20, bounds.getHeight()*(14./16.), (bounds.getWidth()/ 3)-40, 20);
+////    selectPedals.setBounds(20, 5, (getWidth()-60)/4, 20);
+    selectInputs.setBounds(bounds.getWidth()/ 3, bounds.getHeight()*(14./16.), (bounds.getWidth()/ 2.5)-40, 20);
+    selectOutputs.setBounds((bounds.getWidth()/ 3)*2, bounds.getHeight()*(14./16.), (bounds.getWidth()/ 2.5)-40, 20);
 
+    
     decibelSlider.setBounds(bounds.getWidth()/2 -75, bounds.getHeight()*(4./16.), 60, bounds.getHeight()/5.*3-20) ;
     meter.setBounds(bounds.getWidth()/2 +15, bounds.getHeight()*(4./16.)+ 30, 60, bounds.getHeight()/5.*3.- 50 );
     
@@ -270,10 +277,10 @@ void Track::resized()
     playback.setBounds((bounds.getWidth()/6)*2, (bounds.getHeight()*(2./16.)), 30, 30);
     
     
-    stopImmediatellyButton.setBounds(200, 5, (getWidth()-60)/4, 20);
-    undoButton.setBounds(20, 5, (getWidth()-60)/4, 20);
-    saveButton.setBounds(80, 5, (getWidth()-60)/4, 20);
-    newSongButton.setBounds(140, 5, (getWidth()-60)/4, 20);
+    stopImmediatellyButton.setBounds(140, 5, (getWidth()-60)/4, 20);
+//    undoButton.setBounds(20, 5, (getWidth()-60)/4, 20);
+    saveButton.setBounds(20, 5, (getWidth()-60)/4, 20);
+    newSongButton.setBounds(80, 5, (getWidth()-60)/4, 20);
 }
 
 
@@ -320,6 +327,9 @@ void Track::labelTextChanged (Label *labelThatHasChanged){
 //create a folder named as the Track;
 //=============================================================================
 void Track::selectFolder(String name) {
+    
+    oldFolder = actualFolder ;
+    
 auto parentDir = File::getSpecialLocation (File::userDocumentsDirectory).getChildFile("BandLoop").getChildFile("Temporary").getChildFile(name);
     
     if(parentDir.isDirectory()) {
@@ -331,6 +341,8 @@ auto parentDir = File::getSpecialLocation (File::userDocumentsDirectory).getChil
     
     nameOfTrack = actualFolder.getFileName();
     bool b = actualFolder.createDirectory();
+    
+    
 //    return myFolder;
 }
 
@@ -380,25 +392,48 @@ void Track::checkEvent(int bar) {
   
     playback.checkEvent(bar);
 
-    if (isStoppingRecording) {
+    if (recordState == RecordState::isStartingRecording && lastRecording.existsAsFile()){
+        recorder.stopRecording();
+        if ( lastRecording.getParentDirectory() == actualFolder) {
+        playback.createSound(lastRecording, actualFolder, loopUnit);
+       
+        //        isStoppingRecording = false;
+      }
+        
+        if ( lastRecording.getParentDirectory() != actualFolder) {
+            playback.createSound(lastRecording, oldFolder, loopUnit);
+            
+            //        isStoppingRecording = false;
+        }
+        
+    }
+    
+    if (recordState == RecordState::isStartingPlaying && lastRecording.existsAsFile()){
         recorder.stopRecording();
         playback.createSound(lastRecording, actualFolder, loopUnit);
         recordState = RecordState::Playing;
-        isStoppingRecording = false;
+//        isStoppingRecording = false;
     }
     
+    if(  recordState == RecordState::isStartingStopping && lastRecording.existsAsFile()) {
+        
+        recorder.stopRecording();
+        playback.createSound(lastRecording, actualFolder, loopUnit);
+        recordState = RecordState::Stopped;
+        
+    }
     
 }
 void Track::triggerEvent() {
  
 //    routeMidiMessage();
     
-    if (isStartingRecording){
+    if (recordState == RecordState::isStartingRecording){
         lastRecording = actualFolder.getNonexistentChildFile(nameOfTrack, ".wav");
         recorder.startRecording(lastRecording);
         recordState = RecordState::Recording;
 
-        isStartingRecording = false;
+//        isStartingRecording = false;
     }
 
     playback.triggerEvent();
@@ -421,6 +456,15 @@ void Track::comboBoxChanged(ComboBox* comboBoxThatHasChanged){
         updateInputs();
     }
     
+    
+    if (comboBoxThatHasChanged == &selectOutputs) {
+        String named = selectOutputs.getText();
+        retrieveOutputs(named);
+        outputsAvailables = admInfo.outputsAvailable;
+        updateOutputs();
+    }
+
+    
     if (comboBoxThatHasChanged == &selectPedals) {
         nPedal =  (selectPedals.getSelectedId());
       
@@ -432,7 +476,7 @@ void Track::comboBoxChanged(ComboBox* comboBoxThatHasChanged){
 
 void Track::retrieveInputs(String fromComboBox){
     StringArray tokens;
-    tokens.addTokens (fromComboBox,"+" );
+    tokens.addTokens (fromComboBox,"+");
     if(tokens.size() == 1)
         isStereo = false;
     else
@@ -452,6 +496,36 @@ void Track::retrieveInputs(String fromComboBox){
         inputL = tokens[0].getIntValue();
         inputR = 0;
     }
+    
+ 
+}
+
+void Track::retrieveOutputs(String fromComboBox){
+    StringArray tokens;
+    
+    tokens.addTokens (fromComboBox,"+");
+    if(tokens.size() == 1)
+        outIsStereo = false;
+    else
+        outIsStereo = true;
+    if(outIsStereo){
+        outputL = tokens[0].getIntValue();
+        outputR = tokens[2].getIntValue();
+    }
+    else if (!outIsStereo){
+        outputL = tokens[0].getIntValue();
+    }
+    if(outIsStereo){
+        outputL = tokens[0].getIntValue();
+        outputR = tokens[2].getIntValue();
+    }
+    else if (!outIsStereo){
+        outputL = tokens[0].getIntValue();
+        outputR = 0;
+    }
+
+
+    
 }
 
 
@@ -467,6 +541,15 @@ void Track::changeListenerCallback (ChangeBroadcaster*) {
     inputsAvailables = admInfo.inputsAvailable;
     updateInputs();
 
+    //Inputs Changed
+    selectOutputs.clear();
+    for (int i = 0; i < admInfo.outputsAvailable.size(); i++){
+        selectOutputs.addItem (admInfo.outputsAvailable[i], i+1);
+    }
+    outputsAvailables = admInfo.outputsAvailable;
+    updateOutputs();
+    
+    
 //Pedals Changed
     
     selectPedals.clear();
@@ -484,12 +567,19 @@ void Track::updateInputs() {
 
 }
 
+void Track::updateOutputs() {
+    String outputLmomentary = String(outputL);
+    String outputRmomentary = String(outputR);
+    outputL  = outputsAvailables.indexOf(outputLmomentary) + 1;
+    outputR  = outputsAvailables.indexOf(outputRmomentary) + 1;
+}
+
 
 
 void Track::initialise() {
   
     admInfo.addChangeListener(this);
-    lightPressableButton.reset(new LightPressableButton(recordState, isStartingRecording, isStoppingRecording, nPedal));
+    lightPressableButton.reset(new LightPressableButton(recordState, isStartingRecording, isStoppingRecording, nPedal, recordState));
     audioSourcePlayer.setSource(this);
     admInfo.addAudioCallback(&audioSourcePlayer);
     Identifier  BPMratio ("BPMratio");
@@ -542,6 +632,24 @@ void Track::initialiseInputSelector() {
     for (int i = 0; i < admInfo.inputsAvailable.size(); i++){
         selectInputs.addItem (admInfo.inputsAvailable[i], i+1);
     }
+    
+     selectInputs.setSelectedId(4);
+    
+}
+
+void Track::initialiseOutputSelector() {
+    
+    selectOutputs.addListener(this);
+    labelSelectOutputs.attachToComponent(&selectOutputs, false);
+    labelSelectOutputs.setText ("Output:", dontSendNotification);
+    addAndMakeVisible(labelSelectOutputs);
+    addAndMakeVisible(selectOutputs);
+    outputsAvailables = admInfo.outputsAvailable;
+    for (int i = 0; i < admInfo.outputsAvailable.size(); i++){
+        selectOutputs.addItem (admInfo.outputsAvailable[i], i+1);
+    }
+    
+    selectOutputs.setTextWhenNothingSelected("1+2");
     
 }
 
@@ -605,8 +713,10 @@ void Track::initialiseButton() {
 
 void Track::routeMidiMessage(){
     
-
-        
+    
+    if (lastMidiNote) {
+        DBG("note played:");
+        DBG(String(lastMidiNote));
         if (lastMidiNote == 1) {firstFootSwitch();}
         if (lastMidiNote == 2) {secondFootSwitch();}
         if (lastMidiNote == 3) {thirdFootSwitch();}
@@ -615,7 +725,7 @@ void Track::routeMidiMessage(){
         if (lastMidiNote == 6) {sixthFootSwitch();}
   
     midiBufferFromPedal.clear();
-
+    }
     }
 
 
@@ -627,44 +737,67 @@ void Track::firstFootSwitch(){
     if (recordState == RecordState::Playing)
     {
         DrawableRecordButton.setToggleState(true, dontSendNotification);
-        isStartingRecording = true ;
+        recordState = RecordState::isStartingRecording;
         lastThingDoneFirstButton = "isStartingRecording";
         lastThingDoneGeneral = "isStartingRecording";
-    }
-    else if (recordState == RecordState::Recording && isStoppingRecording )
-    {
-        DrawableRecordButton.setToggleState(true, dontSendNotification);
-        isStartingRecording = true ;
-        lastThingDoneFirstButton = "isStartingRecording";
-        lastThingDoneGeneral = "isStartingRecording";
-    }
-    else
-    {
-        DrawableRecordButton.setToggleState(false, dontSendNotification);
-
-        isStartingRecording = false ;
-        isStoppingRecording = true ;
-        lastThingDoneFirstButton = "isStoppingRecording";
-        lastThingDoneGeneral = "isStoppingRecording";
     }
     
-    playback.startRecording();
+    else if (recordState == RecordState::isStartingPlaying)
+    {
+        DrawableRecordButton.setToggleState(true, dontSendNotification);
+        recordState = RecordState::isStartingRecording;
+        lastThingDoneFirstButton = "isStartingRecording";
+        lastThingDoneGeneral = "isStartingRecording";
+    }
+    
+    else if (recordState == RecordState::Recording)
+    {
+        DrawableRecordButton.setToggleState(false, dontSendNotification);
+        recordState = RecordState::isStartingPlaying;
+        lastThingDoneFirstButton = "isStartingPlaying";
+        lastThingDoneGeneral = "isStartingPlaying";
+    }
+    
+    else if (recordState == RecordState::isStartingRecording)
+    {
+        DrawableRecordButton.setToggleState(false, dontSendNotification);
+        recordState = RecordState::isStartingPlaying;
+        lastThingDoneFirstButton = "isStartingPlaying";
+        lastThingDoneGeneral = "isStartingPlaying";
+    }
+    
+  
+   
+    
+    
+//    else
+//    {
+//        DrawableRecordButton.setToggleState(false, dontSendNotification);
+//
+//        isStartingRecording = false ;
+//        isStoppingRecording = true ;
+//        lastThingDoneFirstButton = "isStoppingRecording";
+//        lastThingDoneGeneral = "isStoppingRecording";
+//    }
+//    
+//    playback.startRecording();
     
 };
 
 
 void Track::secondFootSwitch(){
     
+    recordState = RecordState::Stopped ;
 
-    if (lastThingDoneFirstButton == "isStartingRecording") {isStartingRecording = false ;}
-    
-    if (lastThingDoneFirstButton == "isStoppingRecording") {isStoppingRecording = false ;}
-    
-    if (recordState == RecordState::Recording) {recordState = RecordState::Playing;
-        
+//    if (lastThingDoneFirstButton == "isStartingRecording") {isStartingRecording = false ;}
+//
+//    if (lastThingDoneFirstButton == "isStoppingRecording") {isStoppingRecording = false ;}
+//
+//    if (recordState == RecordState::Recording) {recordState = RecordState::Playing;
+//
         DrawableRecordButton.setToggleState(false, dontSendNotification);
-        
-    }
+//
+//    }
 
     playback.stopImmediatelly();
     
@@ -678,11 +811,11 @@ void Track::thirdFootSwitch(){
     
 };
 
-void Track::fourthFootSwitch(){playback.save();};
+void Track::fourthFootSwitch(){save();};
 
 void Track::fifthFootSwitch(){ playback.startOrStopAtNextBar(); };
 
-void Track::sixthFootSwitch(){ playback.newSong();};
+void Track::sixthFootSwitch(){ playback.newSong(oldFolder, actualFolder);};
 
 
 void Track::setDefaultLookAndFeelColours(){
@@ -692,6 +825,7 @@ void Track::setDefaultLookAndFeelColours(){
     customLookAndFeel.setColour (ComboBox::buttonColourId,Colours::BandLoopBackground);
     customLookAndFeel.setColour (ComboBox::arrowColourId, Colours::BandLoopText);
     customLookAndFeel.setColour (ComboBox::focusedOutlineColourId,Colours::BandLoopText);
+        customLookAndFeel.setColour (Label::textColourId,Colours::BandLoopText);
 }
 
 
@@ -700,4 +834,22 @@ void Track::updateGuiAndPedals() {
     lightPressableButton->updateTrue();
     
     
+};
+
+
+void Track::save(){
+  
+    auto parentDir = File::getSpecialLocation (File::userDocumentsDirectory).getChildFile("BandLoop").getChildFile("Saved").getChildFile(nameOfTrack);
+    
+    if(parentDir.isDirectory()) {
+        savedFolder = parentDir.getNonexistentSibling();
+    }
+    else if(!parentDir.isDirectory()) {
+        savedFolder = parentDir;
+    }
+    
+//    nameOfTrack = savedFolder.getFileName();
+    bool b = savedFolder.createDirectory();
+    
+    playback.save(savedFolder, actualFolder);
 };
