@@ -26,11 +26,12 @@
 class AddTrackComponent   : public Component,
 public Label::Listener,
 public ValueTree::Listener,
+public Button::Listener,
 private ComboBox::Listener,
 private ChangeListener
 {
 public:
-    AddTrackComponent (const String& name, Colour backgroundColour, int buttonsNeeded, StringArray inputsAvailable, const ValueTree& v, UndoManager& um);
+    AddTrackComponent (const String& name, Colour backgroundColour, int buttonsNeeded, StringArray inputsAvailable, const ValueTree& v, UndoManager& um, bool& toDestroy);
     
     ~AddTrackComponent() ;
 
@@ -40,6 +41,8 @@ public:
     void changeListenerCallback (ChangeBroadcaster* source) override;
     
     void comboBoxChanged(ComboBox* comboBoxThatHasChanged) override;
+    
+    void buttonClicked (Button* button) override;
     
     void valueTreeChildAdded (ValueTree& parentTree, ValueTree&) override;
     void valueTreeChildRemoved (ValueTree& parentTree, ValueTree&, int) override;
@@ -72,11 +75,14 @@ private:
     NamedValueSet& nameTrackProperties = nameTrack.getProperties();
     Label nameTrackLabel;
     NamedValueSet& nameTrackLabelProperties = nameTrackLabel.getProperties();
-    
+    TextButton acceptButton;
+    NamedValueSet& acceptButtonProperties = acceptButton.getProperties();
+//    TextButton cancelButton;
+//    NamedValueSet& cancelButtonProperties = cancelButton.getProperties();
     
     CustomLookAndFeel2 customLookAndFeel2;
     
-    
+    bool& flagToDestroy;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AddTrackComponent)
 };

@@ -1,0 +1,108 @@
+\hypertarget{class_sound}{}\section{Sound Class Reference}
+\label{class_sound}\index{Sound@{Sound}}
+
+
+{\ttfamily \#include $<$Sound.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sound_afd2f45e3e3beff9624ae5fb02fbc80bb}{Sound}} (File f\+Folder, File f\+File, int fstart, int flength, int fnote)
+\item 
+int \mbox{\hyperlink{class_sound_abdc20b1e2d151987ad6958749693a622}{get\+Start}} ()
+\item 
+int \mbox{\hyperlink{class_sound_a621ec3a749962543eea4d64a789b38b4}{get\+Length}} ()
+\item 
+int \mbox{\hyperlink{class_sound_a13c91185d1fd706bccb1ee4eb1b36645}{get\+Note}} ()
+\item 
+void \mbox{\hyperlink{class_sound_a461046367f146bb9e842a3ac36e144a3}{set\+Start}} (int new\+Start)
+\item 
+void \mbox{\hyperlink{class_sound_a0dd61b160b0424f36f2d858667b52ea2}{set\+Length}} (int new\+Length)
+\item 
+void \mbox{\hyperlink{class_sound_aa5c37c27281ccf904f211229b1197469}{set\+Note}} (int new\+Note)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A simple class to keep track of all the .wav loops,
+
+It is initilised right after the loop is recorded.
+
+all its parameters are useful in order to keep track of wheter it has to be triggered at next bar 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sound_afd2f45e3e3beff9624ae5fb02fbc80bb}\label{class_sound_afd2f45e3e3beff9624ae5fb02fbc80bb}} 
+\index{Sound@{Sound}!Sound@{Sound}}
+\index{Sound@{Sound}!Sound@{Sound}}
+\subsubsection{\texorpdfstring{Sound()}{Sound()}}
+{\footnotesize\ttfamily Sound\+::\+Sound (\begin{DoxyParamCaption}\item[{File}]{f\+Folder,  }\item[{File}]{f\+File,  }\item[{int}]{fstart,  }\item[{int}]{flength,  }\item[{int}]{fnote }\end{DoxyParamCaption})}
+
+Creates a \mbox{\hyperlink{class_sound}{Sound}} right after recording is completed and initialise with the .wav properties. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sound_abdc20b1e2d151987ad6958749693a622}\label{class_sound_abdc20b1e2d151987ad6958749693a622}} 
+\index{Sound@{Sound}!getStart@{getStart}}
+\index{getStart@{getStart}!Sound@{Sound}}
+\subsubsection{\texorpdfstring{getStart()}{getStart()}}
+{\footnotesize\ttfamily int Sound\+::get\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Return the Bar when it started to playback 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sound_a621ec3a749962543eea4d64a789b38b4}\label{class_sound_a621ec3a749962543eea4d64a789b38b4}} 
+\index{Sound@{Sound}!getLength@{getLength}}
+\index{getLength@{getLength}!Sound@{Sound}}
+\subsubsection{\texorpdfstring{getLength()}{getLength()}}
+{\footnotesize\ttfamily int Sound\+::get\+Length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Return the Length in bar of the loop 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sound_a13c91185d1fd706bccb1ee4eb1b36645}\label{class_sound_a13c91185d1fd706bccb1ee4eb1b36645}} 
+\index{Sound@{Sound}!getNote@{getNote}}
+\index{getNote@{getNote}!Sound@{Sound}}
+\subsubsection{\texorpdfstring{getNote()}{getNote()}}
+{\footnotesize\ttfamily int Sound\+::get\+Note (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Return the Note assigned to this track 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sound_a461046367f146bb9e842a3ac36e144a3}\label{class_sound_a461046367f146bb9e842a3ac36e144a3}} 
+\index{Sound@{Sound}!setStart@{setStart}}
+\index{setStart@{setStart}!Sound@{Sound}}
+\subsubsection{\texorpdfstring{setStart()}{setStart()}}
+{\footnotesize\ttfamily void Sound\+::set\+Start (\begin{DoxyParamCaption}\item[{int}]{new\+Start }\end{DoxyParamCaption})}
+
+Called when Global B\+P\+M/\+Tempo is resetted to 0, this starting point will be 0 too. 
+\begin{DoxyParams}{Parameters}
+{\em new\+Start} & \char`\"{}usually 0\char`\"{} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sound_a0dd61b160b0424f36f2d858667b52ea2}\label{class_sound_a0dd61b160b0424f36f2d858667b52ea2}} 
+\index{Sound@{Sound}!setLength@{setLength}}
+\index{setLength@{setLength}!Sound@{Sound}}
+\subsubsection{\texorpdfstring{setLength()}{setLength()}}
+{\footnotesize\ttfamily void Sound\+::set\+Length (\begin{DoxyParamCaption}\item[{int}]{new\+Length }\end{DoxyParamCaption})}
+
+set a New Length for the \mbox{\hyperlink{class_sound}{Sound}}. 
+\begin{DoxyParams}{Parameters}
+{\em new\+Length} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sound_aa5c37c27281ccf904f211229b1197469}\label{class_sound_aa5c37c27281ccf904f211229b1197469}} 
+\index{Sound@{Sound}!setNote@{setNote}}
+\index{setNote@{setNote}!Sound@{Sound}}
+\subsubsection{\texorpdfstring{setNote()}{setNote()}}
+{\footnotesize\ttfamily void Sound\+::set\+Note (\begin{DoxyParamCaption}\item[{int}]{new\+Note }\end{DoxyParamCaption})}
+
+set a New Note for the \mbox{\hyperlink{class_sound}{Sound}}. 
+\begin{DoxyParams}{Parameters}
+{\em new\+Note} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/Sound.\+h\item 
+Source/Sound.\+cpp\end{DoxyCompactItemize}

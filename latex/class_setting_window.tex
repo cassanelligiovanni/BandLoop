@@ -1,0 +1,53 @@
+\hypertarget{class_setting_window}{}\section{Setting\+Window Class Reference}
+\label{class_setting_window}\index{SettingWindow@{SettingWindow}}
+Inheritance diagram for Setting\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.333333cm]{class_setting_window}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_setting_window_a7eeac4f72de3bdaa66a4edaf1d67c0bb}\label{class_setting_window_a7eeac4f72de3bdaa66a4edaf1d67c0bb}} 
+{\bfseries Setting\+Window} (const String \&name, Colour background\+Colour, int buttons\+Needed, const Value\+Tree \&v, Undo\+Manager \&um, Audio\+Device\+Manager \&device\+Manager)
+\item 
+\mbox{\Hypertarget{class_setting_window_a927395dde858c278767b5a03b0098d93}\label{class_setting_window_a927395dde858c278767b5a03b0098d93}} 
+void {\bfseries run} () override
+\item 
+\mbox{\Hypertarget{class_setting_window_a9219c106f019c2062124ee3afa0f5c55}\label{class_setting_window_a9219c106f019c2062124ee3afa0f5c55}} 
+void {\bfseries close\+Button\+Pressed} () override
+\item 
+\mbox{\Hypertarget{class_setting_window_aec7b180f0788c4f02fcb98ee4dee5de3}\label{class_setting_window_aec7b180f0788c4f02fcb98ee4dee5de3}} 
+void {\bfseries change\+Listener\+Callback} (Change\+Broadcaster $\ast$source) override
+\item 
+\mbox{\Hypertarget{class_setting_window_aa99ed532ad10561a488618d9cf5c3bb4}\label{class_setting_window_aa99ed532ad10561a488618d9cf5c3bb4}} 
+void {\bfseries combo\+Box\+Changed} (Combo\+Box $\ast$combo\+Box\+That\+Has\+Changed) override
+\item 
+\mbox{\Hypertarget{class_setting_window_a81f320694972e6e7c79576b83c5d9aab}\label{class_setting_window_a81f320694972e6e7c79576b83c5d9aab}} 
+void {\bfseries value\+Tree\+Child\+Added} (Value\+Tree \&parent\+Tree, Value\+Tree \&) override
+\item 
+\mbox{\Hypertarget{class_setting_window_a8497cc40fd6fe26a28bbc52a8362a2da}\label{class_setting_window_a8497cc40fd6fe26a28bbc52a8362a2da}} 
+void {\bfseries value\+Tree\+Child\+Removed} (Value\+Tree \&parent\+Tree, Value\+Tree \&, int) override
+\item 
+\mbox{\Hypertarget{class_setting_window_a94bcdfef14ccd7504a104d76a81d21ec}\label{class_setting_window_a94bcdfef14ccd7504a104d76a81d21ec}} 
+void {\bfseries value\+Tree\+Child\+Order\+Changed} (Value\+Tree \&parent\+Tree, int, int) override
+\item 
+\mbox{\Hypertarget{class_setting_window_ab015a28f4121b979103d3729678f1829}\label{class_setting_window_ab015a28f4121b979103d3729678f1829}} 
+void {\bfseries value\+Tree\+Parent\+Changed} (Value\+Tree \&) override
+\item 
+\mbox{\Hypertarget{class_setting_window_ade213f3fa09f21aef73a9ed7dd605869}\label{class_setting_window_ade213f3fa09f21aef73a9ed7dd605869}} 
+void {\bfseries value\+Tree\+Property\+Changed} (Value\+Tree \&, const Identifier \&) override
+\item 
+\mbox{\Hypertarget{class_setting_window_a25e6d3bd0c5cdb4885f2822b36841944}\label{class_setting_window_a25e6d3bd0c5cdb4885f2822b36841944}} 
+void {\bfseries label\+Text\+Changed} (Label $\ast$label\+That\+Has\+Changed) override
+\item 
+\mbox{\Hypertarget{class_setting_window_a57ab286088f996dff8bbaf1b7810d835}\label{class_setting_window_a57ab286088f996dff8bbaf1b7810d835}} 
+void {\bfseries launch\+Thread} (int priority=5)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/Setting\+Window.\+h\item 
+Source/Setting\+Window.\+cpp\end{DoxyCompactItemize}

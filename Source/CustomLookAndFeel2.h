@@ -27,6 +27,7 @@ private:
 public:
     void drawComboBox (Graphics &, int width, int height, bool isButtonDown, int buttonX, int buttonY, int buttonW, int buttonH, ComboBox & box) override;
     
+
     
      void drawPopupMenuBackground (Graphics&, int width, int height) override;
     void drawPopupMenuItem (Graphics& g, const Rectangle<int>& area,
@@ -35,7 +36,11 @@ public:
                                                 const bool hasSubMenu, const String& text,
                                                 const String& shortcutKeyText,
                                                 const Drawable* icon, const Colour* const textColourToUse)override;
-
+    Font getTextButtonFont (TextButton&, int buttonHeight)override;
+    
+    void drawButtonBackground (Graphics& g, Button& button, const Colour& backgroundColour,
+                               bool isMouseOverButton, bool isButtonDown) override;
+    
     
      void drawComboBoxTextWhenNothingSelected (Graphics& g, ComboBox& box, Label& label) override;
 
@@ -47,5 +52,14 @@ public:
     
     
     
+    void drawToggleButton (Graphics& g, ToggleButton& button,
+                           bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown) override;
+    
+    void drawTickBox (Graphics& g, Component& component,
+                                      float x, float y, float w, float h,
+                                      const bool ticked,
+                                      const bool isEnabled,
+                                      const bool shouldDrawButtonAsHighlighted,
+                                      const bool shouldDrawButtonAsDown) override;
     
 };

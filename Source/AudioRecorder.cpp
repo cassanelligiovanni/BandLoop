@@ -10,8 +10,6 @@
 AudioRecorder::AudioRecorder():
 //backgroundThread("Audio Recorder Thread")
  threadedWriter() // the FIFO used to buffer the incoming data
-, sampleRate(0.0)
-, nextSampleNum(0)
 , writerLock()
 , activeWriter(nullptr)
 {
@@ -34,7 +32,6 @@ void AudioRecorder::startRecording (const File& file)
     
     if (sampleRate > 0)
     {
-        DBG("startRecording");
         // Create an OutputStream to write to our destination file...
         file.deleteFile();
         
@@ -96,10 +93,7 @@ void AudioRecorder::stopRecording()
 }
 
 
-//bool AudioRecorder::isRecording() const
-//{
-//    return wavWriter != nullptr;
-//}
+
 
 //=============================================================================
 

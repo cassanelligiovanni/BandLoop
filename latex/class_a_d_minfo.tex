@@ -1,0 +1,75 @@
+\hypertarget{class_a_d_minfo}{}\section{A\+D\+Minfo Class Reference}
+\label{class_a_d_minfo}\index{ADMinfo@{ADMinfo}}
+Inheritance diagram for A\+D\+Minfo\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_d_minfo}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_a_d_minfo_a465ae1214edc18c2258dfaeb9b155772}\label{class_a_d_minfo_a465ae1214edc18c2258dfaeb9b155772}} 
+{\bfseries A\+D\+Minfo} (Audio\+Device\+Manager \&audio\+Device\+Manager)
+\item 
+void \mbox{\hyperlink{class_a_d_minfo_a27279299808cf4d425f7672ff3273157}{add\+Audio\+Callback}} (Audio\+Source\+Player $\ast$source\+Player)
+\item 
+void \mbox{\hyperlink{class_a_d_minfo_ac8fa936c018bd75d01fafd2b8c8ad3f6}{remove\+Audio\+Callback}} (Audio\+Source\+Player $\ast$source\+Player)
+\item 
+void \mbox{\hyperlink{class_a_d_minfo_a50ddf84b1a57b99420f32c627040cde1}{change\+Listener\+Callback}} (Change\+Broadcaster $\ast$) override
+\item 
+void \mbox{\hyperlink{class_a_d_minfo_a26182cce57f898d5b566ffee14e5e492}{create\+Input\+Selections}} (Array$<$ int $>$ to\+Stereo)
+\item 
+void \mbox{\hyperlink{class_a_d_minfo_abddde8902010e825e82f3890e0f4280e}{create\+Stereo\+Input}} (int first, int next)
+\item 
+\mbox{\Hypertarget{class_a_d_minfo_ae375704718016ff06678454af97371e6}\label{class_a_d_minfo_ae375704718016ff06678454af97371e6}} 
+bool {\bfseries is\+Pairable} (int first, int next)
+\item 
+\mbox{\Hypertarget{class_a_d_minfo_af04f031ff72359c16af547bd1935aa7e}\label{class_a_d_minfo_af04f031ff72359c16af547bd1935aa7e}} 
+bool {\bfseries is\+Odd} (int to\+Stereo)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_a_d_minfo_a5b93fcceecb47501de53ec3ccdffd072}\label{class_a_d_minfo_a5b93fcceecb47501de53ec3ccdffd072}} 
+String\+Array {\bfseries inputs\+Available}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_d_minfo_a27279299808cf4d425f7672ff3273157}\label{class_a_d_minfo_a27279299808cf4d425f7672ff3273157}} 
+\index{ADMinfo@{ADMinfo}!addAudioCallback@{addAudioCallback}}
+\index{addAudioCallback@{addAudioCallback}!ADMinfo@{ADMinfo}}
+\subsubsection{\texorpdfstring{addAudioCallback()}{addAudioCallback()}}
+{\footnotesize\ttfamily void A\+D\+Minfo\+::add\+Audio\+Callback (\begin{DoxyParamCaption}\item[{Audio\+Source\+Player $\ast$}]{source\+Player }\end{DoxyParamCaption})}
+
+Add an Audio\+Source\+Player to Audio\+Device\+Manager the Audio\+Source\+Player will be filled with an Audio\+Source which will be our \mbox{\hyperlink{class_track}{Track}} \mbox{\Hypertarget{class_a_d_minfo_ac8fa936c018bd75d01fafd2b8c8ad3f6}\label{class_a_d_minfo_ac8fa936c018bd75d01fafd2b8c8ad3f6}} 
+\index{ADMinfo@{ADMinfo}!removeAudioCallback@{removeAudioCallback}}
+\index{removeAudioCallback@{removeAudioCallback}!ADMinfo@{ADMinfo}}
+\subsubsection{\texorpdfstring{removeAudioCallback()}{removeAudioCallback()}}
+{\footnotesize\ttfamily void A\+D\+Minfo\+::remove\+Audio\+Callback (\begin{DoxyParamCaption}\item[{Audio\+Source\+Player $\ast$}]{source\+Player }\end{DoxyParamCaption})}
+
+Add an Audio\+Source\+Player to Audio\+Device\+Manager the Audio\+Source\+Player will be filled with an Audio\+Source which will be our \mbox{\hyperlink{class_track}{Track}} \mbox{\Hypertarget{class_a_d_minfo_a50ddf84b1a57b99420f32c627040cde1}\label{class_a_d_minfo_a50ddf84b1a57b99420f32c627040cde1}} 
+\index{ADMinfo@{ADMinfo}!changeListenerCallback@{changeListenerCallback}}
+\index{changeListenerCallback@{changeListenerCallback}!ADMinfo@{ADMinfo}}
+\subsubsection{\texorpdfstring{changeListenerCallback()}{changeListenerCallback()}}
+{\footnotesize\ttfamily void A\+D\+Minfo\+::change\+Listener\+Callback (\begin{DoxyParamCaption}\item[{Change\+Broadcaster $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Called when the number of input is changed, It will trigger the \mbox{\hyperlink{class_a_d_minfo_a26182cce57f898d5b566ffee14e5e492}{create\+Input\+Selections()}} \mbox{\Hypertarget{class_a_d_minfo_a26182cce57f898d5b566ffee14e5e492}\label{class_a_d_minfo_a26182cce57f898d5b566ffee14e5e492}} 
+\index{ADMinfo@{ADMinfo}!createInputSelections@{createInputSelections}}
+\index{createInputSelections@{createInputSelections}!ADMinfo@{ADMinfo}}
+\subsubsection{\texorpdfstring{createInputSelections()}{createInputSelections()}}
+{\footnotesize\ttfamily void A\+D\+Minfo\+::create\+Input\+Selections (\begin{DoxyParamCaption}\item[{Array$<$ int $>$}]{to\+Stereo }\end{DoxyParamCaption})}
+
+Fill the array and Combo\+Box with the available inputs \mbox{\Hypertarget{class_a_d_minfo_abddde8902010e825e82f3890e0f4280e}\label{class_a_d_minfo_abddde8902010e825e82f3890e0f4280e}} 
+\index{ADMinfo@{ADMinfo}!createStereoInput@{createStereoInput}}
+\index{createStereoInput@{createStereoInput}!ADMinfo@{ADMinfo}}
+\subsubsection{\texorpdfstring{createStereoInput()}{createStereoInput()}}
+{\footnotesize\ttfamily void A\+D\+Minfo\+::create\+Stereo\+Input (\begin{DoxyParamCaption}\item[{int}]{first,  }\item[{int}]{next }\end{DoxyParamCaption})}
+
+Create stereo inputs(ex \+: \char`\"{}1+2\char`\"{}, \char`\"{}3+4\char`\"{} ... ) 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/A\+D\+Minfo.\+h\item 
+Source/A\+D\+Minfo.\+cpp\end{DoxyCompactItemize}

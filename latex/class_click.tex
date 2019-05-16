@@ -1,0 +1,64 @@
+\hypertarget{class_click}{}\section{Click Class Reference}
+\label{class_click}\index{Click@{Click}}
+Inheritance diagram for Click\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_click}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_click_af29c8f44f7aa61e1b2f6e46707a4d41f}{prepare\+To\+Play}} (int samples\+Per\+Block\+Expected, double sample\+Rate) override
+\item 
+void \mbox{\hyperlink{class_click_a0be55e26561673ceeabe98d448473e0f}{release\+Resources}} () override
+\item 
+void \mbox{\hyperlink{class_click_a3ad8a5e5f437567b8463df32446737d9}{get\+Next\+Audio\+Block}} (const Audio\+Source\+Channel\+Info \&buffer\+To\+Fill) override
+\item 
+\mbox{\Hypertarget{class_click_aa03bec0044701c85bdb65ae22274aeed}\label{class_click_aa03bec0044701c85bdb65ae22274aeed}} 
+void {\bfseries next\+Bar} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_click_a101a9f477f39fc074784b222e4ce9fe9}\label{class_click_a101a9f477f39fc074784b222e4ce9fe9}} 
+bool \mbox{\hyperlink{class_click_a101a9f477f39fc074784b222e4ce9fe9}{flag\+One}} = false
+\begin{DoxyCompactList}\small\item\em True whan Beat 1 (4) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_click_a8f40e52e0f3c23fee82dc1658144c0d0}\label{class_click_a8f40e52e0f3c23fee82dc1658144c0d0}} 
+bool \mbox{\hyperlink{class_click_a8f40e52e0f3c23fee82dc1658144c0d0}{flag\+Two\+Three\+Four}} = false
+\begin{DoxyCompactList}\small\item\em True whan Beat 2-\/3-\/4. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_click_af29c8f44f7aa61e1b2f6e46707a4d41f}\label{class_click_af29c8f44f7aa61e1b2f6e46707a4d41f}} 
+\index{Click@{Click}!prepareToPlay@{prepareToPlay}}
+\index{prepareToPlay@{prepareToPlay}!Click@{Click}}
+\subsubsection{\texorpdfstring{prepareToPlay()}{prepareToPlay()}}
+{\footnotesize\ttfamily void Click\+::prepare\+To\+Play (\begin{DoxyParamCaption}\item[{int}]{samples\+Per\+Block\+Expected,  }\item[{double}]{sample\+Rate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+This callback allows the source to initialise any resources it might need when playing. It initialise the Synthesiser \mbox{\hyperlink{class_click}{Click}} with the two different .wav sounds. 
+\begin{DoxyParams}{Parameters}
+{\em samples\+Per\+Block\+Expected} & (buffer\+Size) \\
+\hline
+{\em sample\+Rate} & (Hz) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_click_a0be55e26561673ceeabe98d448473e0f}\label{class_click_a0be55e26561673ceeabe98d448473e0f}} 
+\index{Click@{Click}!releaseResources@{releaseResources}}
+\index{releaseResources@{releaseResources}!Click@{Click}}
+\subsubsection{\texorpdfstring{releaseResources()}{releaseResources()}}
+{\footnotesize\ttfamily void Click\+::release\+Resources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Allows the source to release anything it no longer needs after playback has stopped. \mbox{\Hypertarget{class_click_a3ad8a5e5f437567b8463df32446737d9}\label{class_click_a3ad8a5e5f437567b8463df32446737d9}} 
+\index{Click@{Click}!getNextAudioBlock@{getNextAudioBlock}}
+\index{getNextAudioBlock@{getNextAudioBlock}!Click@{Click}}
+\subsubsection{\texorpdfstring{getNextAudioBlock()}{getNextAudioBlock()}}
+{\footnotesize\ttfamily void Click\+::get\+Next\+Audio\+Block (\begin{DoxyParamCaption}\item[{const Audio\+Source\+Channel\+Info \&}]{buffer\+To\+Fill }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+This callback will be made each time the audio playback hardware (or whatever other destination the audio data is going to) needs another block of data. ~\newline
+ In this case it will check the flags and play the \mbox{\hyperlink{class_click}{Click}} sounds if needed. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/Click.\+h\item 
+Source/Click.\+cpp\end{DoxyCompactItemize}

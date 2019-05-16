@@ -1,0 +1,64 @@
+\hypertarget{class_decibel_slider}{}\section{Decibel\+Slider Class Reference}
+\label{class_decibel_slider}\index{DecibelSlider@{DecibelSlider}}
+
+
+{\ttfamily \#include $<$Decibel\+Slider.\+h$>$}
+
+Inheritance diagram for Decibel\+Slider\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_decibel_slider}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_decibel_slider_ab0b82a875884889d993ffe94cef48903}{Decibel\+Slider}} ()
+\item 
+double \mbox{\hyperlink{class_decibel_slider_a18445cf6cf6d356e772085b5b4551b9a}{get\+Value\+From\+Text}} (const String \&text)
+\item 
+String \mbox{\hyperlink{class_decibel_slider_a5fe910f745531b7c9eec653a3a7a6405}{get\+Text\+From\+Value}} (double value)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A derived class of juce\+::\+Slider made to adapt to D\+SP need.
+
+A vertical slider with a range from -\/I\+NF db to +6 db
+
+It will control the gain of each track, its recording amplitude, and its playback output 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_decibel_slider_ab0b82a875884889d993ffe94cef48903}\label{class_decibel_slider_ab0b82a875884889d993ffe94cef48903}} 
+\index{DecibelSlider@{DecibelSlider}!DecibelSlider@{DecibelSlider}}
+\index{DecibelSlider@{DecibelSlider}!DecibelSlider@{DecibelSlider}}
+\subsubsection{\texorpdfstring{DecibelSlider()}{DecibelSlider()}}
+{\footnotesize\ttfamily Decibel\+Slider\+::\+Decibel\+Slider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Creates a slider with Decibel range. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_decibel_slider_a18445cf6cf6d356e772085b5b4551b9a}\label{class_decibel_slider_a18445cf6cf6d356e772085b5b4551b9a}} 
+\index{DecibelSlider@{DecibelSlider}!getValueFromText@{getValueFromText}}
+\index{getValueFromText@{getValueFromText}!DecibelSlider@{DecibelSlider}}
+\subsubsection{\texorpdfstring{getValueFromText()}{getValueFromText()}}
+{\footnotesize\ttfamily double Decibel\+Slider\+::get\+Value\+From\+Text (\begin{DoxyParamCaption}\item[{const String \&}]{text }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Return the value when the slider text is changed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_decibel_slider_a5fe910f745531b7c9eec653a3a7a6405}\label{class_decibel_slider_a5fe910f745531b7c9eec653a3a7a6405}} 
+\index{DecibelSlider@{DecibelSlider}!getTextFromValue@{getTextFromValue}}
+\index{getTextFromValue@{getTextFromValue}!DecibelSlider@{DecibelSlider}}
+\subsubsection{\texorpdfstring{getTextFromValue()}{getTextFromValue()}}
+{\footnotesize\ttfamily String Decibel\+Slider\+::get\+Text\+From\+Value (\begin{DoxyParamCaption}\item[{double}]{value }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Return String when the slider value is changed 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/Decibel\+Slider.\+h\item 
+Source/Decibel\+Slider.\+cpp\end{DoxyCompactItemize}

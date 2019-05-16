@@ -2,16 +2,81 @@
 
 <JUCERPROJECT id="lYpEwJ" name="BandLoop" projectType="guiapp" jucerVersion="5.4.1">
   <MAINGROUP id="WzRhhu" name="BandLoop">
-    <FILE id="q9dnzd" name="AddTrackComponent.cpp" compile="1" resource="0"
-          file="Source/AddTrackComponent.cpp"/>
-    <FILE id="dkoA95" name="AddTrackComponent.h" compile="0" resource="0"
-          file="Source/AddTrackComponent.h"/>
+    <FILE id="wW3y3Q" name="GradientLabel.cpp" compile="1" resource="0"
+          file="Source/GradientLabel.cpp"/>
+    <FILE id="utp1JB" name="GradientLabel.h" compile="0" resource="0" file="Source/GradientLabel.h"/>
+    <FILE id="bP1LZp" name="RecordState.h" compile="0" resource="0" file="Source/RecordState.h"/>
+    <FILE id="wZOKHH" name="LightPressableButton.cpp" compile="1" resource="0"
+          file="Source/LightPressableButton.cpp"/>
+    <FILE id="AHoM3k" name="LightPressableButton.h" compile="0" resource="0"
+          file="Source/LightPressableButton.h"/>
+    <FILE id="crYd2R" name="ADMinfo.cpp" compile="1" resource="0" file="Source/ADMinfo.cpp"/>
+    <FILE id="ixl7qP" name="ADMinfo.h" compile="0" resource="0" file="Source/ADMinfo.h"/>
+    <FILE id="LvA8Qu" name="Click.cpp" compile="1" resource="0" file="Source/Click.cpp"/>
+    <FILE id="MSiX9J" name="Click.h" compile="0" resource="0" file="Source/Click.h"/>
+    <GROUP id="{2E980698-2CE4-892E-38A5-7844812F1194}" name="ff_meters-master 2">
+      <FILE id="F4wVZU" name="Doxyfile" compile="0" resource="1" file="../Downloads/ff_meters-master 2/Doxyfile"/>
+      <FILE id="RsDOZs" name="ff_meters.h" compile="0" resource="0" file="../Downloads/ff_meters-master 2/ff_meters.h"/>
+      <FILE id="d2DKVa" name="ff_meters_LevelMeter.cpp" compile="1" resource="0"
+            file="../Downloads/ff_meters-master 2/ff_meters_LevelMeter.cpp"/>
+      <FILE id="M8UOR5" name="ff_meters_LevelMeter.h" compile="0" resource="0"
+            file="../Downloads/ff_meters-master 2/ff_meters_LevelMeter.h"/>
+      <FILE id="Ktjoji" name="ff_meters_LevelMeterSource.h" compile="0" resource="0"
+            file="../Downloads/ff_meters-master 2/ff_meters_LevelMeterSource.h"/>
+      <FILE id="ki5Qac" name="ff_meters_LookAndFeel.h" compile="0" resource="0"
+            file="../Downloads/ff_meters-master 2/ff_meters_LookAndFeel.h"/>
+      <FILE id="A4eeCb" name="ff_meters_LookAndFeelMethods.h" compile="0"
+            resource="0" file="../Downloads/ff_meters-master 2/ff_meters_LookAndFeelMethods.h"/>
+      <FILE id="DfgLKb" name="ff_meters_OutlineBuffer.h" compile="0" resource="0"
+            file="../Downloads/ff_meters-master 2/ff_meters_OutlineBuffer.h"/>
+      <FILE id="DiYlyc" name="ff_meters_SoundFieldLookAndFeelMethods.h" compile="0"
+            resource="0" file="../Downloads/ff_meters-master 2/ff_meters_SoundFieldLookAndFeelMethods.h"/>
+      <FILE id="Xg9aU2" name="ff_meters_StereoFieldBuffer.h" compile="0"
+            resource="0" file="../Downloads/ff_meters-master 2/ff_meters_StereoFieldBuffer.h"/>
+      <FILE id="HQoR3X" name="ff_meters_StereoFieldComponent.h" compile="0"
+            resource="0" file="../Downloads/ff_meters-master 2/ff_meters_StereoFieldComponent.h"/>
+      <FILE id="LUXZy1" name="LICENSE.md" compile="0" resource="1" file="../Downloads/ff_meters-master 2/LICENSE.md"/>
+      <FILE id="AjUlRL" name="README.md" compile="0" resource="1" file="../Downloads/ff_meters-master 2/README.md"/>
+    </GROUP>
     <FILE id="mRygha" name="CustomLookAndFeel2.cpp" compile="1" resource="0"
           file="Source/CustomLookAndFeel2.cpp"/>
     <FILE id="SA2FPj" name="CustomLookAndFeel2.h" compile="0" resource="0"
           file="Source/CustomLookAndFeel2.h"/>
-    <GROUP id="{798E6D8E-7B40-9AF2-985E-69BA8643211F}" name="Source"/>
+    <GROUP id="{6693E86E-E98E-A342-CB31-EB44E9442E2B}" name="Unused">
+      <FILE id="TVXPdl" name="addTrackWindow.cpp" compile="1" resource="0"
+            file="Source/addTrackWindow.cpp"/>
+      <FILE id="MYkxrB" name="addTrackWindow.h" compile="0" resource="0"
+            file="Source/addTrackWindow.h"/>
+      <FILE id="q9dnzd" name="AddTrackComponent.cpp" compile="1" resource="0"
+            file="Source/AddTrackComponent.cpp"/>
+      <FILE id="dkoA95" name="AddTrackComponent.h" compile="0" resource="0"
+            file="Source/AddTrackComponent.h"/>
+    </GROUP>
+    <FILE id="QnD0YS" name="CustomLookAndFeel.cpp" compile="1" resource="0"
+          file="Source/CustomLookAndFeel.cpp"/>
+    <FILE id="LhNeg5" name="CustomLookAndFeel.h" compile="0" resource="0"
+          file="Source/CustomLookAndFeel.h"/>
     <GROUP id="{9CC129A6-A8D3-8DE5-FF03-FDEA67D17DC7}" name="Assets">
+      <FILE id="MbONWi" name="StartPlayingButton.svg" compile="0" resource="1"
+            file="../Creative Cloud Files/SVG/StartPlayingButton.svg"/>
+      <FILE id="Jl5BfK" name="StopPlayingButton.svg" compile="0" resource="1"
+            file="../Creative Cloud Files/SVG/StopPlayingButton.svg"/>
+      <FILE id="IG4aQt" name="StartRecordingButton.svg" compile="0" resource="1"
+            file="../Creative Cloud Files/SVG/StartRecordingButton.svg"/>
+      <FILE id="WJuFnk" name="StopRecordingButton.svg" compile="0" resource="1"
+            file="../Creative Cloud Files/SVG/StopRecordingButton.svg"/>
+      <FILE id="Fp3oYr" name="BarPlayingOff.svg" compile="0" resource="1"
+            file="../Creative Cloud Files/SVG/BarPlayingOff.svg"/>
+      <FILE id="kN9U1E" name="BarPlayingOn.svg" compile="0" resource="1"
+            file="../Creative Cloud Files/SVG/BarPlayingOn.svg"/>
+      <FILE id="ZHP8bP" name="BarRecordingOff.svg" compile="0" resource="1"
+            file="../Creative Cloud Files/SVG/BarRecordingOff.svg"/>
+      <FILE id="ORb0zK" name="BarRecordingOn.svg" compile="0" resource="1"
+            file="../Creative Cloud Files/SVG/BarRecordingOn.svg"/>
+      <FILE id="ohYv18" name="pedal.svg" compile="0" resource="1" file="../Downloads/pedal.svg"/>
+      <FILE id="jzHfsg" name="one.wav" compile="0" resource="1" file="Assets/one.wav"/>
+      <FILE id="EB1W68" name="two.wav" compile="0" resource="1" file="Assets/two.wav"/>
+      <FILE id="cUruJz" name="Fader.png" compile="0" resource="1" file="Assets/Fader.png"/>
       <FILE id="oqpsis" name="DeleteTrack.svg" compile="0" resource="1" file="../Creative Cloud Files/SVG/DeleteTrack.svg"/>
       <FILE id="nzCaDQ" name="BPMCounterOFF.svg" compile="0" resource="1"
             file="../Creative Cloud Files/SVG/BPMCounterOFF.svg"/>
@@ -21,10 +86,8 @@
       <FILE id="rH1eiS" name="PlayButton.svg" compile="0" resource="1" file="../Creative Cloud Files/SVG/PlayButton.svg"/>
       <FILE id="lKGNTo" name="StopButton.svg" compile="0" resource="1" file="../Creative Cloud Files/SVG/StopButton.svg"/>
     </GROUP>
-    <FILE id="QnD0YS" name="CustomLookAndFeel.cpp" compile="1" resource="0"
-          file="Source/CustomLookAndFeel.cpp"/>
-    <FILE id="LhNeg5" name="CustomLookAndFeel.h" compile="0" resource="0"
-          file="Source/CustomLookAndFeel.h"/>
+    <FILE id="F2UMba" name="Fader.cpp" compile="1" resource="0" file="Source/Fader.cpp"/>
+    <FILE id="j2SM33" name="Fader.h" compile="0" resource="0" file="Source/Fader.h"/>
     <FILE id="og8ACz" name="Sound.cpp" compile="1" resource="0" file="Source/Sound.cpp"/>
     <FILE id="SO525d" name="Sound.h" compile="0" resource="0" file="Source/Sound.h"/>
     <FILE id="gtHywb" name="AudioRecorder.cpp" compile="1" resource="0"
@@ -34,12 +97,12 @@
     <FILE id="XeJwbg" name="MainComponent.cpp" compile="1" resource="0"
           file="Source/MainComponent.cpp"/>
     <FILE id="G0nf81" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
-    <FILE id="TVXPdl" name="addTrackWindow.cpp" compile="1" resource="0"
-          file="Source/addTrackWindow.cpp"/>
-    <FILE id="MYkxrB" name="addTrackWindow.h" compile="0" resource="0"
-          file="Source/addTrackWindow.h"/>
     <FILE id="hekm3G" name="BPM.cpp" compile="1" resource="0" file="Source/BPM.cpp"/>
     <FILE id="ukkfSZ" name="BPM.h" compile="0" resource="0" file="Source/BPM.h"/>
+    <FILE id="r10Ild" name="SettingWindowComponent.cpp" compile="1" resource="0"
+          file="Source/SettingWindowComponent.cpp"/>
+    <FILE id="M2MrRp" name="SettingWindowComponent.h" compile="0" resource="0"
+          file="Source/SettingWindowComponent.h"/>
     <FILE id="mJi3Mx" name="SettingWindow.cpp" compile="1" resource="0"
           file="Source/SettingWindow.cpp"/>
     <FILE id="OAEXws" name="SettingWindow.h" compile="0" resource="0" file="Source/SettingWindow.h"/>

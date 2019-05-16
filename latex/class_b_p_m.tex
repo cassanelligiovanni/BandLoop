@@ -1,0 +1,197 @@
+\hypertarget{class_b_p_m}{}\section{B\+PM Class Reference}
+\label{class_b_p_m}\index{BPM@{BPM}}
+Inheritance diagram for B\+PM\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_b_p_m}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_b_p_m_a244e9aa3954aef1040ad3bcdef628fee}\label{class_b_p_m_a244e9aa3954aef1040ad3bcdef628fee}} 
+{\bfseries B\+PM} (const Value\+Tree \&v, Undo\+Manager \&um)
+\item 
+void \mbox{\hyperlink{class_b_p_m_a351beef46e2b82b3b9afccef8eab9550}{paint}} (Graphics \&g) override
+\item 
+void \mbox{\hyperlink{class_b_p_m_a1065fcee8c76482b4da7327453ccf59a}{resized}} () override
+\item 
+void \mbox{\hyperlink{class_b_p_m_a837ba2795fae0a7db5bd3e5abbac7a3d}{play}} ()
+\item 
+void \mbox{\hyperlink{class_b_p_m_ac48f4b87539a26b6139f9718af9bb173}{stop}} ()
+\item 
+void \mbox{\hyperlink{class_b_p_m_a01df6c7612ab9433bd6fa9f2a954bab4}{hi\+Res\+Timer\+Callback}} () override
+\item 
+void \mbox{\hyperlink{class_b_p_m_aa7ecb3bca0891551f3c62421eb9fe737}{timer\+Callback}} () override
+\item 
+void \mbox{\hyperlink{class_b_p_m_a25860f85e579f4d7361f573ddd643146}{button\+Clicked}} (Button $\ast$button) override
+\item 
+void \mbox{\hyperlink{class_b_p_m_a39680ea9e81f2e18b1e391b3c3b75eb9}{draw\+B\+P\+Mdisplay}} ()
+\item 
+void \mbox{\hyperlink{class_b_p_m_a9ece3eda2583b29c57ba605bcfd54889}{draw\+Button}} ()
+\item 
+void \mbox{\hyperlink{class_b_p_m_a35ccc9fc77a337ed4e3b4bbc063d38ca}{draw\+Counter}} ()
+\item 
+void \mbox{\hyperlink{class_b_p_m_a6970a36d44a2fcee62cd0b995a0fa88b}{update\+Tempo}} ()
+\item 
+bool \mbox{\hyperlink{class_b_p_m_a541ef2ea993f469bbdcbdb5336353fd0}{is\+Right\+Before\+New\+Bar}} (float Bars)
+\item 
+bool \mbox{\hyperlink{class_b_p_m_a70d08968386f82cd3005904be36d6083}{is\+New\+Bar}} (float Bars)
+\item 
+void \mbox{\hyperlink{class_b_p_m_ae33a544e6ed53ab10d48f4dd0d5f2a80}{right\+Before\+New\+Bar}} ()
+\item 
+void \mbox{\hyperlink{class_b_p_m_aad9cc690db7262344f020276bff96052}{new\+Bar}} ()
+\item 
+void \mbox{\hyperlink{class_b_p_m_a2745f897d9a943e9d74110a9d856df37}{has\+To\+Be\+Repainted}} ()
+\item 
+void \mbox{\hyperlink{class_b_p_m_abdf9b80178cc39fe591a653f1fa685ba}{play\+Click}} (int Beat)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_click}{Click}} \mbox{\hyperlink{class_b_p_m_a4663b64aa536da31f5cb6d414a3d36ff}{click}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_b_p_m_a351beef46e2b82b3b9afccef8eab9550}\label{class_b_p_m_a351beef46e2b82b3b9afccef8eab9550}} 
+\index{BPM@{BPM}!paint@{paint}}
+\index{paint@{paint}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void B\+P\+M\+::paint (\begin{DoxyParamCaption}\item[{Graphics \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+The \mbox{\hyperlink{class_b_p_m_a351beef46e2b82b3b9afccef8eab9550}{paint()}} Method gets called when a region of a component needs redrawing, Never need to call this method directly
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & the graphics context that must be used to do the drawing operations. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_b_p_m_a1065fcee8c76482b4da7327453ccf59a}\label{class_b_p_m_a1065fcee8c76482b4da7327453ccf59a}} 
+\index{BPM@{BPM}!resized@{resized}}
+\index{resized@{resized}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{resized()}{resized()}}
+{\footnotesize\ttfamily void B\+P\+M\+::resized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Called when this component\textquotesingle{}s size has been changed. \mbox{\Hypertarget{class_b_p_m_a837ba2795fae0a7db5bd3e5abbac7a3d}\label{class_b_p_m_a837ba2795fae0a7db5bd3e5abbac7a3d}} 
+\index{BPM@{BPM}!play@{play}}
+\index{play@{play}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily void B\+P\+M\+::play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Start Metronome \mbox{\Hypertarget{class_b_p_m_ac48f4b87539a26b6139f9718af9bb173}\label{class_b_p_m_ac48f4b87539a26b6139f9718af9bb173}} 
+\index{BPM@{BPM}!stop@{stop}}
+\index{stop@{stop}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void B\+P\+M\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Stop and reset Metronome \mbox{\Hypertarget{class_b_p_m_a01df6c7612ab9433bd6fa9f2a954bab4}\label{class_b_p_m_a01df6c7612ab9433bd6fa9f2a954bab4}} 
+\index{BPM@{BPM}!hiResTimerCallback@{hiResTimerCallback}}
+\index{hiResTimerCallback@{hiResTimerCallback}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{hiResTimerCallback()}{hiResTimerCallback()}}
+{\footnotesize\ttfamily void B\+P\+M\+::hi\+Res\+Timer\+Callback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+As suggested by the J\+U\+CE A\+PI, I created just one instance of it ~\newline
+ It is used for creating flags that are send to other part of the code ~\newline
+\begin{DoxySeeAlso}{See also}
+High\+Resolution\+Timer 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_b_p_m_aa7ecb3bca0891551f3c62421eb9fe737}\label{class_b_p_m_aa7ecb3bca0891551f3c62421eb9fe737}} 
+\index{BPM@{BPM}!timerCallback@{timerCallback}}
+\index{timerCallback@{timerCallback}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{timerCallback()}{timerCallback()}}
+{\footnotesize\ttfamily void B\+P\+M\+::timer\+Callback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+A less precise time(5ms), to regularly check changes \mbox{\Hypertarget{class_b_p_m_a25860f85e579f4d7361f573ddd643146}\label{class_b_p_m_a25860f85e579f4d7361f573ddd643146}} 
+\index{BPM@{BPM}!buttonClicked@{buttonClicked}}
+\index{buttonClicked@{buttonClicked}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{buttonClicked()}{buttonClicked()}}
+{\footnotesize\ttfamily void B\+P\+M\+::button\+Clicked (\begin{DoxyParamCaption}\item[{Button $\ast$}]{button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Called when a Button is Pressed. 
+\begin{DoxyParams}{Parameters}
+{\em button} & Use this for filtering the button that is actually pressed ~\newline
+ ex \+: if (button == \&record\+Button) then... \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_b_p_m_a39680ea9e81f2e18b1e391b3c3b75eb9}\label{class_b_p_m_a39680ea9e81f2e18b1e391b3c3b75eb9}} 
+\index{BPM@{BPM}!drawBPMdisplay@{drawBPMdisplay}}
+\index{drawBPMdisplay@{drawBPMdisplay}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{drawBPMdisplay()}{drawBPMdisplay()}}
+{\footnotesize\ttfamily void B\+P\+M\+::draw\+B\+P\+Mdisplay (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Load images and draw the display which keep Timing Informations \mbox{\Hypertarget{class_b_p_m_a9ece3eda2583b29c57ba605bcfd54889}\label{class_b_p_m_a9ece3eda2583b29c57ba605bcfd54889}} 
+\index{BPM@{BPM}!drawButton@{drawButton}}
+\index{drawButton@{drawButton}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{drawButton()}{drawButton()}}
+{\footnotesize\ttfamily void B\+P\+M\+::draw\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Load images and draw Play and Stop Button \mbox{\Hypertarget{class_b_p_m_a35ccc9fc77a337ed4e3b4bbc063d38ca}\label{class_b_p_m_a35ccc9fc77a337ed4e3b4bbc063d38ca}} 
+\index{BPM@{BPM}!drawCounter@{drawCounter}}
+\index{drawCounter@{drawCounter}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{drawCounter()}{drawCounter()}}
+{\footnotesize\ttfamily void B\+P\+M\+::draw\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Load images and draw the array of Light-\/\+Counters \mbox{\Hypertarget{class_b_p_m_a6970a36d44a2fcee62cd0b995a0fa88b}\label{class_b_p_m_a6970a36d44a2fcee62cd0b995a0fa88b}} 
+\index{BPM@{BPM}!updateTempo@{updateTempo}}
+\index{updateTempo@{updateTempo}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{updateTempo()}{updateTempo()}}
+{\footnotesize\ttfamily void B\+P\+M\+::update\+Tempo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+B\+P\+M-\/tempo has been manually changed \mbox{\Hypertarget{class_b_p_m_a541ef2ea993f469bbdcbdb5336353fd0}\label{class_b_p_m_a541ef2ea993f469bbdcbdb5336353fd0}} 
+\index{BPM@{BPM}!isRightBeforeNewBar@{isRightBeforeNewBar}}
+\index{isRightBeforeNewBar@{isRightBeforeNewBar}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{isRightBeforeNewBar()}{isRightBeforeNewBar()}}
+{\footnotesize\ttfamily bool B\+P\+M\+::is\+Right\+Before\+New\+Bar (\begin{DoxyParamCaption}\item[{float}]{Bars }\end{DoxyParamCaption})}
+
+Technically check if the modulo of base 1 of the actual Bar is $>$ 0.\+9990 and $<$ 1 ~\newline
+ Pratically check if we are close to a new Bar \mbox{\Hypertarget{class_b_p_m_a70d08968386f82cd3005904be36d6083}\label{class_b_p_m_a70d08968386f82cd3005904be36d6083}} 
+\index{BPM@{BPM}!isNewBar@{isNewBar}}
+\index{isNewBar@{isNewBar}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{isNewBar()}{isNewBar()}}
+{\footnotesize\ttfamily bool B\+P\+M\+::is\+New\+Bar (\begin{DoxyParamCaption}\item[{float}]{Bars }\end{DoxyParamCaption})}
+
+Check if we are in a a new Bar \mbox{\Hypertarget{class_b_p_m_ae33a544e6ed53ab10d48f4dd0d5f2a80}\label{class_b_p_m_ae33a544e6ed53ab10d48f4dd0d5f2a80}} 
+\index{BPM@{BPM}!rightBeforeNewBar@{rightBeforeNewBar}}
+\index{rightBeforeNewBar@{rightBeforeNewBar}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{rightBeforeNewBar()}{rightBeforeNewBar()}}
+{\footnotesize\ttfamily void B\+P\+M\+::right\+Before\+New\+Bar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Let know to the rest of the Code that we are close to a new Bar \mbox{\Hypertarget{class_b_p_m_aad9cc690db7262344f020276bff96052}\label{class_b_p_m_aad9cc690db7262344f020276bff96052}} 
+\index{BPM@{BPM}!newBar@{newBar}}
+\index{newBar@{newBar}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{newBar()}{newBar()}}
+{\footnotesize\ttfamily void B\+P\+M\+::new\+Bar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Let it know to the rest of the Code that we are in a new Bar \mbox{\Hypertarget{class_b_p_m_a2745f897d9a943e9d74110a9d856df37}\label{class_b_p_m_a2745f897d9a943e9d74110a9d856df37}} 
+\index{BPM@{BPM}!hasToBeRepainted@{hasToBeRepainted}}
+\index{hasToBeRepainted@{hasToBeRepainted}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{hasToBeRepainted()}{hasToBeRepainted()}}
+{\footnotesize\ttfamily void B\+P\+M\+::has\+To\+Be\+Repainted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+update Array of Led \mbox{\Hypertarget{class_b_p_m_abdf9b80178cc39fe591a653f1fa685ba}\label{class_b_p_m_abdf9b80178cc39fe591a653f1fa685ba}} 
+\index{BPM@{BPM}!playClick@{playClick}}
+\index{playClick@{playClick}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{playClick()}{playClick()}}
+{\footnotesize\ttfamily void B\+P\+M\+::play\+Click (\begin{DoxyParamCaption}\item[{int}]{Beat }\end{DoxyParamCaption})}
+
+Play the Metronome. 
+\begin{DoxyParams}{Parameters}
+{\em Beat} & check the Beat and play the metronome \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_b_p_m_a4663b64aa536da31f5cb6d414a3d36ff}\label{class_b_p_m_a4663b64aa536da31f5cb6d414a3d36ff}} 
+\index{BPM@{BPM}!click@{click}}
+\index{click@{click}!BPM@{BPM}}
+\subsubsection{\texorpdfstring{click}{click}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_click}{Click}} B\+P\+M\+::click}
+
+Metronome 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/B\+P\+M.\+h\item 
+Source/B\+P\+M.\+cpp\end{DoxyCompactItemize}
