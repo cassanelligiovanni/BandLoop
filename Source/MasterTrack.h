@@ -32,7 +32,7 @@
 */
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/BandLoop/Source/GainProcessor.h"
+#include "../Source/GainProcessor.h"
 
 class MasterTrack  : public MixerAudioSource,
                     public Component

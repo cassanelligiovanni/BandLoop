@@ -2,7 +2,7 @@
 
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/BandLoop/Source/PassthroughProcessor.h"
+#include "../Source/PassthroughProcessor.h"
 
 
 class GainProcessor : public PassthroughProcessor

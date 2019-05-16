@@ -10,9 +10,9 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel.h"
-#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel2.h"
-#include "/Users/giovanni/BandLoop/Source/AddTrackComponent.h"
+#include "../Source/CustomLookAndFeel.h"
+#include "../Source/CustomLookAndFeel2.h"
+#include "../Source/AddTrackComponent.h"
 
 class addTrackWindow   : public DocumentWindow,
                          public Thread,
