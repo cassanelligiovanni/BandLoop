@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../Source/MainComponent.cpp"
-            timestampString = "579733713.324679"
+            timestampString = "580241456.16415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
             landmarkName = "MainComponent::handleIncomingMidiMessage (MidiInput* /*source*/, const MidiMessage&amp; message)"
             landmarkType = "7">
          </BreakpointContent>
@@ -129,6 +129,30 @@
             endingLineNumber = "139"
             landmarkName = "MasterTrack::getNextAudioBlock (const AudioSourceChannelInfo&amp; info)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Source/Playback.cpp"
+            timestampString = "580241456.164371"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "Playback::getNextAudioBlock(AudioBuffer&lt;float&gt;&amp; outputBuffer, int numSamples)"
+            landmarkType = "7">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.Sound">
+                  <ActionContent
+                     soundName = "Blow">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

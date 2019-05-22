@@ -27,7 +27,7 @@ SettingWindowComponent::SettingWindowComponent (const String& name,
                                 const ValueTree& v,
                                 UndoManager& um, AudioDeviceManager& deviceManager,Array<int>& pedalsAvailable, MidiMessageCollector& midiMessageCollector)
 :
-Thread ("ThreadWithProgressWindow"),
+//Thread ("ThreadWithProgressWindow"),
 progress (0.0),
 wasCancelledByUser (false), audioSetupComp (deviceManager,  0,  256,  0, 256,  true,  false,  false, false),
 tree (v), undoManager (um),
@@ -45,7 +45,7 @@ pedalsAvailables(pedalsAvailable)
     addAndMakeVisible(audioSetupComp);
     addAndMakeVisible(pairingButton);
     
-    launchThread(5);
+//    launchThread(5);
     
     audioSetupComp.setBounds (0, 0, 350, 200);
     pairingButton.setBounds(20, 400, 360, 30);
@@ -58,8 +58,7 @@ pedalsAvailables(pedalsAvailable)
         pedalButtons.getLast()->setBounds ( (i*60) + 20, 470, 50, 50);
         
         
-        auto* newLabel = new Label("newLabel",String(pedalButtons.size()));
-        newLabel->attachToComponent(pedalButtons.getLast(), false);
+
         
         addAndMakeVisible(pedalButtons[i]);
         pedalButtons[i]->setBounds ( (i*60) + 20, 470, 50, 50);
@@ -76,8 +75,9 @@ pedalsAvailables(pedalsAvailable)
 
 SettingWindowComponent::~SettingWindowComponent()
 {
+    stopTimer();
     setLookAndFeel(nullptr);
-    stopThread(200);
+//    stopThread(200);
     
     
 }
@@ -91,15 +91,15 @@ void SettingWindowComponent::paint(Graphics& g) {};
 
 void SettingWindowComponent::run(){
     
-    while (! threadShouldExit())
-    {
-            wait (100);
-        
+//    while (! threadShouldExit())
+//    {
+//            wait (100);
+    
         // because this is a background thread, we mustn't do any UI work without
         // first grabbing a MessageManagerLock..
         
         const MessageManagerLock mml (Thread::getCurrentThread());
-
+    
         if(pedalJustTriggered>-1) {
          pedalButtons[pedalJustTriggered]->setToggleState(!(pedalButtons[pedalJustTriggered]->getToggleState()), dontSendNotification);
         pedalJustTriggered = -1;
@@ -107,10 +107,10 @@ void SettingWindowComponent::run(){
         numberOfPedals();
         
 
-        if (! mml.lockWasGained())  // if something is trying to kill this job, the lock
-            return;                 // will fail, in which case we'd better return..
-        
-    }
+//        if (! mml.lockWasGained())  // if something is trying to kill this job, the lock
+//            return;                 // will fail, in which case we'd better return..
+//
+//    }
     
     
 }
@@ -124,7 +124,7 @@ void SettingWindowComponent::changeListenerCallback (ChangeBroadcaster* source)
 void SettingWindowComponent::launchThread (int priority)
 {
     
-    startThread (priority);
+//    startThread (priority);
     startTimer (100);
     
     
@@ -174,10 +174,12 @@ void SettingWindowComponent::pairing() {
 //                midiCollector.addMessageToQueue(message);
     
     for (int i  = 0; i < MidiOutput::getDevices().size(); i++) {
-        MidiOutput* midiOutput;
-        midiOutput = MidiOutput::openDevice(i);
+        midiOutput.reset(MidiOutput::openDevice(i));
+//        MidiOutput* midiOutput;
+//        MidiOutput* midiOutput = MidiOutput::openDevice(i);
         midiOutput->sendMessageNow (message);
         midiOutput = nullptr;
+
     }
     
     

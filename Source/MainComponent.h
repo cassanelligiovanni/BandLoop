@@ -232,5 +232,8 @@ private:
     NodeId fInputNode;
     NodeId fOutputNode;
     
+    std::atomic<float> oldBar ;
+    std::atomic<float>  newBar;
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

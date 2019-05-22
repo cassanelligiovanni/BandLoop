@@ -23,40 +23,39 @@ progress (0.0),
 wasCancelledByUser (false), audioSetupComp (deviceManager,  0,  256,  0, 256,  true,  false,  false, false),
 tree (v), undoManager (um),
 midiCollector(midiMessageCollector),
-pedalsAvailables(pedalsAvailable),
-settingWindow( "Settings", Colours::BandLoopBackground, DocumentWindow::allButtons, tree,
-                       undoManager, deviceManager, pedalsAvailables, midiCollector)
+pedalsAvailables(pedalsAvailable)
 {
-    bool result = pedalImage->replaceColour (Colours::black, Colours::white);
-    bool result2 = pedalImagePressed->replaceColour (Colours::black, Colours::red);
+//    bool result = pedalImage->replaceColour (Colours::black, Colours::white);
+//    bool result2 = pedalImagePressed->replaceColour (Colours::black, Colours::red);
     
-    setLookAndFeel(&customLookAndFeel2);
-
+    settingWindow.reset( new SettingWindowComponent("Settings", Colours::BandLoopBackground, DocumentWindow::allButtons, tree,
+                                                undoManager, deviceManager, pedalsAvailables, midiCollector));
+    
     launchThread(5);
     
-//    audioSetupComp.setBounds (0, 0, 350, 200);
-//    pairingButton.setBounds(20, 330, 360, 30);
-    
-    for (int i = 0 ; i < 5 ; i++  ) {
-        
-    auto* newPedal = new DrawableButton("newButton", DrawableButton::ImageFitted );
-    pedalButtons.add(newPedal);
-    pedalButtons.getLast()->setImages(pedalImage, pedalImage, pedalImage , pedalImage, pedalImagePressed);
-        
-    pedalButtons.getLast()->setBounds ( (i*60) + 20, 400, 50, 50);
-        
-      
-    auto* newLabel = new Label("newLabel",String(pedalButtons.size()));
-    newLabel->attachToComponent(pedalButtons.getLast(), false);
-        
-        
-    }
-    
+////    audioSetupComp.setBounds (0, 0, 350, 200);
+////    pairingButton.setBounds(20, 330, 360, 30);
+//
+//    for (int i = 0 ; i < 5 ; i++  ) {
+//
+//    auto* newPedal = new DrawableButton("newButton", DrawableButton::ImageFitted );
+//    pedalButtons.add(newPedal);
+//    pedalButtons.getLast()->setImages(pedalImage, pedalImage, pedalImage , pedalImage, pedalImagePressed);
+//
+//    pedalButtons.getLast()->setBounds ( (i*60) + 20, 400, 50, 50);
+//
+//
+//    auto* newLabel = new Label("newLabel",String(pedalButtons.size()));
+//    newLabel->attachToComponent(pedalButtons.getLast(), false);
+//
+//
+//    }
+//
     setSize(600, 600);
     
  
     
-    setContentOwned(&settingWindow, false);
+    setContentOwned(settingWindow.get(), false);
     
     
     
@@ -65,7 +64,8 @@ settingWindow( "Settings", Colours::BandLoopBackground, DocumentWindow::allButto
 
 SettingWindow::~SettingWindow()
 {
-    setLookAndFeel(nullptr);
+//    settingWindow = nullptr;
+    
     stopThread(200);
     
     
@@ -84,7 +84,7 @@ void SettingWindow::run(){
         
         const MessageManagerLock mml (Thread::getCurrentThread());
 
-        
+        settingWindow->run();
 
         
         if (! mml.lockWasGained())  // if something is trying to kill this job, the lock
@@ -96,8 +96,9 @@ void SettingWindow::run(){
 }
 void SettingWindow::closeButtonPressed()
 {
-    stopThread(500);
-    wait(100);
+
+//    stopThread(0);
+//    wait(100);
     delete this;
     
 }
@@ -120,21 +121,16 @@ void SettingWindow::pairing() {
 //                midiCollector.addMessageToQueue(message);
     
     for (int i  = 0; i < MidiOutput::getDevices().size(); i++) {
-        MidiOutput* midiOutput;
-        midiOutput = MidiOutput::openDevice(i);
-        midiOutput->sendMessageNow (message);
-        midiOutput = nullptr;
+//        MidiOutput* midiOutput;
+//        midiOutput = MidiOutput::openDevice(i);
+//        midiOutput->sendMessageNow (message);
+//        midiOutput = nullptr;
     }
     
     
     pedalsAvailables.clear();
     
-    for (int i = 0 ; i < pedalButtons.size(); i ++) {
-        
-        pedalButtons[i]->setVisible(false);
-        
-        
-    }
+
     
 }
 
@@ -143,17 +139,11 @@ void SettingWindow::numberOfPedals() {
     
 
 
-    for (int i = 0 ; i < pedalsAvailables.size(); i ++) {
-        
-        pedalButtons[i]->setVisible(true);
-        
-    }
-
 }
 
 void SettingWindow::pedalClicked(int pedalNumber) {
     
-    settingWindow.pedalClicked(pedalNumber);
+    settingWindow->pedalClicked(pedalNumber);
     
     
 };

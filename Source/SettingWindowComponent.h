@@ -26,7 +26,7 @@
 
 
 class SettingWindowComponent   : public Component,
-public Thread,
+//public Thread,
 public Label::Listener,
 public ValueTree::Listener,
 public Button::Listener,
@@ -48,8 +48,8 @@ public:
     
     void paint(Graphics& g) override;
     
-    void run() override;
-        
+    void run();
+    
     void changeListenerCallback (ChangeBroadcaster* source) override;
     
     void comboBoxChanged(ComboBox* comboBoxThatHasChanged) override;
@@ -100,6 +100,7 @@ private:
     ScopedPointer<Drawable> pedalImage = Drawable::createFromImageData (BinaryData::pedal_svg, BinaryData::pedal_svgSize);
     ScopedPointer<Drawable> pedalImagePressed = Drawable::createFromImageData (BinaryData::pedal_svg, BinaryData::pedal_svgSize);
 
+    std::unique_ptr<MidiOutput> midiOutput ;
     
     OwnedArray<DrawableButton> pedalButtons;
    
