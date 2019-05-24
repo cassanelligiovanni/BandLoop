@@ -9,7 +9,7 @@
 */
 
 #include "LightPressableButton.h"
-#include "/Users/giovanni/BandLoop/Source/RecordState.h"
+#include "../Source/RecordState.h"
 
 
 LightPressableButton::LightPressableButton(RecordState& recordStateR, bool& isStartingRecordingR, bool& isStoppingRecordingR,int& pedalNumber, RecordState& recordState) :

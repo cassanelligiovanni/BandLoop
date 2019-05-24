@@ -11,7 +11,7 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/BandLoop/Source/Fader.h"
+#include "../Source/Fader.h"
 
 //#include "/Users/giovanni/Downloads/ff_meters-master 2/ff_meters.h"
 

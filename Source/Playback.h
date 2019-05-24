@@ -9,8 +9,8 @@
  */
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/BandLoop/Source/Sound.h"
-#include "/Users/giovanni/BandLoop/Source/RecordState.h"
+#include "../Source/Sound.h"
+#include "../Source/RecordState.h"
 #pragma once
 
 class Playback : public Component,

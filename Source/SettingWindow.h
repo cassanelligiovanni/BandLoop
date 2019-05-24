@@ -10,9 +10,9 @@
 
 
 #pragma once
-#include "/Users/giovanni/BandLoop/Source/SettingWindowComponent.h"
+#include "../Source/SettingWindowComponent.h"
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel2.h"
+#include "../Source/CustomLookAndFeel2.h"
 
 
 class SettingWindow   : public DocumentWindow,
@@ -49,7 +49,6 @@ private:
     
     AudioDeviceSelectorComponent audioSetupComp;
     
-    TextButton pairingButton {"Pairing Button"};
 //    MidiOutput midiOutput;
     
     ValueTree tree;
@@ -62,15 +61,8 @@ private:
     const int timeOutMsWhenCancelling = 1000;
     bool wasCancelledByUser;
 
-    CustomLookAndFeel2  customLookAndFeel2;
     
-    ScopedPointer<Drawable> pedalImage = Drawable::createFromImageData (BinaryData::pedal_svg, BinaryData::pedal_svgSize);
-    ScopedPointer<Drawable> pedalImagePressed = Drawable::createFromImageData (BinaryData::pedal_svg, BinaryData::pedal_svgSize);
-
-    
-    OwnedArray<DrawableButton> pedalButtons;
-    
-    SettingWindowComponent settingWindow;
+    std::unique_ptr<SettingWindowComponent> settingWindow;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SettingWindow)
 };

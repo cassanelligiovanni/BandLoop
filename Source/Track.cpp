@@ -120,10 +120,11 @@ Track::Track(String trackColour,
                             
                 bufferOutL.copyFrom(0, 0, bufferToRecordL, 0, 0, numSamples);
                             
-        float* pointers [2] = { bufferToRecordL.getWritePointer (0, bufferToFill.startSample),
-                                bufferToRecordL.getWritePointer (0, bufferToFill.startSample) };
+//        float* pointers [2] = { bufferToRecordL.getWritePointer (0, bufferToFill.startSample),
+//                                bufferToRecordL.getWritePointer (0, bufferToFill.startSample) };
 
-                            if(!(recordState == RecordState::Stopped || recordState == RecordState::Playing ))                    recorder.Record(pointers, numSamples);
+                            if(!(recordState == RecordState::Stopped || recordState == RecordState::Playing ))
+                                recorder.Record(bufferToRecordL, bufferToFill.startSample, bufferToFill.numSamples);
 
                 bufferToFill.clearActiveBufferRegion();
 
@@ -175,8 +176,8 @@ Track::Track(String trackColour,
                                 bufferToRecordStereo.getWritePointer (1, bufferToFill.startSample) };
                 
                 if (!(recordState == RecordState::Stopped || recordState == RecordState::Playing ))
-                    recorder.Record(pointers, numSamples);
-            
+                    recorder.Record(bufferToRecordStereo, bufferToFill.startSample, bufferToFill.numSamples);
+
                 
                 if(!outIsStereo){
                     
@@ -379,6 +380,7 @@ void Track::valueTreePropertyChanged (ValueTree& treeChanged, const Identifier& 
     nameOfTrack = named;
         selectFolder(nameOfTrack);
     }
+    
 
     
 };
@@ -389,7 +391,7 @@ String Track::getColour() {
 }
 
 void Track::checkEvent(int bar) {
-  
+      
     playback.checkEvent(bar);
 
     if (recordState == RecordState::isStartingRecording && lastRecording.existsAsFile()){
@@ -409,17 +411,18 @@ void Track::checkEvent(int bar) {
     }
     
     if (recordState == RecordState::isStartingPlaying && lastRecording.existsAsFile()){
+        recordState = RecordState::Playing;
         recorder.stopRecording();
         playback.createSound(lastRecording, actualFolder, loopUnit);
-        recordState = RecordState::Playing;
+        std::cout<<"Has Stopped Recording and Created a Sound"<<std::endl;
 //        isStoppingRecording = false;
     }
     
     if(  recordState == RecordState::isStartingStopping && lastRecording.existsAsFile()) {
-        
+        recordState = RecordState::Stopped;
         recorder.stopRecording();
         playback.createSound(lastRecording, actualFolder, loopUnit);
-        recordState = RecordState::Stopped;
+        
         
     }
     
@@ -430,13 +433,17 @@ void Track::triggerEvent() {
     
     if (recordState == RecordState::isStartingRecording){
         lastRecording = actualFolder.getNonexistentChildFile(nameOfTrack, ".wav");
-        recorder.startRecording(lastRecording);
+        if(isStereo)
+        recorder.startRecording(lastRecording, 2);
+        if(!isStereo)
+            recorder.startRecording(lastRecording, 1);
         recordState = RecordState::Recording;
 
 //        isStartingRecording = false;
     }
 
-    playback.triggerEvent();
+    playback.
+    triggerEvent();
     
       lightPressableButton->updateTrue();
 }

@@ -63,7 +63,6 @@ void Playback::getNextAudioBlock(AudioBuffer<float>& outputBuffer, int numSample
     MidiBuffer incomingMidi;
 
     synth.renderNextBlock (outputBuffer, incomingMidi, 0, numSamples);
-   
 }
 
 
@@ -155,7 +154,11 @@ void Playback::createSound(File lastRecording, File actualFolder, float loopUnit
     
     notesAvailable.remove(0);
 
-    
+
+//    std::cout<< " loopUnit : " <<  loopUnit  << std::endl;
+//    std::cout<< " length : " << length << std::endl;
+//    std::cout<< " actualBar : " <<  actualBar << std::endl;
+
 }
 
 
@@ -178,16 +181,7 @@ void Playback::checkEvent(int bar){
 
 
 void Playback::triggerEvent(){
-   
-    
-//    if (isStartingPlaying == true) {
-//        isPlaying = true ;
-//        isStartingPlaying = false;
-//    }
-//
-//    if (isStoppingPlaying == true) {
-//        isPlaying = false ;
-//        isStoppingPlaying = false;
+    std::cout<<"Has Triggered the Event with bar : "   << actualBar <<std::endl;
     
     if (recState == RecordState::Stopped) {
         
@@ -196,21 +190,31 @@ void Playback::triggerEvent(){
             synth.noteOff(1,sounds[i]->getNote(), 0.8f, false);
             
         }
+        std::cout<< " stopped " <<std::endl;
+
     }
-//    }
     
     if (!(recState == RecordState::Stopped)) {
     
+       
+        
     for(int i = 0; i < sounds.size(); i++) {
+//        std::cout<< " start : " <<  sounds[i]->getStart()  << std::endl;
+//        std::cout<< " length : " << sounds[i]->getLength() << std::endl;
+//        std::cout<< " actualBar : " <<  actualBar << std::endl;
+//        std::cout<< actualBar << "-" <<  sounds[i]->getStart()  << "%" << sounds[i]->getLength() << "=" << (actualBar-(sounds[i]->getStart()))%(sounds[i]->getLength())<< std::endl;
         
          if(((actualBar-(sounds[i]->getStart()))%(sounds[i]->getLength())) == 0){
-         
+            synth.noteOff(1,sounds[i]->getNote(), 0.8f, false);
             synth.noteOn(1,sounds[i]->getNote(), 0.8f);
-           
+
+             
+        
         }
      }
 }
-    updateGui();
+   
+    
     
 };
 
@@ -224,10 +228,7 @@ void Playback::stopImmediatelly() {
          
      }
     }
-//    isPlaying = false;
-//     isStartingPlaying = false;
-    
-    updateGui();
+
 }
 
 

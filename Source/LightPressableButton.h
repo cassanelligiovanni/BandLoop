@@ -24,9 +24,9 @@
 
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/BandLoop/Source/RecordState.h"
-#include "/Users/giovanni/BandLoop/Source/GradientLabel.h"
-#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel2.h"
+#include "../Source/RecordState.h"
+#include "../Source/GradientLabel.h"
+#include "../Source/CustomLookAndFeel2.h"
 
 
 class LightPressableButton : public Component,

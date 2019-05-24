@@ -19,8 +19,8 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/BandLoop/Source/Click.h"
-#include "/Users/giovanni/BandLoop/Source/ADMinfo.h"
+#include "../Source/Click.h"
+#include "../Source/ADMinfo.h"
 
 //==============================================================================
 /*
@@ -38,7 +38,7 @@ public ChangeListener
 public:
     //==============================================================================
     BPM(const ValueTree& v,
-        UndoManager& um, ADMinfo& ADM);
+        UndoManager& um, ADMinfo& ADM, std::atomic<float>& newBar);
     ~BPM();
     
     //==============================================================================
@@ -202,6 +202,7 @@ private:
     int BarToDisplay;
     int Beat;
     int previousBeat;
+    bool flagToComponent ;
 
     
     String BarToText = "0";
@@ -229,7 +230,7 @@ private:
     
     OwnedArray<DrawableButton> BpmCounters; //!<  Array of Light - Counters (4)
     
-
+    std::atomic<float>& bar;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BPM)
 };

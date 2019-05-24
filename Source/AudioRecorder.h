@@ -26,12 +26,14 @@ public:
      * Prepare to record ( create an OutputStream, a WavWriter and configure the ActiveWriter )
      @param File, the file to write on
      */
-    void startRecording (const File& file);
+    void startRecording (const File& file, int numChannels);
     
     /**
      * Recording..... by writing on the ActiveWriter
      */
-    void  Record (float** pointers, int numSamples);
+    void  Record (const AudioBuffer< float > &     source,
+                  int     startSample,
+                  int numSamples);
     
     /**
      *  reset the ActiveWriter

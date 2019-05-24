@@ -11,16 +11,16 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/BandLoop/Source/Playback.h"
-#include "/Users/giovanni/BandLoop/Source/AudioRecorder.h"
-#include "/Users/giovanni/BandLoop/Source/DecibelSlider.h"
-#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel2.h"
-#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel.h"
-#include "/Users/giovanni/Downloads/ff_meters-master 2/ff_meters.h"
-#include "/Users/giovanni/BandLoop/Source/ADMinfo.h"
-#include "/Users/giovanni/BandLoop/Source/LightPressableButton.h"
-#include "/Users/giovanni/BandLoop/Source/RecordState.h"
-#include "/Users/giovanni/BandLoop/Source/GradientLabel.h"
+#include "../Source/Playback.h"
+#include "../Source/AudioRecorder.h"
+#include "../Source/DecibelSlider.h"
+#include "../Source/CustomLookAndFeel2.h"
+#include "../Source/CustomLookAndFeel.h"
+#include "../ff_meters-master 2/ff_meters.h"
+#include "../Source/ADMinfo.h"
+#include "../Source/LightPressableButton.h"
+#include "../Source/RecordState.h"
+#include "../Source/GradientLabel.h"
 
 
 class Track : public AudioSource,

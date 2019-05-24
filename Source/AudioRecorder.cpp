@@ -26,53 +26,77 @@ AudioRecorder::~AudioRecorder()    {
 //==============================================================================
 //Prepare to record a new File
 
-void AudioRecorder::startRecording (const File& file)
+void AudioRecorder::startRecording (const File& file, int numChannels)
 {
     stop();
     
     if (sampleRate > 0)
     {
-        // Create an OutputStream to write to our destination file...
-        file.deleteFile();
         
-        if (auto fileStream = std::unique_ptr<FileOutputStream> (file.createOutputStream()))
-        {
-            // Now create a WAV writer object that writes to our output stream...
-            WavAudioFormat wavFormat;
-            
-            if (auto writer = wavFormat.createWriterFor (fileStream.get(), sampleRate, 1, 16, {}, 0))
-            {
-                fileStream.release(); // (passes responsibility for deleting the stream to the writer object that is now using it)
-                
-                // Now we'll create one of these helper objects which will act as a FIFO buffer, and will
-                // write the data to disk on our background thread.
-                threadedWriter.reset (new AudioFormatWriter::ThreadedWriter (writer, backgroundThread, 32768));
-                
-                
-                // And now, swap over our active writer pointer so that the audio callback will start using it..
-                const ScopedLock sl (writerLock);
-                activeWriter = threadedWriter.get();
-            }
-        }
+        WavAudioFormat wavFormat;
+        
+        auto fileStream = std::unique_ptr<FileOutputStream> (file.createOutputStream());
+        
+        writer.reset(wavFormat.createWriterFor (fileStream.get(), sampleRate, numChannels, 16, {}, 0));
+        
+        fileStream.release();
+        
+        
+
+//        // Create an OutputStream to write to our destination file...
+//        file.deleteFile();
+//
+//        if (auto fileStream = std::unique_ptr<FileOutputStream> (file.createOutputStream()))
+//        {
+//            // Now create a WAV writer object that writes to our output stream...
+//            WavAudioFormat wavFormat;
+//
+//            if (auto writer = wavFormat.createWriterFor (fileStream.get(), sampleRate, 1, 16, {}, 0))
+//            {
+//                fileStream.release(); // (passes responsibility for deleting the stream to the writer object that is now using it)
+//
+//                // Now we'll create one of these helper objects which will act as a FIFO buffer, and will
+//                // write the data to disk on our background thread.
+//                threadedWriter.reset (new AudioFormatWriter::ThreadedWriter (writer, backgroundThread, 32768));
+//
+//
+//                // And now, swap over our active writer pointer so that the audio callback will start using it..
+//                const ScopedLock sl (writerLock);
+//                activeWriter = threadedWriter.get();
+//            }
+//        }
     }
 }
 
 //=============================================================================
 //Actual Recording
 
-void AudioRecorder::Record (float** pointers, int numSamples)
+void AudioRecorder::Record ( const AudioBuffer< float > &     source,
+                                 int     startSample,
+                                 int numSamples)
 {
-    const ScopedLock sl (writerLock);
-    if (activeWriter.load() != nullptr) {
-        activeWriter.load()->write (pointers, numSamples);
-
+    if (writer)
+    {
+        writer->writeFromAudioSampleBuffer(source, startSample, numSamples);
     }
+    
+
+    
+//    const ScopedLock sl (writerLock);
+//    if (activeWriter.load() != nullptr) {
+//        activeWriter.load()->write (pointers, numSamples);
+//
+//    }
 }
 
 //=============================================================================
 //Stop Recording
 void AudioRecorder::stop()
 {
+if(writer)
+    writer->flush();
+    
+    writer = nullptr ;
     // First, clear this pointer to stop the audio callback from using our writer object..
     {
         const ScopedLock sl (writerLock);

@@ -33,7 +33,7 @@ MainComponent::MainComponent()
     addTrack.onClick = [this] { createNewTrack();};
     settings.onClick = [this] {  showSettingWindow(true, parentTree, audioSetupComp);};
    
-    globalTempo.reset(new BPM (parentTree, undoManager, *admInfo));
+    globalTempo.reset(new BPM (parentTree, undoManager, *admInfo, newBar));
     addAndMakeVisible (globalTempo.get());
 
     deviceManager.addAudioCallback (&audioSourcePlayerClick);
@@ -54,15 +54,15 @@ MainComponent::MainComponent()
     fGraph.clear();
     
     // Create and add new input/output processor nodes.
-    AudioProcessorGraph::AudioGraphIOProcessor* in =
-    new AudioProcessorGraph::AudioGraphIOProcessor(
-                                                   AudioProcessorGraph::AudioGraphIOProcessor::audioInputNode);
-//    fInputNode = fGraph->AddProcessor(in);
-    
-    AudioProcessorGraph::AudioGraphIOProcessor* out =
-    new AudioProcessorGraph::AudioGraphIOProcessor(
-                                                   AudioProcessorGraph::AudioGraphIOProcessor::audioOutputNode);
-    fOutputNode = this->AddProcessor(out);
+//    AudioProcessorGraph::AudioGraphIOProcessor* in =
+//    new AudioProcessorGraph::AudioGraphIOProcessor(
+//                                                   AudioProcessorGraph::AudioGraphIOProcessor::audioInputNode);
+////    fInputNode = fGraph->AddProcessor(in);
+//    
+//    AudioProcessorGraph::AudioGraphIOProcessor* out =
+//    new AudioProcessorGraph::AudioGraphIOProcessor(
+//                                                   AudioProcessorGraph::AudioGraphIOProcessor::audioOutputNode);
+//    fOutputNode = this->AddProcessor(out);
     
 //    this->Connect(fInputNode, fOutputNode);
 }
@@ -71,11 +71,16 @@ MainComponent::~MainComponent()
 {
 
 // Clear AudioSourcesPlayers and AudioDeviceManager
+fPlayer.setProcessor(nullptr);
+    deviceManager.removeAudioCallback(&fPlayer);
   audioSourcePlayerClick.setSource(nullptr);
   deviceManager.removeAudioCallback(&audioSourcePlayerClick);
   deviceManager.removeChangeListener (this);
+parentTree.removeListener(this);
 
-setLookAndFeel (nullptr); // to avoid an error
+    addTrack.setLookAndFeel(nullptr);
+
+ setLookAndFeel (nullptr); // to avoid an error
     
 // This shuts down the audio device and clears the audio source.
     closeAllWindows();
@@ -119,8 +124,19 @@ void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRat
 
 void MainComponent::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill)
 {
+    if(newBar.load() != oldBar.load()) {
+        
+       
+            for( int i = 0; i<fTracks.size(); i++)
+                fTracks[i]->checkEvent(newBar.load());
+        
+            for( int i = 0; i<fTracks.size(); i++)
+                fTracks[i]->triggerEvent();
+            
+//        DBG("GUCK");
+    }
    
-    
+    oldBar.store(newBar.load());
 //    midiResetting(bufferToFill);
     bufferToFill.clearActiveBufferRegion();
     
@@ -298,6 +314,7 @@ void MainComponent::closeAllWindows()
     for (auto& window : windows)
     window.deleteAndZero();
     windows.clear();
+
 }
 
 
@@ -326,22 +343,28 @@ void MainComponent::valueTreePropertyChanged (ValueTree& tree, const Identifier&
     Identifier  Baring ("bar");
     float baring = parentTree.getProperty(Baring);
     
-    if(tree == parentTree && property == Baring) {
-    
-       
-        if((float(tree.getProperty(Baring))) > 0){
-            for( int i = 0; i<fTracks.size(); i++) {
-                fTracks[i]->checkEvent((float(tree.getProperty(Baring))));
-            }
-        }
-        
-        
-        if(tree.getProperty(Baring).equals(0
-                                           )){
-            for( int i = 0; i<fTracks.size(); i++)
-                fTracks[i]->triggerEvent();
-        }
-  }
+//    if(tree == parentTree && property == Baring) {
+//    
+////        std::cout << "inside : " ;
+//
+//       
+//        if((float(tree.getProperty(Baring))) > 0){
+//            for( int i = 0; i<fTracks.size(); i++) {
+//                fTracks[i]->checkEvent((float(tree.getProperty(Baring))));
+//                
+//                std::cout<<(float(tree.getProperty(Baring))) <<std::endl;
+//            }
+//        }
+//        
+//        
+//        if(tree.getProperty(Baring).equals(0)){
+//            for( int i = 0; i<fTracks.size(); i++)
+//                fTracks[i]->triggerEvent();
+//            
+////            std::cout<<"Triggered"<<std::endl;
+//
+//        }
+//  }
 }
 
 //=========================================================================================

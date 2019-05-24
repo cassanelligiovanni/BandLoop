@@ -14,12 +14,12 @@
 
 //==============================================================================
 
-BPM::BPM(const ValueTree& v, UndoManager& um, ADMinfo& ADM)
+BPM::BPM(const ValueTree& v, UndoManager& um, ADMinfo& ADM, std::atomic<float>& newBar)
 : tree (v)
 , undoManager (um)
 ,  admInfo(ADM)
 , click(outIsStereo, outputL, outputR)
-
+, bar(newBar)
 {
     
     drawButton();
@@ -40,7 +40,10 @@ BPM::BPM(const ValueTree& v, UndoManager& um, ADMinfo& ADM)
 
 }
 
-BPM::~BPM() { }
+BPM::~BPM() {
+    Timer::stopTimer();
+
+}
 
 void BPM::play()
 {
@@ -64,7 +67,7 @@ void BPM::stop()
         //reset globalTempo
         timeInMilliseconds = 0;
         Bar = 0;
-        Beat = 0;
+        Beat = 1;
     }
 }
 
@@ -167,11 +170,6 @@ void BPM::hiResTimerCallback()
         timeInMilliseconds ++ ;
     }
     
-}
-
-
-
-void BPM::timerCallback() {
     
     BPMratio = BPMs/60.;
     
@@ -184,10 +182,12 @@ void BPM::timerCallback() {
     Beats = (timeUIfloat)*BPMratio;
     Beat = (static_cast<int>(Beats))%4 + 1;
     
+    bar.store(BarToDisplay) ;
     
-    // Tempo has been changed
+    // BPM has been changed
     if (BPMratio != previousBPMratio)
     {
+        
         updateTempo();
     }
     
@@ -209,6 +209,23 @@ void BPM::timerCallback() {
     //    and play the Metronome
     //  HERE will be probably called the LED function
     
+ 
+    
+   
+    
+}
+
+
+
+void BPM::timerCallback() {
+    
+    
+    //    check wheter there is a new Beat
+    //   then check if the UI is really to Repaint, improving performances
+    //    and play the Metronome
+    //  HERE will be probably called the LED function
+    if(HighResolutionTimer::getTimerInterval()) {
+
     if (Beat != previousBeat ){
         hasToBeRepainted();
         playClick(Beat);
@@ -217,6 +234,51 @@ void BPM::timerCallback() {
     previousBeat = Beat;
     previousBPMratio = BPMratio;
     
+    }
+//    BPMratio = BPMs/60.;
+//
+//    timeUIfloat = (static_cast<float>(timeInMilliseconds))/1000;
+//    Bars = timeUIfloat*BPMratio/4;
+//    BarToDisplay = static_cast<int>(Bars);
+//    int BarToSend = roundToInt(Bars);
+//    Bar = (Bars);
+//
+//    Beats = (timeUIfloat)*BPMratio;
+//    Beat = (static_cast<int>(Beats))%4 + 1;
+//
+//
+//    // Tempo has been changed
+//    if (BPMratio != previousBPMratio)
+//    {
+//        updateTempo();
+//    }
+//
+//    // RightBefore newBar
+//    if( (isRightBeforeNewBar(Bars)) && justTriggered == false) {
+//        rightBeforeNewBar();
+//
+//    }
+//
+//    //  newBar
+//    if( isNewBar(Bars) && justTriggered == true) {
+//        newBar();
+//    }
+//
+//
+//
+//    //    check wheter there is a new Beat
+//    //   then check if the UI is really to Repaint, improving performances
+//    //    and play the Metronome
+//    //  HERE will be probably called the LED function
+//
+//    if (Beat != previousBeat ){
+//        hasToBeRepainted();
+//        playClick(Beat);
+//    }
+//
+//    previousBeat = Beat;
+//    previousBPMratio = BPMratio;
+    
 }
 
 
@@ -224,6 +286,7 @@ void BPM::updateTempo() {
     loopUnit = 4./BPMratio;
     Identifier  BPMratio ("BPMratio");
     tree.setProperty(BPMratio, loopUnit, &undoManager);
+    
 }
 
 void BPM::rightBeforeNewBar() {
@@ -231,13 +294,14 @@ void BPM::rightBeforeNewBar() {
     Identifier  Baring ("bar");
     tree.setProperty(Baring, BarToSend, &undoManager);
     justTriggered = true;
+//    DBG("isRightBefore");
 }
 
 void BPM::newBar() {
     Identifier  Baring ("bar");
     tree.setProperty(Baring, 0, &undoManager);
     justTriggered = false;
-    
+//    DBG("isNewBar");
 }
 
 bool BPM::isRightBeforeNewBar(float Bars) {
@@ -257,6 +321,7 @@ void BPM::hasToBeRepainted()  {
     
     for (int i = 0; i< BpmCounters.size(); i++) {
         BpmCounters[i]->setToggleState(false, NotificationType::dontSendNotification);}
+ 
     BpmCounters[Beat-1]->setToggleState(true, NotificationType::dontSendNotification);
     
     BarToText = static_cast<String>(BarToDisplay);

@@ -20,8 +20,8 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel.h"
-#include "/Users/giovanni/BandLoop/Source/CustomLookAndFeel2.h"
+#include "../Source/CustomLookAndFeel.h"
+#include "../Source/CustomLookAndFeel2.h"
 
 class AddTrackComponent   : public Component,
 public Label::Listener,
