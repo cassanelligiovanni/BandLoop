@@ -6,7 +6,7 @@ BandLoop is a set of five bluetooth pedals (Arduino-based) that interacted with 
 Here a Diagram of how it works :
 
 
-<img src="https://user-images.githubusercontent.com/22892458/164270393-93015c95-0d42-497c-859a-5a08cf7cb0bf.jpg" width="400" />
+<img src="https://user-images.githubusercontent.com/22892458/164270393-93015c95-0d42-497c-859a-5a08cf7cb0bf.jpg" width="650" />
 
 
 ### Hardware
