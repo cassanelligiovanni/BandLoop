@@ -21,7 +21,7 @@ Here a photo of its first prototype :
 ### Software
 
 The executable files is in the in the following Directory : Build/MacOSX/build/Debug/Bandloop.app. 
-The code I wrote is in the Source folder, but by itself is quite useless, 
+The code I wrote is in the Source folder, but, by itself, it is quite useless, 
 in fact it is dependent on the JUCE library. 
 Luckily enough, the JUCE website provide us with Projucer.
 
