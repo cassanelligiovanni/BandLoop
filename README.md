@@ -1,5 +1,21 @@
 # BandLoop
 
+BandLoop is a set of five bluetooth pedals (Arduino-based) that interacted with a digital audio workstation (built with J.U.C.E.) to sync a band's musicians to a global tempo.  It was recognized with a Santander Prototype Fund grant and an invitation to speak at the 2019 Audio Developer Conference.
+
+Here a Diagram of how it works :
+
+
+![Setup BandLoop](https://user-images.githubusercontent.com/22892458/164270393-93015c95-0d42-497c-859a-5a08cf7cb0bf.jpg)
+
+### Hardware
+
+Here a photo of its first prototype :
+
+<img width="682" alt="image" src="https://user-images.githubusercontent.com/22892458/164271693-b0db5bcb-bc53-4265-998d-aa38a5696b75.png">
+
+
+### Software
+
 The executable files is in the in the following Directory : Build/MacOSX/build/Debug/Bandloop.app. 
 The code I wrote is in the Source folder, but by itself is quite useless, 
 in fact it is dependent on the JUCE library. 
