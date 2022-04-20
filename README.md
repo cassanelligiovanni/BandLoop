@@ -5,18 +5,14 @@ BandLoop is a set of five bluetooth pedals (Arduino-based) that interacted with 
 Here a Diagram of how it works :
 
 
-![Setup BandLoop](https://user-images.githubusercontent.com/22892458/164270393-93015c95-0d42-497c-859a-5a08cf7cb0bf.jpg)
-<style type="text/css">
-    img {
-        width: 250px;
-    }
-</style>
+![Setup BandLoop](https://user-images.githubusercontent.com/22892458/164270393-93015c95-0d42-497c-859a-5a08cf7cb0bf.jpg, =100x20)
+
 
 ### Hardware
 
 Here a photo of its first prototype :
 
-<img width="682" alt="image" src="https://user-images.githubusercontent.com/22892458/164271693-b0db5bcb-bc53-4265-998d-aa38a5696b75.png">
+<img width="250" alt="image" src="https://user-images.githubusercontent.com/22892458/164271693-b0db5bcb-bc53-4265-998d-aa38a5696b75.png">
 
 
 ### Software
