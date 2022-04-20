@@ -15,7 +15,7 @@ Here a Diagram of how it works :
 Here a photo of its first prototype :
 
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/22892458/164271693-b0db5bcb-bc53-4265-998d-aa38a5696b75.png">
+<img width="500" alt="Screenshot_2022-04-20_at_17 58 31-removebg-preview" src="https://user-images.githubusercontent.com/22892458/164273105-c78144d0-b69a-46c7-87fa-bf5a8a21f454.png">
 
 
 ### Software
