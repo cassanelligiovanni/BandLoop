@@ -6,6 +6,11 @@ Here a Diagram of how it works :
 
 
 ![Setup BandLoop](https://user-images.githubusercontent.com/22892458/164270393-93015c95-0d42-497c-859a-5a08cf7cb0bf.jpg)
+<style type="text/css">
+    img {
+        width: 250px;
+    }
+</style>
 
 ### Hardware
 
