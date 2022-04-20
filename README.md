@@ -2,17 +2,21 @@
 
 BandLoop is a set of five bluetooth pedals (Arduino-based) that interacted with a digital audio workstation (built with J.U.C.E.) to sync a band's musicians to a global tempo.  It was recognized with a Santander Prototype Fund grant and an invitation to speak at the 2019 Audio Developer Conference.
 
+
 Here a Diagram of how it works :
 
 
-![Setup BandLoop](https://user-images.githubusercontent.com/22892458/164270393-93015c95-0d42-497c-859a-5a08cf7cb0bf.jpg, =100x20)
+
+![Setup BandLoop](https://user-images.githubusercontent.com/22892458/164270393-93015c95-0d42-497c-859a-5a08cf7cb0bf.jpg)
 
 
 ### Hardware
 
+
 Here a photo of its first prototype :
 
-<img width="250" alt="image" src="https://user-images.githubusercontent.com/22892458/164271693-b0db5bcb-bc53-4265-998d-aa38a5696b75.png">
+
+<img width="40" alt="image" src="https://user-images.githubusercontent.com/22892458/164271693-b0db5bcb-bc53-4265-998d-aa38a5696b75.png">
 
 
 ### Software
